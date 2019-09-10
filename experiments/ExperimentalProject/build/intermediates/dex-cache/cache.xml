@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="C:\Users\alexi\Desktop\ComS309\mg_1\Experiments\ExperimentalProject\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="fb0716a93c6556a0c74e68a1740bc017c9411391">
+        <dex dex="C:\Users\alexi\Desktop\ComS309\mg_1\Experiments\ExperimentalProject\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_c79ad71f2b6a09860c567c5e689d6387b1c49eae\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\alexi\.android\build-cache\7adc3bf65cc58652d8b85a94f59513133cafde0f\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="cddcd0fb93bc70e27325f2f715b2710332004ebb">
+        <dex dex="C:\Users\alexi\Desktop\ComS309\mg_1\Experiments\ExperimentalProject\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_c57871913fb6309193655a87745475cd0eb380b9\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\alexi\Desktop\ComS309\mg_1\Experiments\ExperimentalProject\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="C:\Users\alexi\Desktop\ComS309\mg_1\Experiments\ExperimentalProject\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_aed5c09498d4ea0a8145bf5fb294bc3137727f6a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\alexi\.android\build-cache\2a0c23546d25a85a56c52eea6ad915478bf09159\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="c4f45092eee6cdf1a5dbd597b2b6819be652ce2e">
+        <dex dex="C:\Users\alexi\Desktop\ComS309\mg_1\Experiments\ExperimentalProject\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_76f93e9dcf70d09822719221c98d30c949970f1a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\alexi\.android\build-cache\f2142bea2266e7c81bf808b58e1bd672a0e55979\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="6a022bf00ccd0948a8180c505e8e458bbddd43a6">
+        <dex dex="C:\Users\alexi\Desktop\ComS309\mg_1\Experiments\ExperimentalProject\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_dc518f657cb887316d867821b76f7df6fd8f7f77\classes.dex" />
+    </item>
+
+</items>

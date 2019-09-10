@@ -1,0 +1,7 @@
+#Mon Sep 09 22:24:39 CDT 2019
+base.0=C\:\\Users\\alexi\\Desktop\\ComS309\\mg_1\\Experiments\\ExperimentalProject\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_c79ad71f2b6a09860c567c5e689d6387b1c49eae
+renamed.1=classes2.dex
+renamed.0=classes.dex
+file.1=C\:\\Users\\alexi\\Desktop\\ComS309\\mg_1\\Experiments\\ExperimentalProject\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_aed5c09498d4ea0a8145bf5fb294bc3137727f6a\\classes.dex
+base.1=C\:\\Users\\alexi\\Desktop\\ComS309\\mg_1\\Experiments\\ExperimentalProject\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_aed5c09498d4ea0a8145bf5fb294bc3137727f6a
+file.0=C\:\\Users\\alexi\\Desktop\\ComS309\\mg_1\\Experiments\\ExperimentalProject\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_c79ad71f2b6a09860c567c5e689d6387b1c49eae\\classes.dex
