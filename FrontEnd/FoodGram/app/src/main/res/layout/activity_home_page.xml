@@ -1,32 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent" android:layout_height="match_parent"
     tools:context="com.foodgram.HomePage">
 
 
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:text="@string/login"
+        android:layout_above="@+id/SignUpButton"
+ />
+
+    <Button
+        android:id="@+id/SignUpButton"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:text="@string/sign_up"
+        android:layout_alignParentBottom="true"/>
+
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="368dp"
-        android:layout_height="251dp"
-        app:srcCompat="@drawable/foodgramlogo"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp" />
+        android:id="@+id/foodgramlogo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srcCompat="@drawable/foodgram"
+        android:layout_marginTop="@dimen/default_gap"
+        android:contentDescription="@string/foodgramlogo_for_welcome_screen"
+        />
 
-    <Button
-        android:layout_width="368dp"
-        android:layout_height="48dp"
-        android:text="Login"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="275dp" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="368dp"
-        android:layout_height="wrap_content"
-        android:text="SIGN-UP"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="331dp" />
-
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>
