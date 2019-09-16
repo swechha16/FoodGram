@@ -10,7 +10,7 @@ import android.view.View;
 public class CreateAccount extends AppCompatActivity {
 
 
-    Button createAccount_submit =  (Button)findViewById(R.id.createAccount);
+    Button createAccount_submit =  (Button)findViewById(R.id.createAccountSubmit);
 
 
     @Override
