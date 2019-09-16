@@ -1,0 +1,4 @@
+#Tue Sep 10 10:57:59 CDT 2019
+base.0=/Users/swechha/Desktop/cs309/mg_1/Experiments/app/build/intermediates/dex/debug/mergeDexDebug/out/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
