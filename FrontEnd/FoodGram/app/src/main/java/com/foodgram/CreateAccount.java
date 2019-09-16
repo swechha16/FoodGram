@@ -10,18 +10,24 @@ import android.view.View;
 public class CreateAccount extends AppCompatActivity {
 
 
-    Button b1 =  (Button)findViewById(R.id.createAccount);
+    Button createAccount_submit =  (Button)findViewById(R.id.createAccount);
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
+
+        createAccount_submit.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                onButtonClick(v);
+            }
+        });
     }
 
 
 public void onButtonClick(View v){
-Intent myIntent = new Intent(getBaseContext(),   PriceRange.class);
+Intent myIntent = new Intent(this,   PriceRange.class);
     startActivity(myIntent);
 
 }

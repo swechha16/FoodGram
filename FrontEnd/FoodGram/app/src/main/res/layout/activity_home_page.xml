@@ -29,6 +29,6 @@
         android:layout_marginTop="@dimen/default_gap"
         android:contentDescription="@string/foodgramlogo_for_welcome_screen"
         />
-    
+
 
 </RelativeLayout>
