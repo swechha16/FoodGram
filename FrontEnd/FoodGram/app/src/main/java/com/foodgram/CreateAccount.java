@@ -10,13 +10,14 @@ import android.view.View;
 public class CreateAccount extends AppCompatActivity {
 
 
-    Button createAccount_submit = (Button)findViewById(R.id.createAccountSubmit);
+    Button createAccount_submit;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
+        createAccount_submit = findViewById(R.id.createAccountSubmit);
 
         createAccount_submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
