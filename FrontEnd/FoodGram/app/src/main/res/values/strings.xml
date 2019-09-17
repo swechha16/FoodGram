@@ -1,17 +1,28 @@
 <resources>
     <string name="app_name">FoodGram</string>
 
+    //strings for the home page
     <string name="login">Login</string>
     <string name="sign_up">SIGN-UP</string>
     <string name="foodgramlogo_for_welcome_screen">foodgramlogo for welcome screen</string>
 
+
+    //strings for the create account
     <string name="email">Email</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="create_an_account">Create An Account</string>
+
+    //strings for the price range
     <string name="Price_Range">Pick A Price Range</string>
     <string name="Moderate_Choice">$ $</string>
     <string name="Frugal_Choice">$</string>
     <string name="Luxurious_Choice">$ $ $</string>
+
+    //string for the food tags
+    <string name="Italian">Italian</string>
+    <string name="Seafood">Seafood</string>
+    <string name="Chiense">Chiense</string>
+
 
 </resources>
