@@ -9,5 +9,9 @@
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="create_an_account">Create An Account</string>
+    <string name="Price_Range">Pick A Price Range</string>
+    <string name="Moderate_Choice">$ $</string>
+    <string name="Frugal_Choice">$</string>
+    <string name="Luxurious_Choice">$ $ $</string>
 
 </resources>
