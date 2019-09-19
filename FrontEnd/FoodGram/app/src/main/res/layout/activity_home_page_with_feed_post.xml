@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomePageWithFeedPost">
+
+    <Button
+        android:id="@+id/clickToFeedButton"
+        android:layout_width="284dp"
+        android:layout_height="62dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="false"
+        android:layout_marginLeft="67dp"
+        android:layout_marginTop="141dp"
+        android:layout_marginRight="60dp"
+        android:layout_marginBottom="185dp"
+        android:text="Feed"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    <Button
+        android:id="@+id/clickToPostButton"
+        android:layout_width="wrap_content"
+        android:layout_height="62dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="65dp"
+        android:layout_marginTop="284dp"
+        android:layout_marginRight="70dp"
+        android:layout_marginBottom="385dp"
+        android:text="Post"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    <Button
+        android:id="@+id/clickToFindFood"
+        android:layout_width="279dp"
+        android:layout_height="65dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="70dp"
+        android:layout_marginRight="62dp"
+        android:layout_marginBottom="250dp"
+        android:text="Find Food"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+</RelativeLayout>
