@@ -7,21 +7,27 @@
     tools:context="com.foodgram.FoodTags">
 
     <Button
-        android:id="@+id/typeItalian"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button" />
+        android:id="@+id/ChineseFoodButton"
+        android:layout_width="284dp"
+        android:layout_height="75dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="46dp"
+        android:layout_marginRight="81dp"
+        android:layout_marginBottom="246dp"
+        android:text="Chinese" />
 
     <Button
-        android:id="@+id/typeSeafood"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button" />
-
-    <Button
-        android:id="@+id/typeChiense"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button" />
+        android:id="@+id/ItalianFoodButton"
+        android:layout_width="274dp"
+        android:layout_height="73dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="58dp"
+        android:layout_marginRight="79dp"
+        android:layout_marginBottom="442dp"
+        android:text="Italian" />
 
 </RelativeLayout>
