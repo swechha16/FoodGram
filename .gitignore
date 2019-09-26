@@ -116,6 +116,9 @@ obj/
 /out/
 
 # User-specific configurations
+ FrontEnd/FoodGram/.idea/caches/build_file_checksums.ser
+
+FrontEnd/FoodGram/.idea/caches/gradle_models.ser
 .idea/caches/
 .idea/libraries/
 .idea/shelf/
