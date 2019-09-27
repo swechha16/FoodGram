@@ -6,4 +6,5 @@
     <fullyQualifiedTypeName name="javax.persistence.GenerationType"/>
     <fullyQualifiedTypeName name="javax.persistence.ManyToMany"/>
     <fullyQualifiedTypeName name="antlr.collections.List"/>
+    <fullyQualifiedTypeName name="com.FoodGramServer.FoodGramServer.models.Comment"/>
 </qualifiedTypeNameHistroy>

@@ -21,10 +21,10 @@ public interface CommentRepo extends JpaRepository<Comment, Long> {
 	
 	//we're gonna have to query the FRICK out of this once we figure
 	// the database
-    @Query(value = "SELECT * FROM comments where comments = \", nativeQuery = true)
-    Collection<Comment> getComments(long userComment);
-	
-	
+//    @Query(value = "SELECT * FROM comments where comments = \", nativeQuery = true)
+//    Collection<Comment> getComments(long userComment);
+//	
+//	
 	
 	
 	
