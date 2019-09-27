@@ -26,7 +26,7 @@ public class CommentController {
 	
 	
     @RequestMapping("/comment/get/all")
-    public String getComments(@RequestBody String string, @RequestHeader(value = "Authorization")) {
+    public String getComments(@RequestBody String string) {
     	long id = -1;
     //	JSONObject obj = new JSONObject(string);
    //     long user = Long.parseLong(obj.get("id").toString());

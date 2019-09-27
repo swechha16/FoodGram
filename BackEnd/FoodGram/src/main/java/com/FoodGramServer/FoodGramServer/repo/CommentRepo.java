@@ -3,6 +3,7 @@ package com.FoodGramServer.FoodGramServer.repo;
 import java.util.Collection;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import com.FoodGramServer.FoodGramServer.models.Comment;
 
@@ -21,10 +22,10 @@ public interface CommentRepo extends JpaRepository<Comment, Long> {
 	
 	//we're gonna have to query the FRICK out of this once we figure
 	// the database
-//    @Query(value = "SELECT * FROM comments where comments = \", nativeQuery = true)
-//    Collection<Comment> getComments(long userComment);
-//	
-//	
+    @Query(value = "SELECT comment FROM comment;", nativeQuery = true)
+    Collection<Comment> getComments(long userComment);
+	
+	
 	
 	
 	
