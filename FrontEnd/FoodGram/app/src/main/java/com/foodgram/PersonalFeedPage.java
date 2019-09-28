@@ -48,13 +48,12 @@ public class PersonalFeedPage extends AppCompatActivity {
 
         mQueue = Volley.newRequestQueue(this);
 
-        btn_getFeed.setOnClickListener(new View.OnClickListener()){
+        btn_getFeed.setOnClickListener(new View.OnClickListener(){
             @Override
-
-            public void OnClick(View v){
+            public void onClick(View view) {
                 getFeed();
             }
-        }
+        });
 
     }
 
@@ -70,11 +69,14 @@ public class PersonalFeedPage extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
                         try {
                             JSONArray jsonArray = response.getJSONArray("comments");
-                            for(int i =0; i <jsonArray.length(); i++){
+                            for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject comment = jsonArray.getJSONObject(i);
 
                                 int id = comment.getInt("id");
-                                String 
+                                String commentC = comment.getString("comment");
+
+                                mTextViewResult.append(String.valueOf(id) + "\t" + commentC + "\n\n");
+
                             }
 
                         } catch (JSONException e) {
@@ -86,9 +88,14 @@ public class PersonalFeedPage extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 error.printStackTrace();
             }
-        }
+        });
 
-        );}
+        mQueue.add(request);
+
+    }
+
+
+
 
 
 
