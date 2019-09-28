@@ -1,13 +1,19 @@
 package com.FoodGramServer.FoodGramServer.models;
 
+import javax.persistence.Column;
+
 public class Comment {
 
 	// define the parameters that are in the database (columns)
 	
 	// get and set 
-	
+	@Column(name = "comment")
 	private String comment;
+	
+	@Column(name = "timestamp")
 	private String timestamp;
+	
+	@Column(name = "id")
 	private long id;
 
 	public String getTimestamp() {
