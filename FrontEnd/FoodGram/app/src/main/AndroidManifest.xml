@@ -6,7 +6,7 @@
 
     <application
 
-        android:name="com.foodgram.app.AppController"
+
 
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
