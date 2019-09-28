@@ -4,7 +4,6 @@ import javax.persistence.Column;
 
 public class Comment {
 
-	// define the parameters that are in the database (columns)
 	
 	// get and set 
 	@Column(name = "comment")
@@ -15,7 +14,14 @@ public class Comment {
 	
 	@Column(name = "id")
 	private long id;
-
+	
+	// define the parameters that are in the database (columns)
+	public Comment(long id, String comment, String timestamp) {
+		comment = comment;
+		timestamp = timestamp;
+		id = id;
+	}
+	
 	public String getTimestamp() {
 		return timestamp;
 	}
