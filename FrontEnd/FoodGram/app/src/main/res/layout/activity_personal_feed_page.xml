@@ -7,6 +7,17 @@
     tools:context=".PersonalFeedPage">
 
     <Button
+        android:id="@+id/logout_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="304dp"
+        android:layout_marginLeft="304dp"
+        android:layout_marginBottom="560dp"
+        android:text="Button"
+        app:layout_constraintBottom_toTopOf="@+id/btn_getFeed"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
         android:id="@+id/btn_getFeed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -20,9 +31,9 @@
     <ScrollView
         android:id="@+id/sv_FeedView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="137dp"
-        tools:layout_editor_absoluteY="167dp">
+        android:layout_height="0dp"
+        tools:layout_editor_absoluteX="64dp"
+        tools:layout_editor_absoluteY="-16dp">
 
         <LinearLayout
             android:layout_width="match_parent"

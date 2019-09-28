@@ -18,7 +18,7 @@ public class HomePage extends AppCompatActivity {
         welcome_login = findViewById(R.id.loginButton);
         welcome_signin = findViewById(R.id.SignUpButton);
 
-        welcome_login.setOnClickListener( new View.OnClickListener(){
+        welcome_login.setOnClickListener(new View.OnClickListener(){
             public void onClick (View v){
                 login_page(v);
             }
