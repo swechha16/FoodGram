@@ -17,20 +17,14 @@ import com.FoodGramServer.FoodGramServer.models.Comment;
  *
  */
 
-public interface CommentRepo extends JpaRepository<Comment, Long> {
+public interface CommentRepo extends JpaRepository<String, Long> {
 	
 	
 	//we're gonna have to query the FRICK out of this once we figure
 	// the database
-    @Query(value = "SELECT comment FROM comment;", nativeQuery = true)
-    Collection<Comment> getComments(long userComment);
-	
-	
-	
-	
-	
-	
-	
+    @Query(value = "SELECT * FROM comment;", nativeQuery = true)
+    Comment[] getAllComments();
+
 	
 }
 
