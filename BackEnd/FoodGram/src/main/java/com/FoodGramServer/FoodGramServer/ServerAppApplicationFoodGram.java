@@ -11,7 +11,7 @@ public class ServerAppApplicationFoodGram{
 
 	public static void main(String[] args) {
 		SpringApplication.run(ServerAppApplicationFoodGram.class, args);
-		System.out.println("db initialized");
+		System.out.println("Database initialized");
 
 
 
