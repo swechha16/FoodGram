@@ -79,9 +79,9 @@ public class PersonalFeedPage extends AppCompatActivity {
 
 
     public void getFeed() {
-
-        String url = "http://10.31.24.107:8080/comment/all";
-//String url = "https://api.myjson.com/bins/btu21";
+        String url = "";
+        //String url = "http://10.31.24.107:8080/comment/all";
+        //String url = "https://api.myjson.com/bins/btu21";
 
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
