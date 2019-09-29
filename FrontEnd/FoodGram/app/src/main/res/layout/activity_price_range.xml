@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EEFBAD50"
     tools:context="com.foodgram.PriceRange">
 
     <TextView
@@ -47,8 +46,8 @@
         android:layout_marginEnd="131dp"
         android:layout_marginRight="131dp"
         android:layout_marginBottom="325dp"
-        android:background="#5093fb"
         android:text="@string/Moderate_Choice"
+        android:background="#B850FB"
         android:textColor="#93fb50"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -71,7 +70,7 @@
         android:layout_marginEnd="131dp"
         android:layout_marginRight="131dp"
         android:layout_marginBottom="192dp"
-        android:background="#5093fb"
+        android:background="#B850FB"
         android:text="@string/Luxurious_Choice"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="#9efb50"
@@ -96,7 +95,7 @@
         android:layout_marginEnd="131dp"
         android:layout_marginRight="131dp"
         android:layout_marginBottom="462dp"
-        android:background="#5093fb"
+        android:background="#B850FB"
         android:text="@string/Frugal_Choice"
         android:textColor="#9efb50"
         android:textSize="18sp"

@@ -1,5 +1,6 @@
 package com.foodgram;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.renderscript.ScriptGroup;
 import android.support.v7.app.AppCompatActivity;
@@ -33,7 +34,7 @@ public class PersonalFeedPage extends AppCompatActivity {
     private TextView mTextViewResult;
     private RequestQueue mQueue;
 
-
+    private Button signOut;
 
 
 
@@ -41,6 +42,14 @@ public class PersonalFeedPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_feed_page);
+
+        signOut = (Button) findViewById(R.id.btn_signOut);
+        signOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                welcome_page();
+            }
+        });
 
 
         mTextViewResult = findViewById(R.id.tv_ViewComments);
@@ -58,17 +67,31 @@ public class PersonalFeedPage extends AppCompatActivity {
     }
 
 
+    public void welcome_page(){
+        Intent intent = new Intent(this, HomePage.class);
+        startActivity(intent);
+    }
+
+    public void makePost_page(){
+        Intent intent = new Intent(this, MakePostPage.class);
+        startActivity(intent);
+    }
+
+
     public void getFeed() {
 
-        String url = "http://coms-309-mg-1.misc.iastate.edu:3306/comment/get/all";
+       // String url = "http://coms-309-mg-1.misc.iastate.edu:3306/comment/get/all";
+String url = "https://api.myjson.com/bins/btu21";
+
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
 
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        try {
+                       try {
                             JSONArray jsonArray = response.getJSONArray("comments");
+                           mTextViewResult.setText("");
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject comment = jsonArray.getJSONObject(i);
 
@@ -79,12 +102,15 @@ public class PersonalFeedPage extends AppCompatActivity {
                             }
 
                         } catch (JSONException e) {
+                            mTextViewResult.setText("JSON EXCEPTION");
                             e.printStackTrace();
                         }
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+
+                mTextViewResult.setText("Error");
                 error.printStackTrace();
             }
         });
@@ -92,10 +118,6 @@ public class PersonalFeedPage extends AppCompatActivity {
         mQueue.add(request);
 
     }
-
-
-
-
 
 
 }

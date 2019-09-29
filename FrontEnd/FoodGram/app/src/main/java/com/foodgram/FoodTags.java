@@ -34,7 +34,7 @@ public class FoodTags extends AppCompatActivity {
 
 
     public void onButtonClick(View v){
-        Intent myIntent = new Intent(this,   FilteredFoodFeed.class);
+        Intent myIntent = new Intent(this,   PriceRange.class);
         startActivity(myIntent);
 
     }
