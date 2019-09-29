@@ -13,9 +13,9 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:layout_marginLeft="63dp"
-        android:layout_marginTop="144dp"
-        android:layout_marginRight="62dp"
+        android:layout_marginLeft="59dp"
+        android:layout_marginTop="114dp"
+        android:layout_marginRight="66dp"
         android:text="Feed"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 

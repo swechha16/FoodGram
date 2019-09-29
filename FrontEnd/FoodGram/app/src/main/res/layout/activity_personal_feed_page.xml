@@ -2,23 +2,17 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sv_Comments"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PersonalFeedPage">
 
 
-    <!--    <ScrollView-->
-<!--        android:id="@+id/sv_FeedView"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="0dp"-->
-<!--        tools:layout_editor_absoluteX="64dp"-->
-<!--        tools:layout_editor_absoluteY="-16dp">-->
-
     <Button
         android:id="@+id/btn_getFeed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="116dp"
+        android:layout_marginBottom="180dp"
         android:text="Refresh"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,21 +23,13 @@
         android:id="@+id/btn_signOut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         android:text="Sign Out"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_ViewComments"
-        android:layout_width="240dp"
-        android:layout_height="19dp"
-        android:text="Comments"
-        app:layout_constraintBottom_toTopOf="@+id/btn_getFeed"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.598" />
 
     <TextView
         android:id="@+id/textView2"
@@ -66,6 +52,30 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ScrollView
+        android:layout_width="308dp"
+        android:layout_height="236dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_getFeed"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_ViewComments"
+            android:layout_width="231dp"
+            android:layout_height="300dp"
+            android:text="Comments"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_getFeed"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.161"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.115" />
+
+
+    </ScrollView>
 
 
 </android.support.constraint.ConstraintLayout>
