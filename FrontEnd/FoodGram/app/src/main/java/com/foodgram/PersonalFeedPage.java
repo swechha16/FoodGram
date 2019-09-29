@@ -60,8 +60,8 @@ public class PersonalFeedPage extends AppCompatActivity {
 
     public void getFeed() {
 
-        String url = "http://coms-309-mg-1.misc.iastate.edu:3306/comment/get/all";
-
+       // String url = "http://coms-309-mg-1.misc.iastate.edu:3306/comment/get/all";
+String url = "https://api.myjson.com/bins/143pkp";
 
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
@@ -69,8 +69,9 @@ public class PersonalFeedPage extends AppCompatActivity {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        try {
+                       try {
                             JSONArray jsonArray = response.getJSONArray("comments");
+                           mTextViewResult.setText("");
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject comment = jsonArray.getJSONObject(i);
 
@@ -82,6 +83,7 @@ public class PersonalFeedPage extends AppCompatActivity {
                             }
 
                         } catch (JSONException e) {
+                            mTextViewResult.setText("JSON EXCEPTION");
                             e.printStackTrace();
                         }
                     }
