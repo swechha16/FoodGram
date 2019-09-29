@@ -80,7 +80,7 @@ public class PersonalFeedPage extends AppCompatActivity {
 
     public void getFeed() {
 
-        String url = "http://10.26.0.96:8080/comment/all";
+        String url = "http://10.31.24.107:8080/comment/all";
 //String url = "https://api.myjson.com/bins/btu21";
 
 
@@ -92,14 +92,16 @@ public class PersonalFeedPage extends AppCompatActivity {
                        try {
                             JSONArray jsonArray = response.getJSONArray("comments");
                            mTextViewResult.setText("");
-                            for (int i = 0; i < jsonArray.length(); i++) {
-                                JSONObject comment = jsonArray.getJSONObject(i);
+                           for (int i = 0; i < jsonArray.length(); i++) {
+                               JSONObject comment = jsonArray.getJSONObject(i);
 
-                                String commentC = comment.getString("comment");
+                               long id = comment.getInt("id");
+                               String commentC = comment.getString("comment");
 
-                                mTextViewResult.append(commentC + "\n\n");
+                               mTextViewResult.append(String.valueOf(id) + "\t" + commentC + "\n\n");
 
-                            }
+                           }
+
 
                         } catch (JSONException e) {
                             mTextViewResult.setText("JSON EXCEPTION");

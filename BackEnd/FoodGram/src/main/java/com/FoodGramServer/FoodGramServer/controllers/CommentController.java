@@ -31,27 +31,22 @@ public class CommentController {
 		// I am fairly certain there is an easier way to do this instead of sending long strings
     @RequestMapping(method = RequestMethod.GET, path = "/comment/all")
     public String getComments() { // Comment[]
-  
-    	return "{\"comments\":[{\"id\":1,\"comment\":\"This was awesome\"}]}"; //commentRepo.getAllComments();"
-    }
-    	//String ret = "{";
+    	Comment[] comments = commentRepo.getAll();	
     	
-    	//Comment[] comments = commentRepo.getAllComments();
     	
+    	//return comments[0].toString();
+    
+    	String ret = "{\"comments\":[";
+    	    	
     	// iterates through all of the comments except the last one in the array
-    	/*for(int i = 0; i < comments.length -1; i++) {
-    		ret = 	ret + "\"comment" + i + "\": {\"comment\":\""
-    				+ comments[i].getComment()
-    				+ "\"},";
+    	for(int i = 0; i < comments.length-1; i++) {
+    		ret = 	ret + "{\"id\":\""+comments[i].getId()+"\",\"comment\":\""+comments[i].getComment()+"\"},";
     	}
-    	// adds the last comment in the array and the closing bracket
-		ret = 	ret + "\"comment" + (comments.length - 1) + "\": {\"comment\":\""
-				+ comments[comments.length-1].getComment()
-				+ "\"}}";
-		*/
+    	ret = ret+ "{\"id\":\""+comments[comments.length-1].getId()+"\",\"comment\":\""+comments[comments.length-1].getComment()+"\"}]}";
+    	//return "{\"comments\":[{\"id\":1,\"comment\":\"This was awesome\"}]}";
 		// returns a string of all the comments in a format to be parsed
-    	//return commentRepo.getAllComments();
-    //}
+    	return ret;
+    }
 	
 }
  
