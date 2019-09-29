@@ -90,6 +90,8 @@ public class PersonalFeedPage extends AppCompatActivity {
 
         String url = "http://coms-309-mg-1.misc.iastate.edu:3306/comment/get/all";
 
+
+
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
 
                 new Response.Listener<JSONObject>() {
@@ -114,6 +116,8 @@ public class PersonalFeedPage extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+
+                mTextViewResult.setText("Error");
                 error.printStackTrace();
             }
         });
