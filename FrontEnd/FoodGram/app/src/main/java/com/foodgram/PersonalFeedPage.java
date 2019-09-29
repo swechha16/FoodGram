@@ -72,10 +72,9 @@ public class PersonalFeedPage extends AppCompatActivity {
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject comment = jsonArray.getJSONObject(i);
 
-                                int id = comment.getInt("id");
                                 String commentC = comment.getString("comment");
 
-                                mTextViewResult.append(String.valueOf(id) + "\t" + commentC + "\n\n");
+                                mTextViewResult.append(commentC + "\n\n");
 
                             }
 

@@ -1,27 +1,33 @@
 package com.FoodGramServer.FoodGramServer.models;
 
-import javax.persistence.Column;
+import java.io.Serializable;
 
-public class Comment {
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import java.lang.*;
 
+
+
+@Entity
+@Table(name = "comment")
+public class Comment implements Serializable{
+	private static final long serialVersionUID = 1L;
 	
-	// get and set 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
+	
+	@NotEmpty
 	@Column(name = "comment")
 	private String comment;
 	
+	@NotEmpty
 	@Column(name = "timestamp")
 	private String timestamp;
 	
-	@Column(name = "id")
-	private long id;
+	//public Comment() {}	
 	
-	// define the parameters that are in the database (columns)
-	public Comment(long id, String comment, String timestamp) {
-		comment = comment;
-		timestamp = timestamp;
-		id = id;
-	}
-	
+
 	public String getTimestamp() {
 		return timestamp;
 	}
