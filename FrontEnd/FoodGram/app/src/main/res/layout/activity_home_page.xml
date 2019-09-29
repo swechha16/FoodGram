@@ -23,12 +23,22 @@
 
     <ImageView
         android:id="@+id/foodgramlogo"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:srcCompat="@drawable/foodgram"
-        android:layout_marginTop="@dimen/default_gap"
+        android:layout_width="347dp"
+        android:layout_height="376dp"
+        android:layout_above="@+id/loginButton"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="138dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginBottom="67dp"
         android:contentDescription="@string/foodgramlogo_for_welcome_screen"
-        />
+        app:srcCompat="@drawable/foodgram" />
 
 
 </RelativeLayout>

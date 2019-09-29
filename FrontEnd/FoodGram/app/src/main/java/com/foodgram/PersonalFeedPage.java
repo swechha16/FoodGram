@@ -1,5 +1,6 @@
 package com.foodgram;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.renderscript.ScriptGroup;
 import android.support.v7.app.AppCompatActivity;
@@ -33,14 +34,30 @@ public class PersonalFeedPage extends AppCompatActivity {
     private TextView mTextViewResult;
     private RequestQueue mQueue;
 
-
-
+    private Button signOut;
+    private Button post;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_feed_page);
+
+        signOut = (Button) findViewById(R.id.btn_signOut);
+        signOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                welcome_page();
+            }
+        });
+
+        post = (Button) findViewById(R.id.make_post);
+        post.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                makePost_page();
+            }
+        });
 
 
         mTextViewResult = findViewById(R.id.tv_ViewComments);
@@ -55,6 +72,17 @@ public class PersonalFeedPage extends AppCompatActivity {
             }
         });
 
+    }
+
+
+    public void welcome_page(){
+        Intent intent = new Intent(this, HomePage.class);
+        startActivity(intent);
+    }
+
+    public void makePost_page(){
+        Intent intent = new Intent(this, MakePostPage.class);
+        startActivity(intent);
     }
 
 
@@ -93,10 +121,6 @@ public class PersonalFeedPage extends AppCompatActivity {
         mQueue.add(request);
 
     }
-
-
-
-
 
 
 }
