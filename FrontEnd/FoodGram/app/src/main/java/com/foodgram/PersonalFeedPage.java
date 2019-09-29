@@ -35,7 +35,7 @@ public class PersonalFeedPage extends AppCompatActivity {
     private RequestQueue mQueue;
 
     private Button signOut;
-    private Button post;
+
 
 
     @Override
@@ -48,14 +48,6 @@ public class PersonalFeedPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 welcome_page();
-            }
-        });
-
-        post = (Button) findViewById(R.id.make_post);
-        post.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                makePost_page();
             }
         });
 
@@ -89,7 +81,7 @@ public class PersonalFeedPage extends AppCompatActivity {
     public void getFeed() {
 
        // String url = "http://coms-309-mg-1.misc.iastate.edu:3306/comment/get/all";
-String url = "https://api.myjson.com/bins/143pkp";
+String url = "https://api.myjson.com/bins/btu21";
 
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
