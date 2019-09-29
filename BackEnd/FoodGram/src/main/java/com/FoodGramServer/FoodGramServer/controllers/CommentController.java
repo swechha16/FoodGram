@@ -18,7 +18,7 @@ import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @RestController
-@RequestMapping("/comment")
+
 public class CommentController {
 
 	@Autowired
@@ -29,9 +29,10 @@ public class CommentController {
 		// comments queries null
 	//Notes:
 		// I am fairly certain there is an easier way to do this instead of sending long strings
-    @RequestMapping(method = RequestMethod.POST, path = "/all")
-    public Comment[] getComments() {
-    	return commentRepo.getAllComments();
+    @RequestMapping(method = RequestMethod.GET, path = "/comment/all")
+    public String getComments() { // Comment[]
+  
+    	return "{\"comments\":[{\"id\":1,\"comment\":\"This was awesome\"}]}"; //commentRepo.getAllComments();"
     }
     	//String ret = "{";
     	
