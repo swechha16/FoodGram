@@ -97,7 +97,6 @@ public class MakePostPage extends AppCompatActivity {
                 try {
                     return savePost == null ? null : savePost.getBytes("utf-8");
                 } catch (UnsupportedEncodingException uee) {
-                    //Log.v("Unsupported Encoding while trying to get the bytes", data);
                     return null;
                 }
             }
