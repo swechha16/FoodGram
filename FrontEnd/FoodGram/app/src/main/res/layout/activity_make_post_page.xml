@@ -19,11 +19,11 @@
         android:layout_marginLeft="100dp"
         android:layout_marginEnd="103dp"
         android:layout_marginRight="103dp"
-        android:layout_marginBottom="83dp"
+        android:layout_marginBottom="63dp"
         android:text="@string/make_post" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/enter_post"
         android:layout_width="283dp"
         android:layout_height="wrap_content"
         android:layout_above="@+id/Post"
@@ -35,10 +35,11 @@
         android:layout_marginLeft="63dp"
         android:layout_marginEnd="65dp"
         android:layout_marginRight="65dp"
-        android:layout_marginBottom="67dp"
+        android:layout_marginBottom="38dp"
+        android:autofillHints=""
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Type Here" />
+        android:text="@string/type_here" />
 
     <Button
         android:id="@+id/signOut_post"
@@ -47,9 +48,34 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="23dp"
-        android:layout_marginEnd="19dp"
-        android:layout_marginRight="19dp"
-        android:text="Sign Out" />
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginRight="18dp"
+        android:text="@string/sign_out" />
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/enter_post"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="82dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginRight="35dp"
+        android:layout_marginBottom="27dp">
+
+
+        <TextView
+            android:id="@+id/Posts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Current Posts"
+            android:layout_gravity="center_horizontal" />
+    </ScrollView>
 
 </RelativeLayout>
