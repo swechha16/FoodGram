@@ -27,7 +27,7 @@ public interface CommentRepo extends JpaRepository<Comment, Long> {
 	//we're gonna have to query the FRICK out of this once we figure
 	// the database
     @Query(value = "SELECT * FROM comment", nativeQuery = true)
-	public Comment[] getAllComments();
+	public Comment[] getAll();
 	
 }
 

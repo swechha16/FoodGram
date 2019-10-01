@@ -24,6 +24,8 @@
     <string name="Seafood">Seafood</string>
     <string name="Chiense">Chiense</string>
     <string name="make_post">Make Post</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="type_here">Type Here</string>
 
 
 </resources>

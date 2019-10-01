@@ -25,7 +25,11 @@ public class Comment implements Serializable{
 	@Column(name = "timestamp")
 	private String timestamp;
 	
-	//public Comment() {}	
+	public Comment() {
+		setComment(comment);
+		setTimestamp(timestamp);
+		setId(id);
+	}	
 	
 
 	public String getTimestamp() {
@@ -53,6 +57,9 @@ public class Comment implements Serializable{
 	} 
 	
 	
-	
+	public String toString() 
+	{
+		return getComment();
+	}
 	
 }
