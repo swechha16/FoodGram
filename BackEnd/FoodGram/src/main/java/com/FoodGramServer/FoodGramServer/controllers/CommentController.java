@@ -67,6 +67,18 @@ public class CommentController {
 
 	}
 
+	@RequestMapping(method = RequestMethod.POST, path = "/comment/post/all")
+	public Comment postCommentFromRestaurant(@RequestBody Comment restaurantComment) {
+		Comment comment = new Comment();
+		comment.setComment(comment.getComment());
+		comment.setTimestamp(comment.getTimestamp());
+
+		sqlInsert(restaurantComment);
+
+		return comment;
+
+	}
+
 	public void sqlInsert(Comment comment) {
 
 		try {
