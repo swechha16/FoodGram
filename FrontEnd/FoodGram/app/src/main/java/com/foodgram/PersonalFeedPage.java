@@ -79,15 +79,13 @@ public class PersonalFeedPage extends AppCompatActivity {
 
 
     public void getFeed() {
-<<<<<<< HEAD
 
-            String url = "http://10.26.0.96:8080/comment/all";
+          //  String url = "http://10.26.0.96:8080/comment/all";
           //String url = "https://api.myjson.com/bins/btu21";
-=======
-        String url = "";
+
+        String url = " http://coms-309-mg-1.cs.iastate.edu:3306/comment/all";
         //String url = "http://10.31.24.107:8080/comment/all";
         //String url = "https://api.myjson.com/bins/btu21";
->>>>>>> e4f061f1acc0cc0bac0f8363797e87a08230233f
 
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,

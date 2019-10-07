@@ -55,7 +55,7 @@ public class CommentController {
 
 	// I have no idea if any of this works - swechha 
 
-	@RequestMapping(method = RequestMethod.POST, path = "/comment/post/all")
+	@RequestMapping(method = RequestMethod.POST, path = "/comment/post//user/all")
 	public Comment postCommentFromUser(@RequestBody Comment userComment) {
 		Comment comment = new Comment();
 		comment.setComment(comment.getComment());
@@ -67,6 +67,9 @@ public class CommentController {
 
 	}
 
+	/*
+	 * Post for restaurant comment
+	 */
 	@RequestMapping(method = RequestMethod.POST, path = "/comment/post/all")
 	public Comment postCommentFromRestaurant(@RequestBody Comment restaurantComment) {
 		Comment comment = new Comment();
@@ -78,11 +81,16 @@ public class CommentController {
 		return comment;
 
 	}
-
+/*
+ * This is the method that will insert (hopefully) a
+ * comment with the comment attributes into the database 
+ * 
+ * 
+ */
 	public void sqlInsert(Comment comment) {
 
 		try {
-			String url = "jdbc:mysql://coms-309-mg-1.misc.iastate.edu:3306/FoodGramDB"; // change to our url?
+			String url = "jdbc:mysql://coms-309-mg-1.cs.iastate.edu:3306/FoodGramDB"; // change to our url?
 			Connection conn = DriverManager.getConnection(url, "", "");
 			Statement st = conn.createStatement();
 			st.executeUpdate("INSERT INTO comment VALUES ('" + comment.getId() + "', '" + comment + "', "
