@@ -10,9 +10,7 @@ import java.lang.*;
 
 @Entity
 @Table(name = "comment")
-public class Comment implements Serializable{
-	private static final long serialVersionUID = 1L;
-	
+public class Comment{	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -61,6 +59,4 @@ public class Comment implements Serializable{
 	{
 		return getComment();
 	}
-	
-	
 }

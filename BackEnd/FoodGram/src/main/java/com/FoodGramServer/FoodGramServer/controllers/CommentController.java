@@ -29,32 +29,15 @@ public class CommentController {
 
 	Comment userComment;
 
-	// Possible edge cases:
-	// comments queries null
-	// Notes:
-	// I am fairly certain there is an easier way to do this instead of sending long
-	// strings
 	@RequestMapping(method = RequestMethod.GET, path = "/comment/all")
-	public String getComments() { // Comment[]
+	public Comment[] getComments() { 
 		Comment[] comments = commentRepo.getAll();
-
-		// return comments[0].toString();
-
-		String ret = "{\"comments\":[";
-
-		// iterates through all of the comments except the last one in the array
-		for (int i = 0; i < comments.length - 1; i++) {
-			ret = ret + "{\"id\":\"" + comments[i].getId() + "\",\"comment\":\"" + comments[i].getComment() + "\"},";
-		}
-		ret = ret + "{\"id\":\"" + comments[comments.length - 1].getId() + "\",\"comment\":\""
-				+ comments[comments.length - 1].getComment() + "\"}]}";
-		// return "{\"comments\":[{\"id\":1,\"comment\":\"This was awesome\"}]}";
-		// returns a string of all the comments in a format to be parsed
-		return ret;
+		return comments; //returns JSON array of comments
 	}
 
 	// I have no idea if any of this works - swechha 
 
+	/*
 	@RequestMapping(method = RequestMethod.POST, path = "/comment/post/all")
 	public Comment postCommentFromUser(@RequestBody Comment userComment) {
 		Comment comment = new Comment();
@@ -94,6 +77,6 @@ public class CommentController {
 			System.err.println(e.getMessage());
 		}
 
-	}
+	}*/
 
 }
