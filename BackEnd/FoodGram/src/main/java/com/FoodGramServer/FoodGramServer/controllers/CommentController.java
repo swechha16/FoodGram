@@ -32,63 +32,38 @@ public class CommentController {
 	@RequestMapping(method = RequestMethod.GET, path = "/comment/all")
 	public Comment[] getComments() { 
 		Comment[] comments = commentRepo.getAll();
+	
 		return comments; //returns JSON array of comments
 	}
 
 	// I have no idea if any of this works - swechha 
 
-<<<<<<< HEAD
+
 	@RequestMapping(method = RequestMethod.POST, path = "/comment/post//user/all")
-=======
-	/*
-	@RequestMapping(method = RequestMethod.POST, path = "/comment/post/all")
->>>>>>> c758c98669716cabb88b34e53d934c01cf012227
-	public Comment postCommentFromUser(@RequestBody Comment userComment) {
+
+	public void postCommentFromUser(@RequestBody Comment userComment) {
 		Comment comment = new Comment();
 		comment.setComment(comment.getComment());
 		comment.setTimestamp(comment.getTimestamp());
 
-		sqlInsert(userComment);
-
-		return comment;
-
+		commentRepo.save(userComment); 
 	}
 
 	/*
 	 * Post for restaurant comment
 	 */
 	@RequestMapping(method = RequestMethod.POST, path = "/comment/post/all")
-	public Comment postCommentFromRestaurant(@RequestBody Comment restaurantComment) {
+	public void postCommentFromRestaurant(@RequestBody Comment restaurantComment) {
 		Comment comment = new Comment();
 		comment.setComment(comment.getComment());
 		comment.setTimestamp(comment.getTimestamp());
 
-		sqlInsert(restaurantComment);
-
-		return comment;
+		
+		commentRepo.save(restaurantComment); 
+		
 
 	}
-/*
- * This is the method that will insert (hopefully) a
- * comment with the comment attributes into the database 
- * 
- * 
- */
-	public void sqlInsert(Comment comment) {
 
-		try {
-			String url = "jdbc:mysql://coms-309-mg-1.cs.iastate.edu:3306/FoodGramDB"; // change to our url?
-			Connection conn = DriverManager.getConnection(url, "", "");
-			Statement st = conn.createStatement();
-			st.executeUpdate("INSERT INTO comment VALUES ('" + comment.getId() + "', '" + comment + "', "
-					+ comment.getTimestamp() + ");");
-
-			conn.close();
-		} catch (Exception e) {
-			System.err.println("Got an exception! ");
-			System.err.println(e.getMessage());
-		}
-
-	}*/
+	
 
 }
