@@ -1,9 +1,11 @@
 # Stages of pipeline, should match with stage tag inside each job.
 # Each stages executes in sequence, if previous job fails, then all the preceeding jobs # are skipped.
 stages:
-- mavenbuild - maventest
+- mavenbuild 
+- maventest
 - autodeploy
-- androidbuild - androidtest
+- androidbuild 
+- androidtest
 
 
 # tags: "shell" should match with the tag name provided to runner, for spring runner should execute in shell.
@@ -11,11 +13,12 @@ stages:
 # maven -B means batch mode (i.e. not interactive) 
 
 maven-build:
-stage: mavenbuild 
-tags:
-- shell script:
-- cd Spring
-- mvn package -B
+ stage: mavenbuild 
+ tags:
+    - shell 
+ script:
+    - cd Spring
+    - mvn package -B
 
 
 # artifacts are created when job executes successfully, and can be manually downloaded from GitLab GUI.
@@ -53,7 +56,8 @@ script:
 # Ensure the tag matches with the tag created for Android runner
 # Android runner should have docker as executor.
 android-build:
-   image: javiersantos/android-ci:latest stage: androidbuild
+   image: javiersantos/android-ci:latest 
+   stage: androidbuild
 before_script:
     - export GRADLE_USER_HOME=`pwd`/.gradle
     - chmod +x ./Android_test/gradlew
