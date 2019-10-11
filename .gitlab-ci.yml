@@ -15,7 +15,7 @@ stages:
 maven-build:
   stage: mavenbuild 
   tags:
-    - shell 
+    - maven_tag 
   script:
     - cd Spring
     - mvn package -B
