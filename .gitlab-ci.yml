@@ -1,11 +1,11 @@
 # Stages of pipeline, should match with stage tag inside each job.
 # Each stages executes in sequence, if previous job fails, then all the preceeding jobs # are skipped.
 stages:
-- mavenbuild 
-- maventest
-- autodeploy
-- androidbuild 
-- androidtest
+    - mavenbuild 
+    - maventest
+    - autodeploy
+    - androidbuild 
+    - androidtest
 
 
 # tags: "shell" should match with the tag name provided to runner, for spring runner should execute in shell.
@@ -62,11 +62,11 @@ before_script:
     - export GRADLE_USER_HOME=`pwd`/.gradle
     - chmod +x ./Android_test/gradlew
 tags:
-- android_tag1 
+    - android_tag1 
 
 script:
-- cd Android_test
-- ./gradlew assemble 
+    - cd Android_test
+    - ./gradlew assemble 
 artifacts:
   paths:
     - Android_test/app/build/outputs/
@@ -83,5 +83,5 @@ unitTests:
  tags:
     - android_tag1
  script:
-- cd Android_test 
-- ./gradlew test
+    - cd Android_test 
+    - ./gradlew test
