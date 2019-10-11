@@ -24,7 +24,7 @@ maven-test:
 stage: maventest 
 tags:
  - shell 
-    script: 
+script: 
     - cd Spring
     - mvn test 
 artifacts:
