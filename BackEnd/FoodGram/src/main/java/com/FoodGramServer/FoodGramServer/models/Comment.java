@@ -24,11 +24,11 @@ public class Comment{
 	private String timestamp;
 	
 	public Comment() {
-		setComment(comment);
-		setTimestamp(timestamp);
-		setId(id);
+		this.comment = ""; 
 	}	
 	
+
+
 
 	public String getTimestamp() {
 		return timestamp;

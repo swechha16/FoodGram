@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.FoodGramServer.FoodGramServer.models.*;
 import com.FoodGramServer.FoodGramServer.repo.*;
 
+
+
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.sql.Connection;
@@ -18,7 +20,9 @@ import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+
 
 @RestController
 
@@ -39,27 +43,27 @@ public class CommentController {
 	// I have no idea if any of this works - swechha 
 
 
-	@RequestMapping(method = RequestMethod.POST, path = "/comment/post//user/all")
-
-	public void postCommentFromUser(@RequestBody Comment userComment) {
+	@RequestMapping(method = RequestMethod.POST, path = "/post/comment", produces = MediaType.APPLICATION_JSON_VALUE)
+	public void postCommentFromUser(@RequestBody String userComment) {
+		
 		Comment comment = new Comment();
-		comment.setComment(comment.getComment());
-		comment.setTimestamp(comment.getTimestamp());
+		comment.setComment(userComment);
+	
 
-		commentRepo.save(userComment); 
+		commentRepo.save(comment);
+		
 	}
 
 	/*
 	 * Post for restaurant comment
 	 */
 	@RequestMapping(method = RequestMethod.POST, path = "/comment/post/all")
-	public void postCommentFromRestaurant(@RequestBody Comment restaurantComment) {
+	public void postCommentFromRestaurant(@RequestBody String restaurantComment) {
 		Comment comment = new Comment();
-		comment.setComment(comment.getComment());
-		comment.setTimestamp(comment.getTimestamp());
-
+		comment.setComment(restaurantComment);
+	
 		
-		commentRepo.save(restaurantComment); 
+		commentRepo.save(comment); 
 		
 
 	}
