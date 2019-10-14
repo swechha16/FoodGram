@@ -27,9 +27,6 @@ public class Comment{
 		this.comment = ""; 
 	}	
 	
-
-
-
 	public String getTimestamp() {
 		return timestamp;
 	}

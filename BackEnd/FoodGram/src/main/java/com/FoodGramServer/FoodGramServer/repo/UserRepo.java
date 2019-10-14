@@ -16,10 +16,5 @@ import com.FoodGramServer.FoodGramServer.models.User;
 
 @Repository
 public interface UserRepo extends JpaRepository<User, Long>{
-
-	// the database
-	@Query(value = "SELECT * FROM user", nativeQuery = true)
 	public User[] getAll();
-    
-
 }
