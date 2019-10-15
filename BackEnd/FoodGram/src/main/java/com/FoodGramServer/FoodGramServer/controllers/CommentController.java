@@ -43,7 +43,7 @@ public class CommentController {
 	// I have no idea if any of this works - swechha 
 
 
-	@RequestMapping(method = RequestMethod.POST, path = "/post/comment")
+	@RequestMapping(method = RequestMethod.POST, path = "/post/comment/users")
 	public void postCommentFromUser(@RequestBody String userComment) {
 		
 		Comment comment = new Comment();
@@ -57,7 +57,7 @@ public class CommentController {
 	/*
 	 * Post for restaurant comment
 	 */
-	@RequestMapping(method = RequestMethod.POST, path = "/comment/post/all")
+	@RequestMapping(method = RequestMethod.POST, path = "/post/comment/restaurant")
 	public void postCommentFromRestaurant(@RequestBody String restaurantComment) {
 		Comment comment = new Comment();
 		comment.setComment(restaurantComment);
