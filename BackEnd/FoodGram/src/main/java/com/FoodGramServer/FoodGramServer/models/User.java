@@ -38,7 +38,7 @@ public class User {
 	private String location_state;
 	
 	@Column(name = "phone_no")
-	private int phone_no;
+	private String phone_no;
 	
 	@Column(name = "profile_pic")
 	private String profile_pic;
@@ -88,9 +88,9 @@ public class User {
 
 	public void setLocationState(String location_state) { this.location_state = location_state; }
 
-	public int getPhoneNo() { return phone_no; }
+	public String getPhoneNo() { return phone_no; }
 
-	public void setPhoneNo(int phone_no) { this.phone_no = phone_no; }
+	public void setPhoneNo(String phone_no) { this.phone_no = phone_no; }
 
 	public String getProfilePic() { return profile_pic; }
 

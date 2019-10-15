@@ -11,7 +11,6 @@ public class Photo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long pic_id;
 	
-	@Column(name = "user_id")
 	@ManyToOne
 	private User user_id; //link up with the user table
 	
