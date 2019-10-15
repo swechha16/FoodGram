@@ -22,7 +22,6 @@ import com.FoodGramServer.FoodGramServer.models.User;
  *
  */
 @Repository
-<<<<<<< HEAD
 public interface UserRepo extends JpaRepository<User, Long> {
 	
 	
@@ -31,12 +30,4 @@ public interface UserRepo extends JpaRepository<User, Long> {
     @Query(value = "SELECT * FROM User", nativeQuery = true)
 	public User[] getAll();
     
-    
-	
-=======
-public interface UserRepo extends JpaRepository<User, Long>{
-    @Query(value = "SELECT * FROM User", nativeQuery = true)
-	public User[] getAll();
-    
->>>>>>> c24c99f882a586fa8f7dc4ebd3b440b5962d784b
 }
