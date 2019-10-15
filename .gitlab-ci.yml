@@ -26,7 +26,7 @@ maven-build:
 maven-test:
   stage: maventest 
   tags:
-    - shell 
+    - maven_tag 
   script: 
     - cd BackEnd/FoodGram
     - mvn test 
@@ -42,7 +42,7 @@ maven-test:
 autoDeploy:
   stage: autodeploy
   tags:
-   - shell
+   - maven_tag
   script:
     - cd BackEnd/FoodGram
     - mvn package
@@ -62,7 +62,7 @@ android-build:
     - export GRADLE_USER_HOME=`pwd`/.gradle
     - chmod +x ./FrontEnd/FoodGram/gradlew
   tags:
-    - android_tag1 
+    - android_tag
 
   script:
     - cd FrontEnd/FoodGram
@@ -80,7 +80,7 @@ unitTests:
     - export GRADLE_USER_HOME=`pwd`/.gradle
     - chmod +x ./FrontEnd/FoodGram/gradlew
   tags:
-   - android_tag1
+   - android_tag
   script:
     - cd FrontEnd/FoodGram 
     - ./gradlew test
