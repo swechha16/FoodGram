@@ -21,29 +21,11 @@ import org.springframework.http.ResponseEntity;
 @RestController
 public class UserController {
 	@Autowired
-<<<<<<< HEAD
 	UserRepo userRepo;
 
-
-	
-=======
-	UserRepo userRepo;	
->>>>>>> 5fd8f7867be21162b3a824257abc99be0a5d04d5
-	
 	//returns all users in the User table
 	@RequestMapping(method = RequestMethod.GET, path = "/user/all")
 	public User[] getComments() { 
-<<<<<<< HEAD
 		User[] user = userRepo.getAll();
 		return user; }
-
-	
-	
-	
-	
-=======
-		User[] users = userRepo.getAll(); 
-		return users;
-	}
->>>>>>> 5fd8f7867be21162b3a824257abc99be0a5d04d5
 }
