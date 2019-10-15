@@ -13,7 +13,7 @@ public class PhotoController {
 	
 	//returns all the photos in the Photo table
 	@RequestMapping(method = RequestMethod.GET, path = "photo/all")
-	public Photo[] getAllPhotos() {
+	public Photo[] getPhotos() {
 		Photo[] photos = photoRepo.getAll();
 		return photos;
 	}
