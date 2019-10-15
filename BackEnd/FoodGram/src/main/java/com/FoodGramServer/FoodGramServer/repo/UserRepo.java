@@ -19,5 +19,6 @@ public interface UserRepo extends JpaRepository<User, Long>{
     @Query(value = "SELECT * FROM User", nativeQuery = true)
 	public User[] getAll();
     
+    
 
 }

@@ -96,10 +96,6 @@ public class User {
 		this.profile_pic = profile_pic;
 	}
 
-	public User[] getAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	
 	

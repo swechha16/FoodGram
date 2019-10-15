@@ -21,16 +21,15 @@ import org.springframework.http.ResponseEntity;
 @RestController
 public class UserController {
 	@Autowired
-	User userRepo;
+	UserRepo userRepo;
 
-	User user;
+
 	
 	
 	@RequestMapping(method = RequestMethod.GET, path = "/user/all")
 	public User[] getComments() { 
-		User[] user = userRepo.getAll(); 
-		return user; //returns JSON array of comments
-	}
+		User[] user = userRepo.getAll();
+		return user; }
 
 	
 	

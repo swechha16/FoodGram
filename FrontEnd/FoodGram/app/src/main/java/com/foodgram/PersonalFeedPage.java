@@ -80,18 +80,18 @@ public class PersonalFeedPage extends AppCompatActivity {
 
     public void getFeed() {
 
-<<<<<<< HEAD
+
           //  String url = "http://10.26.0.96:8080/comment/all";
           //String url = "https://api.myjson.com/bins/btu21";
 
         String url = " http://coms-309-mg-1.cs.iastate.edu:3306/comment/all";
         //String url = "http://10.31.24.107:8080/comment/all";
-=======
-        String url = "http://10.26.0.96:8080/comment/all";
+
+     //   String url = "http://10.26.0.96:8080/comment/all";
         //String url = "https://api.myjson.com/bins/btu21";
         //String url = "coms-309-mg-1.cs.iastate.edu:3306/comment/all";
         //String url = "http://192.168.56.1:8080/comment/all";
->>>>>>> c758c98669716cabb88b34e53d934c01cf012227
+
         //String url = "https://api.myjson.com/bins/btu21";
 
 

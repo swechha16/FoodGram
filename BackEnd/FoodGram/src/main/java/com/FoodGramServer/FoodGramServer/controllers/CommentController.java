@@ -43,7 +43,7 @@ public class CommentController {
 	// I have no idea if any of this works - swechha 
 
 
-	@RequestMapping(method = RequestMethod.POST, path = "/post/comment", produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(method = RequestMethod.POST, path = "/post/comment")
 	public void postCommentFromUser(@RequestBody String userComment) {
 		
 		Comment comment = new Comment();
