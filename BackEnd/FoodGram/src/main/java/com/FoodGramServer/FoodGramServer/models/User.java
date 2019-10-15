@@ -96,5 +96,9 @@ public class User {
 
 	public void setProfilePic(String profile_pic) { this.profile_pic = profile_pic; }
 
+<<<<<<< HEAD
+
+=======
 	
+>>>>>>> c24c99f882a586fa8f7dc4ebd3b440b5962d784b
 }
