@@ -31,8 +31,6 @@ public class CommentController {
 	@Autowired
 	CommentRepo commentRepo;
 
-	Comment userComment;
-
 	@RequestMapping(method = RequestMethod.GET, path = "/comment/all")
 	public Comment[] getComments() { 
 		Comment[] comments = commentRepo.getAll();
@@ -44,14 +42,15 @@ public class CommentController {
 
 
 	@RequestMapping(method = RequestMethod.POST, path = "/post/comment/users")
-	public void postCommentFromUser(@RequestBody String userComment) {
+	public Comment postCommentFromUser(@RequestBody Comment comment) {
 		
-		Comment comment = new Comment();
-		comment.setComment(userComment);
+//		Comment comment = new Comment();
+//		comment.setComment(userComment);
 	
 
 		commentRepo.save(comment);
 		
+		return comment;
 	}
 
 	/*
