@@ -15,7 +15,7 @@ public class PhotoController {
 	PhotoRepo photoRepo;
 	
 	//returns all the photos in the Photo table
-	@RequestMapping(method = RequestMethod.GET, path = "photo/all")
+	@RequestMapping(method = RequestMethod.GET, path = "/photo/all")
 	public Photo[] getPhotos() {
 		Photo[] photos = photoRepo.getAll();
 		return photos;
@@ -31,7 +31,7 @@ public class PhotoController {
 	 */
 	
 	
-	@RequestMapping(method = RequestMethod.GET, path = "photo/queried")
+	@RequestMapping(method = RequestMethod.GET, path = "/photo/queried")
 	public Photo[] getCommentsByFoodTag(String foodCategory) {
 		Photo[] photos = photoRepo.getByFoodTag(foodCategory); // query db for just food category 
 		

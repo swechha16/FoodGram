@@ -8,11 +8,11 @@ import com.FoodGramServer.FoodGramServer.models.Photo;
 
 @Repository
 public interface PhotoRepo extends JpaRepository<Photo, Long>{
-    @Query(value = "SELECT * FROM Photo", nativeQuery = true)
+    @Query(value = "SELECT * FROM photo", nativeQuery = true)
 	public Photo[] getAll();
     
     
-    @Query(value = "SELECT * FROM FoodGramDB.photo Where food_tag = ?foodTag", nativeQuery = true)
+    @Query(value = "SELECT * FROM photo Where food_tag = ?foodTag", nativeQuery = true)
    	public Photo[] getByFoodTag(String foodTag);
     
    
