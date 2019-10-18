@@ -22,10 +22,10 @@ import org.springframework.http.ResponseEntity;
 public class UserController {
 	@Autowired
 
-
 	UserRepo userRepo;
 
 	//returns all users in the User table
+	
 	@RequestMapping(method = RequestMethod.GET, path = "/user/all")
 	public User[] getComments() { 
 

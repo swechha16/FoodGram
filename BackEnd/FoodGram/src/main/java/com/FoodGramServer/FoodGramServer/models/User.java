@@ -96,5 +96,4 @@ public class User {
 
 	public void setProfilePic(String profile_pic) { this.profile_pic = profile_pic; }
 
-
 }
