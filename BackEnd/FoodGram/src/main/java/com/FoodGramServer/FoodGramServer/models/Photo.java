@@ -11,6 +11,11 @@ public class Photo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long pic_id;
 	
+	// provide values for foreign key 
+	// look up many to one annotation
+	// rn it says it is not specific for it so it is linking up the wrong thing
+	
+	
 	@ManyToOne
 	private User user_id; //link up with the user table
 	

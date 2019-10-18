@@ -12,7 +12,7 @@ public interface PhotoRepo extends JpaRepository<Photo, Long>{
 	public Photo[] getAll();
     
     
-    @Query(value = "SELECT * FROM photo Where food_tag = ?foodTag", nativeQuery = true)
+    @Query(value = "SELECT * FROM photo Where food_tag = ?1", nativeQuery = true)
    	public Photo[] getByFoodTag(String foodTag);
     
    

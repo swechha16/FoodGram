@@ -51,15 +51,6 @@ public class PhotoController {
 //                  break;
 //			
 			  
-			  
-			  
-			  
-//			  
-//			  
-//			  
-//			  
-//			  
-//			  
 //			  
 //			  
 //			  }
