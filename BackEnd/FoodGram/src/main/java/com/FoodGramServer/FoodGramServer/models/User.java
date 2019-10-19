@@ -4,10 +4,10 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name="User", uniqueConstraints = {@UniqueConstraint(columnNames = {"username"})})
+@Table(name="User")
 public class User {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long user_id;
 	
 	@Column(name = "username", nullable = false)
@@ -43,15 +43,6 @@ public class User {
 	@Column(name = "profile_pic")
 	private String profile_pic;
 	
-	public User() {
-		setUsername(username);
-		setFullName(full_name);
-		setEmail(email);
-		setPassword(password); 
-		setPhoneNo(phone_no);
-		setProfilePic(profile_pic);
-	} //basic constructor
-
 	public long getUserId() { return user_id; }
 	
 	public void setUserId(long user_id) { this.user_id = user_id; }

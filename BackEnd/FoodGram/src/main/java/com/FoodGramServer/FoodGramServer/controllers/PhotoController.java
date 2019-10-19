@@ -30,6 +30,7 @@ public class PhotoController {
 	 * @return
 	 */
 	
+
 	
 	@RequestMapping(method = RequestMethod.GET, path = "/photo/{foodCategory}/{priceCategory}")
 	public Photo[] getCommentsByFoodTag(@PathVariable String foodCategory, @PathVariable String priceCategory) {
@@ -37,11 +38,7 @@ public class PhotoController {
 		
 
 		
-		
+
 		return photos;
-	}
-	
-	
-	
-	
+	}	
 }
