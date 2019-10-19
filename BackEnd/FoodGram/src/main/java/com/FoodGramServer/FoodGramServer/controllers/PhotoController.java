@@ -34,11 +34,13 @@ public class PhotoController {
 	
 	@RequestMapping(method = RequestMethod.GET, path = "/photo/{foodCategory}/{priceCategory}")
 	public Photo[] getCommentsByFoodTag(@PathVariable String foodCategory, @PathVariable String priceCategory) {
-		Photo[] photos = photoRepo.getByFoodTagAndPriceTag(foodCategory, priceCategory); // query db for just food category 
-		
-
-		
-
+		Photo[] photos = photoRepo.getByFoodTagAndPriceTag(foodCategory, priceCategory); 
 		return photos;
 	}	
+	
+	@RequestMapping(method = RequestMethod.GET, path = "/photo/{restaurant}")
+	public Photo[] findByRestaurant(@PathVariable String restaurant) {
+		Photo[] photos = photoRepo.getByRestaurant(restaurant);
+		return photos;
+	}
 }
