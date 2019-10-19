@@ -31,31 +31,11 @@ public class PhotoController {
 	 */
 	
 	
-	@RequestMapping(method = RequestMethod.GET, path = "/photo/queried")
-	public Photo[] getCommentsByFoodTag(String foodCategory) {
-		Photo[] photos = photoRepo.getByFoodTag(foodCategory); // query db for just food category 
+	@RequestMapping(method = RequestMethod.GET, path = "/photo/{foodCategory}/{priceCategory}")
+	public Photo[] getCommentsByFoodTag(@PathVariable String foodCategory, @PathVariable String priceCategory) {
+		Photo[] photos = photoRepo.getByFoodTagAndPriceTag(foodCategory, priceCategory); // query db for just food category 
 		
-//		  ArrayList<String> foodTags = new ArrayList<>();
-//		  if(foodCategory == "") {
-//	          foodTags.addAll(Arrays.asList(""));
-//	        }
-//		boolean indianRecieved =false, italianRecieved = false, chineseRecieved =false; 
-//		for(int i = 0; i < photos.length; i++) {
-//			  switch(photos[i].getFoodTag()){
-//			  case "Indian":
-//				  if (!indianRecieved) {
-//                      foodTags.add("Indian");
-//                      indianRecieved = true;
-//                      return photoRepo.getByFoodTag();
-//                  }
-//                  break;
-//			
-			  
-//			  
-//			  
-//			  }
-//			
-//		}
+
 		
 		
 		return photos;

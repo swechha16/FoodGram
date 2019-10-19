@@ -12,8 +12,8 @@ public interface PhotoRepo extends JpaRepository<Photo, Long>{
 	public Photo[] getAll();
     
     
-    @Query(value = "SELECT * FROM photo Where food_tag = ?1", nativeQuery = true)
-   	public Photo[] getByFoodTag(String foodTag);
+    @Query(value = "SELECT * FROM photo Where food_tag = ?1 AND cost_tag = ?2", nativeQuery = true)
+   	public Photo[] getByFoodTagAndPriceTag(String foodTag, String priceTag);
     
    
 } 
