@@ -31,9 +31,37 @@ public class PhotoController {
 	 */
 	
 	
+<<<<<<< HEAD
 	@RequestMapping(method = RequestMethod.GET, path = "/photo/{food_tag}")
 	public Photo[] getCommentsByFoodTag(@PathVariable String food_tag) {
 		Photo[] photos = photoRepo.findPhotoByFoodTag(food_tag);
+=======
+	@RequestMapping(method = RequestMethod.GET, path = "/photo/queried")
+	public Photo[] getCommentsByFoodTag(String foodCategory) {
+		Photo[] photos = photoRepo.getByFoodTag(foodCategory); // query db for just food category 
+		
+//		  ArrayList<String> foodTags = new ArrayList<>();
+//		  if(foodCategory == "") {
+//	          foodTags.addAll(Arrays.asList(""));
+//	        }
+//		boolean indianRecieved =false, italianRecieved = false, chineseRecieved =false; 
+//		for(int i = 0; i < photos.length; i++) {
+//			  switch(photos[i].getFoodTag()){
+//			  case "Indian":
+//				  if (!indianRecieved) {
+//                      foodTags.add("Indian");
+//                      indianRecieved = true;
+//                      return photoRepo.getByFoodTag();
+//                  }
+//                  break;
+//			
+			  
+//			  
+//			  
+//			  }
+//			
+//		}
+>>>>>>> 628c92fcb50cbf81b6c17d4ebcf06cea089d3aae
 		
 		
 		return photos;
