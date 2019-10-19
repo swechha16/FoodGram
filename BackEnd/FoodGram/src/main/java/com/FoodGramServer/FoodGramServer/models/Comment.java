@@ -15,17 +15,11 @@ public class Comment{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	@NotEmpty
 	@Column(name = "comment")
 	private String comment;
 	
-	@NotEmpty
 	@Column(name = "timestamp")
 	private String timestamp;
-	
-	public Comment() {
-		this.comment = ""; 
-	}	
 	
 	public String getTimestamp() {
 		return timestamp;
