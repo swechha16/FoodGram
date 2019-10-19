@@ -11,9 +11,11 @@ import com.FoodGramServer.FoodGramServer.repo.UserRepo;
 @RestController
 public class UserController {
 	@Autowired
+
 	UserRepo userRepo;
 
 	//returns all users in the User table
+	
 	@RequestMapping(method = RequestMethod.GET, path = "/user/all")
 	public User[] getComments() { 
 
