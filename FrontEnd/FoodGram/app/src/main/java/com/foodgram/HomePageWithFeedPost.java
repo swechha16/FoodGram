@@ -53,7 +53,7 @@ public class HomePageWithFeedPost extends AppCompatActivity {
     }
 
     public void find_food_page(View v){
-        Intent intent = new Intent(this, FoodTags.class);
+        Intent intent = new Intent(this, FilteredFoodFeed.class);
         startActivity(intent);
     }
 }
