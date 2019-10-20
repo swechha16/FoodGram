@@ -114,7 +114,6 @@ public class FilteredFoodFeed extends AppCompatActivity {
 
        url = "http://10.65.23.83:8080/photo/indian/$";
 
-        mTextViewResult.setText(url);
       //  JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
 
@@ -122,19 +121,20 @@ public class FilteredFoodFeed extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                                mTextViewResult.setText("in try block");
+                            mTextViewResult.setText(url);
+
 
                             JSONArray jsonArray = response.getJSONArray("photos");
 
 
                             for (int i = 0; i < jsonArray.length(); i++) {
-                                JSONObject comment = jsonArray.getJSONObject(i);
+                                JSONObject photoPost = jsonArray.getJSONObject(i);
 
                                // long id = comment.getInt("id");
-                                String caption = comment.getString("caption");
-                                String restaurantName = comment.getString("restaurant");
-                                String foodTag = comment.getString("foodTag");
-                                String costTag = comment.getString("costTag");
+                                String caption = photoPost.getString("caption");
+                                String restaurantName = photoPost.getString("restaurant");
+                                String foodTag = photoPost.getString("foodTag");
+                                String costTag = photoPost.getString("costTag");
 
 
 
@@ -165,7 +165,7 @@ public class FilteredFoodFeed extends AppCompatActivity {
                 }else if(error instanceof NetworkError){
                     mTextViewResult.setText("network error");
                 }else if(error instanceof ParseError){
-                    mTextViewResult.setText("Parse Error");
+                 //   mTextViewResult.setText("Parse Error");
                 }
 
 
@@ -213,21 +213,47 @@ public class FilteredFoodFeed extends AppCompatActivity {
     }
 
 
-    public void test(){
-        JsonArrayRequest   testRequest;
-        testRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-            }
-        }
-        );
-    }
+//    public void test(){
+//        JsonArrayRequest   testRequest;
+//        testRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+//            @Override
+//            public void onResponse(JSONArray response) {
+//
+//                try {
+//                    mTextViewResult.setText("in try block");
+//
+//                    JSONArray jsonArray = response.getJSONArray().getJSONObject();
+//
+//
+//                    for (int i = 0; i < jsonArray.length(); i++) {
+//                        JSONObject comment = jsonArray.getJSONObject(i);
+//
+//                        // long id = comment.getInt("id");
+//                        String caption = comment.getString("caption");
+//                        String restaurantName = comment.getString("restaurant");
+//                        String foodTag = comment.getString("foodTag");
+//                        String costTag = comment.getString("costTag");
+//
+//
+//
+//                        mTextViewResult.append(caption + "\n" + foodTag + "\n" + costTag + "\n" + restaurantName +"\n\n\n");
+//
+//                    }
+//
+//
+//                } catch (JSONException e) {
+//                    mTextViewResult.setText("JSON EXCEPTION");
+//                    e.printStackTrace();
+//                }
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//
+//            }
+//        }
+//        );
+//    }
 
 
 }
