@@ -6,10 +6,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkError;
+import com.android.volley.NoConnectionError;
+import com.android.volley.ParseError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.ServerError;
+import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -104,26 +112,29 @@ public class FilteredFoodFeed extends AppCompatActivity {
 
     public void getFilteredFeed(){
 
-//        url = "http://10.26.15.174:8080/indian/$";
+       url = "http://10.65.23.83:8080/photo/indian/$";
 
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
+        mTextViewResult.setText(url);
+      //  JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
+                JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
 
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
+                                mTextViewResult.setText("in try block");
 
-                            System.out.println("onResponse");
                             JSONArray jsonArray = response.getJSONArray("photos");
-                            mTextViewResult.setText("");
+
+
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject comment = jsonArray.getJSONObject(i);
 
                                // long id = comment.getInt("id");
                                 String caption = comment.getString("caption");
+                                String restaurantName = comment.getString("restaurant");
                                 String foodTag = comment.getString("foodTag");
                                 String costTag = comment.getString("costTag");
-                                String restaurantName = comment.getString("restaurant");
 
 
 
@@ -141,10 +152,26 @@ public class FilteredFoodFeed extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                mTextViewResult.setText("error");
+                //mTextViewResult.setText("error");
                 error.printStackTrace();
+
+                if (error instanceof TimeoutError || error instanceof NoConnectionError){
+                    mTextViewResult.setText("Timeout Error or No connection error");
+                }
+                else if(error instanceof AuthFailureError){
+                    mTextViewResult.setText("authentication failure error");
+                }else if(error instanceof ServerError){
+                    mTextViewResult.setText("server error");
+                }else if(error instanceof NetworkError){
+                    mTextViewResult.setText("network error");
+                }else if(error instanceof ParseError){
+                    mTextViewResult.setText("Parse Error");
+                }
+
+
             }
         });
+
 
         mQueue.add(request);
 
@@ -183,6 +210,23 @@ public class FilteredFoodFeed extends AppCompatActivity {
             url += "$";
         }
 
+    }
+
+
+    public void test(){
+        JsonArrayRequest   testRequest;
+        testRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }
+        );
     }
 
 
