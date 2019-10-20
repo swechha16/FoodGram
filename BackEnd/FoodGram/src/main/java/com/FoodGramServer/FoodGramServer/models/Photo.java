@@ -45,7 +45,15 @@ public class Photo {
 	
 	public long getPicId() { return pic_id; }
 	
-	public User getUserId() { return user_id; }
+	public void setPicId(long pic_id) { this.pic_id = pic_id;}
+	
+	public long getUserId() { return user_id.getUserId(); }
+	
+	public void setUserId(User user_id) { this.user_id = user_id;}
+	
+	public String getPic() { return pic; }
+	
+	public void setPic(String pic) { this.pic = pic; }
 	
 	public String getCaption() { return caption; }
 	
