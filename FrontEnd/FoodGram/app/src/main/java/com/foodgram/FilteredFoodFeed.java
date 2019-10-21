@@ -100,7 +100,7 @@ public class FilteredFoodFeed extends AppCompatActivity {
             public void onClick(View view) {
                 if(priceTag!= 0 && foodType != 0){
                     addPriceTag(priceTag);
-                    getFilteredFeed();
+                    test();
 
                 }
             }
@@ -110,73 +110,73 @@ public class FilteredFoodFeed extends AppCompatActivity {
 
 
 
-    public void getFilteredFeed(){
-
-       url = "http://10.65.23.83:8080/photo/indian/$";
-
-      //  JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
-                JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
-
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            mTextViewResult.setText(url);
-
-
-                            JSONArray jsonArray = response.getJSONArray("photos");
-
-
-                            for (int i = 0; i < jsonArray.length(); i++) {
-                                JSONObject photoPost = jsonArray.getJSONObject(i);
-
-                               // long id = comment.getInt("id");
-                                String caption = photoPost.getString("caption");
-                                String restaurantName = photoPost.getString("restaurant");
-                                String foodTag = photoPost.getString("foodTag");
-                                String costTag = photoPost.getString("costTag");
-
-
-
-                                mTextViewResult.append(caption + "\n" + foodTag + "\n" + costTag + "\n" + restaurantName +"\n\n\n");
-
-                            }
-
-
-                        } catch (JSONException e) {
-                            mTextViewResult.setText("JSON EXCEPTION");
-                            e.printStackTrace();
-                        }
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-                //mTextViewResult.setText("error");
-                error.printStackTrace();
-
-                if (error instanceof TimeoutError || error instanceof NoConnectionError){
-                    mTextViewResult.setText("Timeout Error or No connection error");
-                }
-                else if(error instanceof AuthFailureError){
-                    mTextViewResult.setText("authentication failure error");
-                }else if(error instanceof ServerError){
-                    mTextViewResult.setText("server error");
-                }else if(error instanceof NetworkError){
-                    mTextViewResult.setText("network error");
-                }else if(error instanceof ParseError){
-                 //   mTextViewResult.setText("Parse Error");
-                }
-
-
-            }
-        });
-
-
-        mQueue.add(request);
-
-
-    }
+//    public void getFilteredFeed(){
+//
+//       url = "http://10.65.23.83:8080/photo/indian/$";
+//
+//      //  JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
+//                JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
+//
+//                new Response.Listener<JSONObject>() {
+//                    @Override
+//                    public void onResponse(JSONObject response) {
+//                        try {
+//                            mTextViewResult.setText(url);
+//
+//
+//                            JSONArray jsonArray = response.getJSONArray("photos");
+//
+//
+//                            for (int i = 0; i < jsonArray.length(); i++) {
+//                                JSONObject photoPost = jsonArray.getJSONObject(i);
+//
+//                               // long id = comment.getInt("id");
+//                                String caption = photoPost.getString("caption");
+//                                String restaurantName = photoPost.getString("restaurant");
+//                                String foodTag = photoPost.getString("foodTag");
+//                                String costTag = photoPost.getString("costTag");
+//
+//
+//
+//                                mTextViewResult.append(caption + "\n" + foodTag + "\n" + costTag + "\n" + restaurantName +"\n\n\n");
+//
+//                            }
+//
+//
+//                        } catch (JSONException e) {
+//                            mTextViewResult.setText("JSON EXCEPTION");
+//                            e.printStackTrace();
+//                        }
+//                    }
+//                }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//
+//                //mTextViewResult.setText("error");
+//                error.printStackTrace();
+//
+//                if (error instanceof TimeoutError || error instanceof NoConnectionError){
+//                    mTextViewResult.setText("Timeout Error or No connection error");
+//                }
+//                else if(error instanceof AuthFailureError){
+//                    mTextViewResult.setText("authentication failure error");
+//                }else if(error instanceof ServerError){
+//                    mTextViewResult.setText("server error");
+//                }else if(error instanceof NetworkError){
+//                    mTextViewResult.setText("network error");
+//                }else if(error instanceof ParseError){
+//                 //   mTextViewResult.setText("Parse Error");
+//                }
+//
+//
+//            }
+//        });
+//
+//
+//        mQueue.add(request);
+//
+//
+//    }
 
     public void updateUrl(int foodType){
 
@@ -213,47 +213,53 @@ public class FilteredFoodFeed extends AppCompatActivity {
     }
 
 
-//    public void test(){
-//        JsonArrayRequest   testRequest;
-//        testRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
-//            @Override
-//            public void onResponse(JSONArray response) {
-//
-//                try {
-//                    mTextViewResult.setText("in try block");
-//
-//                    JSONArray jsonArray = response.getJSONArray().getJSONObject();
-//
-//
-//                    for (int i = 0; i < jsonArray.length(); i++) {
-//                        JSONObject comment = jsonArray.getJSONObject(i);
-//
-//                        // long id = comment.getInt("id");
-//                        String caption = comment.getString("caption");
-//                        String restaurantName = comment.getString("restaurant");
-//                        String foodTag = comment.getString("foodTag");
-//                        String costTag = comment.getString("costTag");
-//
-//
-//
-//                        mTextViewResult.append(caption + "\n" + foodTag + "\n" + costTag + "\n" + restaurantName +"\n\n\n");
-//
-//                    }
-//
-//
-//                } catch (JSONException e) {
-//                    mTextViewResult.setText("JSON EXCEPTION");
-//                    e.printStackTrace();
-//                }
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//
-//            }
-//        }
-//        );
-//    }
+    public void test(){
+
+       // url = "http://10.26.1.154:8080/photo/all";
+        JsonArrayRequest testRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+
+                try {
+
+                   // JSONArray jsonArray =
+                    if(response.length() != 0) {
+
+                        for (int i = 0; i < response.length(); i++) {
+                            JSONObject comment = response.getJSONObject(i);
+
+                            // long id = comment.getInt("id");
+                            String caption = comment.getString("caption");
+                            String restaurantName = comment.getString("restaurant");
+                            String foodTag = comment.getString("foodTag");
+                            String costTag = comment.getString("costTag");
+
+
+                            mTextViewResult.append(caption + "\n" + foodTag + "\n" + costTag + "\n" + restaurantName + "\n\n\n");
+
+                        }
+                    }else{
+                        mTextViewResult.append("No posts");
+                    }
+
+
+                } catch (JSONException e) {
+                    mTextViewResult.setText("JSON EXCEPTION");
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }
+        );
+
+
+        mQueue.add(testRequest);
+
+    }
 
 
 }
