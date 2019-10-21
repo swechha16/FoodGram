@@ -12,7 +12,7 @@ public class HomePageWithFeedPost extends AppCompatActivity {
     Button make_post_move;
     Button find_food_move;
     Button profile_page;
-
+    Button  home_page;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,7 +21,7 @@ public class HomePageWithFeedPost extends AppCompatActivity {
        make_post_move = findViewById(R.id.clickToPostButton);
        find_food_move = findViewById(R.id.clickToFindFood);
        profile_page = findViewById(R.id.userProfileButton);
-
+        home_page = findViewById(R.id.home);
 
         // should move to feed page
         feed_move.setOnClickListener( new View.OnClickListener(){
@@ -50,6 +50,14 @@ public class HomePageWithFeedPost extends AppCompatActivity {
                 profile_page(view);
             }
         });
+
+      home_page.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                home_page(view);
+            }
+        });
+
     }
 
     public void feed_page(View v){
@@ -69,6 +77,11 @@ public class HomePageWithFeedPost extends AppCompatActivity {
 
     public void profile_page(View v){
         Intent intent = new Intent(this, ProfilePage.class);
+        startActivity(intent);
+    }
+
+    public void home_page(View v){
+        Intent intent = new Intent(this, HomePage.class);
         startActivity(intent);
     }
 }

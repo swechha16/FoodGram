@@ -18,5 +18,7 @@ public interface PhotoRepo extends JpaRepository<Photo, Long>{
     @Query(value = "SELECT * FROM photo WHERE restaurant = ?1", nativeQuery = true)
     public Photo[] getByRestaurant(String restaurant);
 
+
+  
    
 } 
