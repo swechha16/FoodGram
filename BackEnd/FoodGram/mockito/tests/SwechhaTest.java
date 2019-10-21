@@ -30,9 +30,9 @@ class SwechhaTest {
 
 	
 	@Mock
-	UserRepo repo; 
+	UserRepo userRepo; 
 	@InjectMocks
-	User[] userService = repo.getAll();
+	User userService;
 
 	@Before
 	public void init() {
@@ -41,11 +41,29 @@ class SwechhaTest {
 
 	
 	@Test
+    public void testUserRepository(){
+        User user = new User();
+        user.setAccountType("User");
+        user.setUsername("User");
+        user.setEmail("test@gmail.com");
+        user.setFullName("Test");
+        user.setLocationCity("Ames");
+        user.setLocationState("Iowa");
+        user.setPassword("pass");
+        user.setPhoneNo("51515151555");
+        user.setUserId(0);
+        when(userRepo.getByUsername("pass")).thenReturn(null);
+
+      
+
+    }
+	
+	@Test
 	public void getUser() {
-		when(repo.getByUsername("suraj"));
+		when(userRepo.getByUsername("suraj"));
 
 
-		assertEquals("suraj", repo.getByUsername("suraj"));
+		assertEquals("suraj", userRepo.getByUsername("suraj"));
 
 	}
 

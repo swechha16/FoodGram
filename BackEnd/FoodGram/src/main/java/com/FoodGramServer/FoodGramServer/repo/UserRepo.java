@@ -8,7 +8,7 @@ import com.FoodGramServer.FoodGramServer.models.User;
 
 
 
-/**
+/** 
  * JPA repository for User
  *
  * @author Swechha Ghimire and Alexis Cordts
@@ -23,8 +23,6 @@ public interface UserRepo extends JpaRepository<User, Long> {
 	// the database
     @Query(value = "SELECT * FROM user", nativeQuery = true)
 	public User[] getAll();
-    
-   
     
     @Query(value = "SELECT * FROM user Where username = ?1", nativeQuery = true)
 	public User[] getByUsername(String findUsername);

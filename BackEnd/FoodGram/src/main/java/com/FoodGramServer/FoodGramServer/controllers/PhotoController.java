@@ -1,13 +1,17 @@
 package com.FoodGramServer.FoodGramServer.controllers;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
+import com.FoodGramServer.FoodGramServer.models.Comment;
 import com.FoodGramServer.FoodGramServer.models.Photo;
 import com.FoodGramServer.FoodGramServer.repo.PhotoRepo;
+
 
 @RestController
 public class PhotoController {
@@ -27,16 +31,12 @@ public class PhotoController {
 	 * Types rn: Italian, Chinese, Indian
 	 * we want everything in the photo database by specifically queried by tags 
 	 * @param foodTag
-	 * @return
+	 * @return 
 	 */
-	
-
 	
 	@RequestMapping(method = RequestMethod.GET, path = "/photo/{foodCategory}/{priceCategory}")
 	public Photo[] getPostByFoodTagAndPrice(@PathVariable String foodCategory, @PathVariable String priceCategory) {
-
 		Photo[] photos = photoRepo.getByFoodTagAndPriceTag(foodCategory, priceCategory); 
-
 		return photos;
 	}	
 	
@@ -45,4 +45,11 @@ public class PhotoController {
 		Photo[] photos = photoRepo.getByRestaurant(restaurant);
 		return photos;
 	}
+	
+	@RequestMapping(method = RequestMethod.POST, path = "/post/photo")
+	public void postPhoto(@RequestBody Photo userPhoto) {
+		photoRepo.save(userPhoto);
+
+	}
+	
 }
