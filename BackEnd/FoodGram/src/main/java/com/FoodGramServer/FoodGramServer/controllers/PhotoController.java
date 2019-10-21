@@ -46,15 +46,10 @@ public class PhotoController {
 		return photos;
 	}
 	
-<<<<<<< HEAD
 	@RequestMapping(method = RequestMethod.POST, path = "/post/photo")
 	public void postPhoto(@RequestBody Photo userPhoto) {
 		photoRepo.save(userPhoto);
 
 	}
-=======
-	
-
->>>>>>> 4049c6af4c33f448efbfffb40c63d29aa257661b
 	
 }

@@ -47,10 +47,7 @@ public class CommentController {
 		comments.setComment(userComment);
 		
 		commentRepo.save(comments);
-<<<<<<< HEAD
-=======
 		
->>>>>>> 4049c6af4c33f448efbfffb40c63d29aa257661b
 
 	}
 
