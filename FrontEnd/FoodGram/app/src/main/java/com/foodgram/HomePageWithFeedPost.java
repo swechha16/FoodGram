@@ -20,7 +20,7 @@ public class HomePageWithFeedPost extends AppCompatActivity {
        feed_move = findViewById(R.id.clickToFeedButton);
        make_post_move = findViewById(R.id.clickToPostButton);
        find_food_move = findViewById(R.id.clickToFindFood);
-       profile_page = findViewByID(R.id.userProfileButton)
+       profile_page = findViewById(R.id.userProfileButton);
 
 
         // should move to feed page
@@ -44,7 +44,12 @@ public class HomePageWithFeedPost extends AppCompatActivity {
             }
         });
 
-        profile_page
+        profile_page.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                profile_page(view);
+            }
+        });
     }
 
     public void feed_page(View v){
