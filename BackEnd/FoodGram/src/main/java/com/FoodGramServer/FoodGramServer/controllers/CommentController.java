@@ -47,9 +47,6 @@ public class CommentController {
 		comments.setComment(userComment);
 		
 		commentRepo.save(comments);
-		
-		
-
 
 	}
 

@@ -1,11 +1,15 @@
 package com.FoodGramServer.FoodGramServer.models;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "photo")
-public class Photo {
+public class Photo implements Serializable {
+    private static final long serialVersionUID = 1L;
+
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,7 +51,7 @@ public class Photo {
 	
 	public void setPicId(long pic_id) { this.pic_id = pic_id;}
 	
-	public long getUserId() { return user_id.getUserId(); }
+	public User getUserId() { return user_id; }
 	
 	public void setUserId(User user_id) { this.user_id = user_id;}
 	
