@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.FoodGramServer.FoodGramServer.models.Comment;
 import com.FoodGramServer.FoodGramServer.models.Photo;
 import com.FoodGramServer.FoodGramServer.repo.PhotoRepo;
 
@@ -30,16 +31,12 @@ public class PhotoController {
 	 * Types rn: Italian, Chinese, Indian
 	 * we want everything in the photo database by specifically queried by tags 
 	 * @param foodTag
-	 * @return
+	 * @return 
 	 */
-	
-
 	
 	@RequestMapping(method = RequestMethod.GET, path = "/photo/{foodCategory}/{priceCategory}")
 	public Photo[] getPostByFoodTagAndPrice(@PathVariable String foodCategory, @PathVariable String priceCategory) {
-
 		Photo[] photos = photoRepo.getByFoodTagAndPriceTag(foodCategory, priceCategory); 
-
 		return photos;
 	}	
 	
@@ -49,10 +46,15 @@ public class PhotoController {
 		return photos;
 	}
 	
+<<<<<<< HEAD
 	@RequestMapping(method = RequestMethod.POST, path = "/post/photo")
 	public void postPhoto(@RequestBody Photo userPhoto) {
 		photoRepo.save(userPhoto);
 
 	}
+=======
+	
+
+>>>>>>> 4049c6af4c33f448efbfffb40c63d29aa257661b
 	
 }
