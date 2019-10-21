@@ -6,4 +6,52 @@
     android:layout_height="match_parent"
     tools:context=".ProfilePage">
 
+    <ScrollView
+        android:id="@+id/userPostScrollView"
+        android:layout_width="288dp"
+        android:layout_height="379dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.781">
+
+        <TextView
+            android:id="@+id/userPostsTextView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Posts"
+            android:textSize="18sp" />
+
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/profilePic"
+        android:layout_width="98dp"
+        android:layout_height="119dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@mipmap/ic_launcher_round"
+        tools:srcCompat="@tools:sample/avatars[0]" />
+
+    <TextView
+        android:id="@+id/userBioTextView"
+        android:layout_width="163dp"
+        android:layout_height="63dp"
+        android:text="User Bio"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/userPostScrollView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.353"
+        app:layout_constraintStart_toEndOf="@+id/profilePic"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.303" />
 </android.support.constraint.ConstraintLayout>
