@@ -42,23 +42,28 @@ public class CommentController {
 
 
 	@RequestMapping(method = RequestMethod.POST, path = "/post/comment/users")
-	public void postCommentFromUser(@RequestBody Comment comment) {
+	public void postCommentFromUser(@RequestBody String userComment) {
+		Comment comments = new Comment();
+		comments.setComment(userComment);
+		
+		commentRepo.save(comments);
+		
 		
 
-		commentRepo.save(comment);
-		
-	
+
 	}
 
 	/*
 	 * Post for restaurant comment
 	 */
 	@RequestMapping(method = RequestMethod.POST, path = "/post/comment/restaurant")
-	public void postCommentFromRestaurant(@RequestBody Comment restaurantComment) {
+	public void postCommentFromRestaurant(@RequestBody String restaurantComment) {
 //	
-	
+		Comment comments = new Comment();
+		comments.setComment(restaurantComment);
 		
-		commentRepo.save(restaurantComment); 
+		commentRepo.save(comments);
+
 		
 
 	}

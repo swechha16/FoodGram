@@ -1,6 +1,7 @@
 package com.foodgram;
 
 import android.content.Intent;
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +11,7 @@ public class HomePageWithFeedPost extends AppCompatActivity {
     Button feed_move;
     Button make_post_move;
     Button find_food_move;
+    Button profile_page;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +20,7 @@ public class HomePageWithFeedPost extends AppCompatActivity {
        feed_move = findViewById(R.id.clickToFeedButton);
        make_post_move = findViewById(R.id.clickToPostButton);
        find_food_move = findViewById(R.id.clickToFindFood);
+       profile_page = findViewById(R.id.userProfileButton);
 
 
         // should move to feed page
@@ -40,6 +43,13 @@ public class HomePageWithFeedPost extends AppCompatActivity {
                 find_food_page(v);
             }
         });
+
+        profile_page.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                profile_page(view);
+            }
+        });
     }
 
     public void feed_page(View v){
@@ -53,7 +63,12 @@ public class HomePageWithFeedPost extends AppCompatActivity {
     }
 
     public void find_food_page(View v){
-        Intent intent = new Intent(this, FoodTags.class);
+        Intent intent = new Intent(this, FilteredFoodFeed.class);
+        startActivity(intent);
+    }
+
+    public void profile_page(View v){
+        Intent intent = new Intent(this, ProfilePage.class);
         startActivity(intent);
     }
 }

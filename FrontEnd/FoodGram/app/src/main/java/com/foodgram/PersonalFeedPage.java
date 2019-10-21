@@ -43,7 +43,7 @@ public class PersonalFeedPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_feed_page);
 
-        signOut = (Button) findViewById(R.id.btn_signOut);
+        signOut = findViewById(R.id.btn_signOut);
         signOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,10 +72,7 @@ public class PersonalFeedPage extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void makePost_page(){
-        Intent intent = new Intent(this, MakePostPage.class);
-        startActivity(intent);
-    }
+
 
 
     public void getFeed() {
@@ -83,7 +80,7 @@ public class PersonalFeedPage extends AppCompatActivity {
           //  String url = "http://10.26.0.96:8080/comment/all";
           //String url = "https://api.myjson.com/bins/btu21";
 
-        String url = "http://coms-309-mg-1.cs.iastate.edu:3306/comment/all";
+       // String url = "http://coms-309-mg-1.cs.iastate.edu:3306/comment/all";
         //String url = "http://10.31.24.107:8080/comment/all";
 
 
@@ -100,6 +97,8 @@ public class PersonalFeedPage extends AppCompatActivity {
 
         //String url = "https://api.myjson.com/bins/btu21";
 
+       String url = "http://10.26.15.174:8080/comment/all";
+
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
 
@@ -115,7 +114,7 @@ public class PersonalFeedPage extends AppCompatActivity {
                                long id = comment.getInt("id");
                                String commentC = comment.getString("comment");
 
-                               mTextViewResult.append(String.valueOf(id) + "\t" + commentC + "\n\n");
+                               mTextViewResult.append(id + "\t" + commentC + "\n\n");
 
                            }
 
