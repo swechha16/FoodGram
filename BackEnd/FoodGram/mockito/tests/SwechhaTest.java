@@ -27,8 +27,6 @@ import com.FoodGramServer.FoodGramServer.repo.UserRepo;
 
 class SwechhaTest {
 
-
-	
 	@Mock
 	UserRepo userRepo; 
 	@InjectMocks
@@ -53,8 +51,8 @@ class SwechhaTest {
         user.setPhoneNo("51515151555");
         user.setUserId(0);
         
-    // assertEquals("User", user.getAccountType());
-     assertEquals(userRepo.getByUsername("User"), false);
+     assertEquals("User", user.getAccountType());
+     assertEquals("User", user.getUsername());
 
       
 ;
@@ -71,6 +69,7 @@ class SwechhaTest {
 
 	
 	
+	
 	@Test
 	public void getAllUsersTest() {
 		List<User> list = new ArrayList<User>();
@@ -84,6 +83,7 @@ class SwechhaTest {
 
 		
 		assertEquals(3, list.size());
+
 	
 	}
 
