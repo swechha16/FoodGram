@@ -73,7 +73,7 @@ public class MakePostPage extends AppCompatActivity {
 
         requestQueue = Volley.newRequestQueue(this);
         //String url = "http://10.65.23.83:8080/post/comment/users";
-        String url = "http://10.31.4.129:8080/post/comment/users";
+        String url = "http://10.29.178.67:8080/post/comment/users";
         //JSONObject jsonBody = new JSONObject();
         final String makePost = enter_post.getText().toString();
         //String url = "http://coms-309-mg-1.cs.iastate.edu:8080/post/comment/users";

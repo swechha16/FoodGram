@@ -34,7 +34,7 @@ public class foodFilterTest {
       link.put("linkSuccess", new Boolean(true));
 
 
-    
+
       when(test.getLink(urlCorrect, priceCorrect)).thenReturn(link);
       Assert.assertEquals(testLink.tryRecieving(urlCorrect,priceCorrect,test),link.getBoolean("linkSuccess"));
   }

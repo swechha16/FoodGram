@@ -82,17 +82,25 @@ public class PostPhotoPage extends AppCompatActivity {
         requestQueue = Volley.newRequestQueue(this);
         //String url = "http://10.65.23.83:8080/post/comment/users";
         //String url = "http://10.31.4.129:8080/post/photo";
-        String url = "http://10.31.4.129:8080/post/photo";
+        String url = "http://10.29.178.67:8080/post/photo";
        // String url = "http://coms-309-mg-1.cs.iastate.edu:8080/photo/post";
         //String url = "http://10.31.31.154:8080/post/comment";
         //"http://10.31.24.107:8080/comment/all";
 
         final JSONObject obj = new JSONObject();
         try {
-            obj.put("caption", (txt_caption.getText()).toString());
-            obj.put("food tag", (txt_foodTag.getText()).toString());
-            obj.put("cost tag", (txt_costTag.getText()).toString());
-            obj.put("restaurant", (txt_restaurant.getText()).toString());
+//            obj.put("caption", (txt_caption.getText()).toString());
+//            obj.put("food tag", (txt_foodTag.getText()).toString());
+//            obj.put("cost tag", (txt_costTag.getText()).toString());
+//            obj.put("restaurant", (txt_restaurant.getText()).toString());
+
+
+            obj.put("pic", "I DON'T CARE");
+            obj.put("caption", "Hello");
+            obj.put("cost_tag", "$$$");
+
+            obj.put("food_tag",  "italian");
+            obj.put("restaurant", "I DON'T CARE");
         }
         catch (JSONException e){
             e.printStackTrace();
@@ -105,11 +113,13 @@ public class PostPhotoPage extends AppCompatActivity {
 
                 Log.d("Response", response.toString());
 
+                mTextViewResult.setText("onResponse");
+
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                VolleyLog.d("Error.Response", error.toString());
+              //  VolleyLog.d("Error.Response", error.toString());
 
                 if (error instanceof TimeoutError || error instanceof NoConnectionError){
                     mTextViewResult.setText("Timeout Error or No connection error");
