@@ -1,6 +1,9 @@
 package com.FoodGramServer.FoodGramServer.repo;
 
+import javax.transaction.Transactional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
@@ -16,10 +19,12 @@ public interface PhotoRepo extends JpaRepository<Photo, Long>{
     
     @Query(value = "SELECT * FROM photo WHERE restaurant = ?1", nativeQuery = true)
     public Photo[] getByRestaurant(String restaurant);
+    
+    @Query(value = "SELECT * FROM photo WHERE cost_tag = ?1", nativeQuery = true)
+	public Photo[] getByPriceTag(String priceTag);
 
 
 
-  
-   
+    
     
 } 

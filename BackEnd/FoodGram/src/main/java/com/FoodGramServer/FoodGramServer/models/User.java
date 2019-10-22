@@ -42,6 +42,7 @@ public class User {
 	
 	@Column(name = "profile_pic")
 	private String profile_pic;
+		
 	
 	public long getUserId() { return user_id; }
 	

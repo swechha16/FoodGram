@@ -52,16 +52,17 @@ class SwechhaTest {
         user.setPassword("pass");
         user.setPhoneNo("51515151555");
         user.setUserId(0);
-        when(userRepo.getByUsername("pass")).thenReturn(null);
+        
+    // assertEquals("User", user.getAccountType());
+     assertEquals(userRepo.getByUsername("User"), false);
 
       
-
+;
     }
 	
 	@Test
 	public void getUser() {
 		when(userRepo.getByUsername("suraj"));
-
 
 		assertEquals("suraj", userRepo.getByUsername("suraj"));
 
@@ -82,7 +83,7 @@ class SwechhaTest {
 		list.add(acctThree);
 
 		
-		assertEquals(3, list);
+		assertEquals(3, list.size());
 	
 	}
 
