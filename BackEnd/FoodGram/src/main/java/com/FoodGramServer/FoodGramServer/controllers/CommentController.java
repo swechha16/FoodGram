@@ -42,12 +42,14 @@ public class CommentController {
 
 
 	@RequestMapping(method = RequestMethod.POST, path = "/post/comment/users")
-	public void postCommentFromUser(@RequestBody String userComment) {
+	public String postCommentFromUser(@RequestBody String userComment) {
 		Comment comments = new Comment();
 		comments.setComment(userComment);
 		
 		commentRepo.save(comments);
+		return "Post Added";
 		
+		//leaving this as a String type as the post photo is JSON object
 
 	}
 
@@ -56,22 +58,13 @@ public class CommentController {
 	 */
 	@RequestMapping(method = RequestMethod.POST, path = "/post/comment/restaurant")
 	public void postCommentFromRestaurant(@RequestBody String restaurantComment) {
-//	
 		Comment comments = new Comment();
 		comments.setComment(restaurantComment);
 		
 		commentRepo.save(comments);
 
 		
-
 	}
 
-	
-	
-	
-	
-	
-	
-	
 
 }
