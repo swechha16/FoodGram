@@ -1,9 +1,12 @@
 package com.FoodGramServer.FoodGramServer.models;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 @Table(name = "photo")
@@ -44,8 +47,8 @@ public class Photo implements Serializable {
 	private String restaurant;
 	
 	@Column(name = "timestamp")
-	@NotNull
-	private String timestamp;
+	@CreationTimestamp
+	private LocalDateTime timestamp;
 	
 	public long getPicId() { return pic_id; }
 	
@@ -75,8 +78,8 @@ public class Photo implements Serializable {
 
 	public void setRestaurant(String restaurant) { this.restaurant = restaurant; }
 	
-	public String getTimestamp() { return timestamp; }
+	public LocalDateTime getTimestamp() { return timestamp; }
 	
-	public void setTimestamp(String timestamp) { this.timestamp = timestamp; }
+	public void setTimestamp(LocalDateTime timestamp) { this.timestamp = timestamp; }
 	
 }
