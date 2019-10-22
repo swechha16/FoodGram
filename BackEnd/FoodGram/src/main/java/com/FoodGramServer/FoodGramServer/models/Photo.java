@@ -52,11 +52,11 @@ public class Photo implements Serializable {
 	
 	public long getPicId() { return pic_id; }
 	
-	public void setPicId(long pic_id) { this.pic_id = pic_id;}
+	public void setPicId(long pic_id) { this.pic_id = pic_id; }
 	
 	public User getUserId() { return user_id; }
-	
-	public void setUserId(User user_id) { this.user_id = user_id;}
+	 
+	public void setUserId(User user_id) { this.user_id = user_id; }
 	
 	public String getPic() { return pic; }
 	
