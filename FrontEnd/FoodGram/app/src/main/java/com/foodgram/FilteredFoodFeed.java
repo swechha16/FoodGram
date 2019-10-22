@@ -179,20 +179,18 @@ public class FilteredFoodFeed extends AppCompatActivity {
 //    }
 
     public void updateUrl(int foodType){
-
+        url = "http://10.31.4.129:8080/photo";
         if(foodType == 0){
-            url = "http://10.29.178.67:8080/photo/all";
+          url += "/all";
         }else if(foodType == 1){
-            url = "http://10.29.178.67:8080/photo/italian";
+            url += "/italian";
         }else if(foodType ==2 ){
-            url = "http://10.29.178.67:8080/photo/chinese";
+            url += "/chinese";
         }else if(foodType == 3){
-            url = "http://10.29.178.67:8080/photo/indian";
+            url += "/indian";
         }else{
-            url = "http://10.29.178.67:8080/photo/all";
+            url += "/all";
         }
-
-
 
 
     }
@@ -214,12 +212,13 @@ public class FilteredFoodFeed extends AppCompatActivity {
 
 
     public void test(){
+
 mTextViewResult.setText("");
     //   url = "http://10.26.1.154:8080/photo/all";
         JsonArrayRequest testRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
-
+                        mTextViewResult.setText("");
                 try {
 
 
@@ -251,6 +250,7 @@ mTextViewResult.setText("");
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+
                 if (error instanceof TimeoutError || error instanceof NoConnectionError){
                     mTextViewResult.setText("Timeout Error or No connection error");
                 }
@@ -260,13 +260,15 @@ mTextViewResult.setText("");
                     mTextViewResult.setText("server error");
                 }else if(error instanceof NetworkError){
                     mTextViewResult.setText("network error");
-                }else if(error instanceof ParseError){
-                   mTextViewResult.setText("Parse Error");
+                }else if(error instanceof ParseError) {
+                    mTextViewResult.setText("Parse Error");
+                }
+
+                mTextViewResult.append("\n\n " + url);
+
                 }
             }
-        }
         );
-
 
         mQueue.add(testRequest);
 

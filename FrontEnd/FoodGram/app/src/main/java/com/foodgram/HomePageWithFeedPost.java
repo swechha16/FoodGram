@@ -33,7 +33,7 @@ public class HomePageWithFeedPost extends AppCompatActivity {
         // should move to make post page
         make_post_move.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                make_post_page(v);
+                choose_post_page(v);
             }
         });
 
@@ -65,8 +65,8 @@ public class HomePageWithFeedPost extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void make_post_page(View v){
-        Intent intent = new Intent(this, MakePostPage.class);
+    public void choose_post_page(View v){
+        Intent intent = new Intent(this, ChoosePost.class);
         startActivity(intent);
     }
 
