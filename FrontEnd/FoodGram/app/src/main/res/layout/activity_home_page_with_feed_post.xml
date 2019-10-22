@@ -14,7 +14,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_marginLeft="59dp"
-        android:layout_marginTop="114dp"
+        android:layout_marginTop="64dp"
         android:layout_marginRight="66dp"
         android:text="Feed"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
@@ -26,9 +26,9 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginLeft="67dp"
-        android:layout_marginRight="68dp"
-        android:layout_marginBottom="381dp"
+        android:layout_marginLeft="58dp"
+        android:layout_marginRight="76dp"
+        android:layout_marginBottom="258dp"
         android:text="Post"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
@@ -41,13 +41,13 @@
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="65dp"
         android:layout_marginRight="66dp"
-        android:layout_marginBottom="235dp"
+        android:layout_marginBottom="149dp"
         android:text="Find Food"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
     <Button
         android:id="@+id/userProfileButton"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/clickToPostButton"
         android:layout_below="@+id/clickToFeedButton"

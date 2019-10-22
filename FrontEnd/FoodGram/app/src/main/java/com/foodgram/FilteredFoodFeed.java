@@ -215,7 +215,7 @@ public class FilteredFoodFeed extends AppCompatActivity {
 
     public void test(){
 
-       // url = "http://10.26.1.154:8080/photo/all";
+       url = "http://10.26.1.154:8080/photo/all";
         JsonArrayRequest testRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {

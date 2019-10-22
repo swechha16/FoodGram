@@ -85,10 +85,10 @@
         android:layout_height="380dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.617"
+        app:layout_constraintHorizontal_bias="0.679"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/moderatePrice"
-        app:layout_constraintVertical_bias="0.884">
+        app:layout_constraintVertical_bias="0.559">
 
 
         <TextView
