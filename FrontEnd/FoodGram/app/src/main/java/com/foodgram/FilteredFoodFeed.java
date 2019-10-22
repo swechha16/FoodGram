@@ -110,6 +110,8 @@ public class FilteredFoodFeed extends AppCompatActivity {
 
 
 
+
+
 //    public void getFilteredFeed(){
 //
 //       url = "http://10.65.23.83:8080/photo/indian/$";
@@ -271,6 +273,18 @@ mTextViewResult.setText("");
         mQueue.add(testRequest);
 
     }
+
+
+    public boolean tryRecieving(String url, String price, LinkHandler linkHandler) throws JSONException {
+
+        //Does not work because .getResponse has not been implemented
+        if (linkHandler.getLink(url, price).getBoolean("loginSuccess")) {
+            return true;
+        }
+
+        return false;
+    }
+
 
 
 }
