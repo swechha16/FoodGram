@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ResourceCursorAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -73,7 +74,7 @@ public class MakePostPage extends AppCompatActivity {
 
         requestQueue = Volley.newRequestQueue(this);
         //String url = "http://10.65.23.83:8080/post/comment/users";
-        String url = "http://10.31.4.129:8080/post/comment/users";
+        String url = "http://10.9.213.207:8080/post/comment/users";
         //JSONObject jsonBody = new JSONObject();
         final String makePost = enter_post.getText().toString();
         //String url = "http://coms-309-mg-1.cs.iastate.edu:8080/post/comment/users";
@@ -86,7 +87,7 @@ public class MakePostPage extends AppCompatActivity {
 
                 Log.d("Response", response);
 
-                Toast.makeText(getApplicationContext(),response,Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
 
             }
         }, new Response.ErrorListener() {
@@ -114,6 +115,6 @@ public class MakePostPage extends AppCompatActivity {
         };
 
         requestQueue.add(stringRequest);
-
     }
+
 }
