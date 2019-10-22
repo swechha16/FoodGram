@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ResourceCursorAdapter;
 import android.widget.Toast;
 
@@ -20,6 +21,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -59,6 +61,7 @@ public class MakePostPage extends AppCompatActivity {
             }
         });
 
+
     }
 
     public void welcome_page() {
@@ -70,6 +73,7 @@ public class MakePostPage extends AppCompatActivity {
 
         requestQueue = Volley.newRequestQueue(this);
         //String url = "http://10.65.23.83:8080/post/comment/users";
+        //String url = "http://10.31.4.129:8080/post/comment/users";
         //JSONObject jsonBody = new JSONObject();
         final String makePost = enter_post.getText().toString();
         String url = "http://coms-309-mg-1.cs.iastate.edu:8080/post/comment/users";
