@@ -179,17 +179,17 @@ public class FilteredFoodFeed extends AppCompatActivity {
 //    }
 
     public void updateUrl(int foodType){
-
+        url = "http://10.31.4.129:8080/photo";
         if(foodType == 0){
-            url = "http://coms-309-mg-1.cs.iastate.edu/photos/all";
+          url += "/all";
         }else if(foodType == 1){
-            url = "http://coms-309-mg-1.cs.iastate.edu/photos/italian";
+            url += "/italian";
         }else if(foodType ==2 ){
-            url = "http://coms-309-mg-1.cs.iastate.edu/photos/chinese";
+            url += "/chinese";
         }else if(foodType == 3){
-            url = "http://coms-309-mg-1.cs.iastate.edu/photos/indian";
+            url += "/indian";
         }else{
-            url = "http://coms-309-mg-1.cs.iastate.edu/photos/all";
+            url += "/all";
         }
 
 
@@ -207,7 +207,7 @@ public class FilteredFoodFeed extends AppCompatActivity {
         }else if(priceTag == 3){
             url += "/$$$";
         }else {
-            url += "$";
+            url += "/$";
         }
 
     }
@@ -215,11 +215,11 @@ public class FilteredFoodFeed extends AppCompatActivity {
 
     public void test(){
 
-       url = "http://10.26.1.154:8080/photo/all";
+       //url = "http://10.26.1.154:8080/photo/all";
         JsonArrayRequest testRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
-
+                        mTextViewResult.setText("");
                 try {
 
                    // JSONArray jsonArray =
@@ -239,7 +239,7 @@ public class FilteredFoodFeed extends AppCompatActivity {
 
                         }
                     }else{
-                        mTextViewResult.append("No posts");
+                        mTextViewResult.append("\nNo posts");
                     }
 
 
@@ -251,7 +251,21 @@ public class FilteredFoodFeed extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                                if (error instanceof TimeoutError || error instanceof NoConnectionError){
+                    mTextViewResult.setText("Timeout Error or No connection error");
+                }
+                else if(error instanceof AuthFailureError){
+                    mTextViewResult.setText("authentication failure error");
+                }else if(error instanceof ServerError){
+                    mTextViewResult.setText("server error");
+                }else if(error instanceof NetworkError){
+                    mTextViewResult.setText("network error");
+                }else if(error instanceof ParseError){
+                 //   mTextViewResult.setText("Parse Error");
+                }
 
+                mTextViewResult.append("\n\n " + url);
+//
             }
         }
         );
