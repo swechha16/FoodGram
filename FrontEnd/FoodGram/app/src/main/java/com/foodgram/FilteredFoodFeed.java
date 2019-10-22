@@ -181,15 +181,15 @@ public class FilteredFoodFeed extends AppCompatActivity {
     public void updateUrl(int foodType){
 
         if(foodType == 0){
-            url = "http://coms-309-mg-1.cs.iastate.edu/photos/all";
+            url = "http://10.29.178.67:8080/photo/all";
         }else if(foodType == 1){
-            url = "http://coms-309-mg-1.cs.iastate.edu/photos/italian";
+            url = "http://10.29.178.67:8080/photo/italian";
         }else if(foodType ==2 ){
-            url = "http://coms-309-mg-1.cs.iastate.edu/photos/chinese";
+            url = "http://10.29.178.67:8080/photo/chinese";
         }else if(foodType == 3){
-            url = "http://coms-309-mg-1.cs.iastate.edu/photos/indian";
+            url = "http://10.29.178.67:8080/photo/indian";
         }else{
-            url = "http://coms-309-mg-1.cs.iastate.edu/photos/all";
+            url = "http://10.29.178.67:8080/photo/all";
         }
 
 
@@ -207,22 +207,22 @@ public class FilteredFoodFeed extends AppCompatActivity {
         }else if(priceTag == 3){
             url += "/$$$";
         }else {
-            url += "$";
+            url += "/$";
         }
 
     }
 
 
     public void test(){
-
-       url = "http://10.26.1.154:8080/photo/all";
+mTextViewResult.setText("");
+    //   url = "http://10.26.1.154:8080/photo/all";
         JsonArrayRequest testRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
 
                 try {
 
-                   // JSONArray jsonArray =
+
                     if(response.length() != 0) {
 
                         for (int i = 0; i < response.length(); i++) {
@@ -239,7 +239,7 @@ public class FilteredFoodFeed extends AppCompatActivity {
 
                         }
                     }else{
-                        mTextViewResult.append("No posts");
+                        mTextViewResult.append("\nNo posts");
                     }
 
 
@@ -251,7 +251,18 @@ public class FilteredFoodFeed extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                if (error instanceof TimeoutError || error instanceof NoConnectionError){
+                    mTextViewResult.setText("Timeout Error or No connection error");
+                }
+                else if(error instanceof AuthFailureError){
+                    mTextViewResult.setText("authentication failure error");
+                }else if(error instanceof ServerError){
+                    mTextViewResult.setText("server error");
+                }else if(error instanceof NetworkError){
+                    mTextViewResult.setText("network error");
+                }else if(error instanceof ParseError){
+                   mTextViewResult.setText("Parse Error");
+                }
             }
         }
         );
