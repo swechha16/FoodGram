@@ -181,7 +181,6 @@ public class FilteredFoodFeed extends AppCompatActivity {
     public void updateUrl(int foodType){
         url = "http://10.31.4.129:8080/photo";
         if(foodType == 0){
-<<<<<<< HEAD
           url += "/all";
         }else if(foodType == 1){
             url += "/italian";
@@ -191,20 +190,7 @@ public class FilteredFoodFeed extends AppCompatActivity {
             url += "/indian";
         }else{
             url += "/all";
-=======
-            url = "http://10.29.178.67:8080/photo/all";
-        }else if(foodType == 1){
-            url = "http://10.29.178.67:8080/photo/italian";
-        }else if(foodType ==2 ){
-            url = "http://10.29.178.67:8080/photo/chinese";
-        }else if(foodType == 3){
-            url = "http://10.29.178.67:8080/photo/indian";
-        }else{
-            url = "http://10.29.178.67:8080/photo/all";
->>>>>>> 63407e752c6f57bb1367286c08357de8df3f9c24
         }
-
-
 
 
     }
@@ -226,13 +212,9 @@ public class FilteredFoodFeed extends AppCompatActivity {
 
 
     public void test(){
-<<<<<<< HEAD
 
-       //url = "http://10.26.1.154:8080/photo/all";
-=======
 mTextViewResult.setText("");
     //   url = "http://10.26.1.154:8080/photo/all";
->>>>>>> 63407e752c6f57bb1367286c08357de8df3f9c24
         JsonArrayRequest testRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -268,11 +250,8 @@ mTextViewResult.setText("");
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-<<<<<<< HEAD
-                                if (error instanceof TimeoutError || error instanceof NoConnectionError){
-=======
+
                 if (error instanceof TimeoutError || error instanceof NoConnectionError){
->>>>>>> 63407e752c6f57bb1367286c08357de8df3f9c24
                     mTextViewResult.setText("Timeout Error or No connection error");
                 }
                 else if(error instanceof AuthFailureError){
@@ -281,21 +260,15 @@ mTextViewResult.setText("");
                     mTextViewResult.setText("server error");
                 }else if(error instanceof NetworkError){
                     mTextViewResult.setText("network error");
-                }else if(error instanceof ParseError){
-<<<<<<< HEAD
-                 //   mTextViewResult.setText("Parse Error");
+                }else if(error instanceof ParseError) {
+                    mTextViewResult.setText("Parse Error");
                 }
 
                 mTextViewResult.append("\n\n " + url);
-//
-=======
-                   mTextViewResult.setText("Parse Error");
-                }
->>>>>>> 63407e752c6f57bb1367286c08357de8df3f9c24
-            }
-        }
-        );
 
+                }
+            }
+        );
 
         mQueue.add(testRequest);
 
