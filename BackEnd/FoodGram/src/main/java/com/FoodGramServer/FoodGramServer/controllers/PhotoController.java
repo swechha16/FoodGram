@@ -25,6 +25,7 @@ public class PhotoController {
 		return photos;
 	}
 	
+	
 	/**
 	 * This method will return a list of our "comments" within photos
 	 * that is based on the food type within our database
@@ -46,10 +47,14 @@ public class PhotoController {
 		return photos;
 	}
 	
+	
+	
 	@RequestMapping(method = RequestMethod.POST, path = "/post/photo")
 	public void postPhoto(@RequestBody Photo userPhoto) {
 		photoRepo.save(userPhoto);
 
 	}
+	
+	
 	
 }
