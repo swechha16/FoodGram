@@ -26,17 +26,17 @@ public class foodFilterTest {
       LinkHandler test = mock(LinkHandler.class);
       FilteredFoodFeed testLink = new FilteredFoodFeed();
     //expected
-      String urlCorrect = "italian";
+      String foodCorrect = "italian";
       String priceCorrect = "$";
-// create json object to test
+    // create json object to test
       JSONObject link = new JSONObject();
-//retrieval is a success
+    //retrieval is a success
       link.put("linkSuccess", new Boolean(true));
 
 
 
-      when(test.getLink(urlCorrect, priceCorrect)).thenReturn(link);
-      Assert.assertEquals(testLink.tryRecieving(urlCorrect,priceCorrect,test),link.getBoolean("linkSuccess"));
+      when(test.getLink(foodCorrect, priceCorrect)).thenReturn(link);
+      Assert.assertEquals(testLink.tryRecieving(foodCorrect,priceCorrect,test),link.getBoolean("linkSuccess"));
   }
 
 
