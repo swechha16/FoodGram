@@ -28,34 +28,18 @@ public class EchoServerThread {
     }
 
     public void close() throws IOException {
-        if(socket != null)
-            socket.close();
-        if(inStream != null)
-            inStream.close();
-        if(outStream != null) {
-            outStream.close();
-        }
-        connected = false;
+
     }
 
     public void send(String message) {
-        try {
-            outStream.writeUTF(message);
-            outStream.flush();
-        }catch(IOException ioe) {
-            System.out.println(ID + " error: " + ioe.getMessage());
-            disconnect();
-            server.stop();
-        }
+
     }
 
     public int getID() {
         return ID;
     }
 
-    /* String getClientName() {
-        return name;
-    }*/
+
 
     public void run() {
         System.out.println("Server Thread " + ID + " connected and runnning.");
