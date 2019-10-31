@@ -34,11 +34,11 @@ public class CommentController {
 	@RequestMapping(method = RequestMethod.GET, path = "/comment/all")
 	public Comment[] getComments() { 
 		Comment[] comments = commentRepo.getAll();
-	
+
 		return comments; //returns JSON array of comments
 	}
 
-	// I have no idea if any of this works - swechha 
+
 
 
 	@RequestMapping(method = RequestMethod.POST, path = "/post/comment/users")
@@ -65,5 +65,6 @@ public class CommentController {
 
 		
 	}
+
 
 }
