@@ -179,7 +179,7 @@ public class FilteredFoodFeed extends AppCompatActivity {
 //    }
 
     public void updateUrl(int foodType){
-        url = "http://10.31.4.129:8080/photo";
+        url = "http://10.31.29.6:8080/photo";
         if(foodType == 0){
           url += "/all";
         }else if(foodType == 1){

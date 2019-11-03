@@ -47,6 +47,7 @@ public class PostPhotoPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_photo_page);
 
+        User account = new User(1, "sweaty",  "sghimire@iastate.edu", "user", "1234");
         signOut = (Button) findViewById(R.id.signOut_post);
         signOut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,17 +83,21 @@ public class PostPhotoPage extends AppCompatActivity {
         requestQueue = Volley.newRequestQueue(this);
         //String url = "http://10.65.23.83:8080/post/comment/users";
         //String url = "http://10.31.4.129:8080/post/photo";
-        String url = "http://10.31.4.129:8080/post/photo";
+        String url = "http://10.31.29.6:8080/post/photo";
        // String url = "http://coms-309-mg-1.cs.iastate.edu:8080/photo/post";
         //String url = "http://10.31.31.154:8080/post/comment";
         //"http://10.31.24.107:8080/comment/all";
 
         final JSONObject obj = new JSONObject();
+        User account = new User(1, "sweaty",  "sghimire@iastate.edu", "user", "1234");
+
         try {
+            obj.put("pic", "url");
             obj.put("caption", (txt_caption.getText()).toString());
-            obj.put("food tag", (txt_foodTag.getText()).toString());
-            obj.put("cost tag", (txt_costTag.getText()).toString());
+            obj.put("food_tag", (txt_foodTag.getText()).toString());
+            obj.put("cost_tag", (txt_costTag.getText()).toString());
             obj.put("restaurant", (txt_restaurant.getText()).toString());
+            obj.put("user_id", 1);
         }
         catch (JSONException e){
             e.printStackTrace();

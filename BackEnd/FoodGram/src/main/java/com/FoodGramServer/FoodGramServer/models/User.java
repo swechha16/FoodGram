@@ -1,7 +1,12 @@
 package com.FoodGramServer.FoodGramServer.models;
 
+import java.util.List;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name="User")
@@ -9,6 +14,14 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long user_id;
+	
+	// Bidirectional relation with photos. Because it is bidirectional, parsing into json will enter
+	// an infinite loop (user->photos->users->...). To resolve this, use @JsonManagedReference and 
+	// @JsonBackedReference. Put @JsonManagedReference where you want the entity of the relation to be
+	// included in JSON, and @JsonBackedReference where you don't want the entity to be included.
+	@OneToMany(mappedBy = "user") // mappedBy required for bidirectional to indicate the other side
+	@JsonBackReference
+	private List<Photo> photoPosts;
 	
 	@Column(name = "username", nullable = false)
 	private String username;
@@ -87,5 +100,13 @@ public class User {
 	public String getProfilePic() { return profile_pic; }
 
 	public void setProfilePic(String profile_pic) { this.profile_pic = profile_pic; }
+
+	public List<Photo> getPhotoPosts() {
+		return photoPosts;
+	}
+
+	public void setPhotoPosts(List<Photo> photoPosts) {
+		this.photoPosts = photoPosts;
+	}
 
 }

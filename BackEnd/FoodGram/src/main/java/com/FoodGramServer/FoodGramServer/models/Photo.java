@@ -8,6 +8,9 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "photo")
 public class Photo implements Serializable {
@@ -24,7 +27,9 @@ public class Photo implements Serializable {
 	
 	
 	@ManyToOne
-	private User user_id; //link up with the user table
+	//@JsonManagedReference Who added this I am unsure on what it does? --AC
+	@JoinColumn(name="user_id") // specifies to use a column in Photo table to reference user, instead of the default behavior to create a join table
+	private User user; //link up with the user table
 	
 	@Column(name = "pic")
 	@NotNull
@@ -54,10 +59,6 @@ public class Photo implements Serializable {
 	
 	public void setPicId(long pic_id) { this.pic_id = pic_id; }
 	
-	public User getUserId() { return user_id; }
-	 
-	public void setUserId(User user_id) { this.user_id = user_id; }
-	
 	public String getPic() { return pic; }
 	
 	public void setPic(String pic) { this.pic = pic; }
@@ -81,5 +82,13 @@ public class Photo implements Serializable {
 	public LocalDateTime getTimestamp() { return timestamp; }
 	
 	public void setTimestamp(LocalDateTime timestamp) { this.timestamp = timestamp; }
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 	
 }
