@@ -27,7 +27,7 @@ public class Photo implements Serializable {
 	
 	
 	@ManyToOne
-	//@JsonManagedReference Who added this I am unsure on what it does? --AC
+	//@JsonManagedReference //Who added this I am unsure on what it does? --AC
 	@JoinColumn(name="user_id") // specifies to use a column in Photo table to reference user, instead of the default behavior to create a join table
 	private User user; //link up with the user table
 	
@@ -40,11 +40,11 @@ public class Photo implements Serializable {
 	private String caption;
 	
 	@Column(name = "food_tag")
-	@NotNull
+	//@NotNull
 	private String food_tag;
 	
 	@Column(name = "cost_tag")
-	@NotNull
+	//@NotNull
 	private String cost_tag;
 	
 	@Column(name = "restaurant")
