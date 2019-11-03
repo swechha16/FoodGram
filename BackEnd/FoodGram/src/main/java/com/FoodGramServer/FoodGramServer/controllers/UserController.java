@@ -43,7 +43,7 @@ public class UserController {
 
 	}
 	
-<<<<<<< HEAD
+	
 	@GetMapping("/user/{uid}/photos")
 	public List<Photo> getPhotosForUser(@PathVariable("uid") long uid) {
 		User user = userRepo.findById(uid).get();
@@ -53,8 +53,4 @@ public class UserController {
 	}
 	
 
-	
-
-=======
->>>>>>> 4c3ea591f578a9ffe3bbd1b4a61f524892713f61
 }

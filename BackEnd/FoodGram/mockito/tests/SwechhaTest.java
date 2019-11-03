@@ -27,6 +27,9 @@ import com.FoodGramServer.FoodGramServer.repo.UserRepo;
 
 class SwechhaTest {
 
+
+	
+
 	@Mock
 	UserRepo userRepo; 
 	@InjectMocks
@@ -57,6 +60,7 @@ class SwechhaTest {
       
 ;
     }
+	// handling null not returning null 
 	
 	@Test
 	public void getUser() {
@@ -83,7 +87,7 @@ class SwechhaTest {
 
 		
 		assertEquals(3, list.size());
-
+		
 	
 	}
 
