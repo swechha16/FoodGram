@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"com.FoodGramServer.FoodGramServer.models"}]
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"com.FoodGramServer.FoodGramServer"},{"l":"com.FoodGramServer.FoodGramServer.controllers"},{"l":"com.FoodGramServer.FoodGramServer.models"},{"l":"com.FoodGramServer.FoodGramServer.repo"},{"l":"com.FoodGramServer.FoodGramServer.websocket"}]
