@@ -15,14 +15,24 @@ import com.FoodGramServer.FoodGramServer.models.Photo;
 import com.FoodGramServer.FoodGramServer.models.User;
 import com.FoodGramServer.FoodGramServer.repo.UserRepo;
 
+/**
+ * Maps endpoints for the user class
+ * @author Alexis and Swechha
+ *
+ */
 @RestController
 public class UserController {
 	@Autowired
-
+	/**
+	 * links the userrepo to the user controller
+	 */
 	UserRepo userRepo;
 
 	// returns all users in the User table
-
+	/**
+	 * gets all the user in the database
+	 * @return all users
+	 */
 	@RequestMapping(method = RequestMethod.GET, path = "/user/all")
 	public User[] getComments() {
 
@@ -30,6 +40,11 @@ public class UserController {
 		return user;
 	}
 
+	/**
+	 * gets all the user with a certain username
+	 * @param username
+	 * @return user array
+	 */
 	@RequestMapping(method = RequestMethod.GET, path = "/user/{username}")
 	public User[] getUserByUser(@PathVariable String username) {
 
@@ -37,20 +52,14 @@ public class UserController {
 		return user;
 	}
 	
+	/**
+	 * Adds a user into database
+	 * @param newUser
+	 */
 	@RequestMapping(method = RequestMethod.POST, path = "/post/user")
 	public void createNewUser(@RequestBody User newUser) {
 		userRepo.save(newUser);
 
-	}
-	
-	
-	@GetMapping("/user/{uid}/photos")
-	public List<Photo> getPhotosForUser(@PathVariable("uid") long uid) {
-		User user = userRepo.findById(uid).get();
-//		System.out.println(user);
-		
-		return user.getPhotoPosts();
-	}
-	
+	}	
 
 }

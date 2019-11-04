@@ -25,22 +25,34 @@ import org.springframework.http.ResponseEntity;
 
 
 @RestController
-
+/**
+ * Maps endpoints for the comment class
+ * @author Alexis and Swechha
+ *
+ */
 public class CommentController {
-
+	/**
+	 * creates the a reference to the comment repo
+	 */
 	@Autowired
 	CommentRepo commentRepo;
-
+	
+	/**
+	 * 
+	 * @return all the comments in db
+	 */
 	@RequestMapping(method = RequestMethod.GET, path = "/comment/all")
 	public Comment[] getComments() { 
 		Comment[] comments = commentRepo.getAll();
 
 		return comments; //returns JSON array of comments
 	}
-
-
-
-
+	
+	/**
+	 * a comment from a user is stored in the database
+	 * @param userComment
+	 * @return
+	 */
 	@RequestMapping(method = RequestMethod.POST, path = "/post/comment/users")
 	public String postCommentFromUser(@RequestBody String userComment) {
 		Comment comments = new Comment();
@@ -48,13 +60,11 @@ public class CommentController {
 		
 		commentRepo.save(comments);
 		return "Post Added";
-		
-		//leaving this as a String type as the post photo is JSON object
-
 	}
 
-	/*
-	 * Post for restaurant comment
+	/**
+	 * Post a restaurant comment in the database
+	 * @param restaurantComment
 	 */
 	@RequestMapping(method = RequestMethod.POST, path = "/post/comment/restaurant")
 	public void postCommentFromRestaurant(@RequestBody String restaurantComment) {
