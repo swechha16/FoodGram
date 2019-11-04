@@ -1,12 +1,10 @@
 package com.foodgram;
 
 import android.content.Intent;
-import android.preference.EditTextPreference;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -42,8 +40,6 @@ public class PostPhotoPage extends AppCompatActivity {
 
     private EditText txt_caption, txt_foodTag, txt_costTag,txt_restaurant;
 
-    //private EditText userId;
-
     private RequestQueue requestQueue;
 
     @Override
@@ -51,6 +47,7 @@ public class PostPhotoPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_photo_page);
 
+        User account = new User(1, "sweaty",  "sghimire@iastate.edu", "user", "1234");
         signOut = (Button) findViewById(R.id.signOut_post);
         signOut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,8 +55,6 @@ public class PostPhotoPage extends AppCompatActivity {
                 welcome_page();
             }
         });
-
-        //userId = findViewById(R.id.id_post);
 
         txt_caption = (EditText) findViewById(R.id.post_caption);
         txt_foodTag = (EditText) findViewById(R.id.post_foodTag);
@@ -88,18 +83,25 @@ public class PostPhotoPage extends AppCompatActivity {
         requestQueue = Volley.newRequestQueue(this);
         //String url = "http://10.65.23.83:8080/post/comment/users";
         //String url = "http://10.31.4.129:8080/post/photo";
-        String url = "http://10.26.41.227:8080/post/photo";
+        String url = "http://10.31.4.74:8080/post/photo";
        // String url = "http://coms-309-mg-1.cs.iastate.edu:8080/photo/post";
         //String url = "http://10.31.31.154:8080/post/comment";
         //"http://10.31.24.107:8080/comment/all";
 
         final JSONObject obj = new JSONObject();
+        final JSONObject user = new JSONObject();
+        User account = new User(1, "sweaty",  "sghimire@iastate.edu", "user", "1234");
         try {
-            //obj.put("user_id", userId.getText());
+            user.put("userId", account.getUser_id());
+            obj.put("pic", "url");
             obj.put("caption", (txt_caption.getText()).toString());
-            obj.put("food_tag", (txt_foodTag.getText()).toString());
-            obj.put("cost_tag", (txt_costTag.getText()).toString());
             obj.put("restaurant", (txt_restaurant.getText()).toString());
+            obj.put("user", user);
+            obj.put("foodTag", (txt_foodTag.getText()).toString());
+            obj.put("costTag", (txt_costTag.getText()).toString());
+
+            Log.d("Response", obj.toString());
+
         }
         catch (JSONException e){
             e.printStackTrace();
@@ -130,8 +132,6 @@ public class PostPhotoPage extends AppCompatActivity {
                 }else if(error instanceof ParseError){
                  mTextViewResult.setText("Parse Error");
                 }
-                else error.printStackTrace();
-
 
             }
 
@@ -143,16 +143,16 @@ public class PostPhotoPage extends AppCompatActivity {
 //                return "application/json; charset=utf-8";
 //            }
 //
-//            @Override
-//            public byte[] getBody() throws AuthFailureError {
-//                try {
-//                    return obj == null ? null : obj.getBytes("utf-8");
-//                } catch (UnsupportedEncodingException uee) {
-//                    VolleyLog.wtf("Unsupported Encoding while trying to get the bytes of %s using %s", obj, "utf-8");
-//                    return null;
-//                }
-//
-//            }
+////            @Override
+////            public byte[] getBody() throws AuthFailureError {
+////                try {
+////                    return obj == null ? null : obj.getBytes("utf-8");
+////                } catch (UnsupportedEncodingException uee) {
+////                    VolleyLog.wtf("Unsupported Encoding while trying to get the bytes of %s using %s", obj, "utf-8");
+////                    return null;
+////                }
+////
+////            }
 //        };
 
         requestQueue.add(objectRequest);

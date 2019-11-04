@@ -16,7 +16,7 @@
         android:layout_marginLeft="62dp"
         android:layout_marginTop="64dp"
         android:layout_marginRight="63dp"
-        android:layout_marginBottom="448dp"
+        android:layout_marginBottom="488dp"
         android:text="Feed"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
@@ -29,7 +29,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="67dp"
         android:layout_marginRight="67dp"
-        android:layout_marginBottom="299dp"
+        android:layout_marginBottom="367dp"
         android:text="Post"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
@@ -40,9 +40,9 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginLeft="70dp"
-        android:layout_marginRight="61dp"
-        android:layout_marginBottom="179dp"
+        android:layout_marginLeft="66dp"
+        android:layout_marginRight="65dp"
+        android:layout_marginBottom="243dp"
         android:text="Find Food"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
@@ -55,11 +55,11 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="60dp"
-        android:layout_marginLeft="60dp"
-        android:layout_marginEnd="58dp"
-        android:layout_marginRight="58dp"
-        android:layout_marginBottom="572dp"
+        android:layout_marginStart="54dp"
+        android:layout_marginLeft="54dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginRight="64dp"
+        android:layout_marginBottom="566dp"
         android:text="My profile" />
 
     <Button
@@ -75,7 +75,7 @@
         android:layout_marginLeft="87dp"
         android:layout_marginEnd="86dp"
         android:layout_marginRight="86dp"
-        android:layout_marginBottom="71dp"
+        android:layout_marginBottom="123dp"
         android:text="Home" />
 
 </RelativeLayout>

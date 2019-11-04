@@ -32,10 +32,5 @@ public interface UserRepo extends JpaRepository<User, Long> {
 
     
     
-    @Modifying
-    @Transactional
-    @Query(value = "DELETE FROM user WHERE username = ?1", nativeQuery = true)
-	public void deleteUserByUsername(String userName);
-    
    
 }

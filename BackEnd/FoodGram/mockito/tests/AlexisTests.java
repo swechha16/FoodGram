@@ -33,7 +33,7 @@ public class AlexisTests {
 		photo1.setFoodTag("Mexican");
 		photo1.setPic("");
 		photo1.setRestaurant("El Azteca");
-		photo1.setUserId(user1);
+//		photo1.setUserId(user1);
 		
 		assertEquals("$", photo1.getCostTag());
 		assertEquals("El Azteca", photo1.getRestaurant());
