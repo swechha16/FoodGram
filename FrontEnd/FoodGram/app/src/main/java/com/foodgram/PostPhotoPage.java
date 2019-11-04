@@ -31,6 +31,11 @@ import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 
+/**
+ * Posts a photo
+ * @Alexi
+ * @SKarn
+ */
 public class PostPhotoPage extends AppCompatActivity {
 
     ImageView postImage;
@@ -73,11 +78,18 @@ public class PostPhotoPage extends AppCompatActivity {
 
     }
 
+    /**
+     * Takes a user to the welcome page
+     */
     public void welcome_page() {
         Intent intent = new Intent(this, HomePage.class);
         startActivity(intent);
     }
 
+    /**
+     * Grabs the posts from a user and then sends it to the backend to be posted to
+     * the database.
+     */
     private void sendContents() {
 
         requestQueue = Volley.newRequestQueue(this);
