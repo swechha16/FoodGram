@@ -1,12 +1,14 @@
 package com.FoodGramServer.FoodGramServer.models;
 
 import java.io.Serializable;
+import java.sql.Blob;
 import java.time.LocalDateTime;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -33,18 +35,18 @@ public class Photo implements Serializable {
 	
 	@Column(name = "pic")
 	@NotNull
-	private String pic;
+	private Blob pic;
 	
 	@Column(name = "caption")
 	@NotNull
 	private String caption;
 	
 	@Column(name = "food_tag")
-	//@NotNull
+	@NotNull
 	private String food_tag;
 	
 	@Column(name = "cost_tag")
-	//@NotNull
+	@NotNull
 	private String cost_tag;
 	
 	@Column(name = "restaurant")
@@ -59,9 +61,9 @@ public class Photo implements Serializable {
 	
 	public void setPicId(long pic_id) { this.pic_id = pic_id; }
 	
-	public String getPic() { return pic; }
+	public Blob getPic() { return pic; }
 	
-	public void setPic(String pic) { this.pic = pic; }
+	public void setPic(Blob pic) { this.pic = pic; }
 	
 	public String getCaption() { return caption; }
 	
@@ -83,12 +85,8 @@ public class Photo implements Serializable {
 	
 	public void setTimestamp(LocalDateTime timestamp) { this.timestamp = timestamp; }
 
-	public User getUser() {
-		return user;
-	}
+	public User getUser() { return user; }
 
-	public void setUser(User user) {
-		this.user = user;
-	}
+	public void setUser(User user) { this.user = user; }
 	
 }
