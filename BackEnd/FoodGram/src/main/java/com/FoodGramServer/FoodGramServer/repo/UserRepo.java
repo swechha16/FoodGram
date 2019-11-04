@@ -1,5 +1,7 @@
 package com.FoodGramServer.FoodGramServer.repo;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -21,16 +23,10 @@ import com.FoodGramServer.FoodGramServer.models.User;
 
 public interface UserRepo extends JpaRepository<User, Long> {
 	
-	
-	//we're gonna have to query the FRICK out of this once we figure
-	// the database
     @Query(value = "SELECT * FROM user", nativeQuery = true)
-	public User[] getAll();
+	public List<User> getAll();
     
     @Query(value = "SELECT * FROM user Where username = ?1", nativeQuery = true)
-	public User[] getByUsername(String findUsername);
-
+	public List<User> getByUsername(String findUsername);
     
-    
-   
 }

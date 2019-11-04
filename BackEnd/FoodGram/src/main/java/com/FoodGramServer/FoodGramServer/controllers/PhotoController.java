@@ -23,9 +23,8 @@ public class PhotoController {
 	
 	//returns all the photos in the Photo table
 	@RequestMapping(method = RequestMethod.GET, path = "/photo/all")
-	public Photo[] getPhotos() {
-		Photo[] photos = photoRepo.getAll();
-		return photos;
+	public List<Photo> getPhotos() {
+		return photoRepo.getAll();
 	}
 	
 	/**
@@ -38,23 +37,19 @@ public class PhotoController {
 	 */
 	
 	@RequestMapping(method = RequestMethod.GET, path = "/photo/{foodCategory}/{priceCategory}")
-	public Photo[] getPostByFoodTagAndPrice(@PathVariable String foodCategory, @PathVariable String priceCategory) {
-		Photo[] photos = photoRepo.getByFoodTagAndPriceTag(foodCategory, priceCategory); 
-		return photos;
+	public List<Photo> getPostByFoodTagAndPrice(@PathVariable String foodCategory, @PathVariable String priceCategory) {
+		return photoRepo.getByFoodTagAndPriceTag(foodCategory, priceCategory); 
+	
 	}	
 	
 	@RequestMapping(method = RequestMethod.GET, path = "/photo/{restaurant}")
-	public Photo[] findByRestaurant(@PathVariable String restaurant) {
-		Photo[] photos = photoRepo.getByRestaurant(restaurant);
-		return photos;
+	public List<Photo> findByRestaurant(@PathVariable String restaurant) {
+		return photoRepo.getByRestaurant(restaurant);
 	}
-	
-	
 	
 	@RequestMapping(method = RequestMethod.POST, path = "/post/photo")
 	public void postPhoto(@RequestBody Photo userPhoto) {
 		photoRepo.save(userPhoto);
-
 	}
 	
 	

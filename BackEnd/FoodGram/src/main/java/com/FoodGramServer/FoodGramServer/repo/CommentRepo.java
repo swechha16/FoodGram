@@ -1,6 +1,7 @@
 package com.FoodGramServer.FoodGramServer.repo;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -27,7 +28,10 @@ public interface CommentRepo extends JpaRepository<Comment, Long> {
 	//we're gonna have to query the FRICK out of this once we figure
 	// the database
     @Query(value = "SELECT * FROM comment", nativeQuery = true)
-	public Comment[] getAll();
+	public List<Comment> getAll();
+    
+    @Query(value = "SELECT comment FROM comment WHERE pic_id = ?1", nativeQuery = true)
+    public List<Comment> getPicComment(String pic_id);
     
     
 	

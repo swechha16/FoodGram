@@ -24,23 +24,19 @@ public class UserController {
 	// returns all users in the User table
 
 	@RequestMapping(method = RequestMethod.GET, path = "/user/all")
-	public User[] getComments() {
-
-		User[] user = userRepo.getAll();
-		return user;
+	public List<User> getComments() {
+		return userRepo.getAll();
 	}
 
 	@RequestMapping(method = RequestMethod.GET, path = "/user/{username}")
-	public User[] getUserByUser(@PathVariable String username) {
+	public List<User> getUserByUser(@PathVariable String username) {
 
-		User[] user = userRepo.getByUsername(username);
-		return user;
+		return userRepo.getByUsername(username);
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, path = "/post/user")
 	public void createNewUser(@RequestBody User newUser) {
 		userRepo.save(newUser);
-
 	}
 	
 	

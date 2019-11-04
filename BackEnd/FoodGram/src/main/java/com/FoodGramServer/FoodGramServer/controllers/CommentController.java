@@ -1,5 +1,6 @@
 package com.FoodGramServer.FoodGramServer.controllers;
 
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -32,38 +33,21 @@ public class CommentController {
 	CommentRepo commentRepo;
 
 	@RequestMapping(method = RequestMethod.GET, path = "/comment/all")
-	public Comment[] getComments() { 
-		Comment[] comments = commentRepo.getAll();
-
-		return comments; //returns JSON array of comments
+	public List<Comment> getComments() { 
+		return commentRepo.getAll();
 	}
-
-
-
-
-	@RequestMapping(method = RequestMethod.POST, path = "/post/comment/users")
-	public String postCommentFromUser(@RequestBody String userComment) {
-		Comment comments = new Comment();
-		comments.setComment(userComment);
-		
-		commentRepo.save(comments);
-		return "Post Added";
-		
-		//leaving this as a String type as the post photo is JSON object
-
+	
+	@RequestMapping(method = RequestMethod.GET, path = "/comment/{picId}")
+	public List<Comment> getPicComments(@PathVariable String picId){
+			return commentRepo.getPicComment(picId);
 	}
 
 	/*
-	 * Post for restaurant comment
+	 * Posting a comment on a users photo
 	 */
-	@RequestMapping(method = RequestMethod.POST, path = "/post/comment/restaurant")
-	public void postCommentFromRestaurant(@RequestBody String restaurantComment) {
-		Comment comments = new Comment();
-		comments.setComment(restaurantComment);
-		
-		commentRepo.save(comments);
-
-		
+	@RequestMapping(method = RequestMethod.POST, path = "/post/comment")
+	public void postCommentFromRestaurant(@RequestBody Comment comment) {
+		commentRepo.save(comment);
 	}
 
 
