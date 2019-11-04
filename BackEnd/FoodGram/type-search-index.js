@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"com.FoodGramServer.FoodGramServer.models","l":"User"}]
