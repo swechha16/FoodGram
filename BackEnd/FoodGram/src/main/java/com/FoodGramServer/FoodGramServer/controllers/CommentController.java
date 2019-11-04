@@ -27,7 +27,7 @@ import org.springframework.http.ResponseEntity;
 @RestController
 /**
  * Maps endpoints for the comment class
- * @author Alexis and Swechha
+ * @author Swechha
  *
  */
 public class CommentController {

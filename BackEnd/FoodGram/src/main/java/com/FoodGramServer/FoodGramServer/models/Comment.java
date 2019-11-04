@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 /**
  * Class for comment
  * 
- * @author alexis
+ * @author Swechha
  *
  */
 @Entity

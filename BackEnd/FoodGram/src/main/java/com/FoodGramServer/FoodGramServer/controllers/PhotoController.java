@@ -17,7 +17,7 @@ import com.FoodGramServer.FoodGramServer.repo.PhotoRepo;
 
 /**
  * Maps endpoints for the photo class
- * @author Alexis
+ * @author Alexis and Swechha
  *
  */
 @RestController
