@@ -48,33 +48,6 @@ public class CommentController {
 		return comments; //returns JSON array of comments
 	}
 	
-	/**
-	 * a comment from a user is stored in the database
-	 * @param userComment
-	 * @return
-	 */
-	@RequestMapping(method = RequestMethod.POST, path = "/post/comment/users")
-	public String postCommentFromUser(@RequestBody String userComment) {
-		Comment comments = new Comment();
-		comments.setComment(userComment);
-		
-		commentRepo.save(comments);
-		return "Post Added";
-	}
-
-	/**
-	 * Post a restaurant comment in the database
-	 * @param restaurantComment
-	 */
-	@RequestMapping(method = RequestMethod.POST, path = "/post/comment/restaurant")
-	public void postCommentFromRestaurant(@RequestBody String restaurantComment) {
-		Comment comments = new Comment();
-		comments.setComment(restaurantComment);
-		
-		commentRepo.save(comments);
-
-		
-	}
 
 
 }
