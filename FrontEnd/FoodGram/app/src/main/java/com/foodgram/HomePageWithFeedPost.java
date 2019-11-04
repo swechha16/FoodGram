@@ -7,6 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+/**
+ * Shows the user some options to go to after logging in.
+ * @author Vtorres
+ */
 public class HomePageWithFeedPost extends AppCompatActivity {
     Button feed_move;
     Button make_post_move;
@@ -60,26 +64,46 @@ public class HomePageWithFeedPost extends AppCompatActivity {
 
     }
 
+    /**
+     * Opens up the filtered food feed page
+     * @param v
+     */
     public void feed_page(View v){
         Intent intent = new Intent(this, PersonalFeedPage.class);
         startActivity(intent);
     }
 
+    /**
+     * Opens up the choose to post photo or comment page
+     * @param v
+     */
     public void choose_post_page(View v){
         Intent intent = new Intent(this, ChoosePost.class);
         startActivity(intent);
     }
 
+    /**
+     * Opens up the search for food page
+     * @param v
+     */
     public void find_food_page(View v){
         Intent intent = new Intent(this, FilteredFoodFeed.class);
         startActivity(intent);
     }
 
+    /**
+     * Opens up the current logged in users profile page
+     * @param v
+     */
     public void profile_page(View v){
         Intent intent = new Intent(this, ProfilePage.class);
         startActivity(intent);
     }
 
+    /**
+     * Takes a user back to the home page.
+     * @param v
+     */
     public void home_page(View v){
         Intent intent = new Intent(this, HomePage.class);
         startActivity(intent);
