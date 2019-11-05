@@ -55,7 +55,7 @@ public class SocketPracticeClassClient {
                     try {
                         // Read what the server has sent
                         String data = input.readUTF();
-                        // Output the data onto the client's console
+                        // Output the d ata onto the client's console
                         System.out.println(data);
                     }
                     // If that doesn't work, catch the error

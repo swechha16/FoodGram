@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
@@ -20,7 +21,8 @@ public class User {
 	// @JsonBackedReference. Put @JsonManagedReference where you want the entity of the relation to be
 	// included in JSON, and @JsonBackedReference where you don't want the entity to be included.
 	@OneToMany(mappedBy = "user") // mappedBy required for bidirectional to indicate the other side
-	@JsonBackReference
+//	@JsonBackReference
+	@JsonIgnore
 	private List<Photo> photoPosts;
 	
 	@Column(name = "username", nullable = false)
