@@ -17,6 +17,7 @@ public class HomePageWithFeedPost extends AppCompatActivity {
     Button find_food_move;
     Button profile_page;
     Button  home_page;
+    Button Direct_Message_Page;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +27,15 @@ public class HomePageWithFeedPost extends AppCompatActivity {
        find_food_move = findViewById(R.id.clickToFindFood);
        profile_page = findViewById(R.id.userProfileButton);
         home_page = findViewById(R.id.home);
+        Direct_Message_Page = findViewById(R.id.MessagesButton);
 
+
+        Direct_Message_Page.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                direct_message_page(view);
+            }
+        });
         // should move to feed page
         feed_move.setOnClickListener( new View.OnClickListener(){
             public void onClick (View v){
@@ -61,6 +70,7 @@ public class HomePageWithFeedPost extends AppCompatActivity {
                 home_page(view);
             }
         });
+
 
     }
 
@@ -106,6 +116,11 @@ public class HomePageWithFeedPost extends AppCompatActivity {
      */
     public void home_page(View v){
         Intent intent = new Intent(this, HomePage.class);
+        startActivity(intent);
+    }
+
+    public void direct_message_page(View v){
+        Intent intent = new Intent(this, DirectMessage.class);
         startActivity(intent);
     }
 }
