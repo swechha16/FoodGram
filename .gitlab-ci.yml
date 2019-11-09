@@ -67,9 +67,6 @@ android-build:
   script:
     - cd FrontEnd/FoodGram
     - ./gradlew assemble 
-  artifacts:
-    paths:
-    - FrontEnd/FoodGram/app/build/outputs/
     
     
     # To run Android unit tests. 
