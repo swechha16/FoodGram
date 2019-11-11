@@ -1,4 +1,4 @@
-create database if not exists relationaltest;
+create database if not exists relationaltestphoto;
 use relationaltest;
 
 drop table if exists PHOTO;
