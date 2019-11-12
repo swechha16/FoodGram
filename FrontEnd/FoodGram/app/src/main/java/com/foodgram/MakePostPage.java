@@ -29,13 +29,27 @@ import org.json.JSONObject;
 import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
+/**
+ * This creates a string post (Will be used as a comment on a post later on). Successfully posts to server and data is seen on the database.
+ * @Alexi
+ * @Skarn
+ */
 public class MakePostPage extends AppCompatActivity {
-
+    /**
+     * Button which will sign a user out when pushed.
+     */
     private Button signOut;
-
+    /**
+     *
+     */
     private RequestQueue requestQueue;
-
+    /**
+     * The comment a user wants to post
+     */
     private EditText enter_post;
+    /**
+     * When this button is pushed the comment in enter_post will be posted to the database.
+     */
     private Button Post;
 
 
@@ -65,11 +79,17 @@ public class MakePostPage extends AppCompatActivity {
 
     }
 
+    /**
+     * Takes a user back to the welcome page
+     */
     public void welcome_page() {
         Intent intent = new Intent(this, HomePage.class);
         startActivity(intent);
     }
 
+    /**
+     * Post the comment by the user. Putting it correctly into the database for the user.
+     */
     private void makePost() {
 
         requestQueue = Volley.newRequestQueue(this);

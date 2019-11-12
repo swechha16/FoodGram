@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+/**
+ * Verifies the account of a user trying to login with their username and password. Then takes the user to the Feed Page or tells them their login info does not match.
+ */
 public class Login extends AppCompatActivity {
 
     private Button FeedHomePage;
