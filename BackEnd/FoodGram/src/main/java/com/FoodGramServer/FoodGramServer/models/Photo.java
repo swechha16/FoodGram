@@ -1,12 +1,14 @@
 package com.FoodGramServer.FoodGramServer.models;
 
 import java.io.Serializable;
+import java.sql.Blob;
 import java.time.LocalDateTime;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -32,7 +34,7 @@ public class Photo implements Serializable {
 	 * Instance variable for the user that posted the photo
 	 */
 	@ManyToOne
-	//@JsonManagedReference //Who added this I am unsure on what it does? --AC
+	//@JsonManagedReference
 	@JoinColumn(name="user_id") // specifies to use a column in Photo table to reference user, instead of the default behavior to create a join table
 	private User user; //link up with the user table
 	

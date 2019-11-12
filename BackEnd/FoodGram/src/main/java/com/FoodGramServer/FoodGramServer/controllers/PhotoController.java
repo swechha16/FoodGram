@@ -1,15 +1,22 @@
 package com.FoodGramServer.FoodGramServer.controllers;
 
-
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.FoodGramServer.FoodGramServer.models.Comment;
 import com.FoodGramServer.FoodGramServer.models.Photo;
@@ -34,11 +41,11 @@ public class PhotoController {
 	 * @return all photos
 	 */
 	@RequestMapping(method = RequestMethod.GET, path = "/photo/all")
-	public Photo[] getPhotos() {
-		Photo[] photos = photoRepo.getAll();
+	public List<Photo> getPhotos() {
+		List<Photo> photos = photoRepo.getAll();
 		return photos;
 	}
-	
+
 	/**
 	 * This method will return a list of our "comments" within photos
 	 * that is based on the food type within our database
@@ -47,8 +54,8 @@ public class PhotoController {
 	 * @return photos with matching price and food
 	 */
 	@RequestMapping(method = RequestMethod.GET, path = "/photo/{foodCategory}/{priceCategory}")
-	public Photo[] getPostByFoodTagAndPrice(@PathVariable String foodCategory, @PathVariable String priceCategory) {
-		Photo[] photos = photoRepo.getByFoodTagAndPriceTag(foodCategory, priceCategory); 
+	public List<Photo> getPostByFoodTagAndPrice(@PathVariable String foodCategory, @PathVariable String priceCategory) {
+		List<Photo> photos = photoRepo.getByFoodTagAndPriceTag(foodCategory, priceCategory);
 		return photos;
 	}	
 	
@@ -58,8 +65,8 @@ public class PhotoController {
 	 * @return photos from a restaurant
 	 */
 	@RequestMapping(method = RequestMethod.GET, path = "/photo/{restaurant}")
-	public Photo[] findByRestaurant(@PathVariable String restaurant) {
-		Photo[] photos = photoRepo.getByRestaurant(restaurant);
+	public List<Photo> findByRestaurant(@PathVariable String restaurant) {
+		List<Photo> photos = photoRepo.getByRestaurant(restaurant);
 		return photos;
 	}
 	
@@ -73,7 +80,25 @@ public class PhotoController {
 		photoRepo.save(userPhoto);
 
 	}
-	
-	
-	
+
+	/**
+	 * Posting the image from the user into the image folder on the server
+	 * @param file
+	 * @return file path
+	 */
+	@RequestMapping(method = RequestMethod.POST, path = "/post/image")
+	public Path fileUpload(@RequestParam("file") MultipartFile file) {
+		Path path = null;
+		try {
+			byte[] bytes = file.getBytes();
+	        //path = Paths.get("/var/www/html/images/" + file.getOriginalFilename());
+			path = Paths.get("C:/Users/alexi/Desktop/COMS309/img/" + file.getOriginalFilename());
+			Files.write(path, bytes);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		return path;
+	}
 }
