@@ -18,7 +18,7 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        FeedHomePage = (Button) findViewById(R.id.tryLoginButton);
+        FeedHomePage = findViewById(R.id.tryLoginButton);
         FeedHomePage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
