@@ -12,9 +12,14 @@ import javax.websocket.Session;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 
+import com.FoodGramServer.FoodGramServer.models.Photo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
 /**
  * 
  * @author Vamsi Krishna Calpakkam
@@ -29,20 +34,23 @@ public class WebSocketServer {
     private static Map<String, Session> usernameSessionMap = new HashMap<>();
     
     private final Logger logger = LoggerFactory.getLogger(WebSocketServer.class);
-    
+
+
     @OnOpen
     public void onOpen(
     	      Session session, 
     	      @PathParam("username") String username) throws IOException 
     {
         logger.info("Entered into Open");
-        
+
+
         sessionUsernameMap.put(session, username);
         usernameSessionMap.put(username, session);
         
         String message="User:" + username + " has Joined the Chat";
         	broadcast(message);
-		
+
+
     }
  
     @OnMessage
@@ -93,7 +101,11 @@ public class WebSocketServer {
             e.printStackTrace();
         }
     }
-    
+
+
+
+
+
     private static void broadcast(String message) 
     	      throws IOException 
     {	  
@@ -107,6 +119,9 @@ public class WebSocketServer {
 	        }
 	    });
 	}
+
+
+
 }
 
 
