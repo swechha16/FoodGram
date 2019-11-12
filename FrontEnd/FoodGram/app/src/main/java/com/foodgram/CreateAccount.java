@@ -6,13 +6,19 @@ import android.widget.Button;
 import android.content.Intent;
 import android.view.View;
 
-
+/**
+ * Creates a new user account
+ * @author vtorres
+ */
 public class CreateAccount extends AppCompatActivity {
 
 
     Button createAccount_submit;
 
-
+    /**
+     * This sets up the page and creates the button functionality.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,8 +32,11 @@ public class CreateAccount extends AppCompatActivity {
         });
     }
 
-
-public void onButtonClick(View v){
+    /**
+     * Takes the user to a new page (HomePageWithFeedPost) and starts the activity.
+     * @param v
+     */
+    public void onButtonClick(View v){
 Intent myIntent = new Intent(this,  HomePageWithFeedPost.class);
     startActivity(myIntent);
 

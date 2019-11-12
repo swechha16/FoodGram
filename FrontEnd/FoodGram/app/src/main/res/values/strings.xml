@@ -26,6 +26,7 @@
     <string name="make_post">Make Post</string>
     <string name="sign_out">Sign Out</string>
     <string name="type_here">Type Here</string>
+    <string name="title_activity_chat">Chat</string>
 
 
 </resources>

@@ -98,6 +98,15 @@
 			<version>1.2.2</version>
 		</dependency>
 
+<dependency> 
+<groupId>
+org.springframework.boot
+</groupId>
+ <artifactId>
+ spring-boot-starter-websocket
+ </artifactId>
+</dependency>
+
 	</dependencies>
 
 	<build>
@@ -106,9 +115,17 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+			</plugin>
 		</plugins>
 	</build>
+
 
 
 
