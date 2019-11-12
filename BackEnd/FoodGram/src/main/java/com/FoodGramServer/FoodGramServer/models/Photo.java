@@ -29,13 +29,13 @@ public class Photo implements Serializable {
 	
 	
 	@ManyToOne
-	//@JsonManagedReference //Who added this I am unsure on what it does? --AC
+	//@JsonManagedReference
 	@JoinColumn(name="user_id") // specifies to use a column in Photo table to reference user, instead of the default behavior to create a join table
 	private User user; //link up with the user table
 	
 	@Column(name = "pic")
 	@NotNull
-	private Blob pic;
+	private String pic;
 	
 	@Column(name = "caption")
 	@NotNull
@@ -61,9 +61,9 @@ public class Photo implements Serializable {
 	
 	public void setPicId(long pic_id) { this.pic_id = pic_id; }
 	
-	public Blob getPic() { return pic; }
+	public String getPic() { return pic; }
 	
-	public void setPic(Blob pic) { this.pic = pic; }
+	public void setPic(String pic) { this.pic = pic; }
 	
 	public String getCaption() { return caption; }
 	
