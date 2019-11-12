@@ -32,7 +32,7 @@ maven-test:
     - mvn test 
   artifacts:
     paths:
-     - BackEnd/FoodGram/target/FoodGram/target/FoodGram-0.0.1-SNAPSHOT.jar
+     - BackEnd/FoodGram/target/FoodGram/target/*.jar
 
 
 # Below stage builds, deploys and executes the jar as service.
