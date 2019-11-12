@@ -81,6 +81,11 @@ public class PhotoController {
 
 	}
 
+	/**
+	 * Posting the image from the user into the image folder on the server
+	 * @param file
+	 * @return file path
+	 */
 	@RequestMapping(method = RequestMethod.POST, path = "/post/image")
 	public Path fileUpload(@RequestParam("file") MultipartFile file) {
 		Path path = null;
