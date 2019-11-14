@@ -28,12 +28,22 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+/**
+ * Pulls the users feed (similar to the Instagram feed page) from recent posts from the users they follow. Will also sign a user out when the sign out button is clicked.
+ */
 public class PersonalFeedPage extends AppCompatActivity {
 //    String JSON_String;
-
+    /**
+     * Where follower posts will be displayed
+     */
     private TextView mTextViewResult;
+    /**
+     *
+     */
     private RequestQueue mQueue;
-
+    /**
+     * When this button is pressed the user will be signed out.
+     */
     private Button signOut;
 
 
@@ -66,15 +76,18 @@ public class PersonalFeedPage extends AppCompatActivity {
 
     }
 
-
+    /**
+     * Takes the user to the welcome page (signs them off)
+     */
     public void welcome_page(){
         Intent intent = new Intent(this, HomePage.class);
         startActivity(intent);
     }
 
 
-
-
+    /**
+     * Gets the posts from the backend and adds it to the textview for a user to see on screen.
+     */
     public void getFeed() {
 
           //  String url = "http://10.26.0.96:8080/comment/all";

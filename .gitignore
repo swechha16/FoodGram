@@ -159,5 +159,6 @@ fabric.properties
 ### AndroidStudio Patch ###
 
 !/gradle/wrapper/gradle-wrapper.jar
+!/app/libs/java_websocket.jar
 
 # End of https://www.gitignore.io/api/java,maven,gradle,androidstudio
