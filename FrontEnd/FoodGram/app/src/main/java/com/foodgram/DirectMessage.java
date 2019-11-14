@@ -11,11 +11,6 @@ import android.widget.TextView;
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.drafts.Draft_6455;
 import org.java_websocket.handshake.ServerHandshake;
-
-import org.java_websocket.client.WebSocketClient;
-import org.java_websocket.drafts.Draft_6455;
-import org.java_websocket.handshake.ServerHandshake;
-
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -57,7 +52,7 @@ public class DirectMessage extends AppCompatActivity {
                      * computer, and change the ip address to that of your computer.
                      * If running on the emulator, you can use localhost.
                      */
-                    String w = "ws://10.26.13.93:8080/websocket/" + e1.getText().toString();
+                    String w = "ws://10.65.23.83:8080/websocket/" + e1.getText().toString();
 
                     try {
                         Log.d("Socket:", "Trying socket");

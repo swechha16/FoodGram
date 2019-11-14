@@ -1,5 +1,7 @@
 package com.FoodGramServer.FoodGramServer.repo;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -20,7 +22,7 @@ public interface PhotoRepo extends JpaRepository<Photo, Long>{
 	 * @return array of photos
 	 */
     @Query(value = "SELECT * FROM photo", nativeQuery = true)
-	public Photo[] getAll();
+	public List<Photo> getAll();
 
     /**
      * gets all the photos that match the given foodtags and costags
@@ -29,7 +31,7 @@ public interface PhotoRepo extends JpaRepository<Photo, Long>{
      * @return array of photos
      */
     @Query(value = "SELECT * FROM photo Where food_tag = ?1 AND cost_tag = ?2", nativeQuery = true)
-   	public Photo[] getByFoodTagAndPriceTag(String foodTag, String priceTag);
+   	public List<Photo> getByFoodTagAndPriceTag(String foodTag, String priceTag);
     
     /**
      * returns all the photos with a specific restaurant time
@@ -37,7 +39,7 @@ public interface PhotoRepo extends JpaRepository<Photo, Long>{
      * @return array of photos
      */
     @Query(value = "SELECT * FROM photo WHERE restaurant = ?1", nativeQuery = true)
-    public Photo[] getByRestaurant(String restaurant);
+    public List<Photo> getByRestaurant(String restaurant);
     
     /**
      * gets all the photos that are in a certain price range
@@ -45,7 +47,7 @@ public interface PhotoRepo extends JpaRepository<Photo, Long>{
      * @return array of photos
      */
     @Query(value = "SELECT * FROM photo WHERE cost_tag = ?1", nativeQuery = true)
-	public Photo[] getByPriceTag(String priceTag);
+	public List<Photo> getByPriceTag(String priceTag);
 
 
 
