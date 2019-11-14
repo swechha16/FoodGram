@@ -56,7 +56,7 @@ autoDeploy:
 # Ensure the tag matches with the tag created for Android runner
 # Android runner should have docker as executor.
 #Professor Mitra suggested adding back artifacts: paths: blah blah
-    android-build:
+android-build:
   image: javiersantos/android-ci:latest 
   stage: androidbuild
   before_script:
@@ -64,7 +64,6 @@ autoDeploy:
     - chmod +x ./FrontEnd/FoodGram/gradlew
   tags:
     - android_tag
-
   script:
     - cd FrontEnd/FoodGram
     - ./gradlew assemble 
