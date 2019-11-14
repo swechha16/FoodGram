@@ -31,7 +31,7 @@ public class AlexisTests {
 		photo1.setCaption("");
 		photo1.setCostTag("$");
 		photo1.setFoodTag("Mexican");
-		photo1.setPic("");
+		//photo1.setPic("");
 		photo1.setRestaurant("El Azteca");
 //		photo1.setUserId(user1);
 		
