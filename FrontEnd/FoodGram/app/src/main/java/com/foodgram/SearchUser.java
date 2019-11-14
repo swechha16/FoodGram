@@ -3,9 +3,6 @@ package com.foodgram;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-/**
- * Searches for a user
- */
 public class SearchUser extends AppCompatActivity {
 
     @Override

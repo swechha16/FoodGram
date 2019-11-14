@@ -6,11 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-/**
- * This class corresponds to the choose post activity, which allows a user to choose between posting with a photo or without.
- * @author Vtorres
- */
-
 public class ChoosePost extends AppCompatActivity {
 
     private Button stringPost, photoPost, signOut;
@@ -47,27 +42,16 @@ public class ChoosePost extends AppCompatActivity {
         });
     }
 
-    /**
-     * This method starts the activity for welcome page
-     */
     public void welcome_page() {
         Intent intent = new Intent(this, HomePage.class);
         startActivity(intent);
     }
 
-    /**
-     * Opens the make post page for the user.
-     * @param v
-     */
     public void make_post_page(View v){
         Intent intent = new Intent(this, MakePostPage.class);
         startActivity(intent);
     }
 
-    /**
-     * Opens the post photo page for the user.
-     * @param v
-     */
     public void photo_post_page(View v){
         Intent intent = new Intent(this, PostPhotoPage.class);
         startActivity(intent);

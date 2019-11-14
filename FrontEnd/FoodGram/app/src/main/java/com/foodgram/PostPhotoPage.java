@@ -1,9 +1,6 @@
 package com.foodgram;
 
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,14 +29,8 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
 import java.io.UnsupportedEncodingException;
 
-/**
- * Posts a photo
- * @Alexi
- * @SKarn
- */
 public class PostPhotoPage extends AppCompatActivity {
 
     ImageView postImage;
@@ -70,8 +61,6 @@ public class PostPhotoPage extends AppCompatActivity {
         txt_costTag = (EditText) findViewById(R.id.post_costTag);
         txt_restaurant = (EditText) findViewById(R.id.post_restaurant);
 
-        postImage = (ImageView)findViewById(R.id.post_img);
-
         add_post = (Button) findViewById(R.id.btn_post);
         add_post.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,37 +69,22 @@ public class PostPhotoPage extends AppCompatActivity {
             }
         });
 
-        postImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                selectImgUpload();
-            }
-        });
-
-
         mTextViewResult = findViewById(R.id.errorView);
 
     }
 
-    /**
-     * Takes a user to the welcome page
-     */
     public void welcome_page() {
         Intent intent = new Intent(this, HomePage.class);
         startActivity(intent);
     }
 
-    /**
-     * Grabs the posts from a user and then sends it to the backend to be posted to
-     * the database.
-     */
     private void sendContents() {
 
         requestQueue = Volley.newRequestQueue(this);
         //String url = "http://10.65.23.83:8080/post/comment/users";
         //String url = "http://10.31.4.129:8080/post/photo";
-        String url = "http://10.9.213.42:8080/post/photo";
-        // String url = "http://coms-309-mg-1.cs.iastate.edu:8080/photo/post";
+        String url = "http://10.31.4.74:8080/post/photo";
+       // String url = "http://coms-309-mg-1.cs.iastate.edu:8080/photo/post";
         //String url = "http://10.31.31.154:8080/post/comment";
         //"http://10.31.24.107:8080/comment/all";
 
@@ -133,9 +107,6 @@ public class PostPhotoPage extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        /**
-         * Receives response from controller and displays response on Logcat
-         */
         JsonObjectRequest objectRequest = new JsonObjectRequest(Request.Method.POST, url, obj, new Response.Listener<JSONObject>() {
 
             @Override
@@ -159,7 +130,7 @@ public class PostPhotoPage extends AppCompatActivity {
                 }else if(error instanceof NetworkError){
                     mTextViewResult.setText("network error");
                 }else if(error instanceof ParseError){
-                    mTextViewResult.setText("Parse Error");
+                 mTextViewResult.setText("Parse Error");
                 }
 
             }
@@ -186,31 +157,6 @@ public class PostPhotoPage extends AppCompatActivity {
 
         requestQueue.add(objectRequest);
 
-    }
-
-    private void selectImgUpload(){
-        final CharSequence[] options = {"Take Photo","Choose from Gallery","Cancel"};
-        android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(PostPhotoPage.this);
-        builder.setTitle("Choose an Option");
-        builder.setItems(options, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int items) {
-                if(options[items].equals("Take Photo")){
-                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    File f = new File(android.os.Environment.getExternalStorageDirectory(), "photo.jpg");
-                    intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
-                    startActivityForResult(intent, 1);
-                }
-                else if (options[items].equals("Choose From Gallery")){
-                    Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                    startActivityForResult(intent, 2);
-                }
-                else if (options[items].equals("Cancel")){
-                    dialogInterface.dismiss();
-                }
-            }
-        });
-        builder.show();
     }
 
 }
