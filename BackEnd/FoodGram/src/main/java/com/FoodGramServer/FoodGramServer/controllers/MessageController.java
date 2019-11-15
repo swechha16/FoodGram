@@ -22,9 +22,9 @@ public class MessageController {
 
 
     }
-    @RequestMapping(method = RequestMethod.GET, path = "/websocket/get/{message}/{user1}/{user2}")
-    public Message[] getWebSocketChat(@PathVariable Message message, @PathVariable User user1,  @PathVariable User user2) {
-        Message[] mess = messageRepo.getTwoUsersFromMessage(user1, user2);
+    @RequestMapping(method = RequestMethod.GET, path = "/websocket/get/{message}")
+    public Message[] getWebSocketChat(@PathVariable Message message) {
+        Message[] mess = messageRepo.getAll();
         return mess;
     }
 

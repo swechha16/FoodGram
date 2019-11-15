@@ -19,9 +19,7 @@ public interface MessageRepo extends JpaRepository<Message, Long> {
     
     
 
-    @Query(value = "SELECT message FROM message  Where user1 = ?1 AND user2 = ?2", nativeQuery = true)
-    public Message queryByUsers(User user1, User user2);
-
+ 
     
   
     // insert username1  and 2, messages and timestamp
