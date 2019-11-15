@@ -34,6 +34,10 @@ public class User {
 	@JsonBackReference
 	private List<Photo> photoPosts;
 	
+	@OneToMany(mappedBy = "user")
+	@JsonBackReference
+	private List<Message> messages;
+	
 	/**
 	 * Username to identify the users
 	 */
