@@ -22,7 +22,6 @@ public class Comment{
 	private String timestamp;
 	
 	@ManyToOne
-	//@JsonManagedReference //Who added this I am unsure on what it does? --AC
 	@JoinColumn(name="user_id") // specifies to use a column in Photo table to reference user, instead of the default behavior to create a join table
 	private User user;
 	

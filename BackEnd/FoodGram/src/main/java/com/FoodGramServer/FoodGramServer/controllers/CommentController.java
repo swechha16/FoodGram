@@ -32,18 +32,29 @@ public class CommentController {
 	@Autowired
 	CommentRepo commentRepo;
 
+	/**
+	 * Gets ALL comments stored in the database
+	 * @return comment list
+	 */
 	@RequestMapping(method = RequestMethod.GET, path = "/comment/all")
 	public List<Comment> getComments() { 
 		return commentRepo.getAll();
 	}
 	
+	/**
+	 * returns all the comments based on the picture id
+	 * @param picId
+	 * @return
+	 */
 	@RequestMapping(method = RequestMethod.GET, path = "/comment/{picId}")
 	public List<Comment> getPicComments(@PathVariable String picId){
 			return commentRepo.getPicComment(picId);
 	}
 
-	/*
-	 * Posting a comment on a users photo
+
+	/**
+	 * Posts a comment on a certain photo
+	 * @param comment
 	 */
 	@RequestMapping(method = RequestMethod.POST, path = "/post/comment")
 	public void postCommentFromRestaurant(@RequestBody Comment comment) {

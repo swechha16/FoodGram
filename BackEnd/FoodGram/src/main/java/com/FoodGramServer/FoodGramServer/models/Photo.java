@@ -40,11 +40,11 @@ public class Photo implements Serializable {
 	private String caption;
 	
 	@Column(name = "food_tag")
-	//@NotNull
+	@NotNull
 	private String food_tag;
 	
 	@Column(name = "cost_tag")
-	//@NotNull
+	@NotNull
 	private String cost_tag;
 	
 	@Column(name = "restaurant")

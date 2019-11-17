@@ -25,6 +25,10 @@ public class User {
 	@JsonIgnore
 	private List<Photo> photoPosts;
 	
+	@ManyToMany(mappedBy = "user")
+	@JsonIgnore
+	private List<Following> userFollowing;
+
 	@Column(name = "username", nullable = false)
 	private String username;
 	
@@ -111,4 +115,11 @@ public class User {
 		this.photoPosts = photoPosts;
 	}
 
+	public List<Following> getFollowing() {
+		return userFollowing;
+	}
+
+	public void setFollowing(List<Following> following) {
+		this.userFollowing = following;
+	}
 }
