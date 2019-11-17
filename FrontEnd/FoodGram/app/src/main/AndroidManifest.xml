@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DirectMessage"></activity>
+        <activity android:name=".RestaurantPage"></activity>
+        <activity android:name=".DirectMessage" />
         <activity android:name=".ChoosePost" />
         <activity android:name=".PostPhotoPage" />
         <activity android:name=".SearchUser" />

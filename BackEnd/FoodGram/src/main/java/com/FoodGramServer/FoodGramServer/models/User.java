@@ -260,4 +260,20 @@ public class User {
 		this.photoPosts = photoPosts;
 	}
 
+	public List<Message> getMessageSender() {
+		return messageSender;
+	}
+
+	public void setMessageSender(List<Message> messageSender) {
+		this.messageSender = messageSender;
+	}
+
+	public List<Message> getMessageReciever() {
+		return messageReciever;
+	}
+
+	public void setMessageReciever(List<Message> messageReciever) {
+		this.messageReciever = messageReciever;
+	}
+
 }

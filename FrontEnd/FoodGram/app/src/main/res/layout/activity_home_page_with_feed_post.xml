@@ -94,4 +94,20 @@
         android:layout_marginBottom="340dp"
         android:text="Messages" />
 
+    <Button
+        android:id="@+id/getRestaurantPage"
+        android:layout_width="274dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="false"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="155dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginRight="49dp"
+        android:layout_marginBottom="340dp"
+        android:text="Restaurant Page" />
+
 </RelativeLayout>
