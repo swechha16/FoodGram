@@ -4,6 +4,9 @@ import com.FoodGramServer.FoodGramServer.models.Message;
 import com.FoodGramServer.FoodGramServer.models.Photo;
 import com.FoodGramServer.FoodGramServer.models.User;
 import com.FoodGramServer.FoodGramServer.repo.MessageRepo;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,9 +25,9 @@ public class MessageController {
 
 
     }
-    @RequestMapping(method = RequestMethod.GET, path = "/websocket/get/{message}")
-    public Message[] getWebSocketChat(@PathVariable Message message) {
-        Message[] mess = messageRepo.getAll();
+    @RequestMapping(method = RequestMethod.GET, path = "/websocket/get")
+    public List<Message> getWebSocketChat() {
+        List<Message> mess = messageRepo.getAll();
         return mess;
     }
 
