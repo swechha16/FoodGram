@@ -37,10 +37,7 @@ public class User {
 	@OneToMany(mappedBy = "user") // mappedBy required for bidirectional to indicate the other side
 	@JsonBackReference
 	private List<Photo> photoPosts;
-	
-	@OneToMany(mappedBy = "user")
-	@JsonBackReference
-	private List<Message> messages;
+
 	
 	
 	@OneToMany(mappedBy = "sender")
