@@ -24,9 +24,21 @@ public class Following {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long following_id;
 
-	@ManyToMany
+	@ManyToOne
+	@JoinColumn(name = "user_id", insertable=false, updatable=false)
+	private User following;
+	
+	@ManyToOne
 	@JoinColumn(name = "user_id")
-	private User user;
+	private User follower;
+
+	public User getFollower() {
+		return follower;
+	}
+
+	public void setFollower(User follower) {
+		this.follower = follower;
+	}
 
 	@Column(name = "timestamp")
 	@CreationTimestamp
@@ -41,11 +53,11 @@ public class Following {
 	}
 
 	public User getUser() {
-		return user;
+		return following;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUser(User following) {
+		this.following = following;
 	}
 
 
