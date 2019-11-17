@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
@@ -40,6 +41,16 @@ public class User {
 	@OneToMany(mappedBy = "user")
 	@JsonBackReference
 	private List<Message> messages;
+	
+	
+	@OneToMany(mappedBy = "sender")
+	@JsonIgnore
+	private List<Message> messageSender;
+	
+	@OneToMany(mappedBy = "reciever")
+	@JsonIgnore
+	private List<Message> messageReciever;
+
 	
 	/**
 	 * Username to identify the users
