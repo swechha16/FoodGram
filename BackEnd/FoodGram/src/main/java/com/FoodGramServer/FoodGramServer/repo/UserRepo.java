@@ -40,5 +40,11 @@ public interface UserRepo extends JpaRepository<User, Long> {
 
     
     
+    @Query(value = "Select caption From user where restaurant = ?1", nativeQuery = true)
+	public User[] getCaptionByRestaurant(String restaurant);
+
    
+    
+    
+    
 }

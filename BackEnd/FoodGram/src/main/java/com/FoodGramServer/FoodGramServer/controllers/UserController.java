@@ -52,6 +52,10 @@ public class UserController {
 		return user;
 	}
 	
+	
+	
+	
+	
 	/**
 	 * Adds a user into database
 	 * @param newUser
@@ -61,5 +65,21 @@ public class UserController {
 		userRepo.save(newUser);
 
 	}	
+	
+	/**
+	 * gets the restaurant user based off of restaurant 
+	 * @param username
+	 * @return user array
+	 */
+	@RequestMapping(method = RequestMethod.GET, path = "/user/{restaurant}")
+	public User[] getCaptionByRestaurant(@PathVariable String restaurant) {
+
+		User[] user = userRepo.getByUsername(restaurant);
+		return user;
+	}
+	
+	
+	
+	
 
 }
