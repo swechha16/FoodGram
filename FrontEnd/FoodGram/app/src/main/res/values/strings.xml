@@ -27,6 +27,10 @@
     <string name="sign_out">Sign Out</string>
     <string name="type_here">Type Here</string>
     <string name="title_activity_chat">Chat</string>
+    <string name="title_activity_other__users__profile">Other_Users_Profile</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 
 
 </resources>

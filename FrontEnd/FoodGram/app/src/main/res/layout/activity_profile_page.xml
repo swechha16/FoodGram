@@ -31,10 +31,10 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.402"
-        app:layout_constraintStart_toEndOf="@+id/profilePic"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.018" />
+        app:layout_constraintVertical_bias="0.223" />
 
     <TextView
         android:id="@+id/userPostsTextView"
@@ -47,7 +47,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userBioTextView"
-        app:layout_constraintVertical_bias="0.275" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/refreshButton"
@@ -60,4 +60,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.938" />
+
+    <TextView
+        android:id="@+id/Followers_TextView"
+        android:layout_width="82dp"
+        android:layout_height="54dp"
+        android:text="Followers"
+        app:layout_constraintBottom_toTopOf="@+id/userBioTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.153"
+        app:layout_constraintStart_toEndOf="@+id/profilePic"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/Following_TextView"
+        android:layout_width="82dp"
+        android:layout_height="54dp"
+        android:text="Following"
+        app:layout_constraintBottom_toTopOf="@+id/userBioTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.809"
+        app:layout_constraintStart_toEndOf="@+id/profilePic"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.495" />
 </android.support.constraint.ConstraintLayout>

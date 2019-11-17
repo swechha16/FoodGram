@@ -4,8 +4,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -39,6 +37,10 @@ public class ProfilePage extends AppCompatActivity {
     String userName;
 
 
+
+
+
+
     /**
      * Creates the Volley and Buttons for refreshing the profile page
      * @param savedInstanceState
@@ -54,6 +56,7 @@ public class ProfilePage extends AppCompatActivity {
      mTextViewResult = findViewById(R.id.userPostsTextView);
 
      Button refresh = findViewById(R.id.refreshButton);
+
 
      refresh.setOnClickListener(new View.OnClickListener() {
          @Override
@@ -81,19 +84,16 @@ public class ProfilePage extends AppCompatActivity {
                     mTextViewResult.setText("");
                 try {
 
-                    // JSONArray jsonArray =
                     if(response.length() != 0) {
 
                         for (int i = 0; i < response.length(); i++) {
                             JSONObject post = response.getJSONObject(i);
 
-                          //  mTextViewResult.append(post.getJSONObject("userId").getString("username"));
-                            //mTextViewResult.append("\nUserName assigned: " + userName + "\n");
+
 
                             if(post.getJSONObject("userId").getString("username").equals(userName)) {
 
-                                //mTextViewResult.append("They are equal\n");
-                                // long id = comment.getInt("id");
+
                                 String caption = post.getString("caption");
                                 String restaurantName = post.getString("restaurant");
                                 String foodTag = post.getString("foodTag");
@@ -137,13 +137,11 @@ public class ProfilePage extends AppCompatActivity {
 
                 try {
 
-                    // JSONArray jsonArray =
                     if(response.length() != 0) {
 
                         for (int i = 0; i < response.length(); i++) {
                             JSONObject userBio = response.getJSONObject(i);
 
-                            // long id = comment.getInt("id");
                             String bio = userBio.getString("bio");
                             userName = userBio.getString("username");
 
