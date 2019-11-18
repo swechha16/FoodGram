@@ -25,13 +25,15 @@ public class Message implements Serializable {
     private long id_message;
 
 
-    
+    //user id 1 = sender
     @ManyToOne
-	@JoinColumn(name = "user_id", insertable=false, updatable=false)
+	@JoinColumn(name = "sender_id", insertable=false, updatable=false)
 	private User sender;
 	
+    
+    //user_id2
 	@ManyToOne
-	@JoinColumn(name = "user_id")
+	@JoinColumn(name = "reciever_id")
 	private User reciever;
 
 	
