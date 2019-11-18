@@ -21,27 +21,25 @@ public class User {
 	// @JsonBackedReference. Put @JsonManagedReference where you want the entity of the relation to be
 	// included in JSON, and @JsonBackedReference where you don't want the entity to be included.
 	@OneToMany(mappedBy = "user") // mappedBy required for bidirectional to indicate the other side
-	//@JsonBackReference
 	@JsonIgnore
 	private List<Photo> photoPosts;
 	
-	@OneToMany(mappedBy = "follow")
+	@OneToMany(mappedBy = "following")
+	@JsonIgnore
 	private List<Following> userFollowing;
 	
-//	@OneToMany(mappedBy = "following")
-//	private List<Following> userFollowing;
-//	
-//	@OneToMany(mappedBy = "follower")
-//	private List<Following> userFollower;  
-//	
-//
-//	public List<Following> getUserFollower() {
-//		return userFollower;
-//	}
-//
-//	public void setUserFollower(List<Following> userFollower) {
-//		this.userFollower = userFollower;
-//	}
+	@OneToMany(mappedBy = "follower")
+	@JsonIgnore
+	private List<Following> userFollower;  
+	
+
+	public List<Following> getUserFollower() {
+		return userFollower;
+	}
+
+	public void setUserFollower(List<Following> userFollower) {
+		this.userFollower = userFollower;
+	}
 
 	@Column(name = "username", nullable = false)
 	private String username;

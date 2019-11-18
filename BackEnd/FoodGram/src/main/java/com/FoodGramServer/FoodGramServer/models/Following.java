@@ -35,7 +35,7 @@ public class Following {
 	private User following;
 	
 	@ManyToOne
-	@JoinColumn(name = "user_id", updatable=false, insertable=false)
+	@JoinColumn(name = "user_id")
 	private User follower;
 	
 
