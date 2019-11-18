@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Other_Users_Profile">
 
-    <Button
+    <TextView
         android:id="@+id/Other_Following_Btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -79,7 +79,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.938" />
 
-    <Button
+    <TextView
         android:id="@+id/OtherUser_Followers_Btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -1,4 +1,4 @@
-package com.foodgram.Direct_Messaging;
+package com.foodgram;
 
 import com.foodgram.User;
 

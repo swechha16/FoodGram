@@ -9,18 +9,18 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
-import com.foodgram.Direct_Messaging.Chat;
-import com.foodgram.Direct_Messaging.RecyclerViewMessageAdapter;
-
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.drafts.Draft_6455;
 import org.java_websocket.handshake.ServerHandshake;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.List;
 
 
 import org.java_websocket.drafts.Draft;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 
 /**
@@ -38,6 +38,7 @@ public class DirectMessage extends AppCompatActivity {
         private WebSocketClient cc;
 
         RecyclerView messageView;
+    RecyclerViewMessageAdapter messageListAdapter ;
 
 
         List<Chat> mChat;
@@ -45,18 +46,23 @@ public class DirectMessage extends AppCompatActivity {
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
+
             setContentView(R.layout.activity_direct_message);
+
+
             connect = findViewById(R.id.username_input_btn);
             sendMessageButton = findViewById(R.id.send_button);
             usernameInput = findViewById(R.id.username);
             messageInput = findViewById(R.id.textSend);
 
+            mChat = new ArrayList<Chat>();
+
             //Recycler view stuff
             messageView = (RecyclerView) findViewById(R.id.message_view);
-            RecyclerViewMessageAdapter messageListAdapter = new RecyclerViewMessageAdapter(this, mChat);
-
+            messageListAdapter = new RecyclerViewMessageAdapter(this, mChat);
+            messageView.setAdapter(messageListAdapter);
             messageView.setHasFixedSize(true);
-            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
             messageView.setLayoutManager(linearLayoutManager);
 
             connect.setOnClickListener(new View.OnClickListener() {
@@ -69,7 +75,7 @@ public class DirectMessage extends AppCompatActivity {
                      * computer, and change the ip address to that of your computer.
                      * If running on the emulator, you can use localhost.
                      */
-                    String w = "ws://10.26.13.192:8080/websocket/" + usernameInput.getText().toString();
+                    String w = "ws://10.26.46.194:8080/websocket/" + usernameInput.getText().toString();
 
                     try {
                         Log.d("Socket:", "Trying socket");
@@ -78,8 +84,10 @@ public class DirectMessage extends AppCompatActivity {
                             public void onMessage(String message) {
                                 Log.d("", "run() returned: " + message);
 //                                String s = t1.getText().toString();
-                                mChat.add(new Chat (2,1, "Hello"));
-//                                t1.setText(s + " Server:" + message);
+//                                mChat.add(new Chat (2,1, message));
+                                messageListAdapter.add(new Chat (2,1,message));
+                                //messageListAdapter.notifyDataSetChanged();
+                                //t1.setText(s + " Server:" + message);
                             }
 
                             @Override
@@ -98,7 +106,7 @@ public class DirectMessage extends AppCompatActivity {
                             }
                         };
                     } catch (URISyntaxException e) {
-                        Log.d("Exception:", e.getMessage().toString());
+                        Log.d("Exception:", e.getMessage());
                         e.printStackTrace();
                     }
                     cc.connect();
@@ -111,15 +119,18 @@ public class DirectMessage extends AppCompatActivity {
                 public void onClick(View v) {
                     try {
                         cc.send(messageInput.getText().toString());
-                        mChat.add(new Chat(1,2,messageInput.getText().toString()));
+//                        mChat.add(new Chat(1,2,messageInput.getText().toString()));
+
                     } catch (Exception e) {
-                        Log.d("ExceptionSendMessage:", e.getMessage().toString());
+                        Log.d("ExceptionSendMessage:", e.getMessage());
                     }
                 }
             });
         }
 
-
+        public void updateAdapter(List<Chat> c){
+            messageListAdapter = new RecyclerViewMessageAdapter(this, mChat);
+        }
 
     }
 

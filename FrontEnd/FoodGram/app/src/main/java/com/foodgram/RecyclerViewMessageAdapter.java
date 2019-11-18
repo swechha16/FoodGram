@@ -1,12 +1,14 @@
-package com.foodgram.Direct_Messaging;
+package com.foodgram;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.foodgram.Chat;
 import com.foodgram.R;
 
 import java.util.List;
@@ -27,7 +29,10 @@ public class RecyclerViewMessageAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return mMessageList.size();
+
+            return mMessageList.size();
+
+
     }
 
     // Determines the appropriate ViewType according to the sender of the message.
@@ -35,7 +40,7 @@ public class RecyclerViewMessageAdapter extends RecyclerView.Adapter {
     public int getItemViewType(int position) {
         Chat message =  mMessageList.get(position);
 
-        if (message.getSender() == 0  ) {
+        if (message.getSender() == 2  ) {
             // If the current user is the sender of the message
             return VIEW_TYPE_MESSAGE_SENT;
         } else {
@@ -92,19 +97,22 @@ public class RecyclerViewMessageAdapter extends RecyclerView.Adapter {
 
     private class ReceivedMessageHolder extends RecyclerView.ViewHolder {
         TextView messageText;
-        CircleImageView profileImage;
 
         ReceivedMessageHolder(View itemView) {
             super(itemView);
 
             messageText =  itemView.findViewById(R.id.received_message);
 
-            profileImage = itemView.findViewById(R.id.profile_pic1);
         }
 
         void bind(Chat message) {
             messageText.setText(message.getMessage());
 
         }
+    }
+
+    public void add(Chat message){
+        mMessageList.add(message);
+        notifyDataSetChanged();
     }
 }
