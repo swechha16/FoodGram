@@ -28,9 +28,18 @@ public class Message implements Serializable {
     
 @ManyToOne 
 @JoinColumn(name="user_id")
-//@Column(name="user1")
+//@Column(name="reciever_id")
 @JsonManagedReference
 private User user; 
+
+
+//@ManyToOne 
+//@JoinColumn(name="reciever_id")
+////@Column(name="user_id")
+//@JsonManagedReference
+//private User user2; 
+
+
 
 
 	
@@ -43,42 +52,47 @@ private User user;
     @Column(name = "timestamp")
     @CreationTimestamp
     private LocalDateTime timestamp;
-    
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
 
 
 	public long getId_message() {
 		return id_message;
 	}
 
+
 	public void setId_message(long id_message) {
 		this.id_message = id_message;
 	}
 
+
+	public User getUser() {
+		return user;
+	}
+
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 
 	public String getMessage() {
 		return message;
 	}
 
-	public void setMessage(String message2) {
-		this.message = message2;
+
+	public void setMessage(String message) {
+		this.message = message;
 	}
+
 
 	public LocalDateTime getTimestamp() {
 		return timestamp;
 	}
 
+
 	public void setTimestamp(LocalDateTime timestamp) {
 		this.timestamp = timestamp;
 	}
+    
 
 
 

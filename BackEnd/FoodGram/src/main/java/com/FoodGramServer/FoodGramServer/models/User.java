@@ -23,6 +23,9 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long user_id;
 	
+	
+
+	
 	// Bidirectional relation with photos. Because it is bidirectional, parsing into json will enter
 	// an infinite loop (user->photos->users->...). To resolve this, use @JsonManagedReference and 
 	// @JsonBackedReference. Put @JsonManagedReference where you want the entity of the relation to be
