@@ -74,7 +74,7 @@ public class UserController {
 	@RequestMapping(method = RequestMethod.GET, path = "/user/{restaurant}")
 	public User[] getCaptionByRestaurant(@PathVariable String restaurant) {
 
-		User[] user = userRepo.getByUsername(restaurant);
+		User[] user = userRepo.getCaptionByRestaurant(restaurant);
 		return user;
 	}
 	
