@@ -32,7 +32,7 @@ public interface UserRepo extends JpaRepository<User, Long> {
     
     /**
      * returns the users with a certain username
-     * @param findUsername
+     * @param findUsername 
      * @return array of users
      */
     @Query(value = "SELECT * FROM user Where username = ?1", nativeQuery = true)
@@ -40,7 +40,7 @@ public interface UserRepo extends JpaRepository<User, Long> {
 
     
     
-    @Query(value = "Select caption From user where restaurant = ?1", nativeQuery = true)
+    @Query(value = "Select * From user where account_type = ?1", nativeQuery = true)
 	public User[] getCaptionByRestaurant(String restaurant);
 
    

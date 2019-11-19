@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
@@ -36,10 +37,17 @@ public class User {
 	@OneToMany(mappedBy = "user") // mappedBy required for bidirectional to indicate the other side
 	@JsonBackReference
 	private List<Photo> photoPosts;
+
 	
-	@OneToMany(mappedBy = "user")
-	@JsonBackReference
-	private List<Message> messages;
+	
+	@OneToMany(mappedBy = "sender")
+	@JsonIgnore
+	private List<Message> messageSender;
+	
+	@OneToMany(mappedBy = "reciever")
+	@JsonIgnore
+	private List<Message> messageReciever;
+
 	
 	/**
 	 * Username to identify the users
@@ -250,6 +258,22 @@ public class User {
 	 */
 	public void setPhotoPosts(List<Photo> photoPosts) {
 		this.photoPosts = photoPosts;
+	}
+
+	public List<Message> getMessageSender() {
+		return messageSender;
+	}
+
+	public void setMessageSender(List<Message> messageSender) {
+		this.messageSender = messageSender;
+	}
+
+	public List<Message> getMessageReciever() {
+		return messageReciever;
+	}
+
+	public void setMessageReciever(List<Message> messageReciever) {
+		this.messageReciever = messageReciever;
 	}
 
 }

@@ -50,6 +50,7 @@ public interface PhotoRepo extends JpaRepository<Photo, Long>{
 	public List<Photo> getByPriceTag(String priceTag);
 
 
+    
 
     
     
