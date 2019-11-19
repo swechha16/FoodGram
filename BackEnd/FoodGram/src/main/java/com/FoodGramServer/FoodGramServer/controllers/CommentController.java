@@ -4,9 +4,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.FoodGramServer.FoodGramServer.models.*;
 import com.FoodGramServer.FoodGramServer.repo.*;
 import java.util.*;
@@ -17,7 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 @RestController
 /**
  * Maps endpoints for the comment class
- * @author Swechha
+ * @author Swechha and Alexis
  *
  */
 public class CommentController {
@@ -29,8 +27,7 @@ public class CommentController {
 
 	
 	/**
-	 * 
-	 * @return all the comments in db
+	 * @return all the comments in Database
 	 */
 	@RequestMapping(method = RequestMethod.GET, path = "/comment/all")
 	public List<Comment> getComments() { 
@@ -38,9 +35,9 @@ public class CommentController {
 	}
 	
 	/**
-	 * returns all the comments based on the picture id
+	 * Returns all the comments based on the picture id
 	 * @param picId
-	 * @return
+	 * @return list of comments
 	 */
 	@RequestMapping(method = RequestMethod.GET, path = "/comment/{picId}")
 	public List<Comment> getPicComments(@PathVariable String picId){

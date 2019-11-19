@@ -19,6 +19,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 @Entity
 @Table(name="User")
 public class User  implements Serializable{
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * primary key for each user
@@ -27,13 +28,6 @@ public class User  implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long user_id;
 	
-	
-
-	
-	// Bidirectional relation with photos. Because it is bidirectional, parsing into json will enter
-	// an infinite loop (user->photos->users->...). To resolve this, use @JsonManagedReference and 
-	// @JsonBackedReference. Put @JsonManagedReference where you want the entity of the relation to be
-	// included in JSON, and @JsonBackedReference where you don't want the entity to be included.
 	/**
 	 * List of photos that a user has posted
 	 */
@@ -51,18 +45,6 @@ public class User  implements Serializable{
 	@JsonIgnore
 	private List<Message> messageReciever;
 
-	/*@OneToMany(mappedBy = "follow", cascade=CascadeType.ALL)
-	@JsonManagedReference(value = "userFollowings")
-	private List<Following> userFollowing;
-	
-	@OneToMany(mappedBy = "follower", cascade=CascadeType.ALL)
-	@JsonManagedReference(value = "userFollowers")
-	private List<Following> userFollower;  
-*/
-
-	@OneToMany(mappedBy = "user")
-	@JsonBackReference
-	private List<Message> messages;
 	
 	/**
 	 * Username to identify the users
@@ -308,20 +290,4 @@ public class User  implements Serializable{
 	public void setMessageReciever(List<Message> messageReciever) {
 		this.messageReciever = messageReciever;
 	}
-
-	/*public List<Following> getFollowing() {
-		return userFollowing;
-	}
-
-	public void setFollowing(List<Following> following) {
-		this.userFollowing = following;
-	}
-	
-	public List<Following> getUserFollower() {
-		return userFollower;
-	}
-
-	public void setUserFollower(List<Following> userFollower) {
-		this.userFollower = userFollower;
-	}*/
 }

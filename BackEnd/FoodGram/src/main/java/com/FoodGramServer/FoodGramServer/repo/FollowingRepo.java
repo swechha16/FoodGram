@@ -45,6 +45,9 @@ public interface FollowingRepo extends JpaRepository<Following, Long> {
 	 */
 	@Query(value = "SELECT * FROM following WHERE follower_id = ?1", nativeQuery=true)
 	public List<Following> getFollowing(int user);
+	
+	@Query(value = "SELECT EXISTS (SELECT * FROM following WHERE follower_id = ?1 AND follow_id = ?2);", nativeQuery=true)
+	public int getExist(long u1, long u2);
 
 	
 
