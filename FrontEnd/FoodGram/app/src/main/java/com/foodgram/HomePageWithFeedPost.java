@@ -17,7 +17,6 @@ public class HomePageWithFeedPost extends AppCompatActivity {
     Button profile_page;
     Button  home_page;
     Button Direct_Message_Page;
-    Button restaurant_page;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,14 +27,7 @@ public class HomePageWithFeedPost extends AppCompatActivity {
        profile_page = findViewById(R.id.userProfileButton);
         home_page = findViewById(R.id.home);
         Direct_Message_Page = findViewById(R.id.MessagesButton);
-        restaurant_page = findViewById(R.id.restaurantButton);
 
-       restaurant_page.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                restaurant_page(view);
-            }
-        });
 
         Direct_Message_Page.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,11 +120,6 @@ public class HomePageWithFeedPost extends AppCompatActivity {
 
     public void direct_message_page(View v){
         Intent intent = new Intent(this, DirectMessage.class);
-        startActivity(intent);
-    }
-
-    public void restaurant_page(View v){
-        Intent intent = new Intent(this, RestaurantPage.class);
         startActivity(intent);
     }
 }
