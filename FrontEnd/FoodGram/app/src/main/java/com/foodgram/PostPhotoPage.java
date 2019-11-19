@@ -1,23 +1,13 @@
 package com.foodgram;
 
-import android.Manifest;
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.Binder;
-import android.os.Build;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Base64;
 import android.util.Log;
 import android.view.View;
-import android.webkit.PermissionRequest;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -42,10 +32,7 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
 /**
@@ -63,11 +50,6 @@ public class PostPhotoPage extends AppCompatActivity {
     private EditText txt_caption, txt_foodTag, txt_costTag,txt_restaurant;
 
     private RequestQueue requestQueue;
-
-    //private MultipartEntityBuilder mBuiler = MultipartEntityBuilder.create();
-
-    //public static Retrofit retrofit;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,21 +83,10 @@ public class PostPhotoPage extends AppCompatActivity {
         postImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//                    if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
-//                        String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE};
-//                        requestPermissions(permissions, PERMISSION_CODE);
-//
-//                    } else {
-//                        selectImgUpload();
-//                    }
-//                    }
-//                    else{
-//                        selectImgUpload();
-//                    }
                 selectImgUpload();
-                }
+            }
         });
+
 
         mTextViewResult = findViewById(R.id.errorView);
 
@@ -164,7 +135,6 @@ public class PostPhotoPage extends AppCompatActivity {
 
         /**
          * Receives response from controller and displays response on Logcat
-         * Displays error as text view in the app page when error occurs
          */
         JsonObjectRequest objectRequest = new JsonObjectRequest(Request.Method.POST, url, obj, new Response.Listener<JSONObject>() {
 
@@ -218,29 +188,21 @@ public class PostPhotoPage extends AppCompatActivity {
 
     }
 
-    /**
-     * Initiates image upload choice to the user after ImageView (Camera Icon) is clicked
-     * The upload options are: Taking a photo and Choosing a photo form the photo Gallery to upload
-     */
     private void selectImgUpload(){
-        final CharSequence[] options = {"Take Photo","Choose From Gallery","Cancel"};
+        final CharSequence[] options = {"Take Photo","Choose from Gallery","Cancel"};
         android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(PostPhotoPage.this);
         builder.setTitle("Choose an Option");
         builder.setItems(options, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int items) {
                 if(options[items].equals("Take Photo")){
-//                    if (checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) //Camera Permission check
-//                    {
-//                        requestPermissions(new String[]{Manifest.permission.CAMERA}, MY_CAMERA_PERMISSION_CODE);
-//                    }
                     Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                     File f = new File(android.os.Environment.getExternalStorageDirectory(), "photo.jpg");
                     intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
                     startActivityForResult(intent, 1);
                 }
                 else if (options[items].equals("Choose From Gallery")){
-                    Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+                    Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                     startActivityForResult(intent, 2);
                 }
                 else if (options[items].equals("Cancel")){
@@ -250,61 +212,5 @@ public class PostPhotoPage extends AppCompatActivity {
         });
         builder.show();
     }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == Activity.RESULT_OK) {
-            //Bitmap bitmap = null;
-
-            if (requestCode == 1) {
-                Bitmap photo = (Bitmap) data.getExtras().get("data");
-                postImage.setImageBitmap(photo);
-            }
-            else if(requestCode == 2){
-                try {
-                    Uri galleryImg = data.getData();
-                    String[] filePath = {MediaStore.Images.Media.DATA};
-                    Cursor c = getContentResolver().query(galleryImg, filePath, null, null, null);
-                    c.moveToFirst();
-                    int columnIndex = c.getColumnIndex(filePath[0]);
-                    String picturePath = c.getString(columnIndex);
-                    c.close();
-                    Bitmap thumbnail = (BitmapFactory.decodeFile(picturePath));
-                    thumbnail = getResizedBitmap(thumbnail, 400);
-                    Log.w("path of image", picturePath + "");
-                    postImage.setImageBitmap(thumbnail);
-                } catch (Exception e) {
-                        e.printStackTrace();
-                        Log.d("Gallery Error Response", e.toString());
-                    }
-
-                }
-            }
-        }
-
-    /**
-     * Creates a resized image to display as a thumbnail for the chosen photo from the devices image gallery
-     * @param image
-     * The allocated thumbnail size from the Image View on users device
-     * @param maxSize
-     * Max size of the thumbnail that can be made
-     * @return
-     * Creates a resized thumbnail with chosen image
-     */
-    public Bitmap getResizedBitmap(Bitmap image, int maxSize) {
-        int width = image.getWidth();
-        int height = image.getHeight();
-
-        float bitmapRatio = (float)width / (float) height;
-        if (bitmapRatio > 1) {
-            width = maxSize;
-            height = (int) (width / bitmapRatio);
-        } else {
-            height = maxSize;
-            width = (int) (height * bitmapRatio);
-        }
-        return Bitmap.createScaledBitmap(image, width, height, true);
-    }
-
 
 }

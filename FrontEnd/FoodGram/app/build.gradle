@@ -10,6 +10,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
         release {
@@ -24,8 +25,11 @@ android {
 
 dependencies {
     implementation 'com.android.support:design:28.0.0'
-    //    implementation 'com.android.support:design:26.1.0'
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:support-vector-drawable:28.0.0'
+    implementation 'android.arch.navigation:navigation-fragment:1.0.0'
+    implementation 'android.arch.navigation:navigation-ui:1.0.0'
+    implementation 'android.arch.lifecycle:extensions:1.1.1'
     androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
@@ -40,6 +44,6 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.mockito:mockito-core:1.10.19'
     implementation files('libs/java_websocket.jar')
-    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
-    implementation 'com.squareup.retrofit2:converter-json:2.3.0'
+    //circle image view
+    implementation 'de.hdodenhof:circleimageview:3.0.1'
 }
