@@ -6,6 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+/**
+ * Home Page for the user. Gives the user an option to create an account or go to the login page
+ * @author Vtorres
+ */
 public class HomePage extends AppCompatActivity {
 
     Button welcome_login;
@@ -31,11 +35,19 @@ public class HomePage extends AppCompatActivity {
         });
     }
 
+    /**
+     * Opens up the login page
+     * @param v
+     */
     public void login_page(View v){
         Intent intent = new Intent(this, Login.class);
         startActivity(intent);
     }
 
+    /**
+     * Opens up the create an account page
+     * @param v
+     */
     public void create_account_page(View v){
         Intent intent = new Intent(this, CreateAccount.class);
         startActivity(intent);

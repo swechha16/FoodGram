@@ -15,15 +15,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 
 @RestController
-
+/**
+ * Maps endpoints for the comment class
+ * @author Swechha
+ *
+ */
 public class CommentController {
-
+	/**
+	 * creates the a reference to the comment repo
+	 */
 	@Autowired
 	CommentRepo commentRepo;
 
+	
 	/**
-	 * Gets ALL comments stored in the database
-	 * @return comment list
+	 * 
+	 * @return all the comments in db
 	 */
 	@RequestMapping(method = RequestMethod.GET, path = "/comment/all")
 	public List<Comment> getComments() { 
@@ -49,6 +56,5 @@ public class CommentController {
 	public void postCommentFromRestaurant(@RequestBody Comment comment) {
 		commentRepo.save(comment);
 	}
-
 
 }

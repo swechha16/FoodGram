@@ -25,11 +25,17 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+/**
+ * Allows a user to search from multiple different types of food and price ranges in their area.
+ * @author Vtorres
+ */
 public class FilteredFoodFeed extends AppCompatActivity {
     private TextView mTextViewResult;
     private RequestQueue mQueue;
 
-    //If the int is 0 it will grab all,  1: italian 2 : chinese 3: indian
+    /**
+     *If the int is 0 it will grab all,  1: italian 2 : chinese 3: indian
+     */
     private int foodType = 0;
     /**
      * price tag if 0: give them cheap, 1 : moderate, 2: expensive
@@ -39,6 +45,11 @@ public class FilteredFoodFeed extends AppCompatActivity {
 
 
     private String url = "http://coms-309-mg-1.cs.iastate.edu";
+
+    /**
+     * Creates the buttons for the activity page and
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,7 +111,7 @@ public class FilteredFoodFeed extends AppCompatActivity {
             public void onClick(View view) {
                 if(priceTag!= 0 && foodType != 0){
                     addPriceTag(priceTag);
-                    test();
+                    getFilteredFeed();
 
                 }
             }
@@ -108,78 +119,11 @@ public class FilteredFoodFeed extends AppCompatActivity {
 
     }
 
-
-
-
-
-//    public void getFilteredFeed(){
-//
-//       url = "http://10.65.23.83:8080/photo/indian/$";
-//
-//      //  JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
-//                JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
-//
-//                new Response.Listener<JSONObject>() {
-//                    @Override
-//                    public void onResponse(JSONObject response) {
-//                        try {
-//                            mTextViewResult.setText(url);
-//
-//
-//                            JSONArray jsonArray = response.getJSONArray("photos");
-//
-//
-//                            for (int i = 0; i < jsonArray.length(); i++) {
-//                                JSONObject photoPost = jsonArray.getJSONObject(i);
-//
-//                               // long id = comment.getInt("id");
-//                                String caption = photoPost.getString("caption");
-//                                String restaurantName = photoPost.getString("restaurant");
-//                                String foodTag = photoPost.getString("foodTag");
-//                                String costTag = photoPost.getString("costTag");
-//
-//
-//
-//                                mTextViewResult.append(caption + "\n" + foodTag + "\n" + costTag + "\n" + restaurantName +"\n\n\n");
-//
-//                            }
-//
-//
-//                        } catch (JSONException e) {
-//                            mTextViewResult.setText("JSON EXCEPTION");
-//                            e.printStackTrace();
-//                        }
-//                    }
-//                }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//
-//                //mTextViewResult.setText("error");
-//                error.printStackTrace();
-//
-//                if (error instanceof TimeoutError || error instanceof NoConnectionError){
-//                    mTextViewResult.setText("Timeout Error or No connection error");
-//                }
-//                else if(error instanceof AuthFailureError){
-//                    mTextViewResult.setText("authentication failure error");
-//                }else if(error instanceof ServerError){
-//                    mTextViewResult.setText("server error");
-//                }else if(error instanceof NetworkError){
-//                    mTextViewResult.setText("network error");
-//                }else if(error instanceof ParseError){
-//                 //   mTextViewResult.setText("Parse Error");
-//                }
-//
-//
-//            }
-//        });
-//
-//
-//        mQueue.add(request);
-//
-//
-//    }
-
+    /**
+     * Updates the url with the food type a user wants
+     * At the moment it can only do one food type at a time.
+     * @param foodType - The type of food a user wants to search for
+     */
     public void updateUrl(int foodType){
         url = "http://10.31.29.6:8080/photo";
         if(foodType == 0){
@@ -197,6 +141,10 @@ public class FilteredFoodFeed extends AppCompatActivity {
 
     }
 
+    /**
+     * Searches food by a certain price tag the user wants to stay within.
+     * @param priceTag - The price of food a user wants to search "$" , "$$" , or "$$$"
+     */
     public void addPriceTag(int priceTag){
 
         updateUrl(foodType);
@@ -212,8 +160,10 @@ public class FilteredFoodFeed extends AppCompatActivity {
 
     }
 
-
-    public void test(){
+    /**
+     * This grabs all the data from the JSON using the correct food type and price a user wants to search for.
+     */
+    public void getFilteredFeed(){
 
 mTextViewResult.setText("");
     //   url = "http://10.26.1.154:8080/photo/all";
@@ -276,7 +226,14 @@ mTextViewResult.setText("");
 
     }
 
-
+    /**
+     * For Mockito Test of receiving a price request from a user.
+     * @param url - The url to test
+     * @param price - the price the user wants to search for
+     * @param linkHandler -
+     * @return - true if the url works, false if not.
+     * @throws JSONException
+     */
     public boolean tryRecieving(String url, String price, LinkHandler linkHandler) throws JSONException {
 
         //Does not work because .getResponse has not been implemented

@@ -19,16 +19,30 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+/**
+ * The profile page for a user
+ */
 public class ProfilePage extends AppCompatActivity {
     RequestQueue mQueue;
     RequestQueue mQueue2;
-
+    /**
+     * Shows the users posts
+     */
     TextView mTextViewResult;
+    /**
+     * Shows the bio for the user
+     */
     TextView userBioTextView;
+    /**
+     * The username of the user to be displayed
+     */
     String userName;
 
 
-
+    /**
+     * Creates the Volley and Buttons for refreshing the profile page
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +69,9 @@ public class ProfilePage extends AppCompatActivity {
 
     }
 
-
+    /**
+     * Gets all of a posts from a user and displays them.
+     */
     public void getProfilePosts(){
 
       String url = "http://10.31.29.6:8080/photo/all";
@@ -109,7 +125,9 @@ public class ProfilePage extends AppCompatActivity {
         mQueue.add(testRequest);
     }
 
-
+    /**
+     * Gets the bio from a user and displays it on the page.
+     */
     public void getBio(){
         String url = "http://10.31.29.6:8080/user/rony";
 
