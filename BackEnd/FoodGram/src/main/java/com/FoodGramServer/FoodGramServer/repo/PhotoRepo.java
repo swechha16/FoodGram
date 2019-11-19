@@ -50,8 +50,6 @@ public interface PhotoRepo extends JpaRepository<Photo, Long>{
 	public List<Photo> getByPriceTag(String priceTag);
 
 
-    
-
-    
-    
+    @Query(value = "SELECT * FROM photo WHERE user_id = ?1", nativeQuery = true)
+	public List<Photo> getByUser(int user);    
 } 

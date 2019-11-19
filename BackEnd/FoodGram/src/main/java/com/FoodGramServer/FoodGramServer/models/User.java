@@ -1,5 +1,6 @@
 package com.FoodGramServer.FoodGramServer.models;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.*;
@@ -7,6 +8,10 @@ import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+<<<<<<< HEAD
+=======
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+>>>>>>> datebasemanagement
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
@@ -16,7 +21,8 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
  */
 @Entity
 @Table(name="User")
-public class User {
+public class User  implements Serializable{
+
 	/**
 	 * primary key for each user
 	 */
@@ -35,10 +41,12 @@ public class User {
 	 * List of photos that a user has posted
 	 */
 	@OneToMany(mappedBy = "user") // mappedBy required for bidirectional to indicate the other side
-	@JsonBackReference
+	//@JsonManagedReference(value = "user")
+	@JsonIgnore
 	private List<Photo> photoPosts;
 
 	
+<<<<<<< HEAD
 	
 	@OneToMany(mappedBy = "sender")
 	@JsonIgnore
@@ -48,6 +56,19 @@ public class User {
 	@JsonIgnore
 	private List<Message> messageReciever;
 
+=======
+	/*@OneToMany(mappedBy = "follow", cascade=CascadeType.ALL)
+	@JsonManagedReference(value = "userFollowings")
+	private List<Following> userFollowing;
+	
+	@OneToMany(mappedBy = "follower", cascade=CascadeType.ALL)
+	@JsonManagedReference(value = "userFollowers")
+	private List<Following> userFollower;  
+*/
+
+	@OneToMany(mappedBy = "user")
+	@JsonBackReference
+	private List<Message> messages;
 	
 	/**
 	 * Username to identify the users
@@ -111,6 +132,24 @@ public class User {
 	 */
 	@Column(name = "profile_pic")
 	private String profile_pic;
+	
+	public User() {
+		
+	}
+	
+	public User(long user_id, String account_type, String bio, String email, String full_name, String location_city, String location_state, String password, String pic,  String phone_no, String username) {
+		this.user_id = user_id;
+		this.account_type = account_type;
+		this.bio = bio;
+		this.email = email;
+		this.full_name = full_name;
+		this.location_city = location_city;
+		this.location_state = location_state;
+		this.password = password;
+		this.profile_pic = pic;
+		this.phone_no = phone_no;
+		this.username = username;
+	}
 		
 	/**
 	 * 
@@ -276,4 +315,19 @@ public class User {
 		this.messageReciever = messageReciever;
 	}
 
+	/*public List<Following> getFollowing() {
+		return userFollowing;
+	}
+
+	public void setFollowing(List<Following> following) {
+		this.userFollowing = following;
+	}
+	
+	public List<Following> getUserFollower() {
+		return userFollower;
+	}
+
+	public void setUserFollower(List<Following> userFollower) {
+		this.userFollower = userFollower;
+	}*/
 }
