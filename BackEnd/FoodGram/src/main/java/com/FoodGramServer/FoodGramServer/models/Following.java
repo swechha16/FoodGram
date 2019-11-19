@@ -3,6 +3,7 @@ package com.FoodGramServer.FoodGramServer.models;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,6 +16,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
@@ -29,18 +31,19 @@ public class Following implements Serializable{
 	private long following_id;
 
 	@ManyToOne
-	@JsonBackReference(value = "userFollowing")
+	//@JsonBackReference(value = "userFollowing")
 	@JoinColumn(name = "follow_id")
 	private User follow;
 
 	@ManyToOne
-	@JsonBackReference(value = "userFollower")
+	//@JsonBackReference(value = "userFollower")
 	@JoinColumn(name = "follower_id")
 	private User follower;
 
 	@Column(name = "timestamp")
 	@CreationTimestamp
 	private LocalDateTime timestamp;
+
 
 	public Following()
 	{

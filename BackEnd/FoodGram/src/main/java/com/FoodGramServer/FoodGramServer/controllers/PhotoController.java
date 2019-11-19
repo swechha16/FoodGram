@@ -42,7 +42,7 @@ public class PhotoController {
 	
 	}	
 	
-	@RequestMapping(method = RequestMethod.GET, path = "/photo/{restaurant}")
+	@RequestMapping(method = RequestMethod.GET, path = "/photo/rest/{restaurant}")
 	public List<Photo> findByRestaurant(@PathVariable String restaurant) {
 		return photoRepo.getByRestaurant(restaurant);
 	}
@@ -52,6 +52,9 @@ public class PhotoController {
 		photoRepo.save(userPhoto);
 	}
 	
-	
+	@RequestMapping(method = RequestMethod.GET, path = "/photo/user/{user}")
+	public List<Photo> findByUser(@PathVariable int user) {
+		return photoRepo.getByUser(user);
+	}
 	
 }

@@ -23,20 +23,18 @@ public class User  implements Serializable{
 	// @JsonBackedReference. Put @JsonManagedReference where you want the entity of the relation to be
 	// included in JSON, and @JsonBackedReference where you don't want the entity to be included.
 	@OneToMany(mappedBy = "user") // mappedBy required for bidirectional to indicate the other side
-	@JsonIgnoreProperties("user")
-	@JsonManagedReference(value = "user")
+	//@JsonManagedReference(value = "user")
+	@JsonIgnore
 	private List<Photo> photoPosts;
 	
-	@OneToMany(mappedBy = "follow")
-	@JsonIgnoreProperties("follow")
-	@JsonManagedReference(value="follow")
+	/*@OneToMany(mappedBy = "follow", cascade=CascadeType.ALL)
+	@JsonManagedReference(value = "userFollowings")
 	private List<Following> userFollowing;
 	
-	@OneToMany(mappedBy = "follower")
-	@JsonIgnoreProperties("follower")
-	@JsonManagedReference(value="follower")
+	@OneToMany(mappedBy = "follower", cascade=CascadeType.ALL)
+	@JsonManagedReference(value = "userFollowers")
 	private List<Following> userFollower;  
-
+*/
 
 	@Column(name = "username", nullable = false)
 	private String username;
@@ -142,7 +140,7 @@ public class User  implements Serializable{
 		this.photoPosts = photoPosts;
 	}
 
-	public List<Following> getFollowing() {
+	/*public List<Following> getFollowing() {
 		return userFollowing;
 	}
 
@@ -156,5 +154,5 @@ public class User  implements Serializable{
 
 	public void setUserFollower(List<Following> userFollower) {
 		this.userFollower = userFollower;
-	}
+	}*/
 }
