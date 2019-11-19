@@ -73,7 +73,6 @@
         app:layout_constraintBottom_toTopOf="@+id/Other_userBioTextView"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toEndOf="@+id/Follow_btn"
-        app:layout_constraintTop_toBottomOf="@+id/Followers_TextView"
         android:text="Message"
         android:id="@+id/message_user_btn"/>
 
