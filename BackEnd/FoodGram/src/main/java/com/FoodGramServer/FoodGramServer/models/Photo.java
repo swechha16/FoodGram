@@ -1,17 +1,13 @@
 package com.FoodGramServer.FoodGramServer.models;
 
 import java.io.Serializable;
-import java.sql.Blob;
 import java.time.LocalDateTime;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-
 import org.hibernate.annotations.CreationTimestamp;
-import org.springframework.web.multipart.MultipartFile;
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * Class that models the entity in the database for a photo object
@@ -34,7 +30,7 @@ public class Photo implements Serializable {
 	 * Instance variable for the user that posted the photo
 	 */
 	@ManyToOne
-	//@JsonManagedReference
+	@JsonBackReference(value = "userPhoto")
 	@JoinColumn(name="user_id") // specifies to use a column in Photo table to reference user, instead of the default behavior to create a join table
 	private User user; //link up with the user table
 	
@@ -79,6 +75,20 @@ public class Photo implements Serializable {
 	@Column(name = "timestamp")
 	@CreationTimestamp
 	private LocalDateTime timestamp;
+	
+	public Photo() {
+		
+	}
+	
+	public Photo(long pic_id, String caption, String cost_tag, String food_tag, String pic, String restaurant, User user_id) {
+		this.pic_id = pic_id;
+		this.caption = caption;
+		this.cost_tag = cost_tag;
+		this.food_tag = food_tag;
+		this.pic = pic;
+		this.restaurant = restaurant;
+		this.user = user_id;
+	}
 	
 	/**
 	 * @return pic_id

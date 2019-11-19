@@ -1,5 +1,6 @@
 package com.FoodGramServer.FoodGramServer.models;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.*;
@@ -7,11 +8,12 @@ import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name="User")
-public class User {
+public class User  implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long user_id;
@@ -21,25 +23,20 @@ public class User {
 	// @JsonBackedReference. Put @JsonManagedReference where you want the entity of the relation to be
 	// included in JSON, and @JsonBackedReference where you don't want the entity to be included.
 	@OneToMany(mappedBy = "user") // mappedBy required for bidirectional to indicate the other side
-	@JsonIgnore
+	@JsonIgnoreProperties("user")
+	@JsonManagedReference(value = "user")
 	private List<Photo> photoPosts;
 	
-	@OneToMany(mappedBy = "following")
-	@JsonIgnore
+	@OneToMany(mappedBy = "follow")
+	@JsonIgnoreProperties("follow")
+	@JsonManagedReference(value="follow")
 	private List<Following> userFollowing;
 	
 	@OneToMany(mappedBy = "follower")
-	@JsonIgnore
+	@JsonIgnoreProperties("follower")
+	@JsonManagedReference(value="follower")
 	private List<Following> userFollower;  
-	
 
-	public List<Following> getUserFollower() {
-		return userFollower;
-	}
-
-	public void setUserFollower(List<Following> userFollower) {
-		this.userFollower = userFollower;
-	}
 
 	@Column(name = "username", nullable = false)
 	private String username;
@@ -73,6 +70,24 @@ public class User {
 	
 	@Column(name = "profile_pic")
 	private String profile_pic;
+	
+	public User() {
+		
+	}
+	
+	public User(long user_id, String account_type, String bio, String email, String full_name, String location_city, String location_state, String password, String pic,  String phone_no, String username) {
+		this.user_id = user_id;
+		this.account_type = account_type;
+		this.bio = bio;
+		this.email = email;
+		this.full_name = full_name;
+		this.location_city = location_city;
+		this.location_state = location_state;
+		this.password = password;
+		this.profile_pic = pic;
+		this.phone_no = phone_no;
+		this.username = username;
+	}
 		
 	
 	public long getUserId() { return user_id; }
@@ -133,5 +148,13 @@ public class User {
 
 	public void setFollowing(List<Following> following) {
 		this.userFollowing = following;
+	}
+	
+	public List<Following> getUserFollower() {
+		return userFollower;
+	}
+
+	public void setUserFollower(List<Following> userFollower) {
+		this.userFollower = userFollower;
 	}
 }
