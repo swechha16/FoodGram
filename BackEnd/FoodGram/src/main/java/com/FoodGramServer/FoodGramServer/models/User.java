@@ -8,10 +8,7 @@ import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-<<<<<<< HEAD
-=======
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
->>>>>>> datebasemanagement
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
@@ -45,9 +42,7 @@ public class User  implements Serializable{
 	@JsonIgnore
 	private List<Photo> photoPosts;
 
-	
-<<<<<<< HEAD
-	
+		
 	@OneToMany(mappedBy = "sender")
 	@JsonIgnore
 	private List<Message> messageSender;
@@ -56,7 +51,6 @@ public class User  implements Serializable{
 	@JsonIgnore
 	private List<Message> messageReciever;
 
-=======
 	/*@OneToMany(mappedBy = "follow", cascade=CascadeType.ALL)
 	@JsonManagedReference(value = "userFollowings")
 	private List<Following> userFollowing;
