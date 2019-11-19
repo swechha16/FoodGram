@@ -1,4 +1,3 @@
-
 # Created by https://www.gitignore.io/api/java,maven,gradle,androidstudio
 # Edit at https://www.gitignore.io/?templates=java,maven,gradle,androidstudio
 
@@ -159,5 +158,6 @@ fabric.properties
 ### AndroidStudio Patch ###
 
 !/gradle/wrapper/gradle-wrapper.jar
+!/app/libs/java_websocket.jar
 
 # End of https://www.gitignore.io/api/java,maven,gradle,androidstudio
