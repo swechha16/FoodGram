@@ -11,6 +11,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Binder;
 import android.os.Build;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -45,7 +46,9 @@ import org.json.JSONObject;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 
 /**
@@ -235,7 +238,7 @@ public class PostPhotoPage extends AppCompatActivity {
 //                        requestPermissions(new String[]{Manifest.permission.CAMERA}, MY_CAMERA_PERMISSION_CODE);
 //                    }
                     Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    File f = new File(android.os.Environment.getExternalStorageDirectory(), "photo.jpg");
+                    File f = new File(android.os.Environment.getExternalStorageDirectory(), "photo.webp");
                     intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
                     startActivityForResult(intent, 1);
                 }
@@ -257,8 +260,46 @@ public class PostPhotoPage extends AppCompatActivity {
             //Bitmap bitmap = null;
 
             if (requestCode == 1) {
-                Bitmap photo = (Bitmap) data.getExtras().get("data");
-                postImage.setImageBitmap(photo);
+                File f = new File(Environment.getExternalStorageDirectory().toString());
+                for(File photos : f.listFiles()){
+                    if(photos.getName().equals("photo.webp")){
+                        f = photos;
+                        break;
+                    }
+                }
+//                Bitmap photo = (Bitmap) data.getExtras().get("data");
+//                postImage.setImageBitmap(photo);
+                try{
+                    Bitmap bit;
+                    BitmapFactory.Options bitOptions = new BitmapFactory.Options();
+                    bit = BitmapFactory.decodeFile(f.getAbsolutePath(), bitOptions);
+                    bit = getResizedBitmap(bit, 400);
+                    postImage.setImageBitmap(bit);
+                    File fotoDirectory = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + File.separator);
+                    OutputStream outFile = null;
+                    File imgFile = new File(fotoDirectory,System.currentTimeMillis() + ".webp");
+                    try{
+                        outFile = new FileOutputStream(imgFile);
+                        bit.compress(Bitmap.CompressFormat.WEBP, 90, outFile);
+                        Toast.makeText(getApplicationContext(), "Image Saved To Gallery", Toast.LENGTH_SHORT).show();
+                        outFile.flush();
+                        outFile.close();
+                    } catch (FileNotFoundException e){
+                        e.printStackTrace();
+                        Log.d("File Not Found", e.toString());
+                    } catch (IOException e){
+                        e.printStackTrace();
+                        Log.d("IO Exception", e.toString());
+                    } catch (Exception e){
+                        e.printStackTrace();
+                        Log.d("Error", e.toString());
+                    }
+                }
+                catch (Exception e){
+                    e.printStackTrace();
+                    Log.d("Unable to Add Photos", e.toString());
+                }
+
             }
             else if(requestCode == 2){
                 try {

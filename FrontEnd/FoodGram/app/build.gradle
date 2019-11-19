@@ -42,4 +42,9 @@ dependencies {
     implementation files('libs/java_websocket.jar')
     implementation 'com.squareup.retrofit2:retrofit:2.3.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    //Multipart Dependecies
+    compile group: 'org.apache.httpcomponents', name: 'httpclient-android', version: '4.3.5.1'
+    compile ('org.apache.httpcomponents:httpmime:4.3'){
+        exclude module: "httpclient"
+    }
 }
