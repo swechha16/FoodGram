@@ -31,6 +31,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/feedPage_recyclerView"
+        android:layout_width="409dp"
+        android:layout_height="564dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <ScrollView
         android:id="@+id/sv_FeedPage"

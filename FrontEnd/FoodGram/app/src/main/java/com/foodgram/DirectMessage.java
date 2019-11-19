@@ -5,9 +5,11 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.drafts.Draft_6455;
@@ -16,6 +18,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 
 import org.java_websocket.drafts.Draft;
@@ -39,7 +42,7 @@ public class DirectMessage extends AppCompatActivity {
 
         RecyclerView messageView;
     RecyclerViewMessageAdapter messageListAdapter ;
-
+String sender;
 
         List<Chat> mChat;
 
@@ -75,7 +78,9 @@ public class DirectMessage extends AppCompatActivity {
                      * computer, and change the ip address to that of your computer.
                      * If running on the emulator, you can use localhost.
                      */
-                    String w = "ws://10.26.46.194:8080/websocket/" + usernameInput.getText().toString();
+
+                    sender = usernameInput.getText().toString();
+                    String w = "ws://10.26.50.201:8080/websocket/" + sender;
 
                     try {
                         Log.d("Socket:", "Trying socket");
@@ -85,7 +90,19 @@ public class DirectMessage extends AppCompatActivity {
                                 Log.d("", "run() returned: " + message);
 //                                String s = t1.getText().toString();
 //                                mChat.add(new Chat (2,1, message));
-                                messageListAdapter.add(new Chat (2,1,message));
+                                Scanner scanner = new Scanner(message);
+                                String messageFrom = scanner.next();
+
+                                if(!messageFrom.trim().equals("User:")) {
+                                    if (messageFrom.equals(sender + ":")) {
+                                        messageListAdapter.add(new Chat(1, 2, message));
+                                    } else
+                                        messageListAdapter.add(new Chat(2, 1, message));
+                                }else{
+                                    Toast toast = Toast.makeText(DirectMessage.this, messageFrom, Toast.LENGTH_LONG);
+                                            toast.setGravity(Gravity.TOP|Gravity.RIGHT, 0,0);
+                                            toast.show();
+                                }
                                 //messageListAdapter.notifyDataSetChanged();
                                 //t1.setText(s + " Server:" + message);
                             }
@@ -127,10 +144,10 @@ public class DirectMessage extends AppCompatActivity {
                 }
             });
         }
-
-        public void updateAdapter(List<Chat> c){
-            messageListAdapter = new RecyclerViewMessageAdapter(this, mChat);
-        }
+//
+//        public void updateAdapter(List<Chat> c){
+//            messageListAdapter = new RecyclerViewMessageAdapter(this, mChat);
+//        }
 
     }
 

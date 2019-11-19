@@ -17,6 +17,7 @@ public class HomePageWithFeedPost extends AppCompatActivity {
     Button profile_page;
     Button  home_page;
     Button Direct_Message_Page;
+    Button other_profile_button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,8 +28,14 @@ public class HomePageWithFeedPost extends AppCompatActivity {
        profile_page = findViewById(R.id.userProfileButton);
         home_page = findViewById(R.id.home);
         Direct_Message_Page = findViewById(R.id.MessagesButton);
+        other_profile_button = findViewById(R.id.other_user_profile_btn);
 
-
+other_profile_button.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        other_profile_page(view);
+    }
+});
         Direct_Message_Page.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -120,6 +127,11 @@ public class HomePageWithFeedPost extends AppCompatActivity {
 
     public void direct_message_page(View v){
         Intent intent = new Intent(this, DirectMessage.class);
+        startActivity(intent);
+    }
+
+    public void other_profile_page(View view){
+        Intent intent = new Intent (this, Other_Users_Profile.class);
         startActivity(intent);
     }
 }

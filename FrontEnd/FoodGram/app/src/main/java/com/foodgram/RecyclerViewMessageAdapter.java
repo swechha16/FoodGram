@@ -22,6 +22,7 @@ public class RecyclerViewMessageAdapter extends RecyclerView.Adapter {
     private Context mContext;
     private List<Chat> mMessageList;
 
+
     public RecyclerViewMessageAdapter(Context context, List<Chat> messageList) {
         mContext = context;
         mMessageList = messageList;
@@ -40,7 +41,7 @@ public class RecyclerViewMessageAdapter extends RecyclerView.Adapter {
     public int getItemViewType(int position) {
         Chat message =  mMessageList.get(position);
 
-        if (message.getSender() == 2  ) {
+        if (message.getSender() == 1  ) {
             // If the current user is the sender of the message
             return VIEW_TYPE_MESSAGE_SENT;
         } else {

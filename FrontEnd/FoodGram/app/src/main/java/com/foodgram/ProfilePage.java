@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -12,6 +13,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -36,6 +38,8 @@ public class ProfilePage extends AppCompatActivity {
      */
     String userName;
 
+    ImageView profilePic;
+
 
 
 
@@ -51,7 +55,8 @@ public class ProfilePage extends AppCompatActivity {
         setContentView(R.layout.activity_profile_page);
      mQueue = Volley.newRequestQueue(this);
      mQueue2 = Volley.newRequestQueue(this);
-
+    profilePic = findViewById(R.id.profilePic);
+    updatePicture();
      userBioTextView = findViewById(R.id.userBioTextView);
      mTextViewResult = findViewById(R.id.userPostsTextView);
 
@@ -169,6 +174,13 @@ public class ProfilePage extends AppCompatActivity {
         );
 
         mQueue.add(bioRequest);
+    }
+
+    public void updatePicture(){
+        Glide.with(this)
+                .load("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2018/02/google-pacman-796x419.jpg")
+                .into(profilePic);
+
     }
 
 }
