@@ -52,4 +52,6 @@ public interface PhotoRepo extends JpaRepository<Photo, Long>{
 
     @Query(value = "SELECT * FROM photo WHERE user_id = ?1", nativeQuery = true)
 	public List<Photo> getByUser(int user);    
+    
+
 } 

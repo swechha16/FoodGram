@@ -44,6 +44,7 @@ public class DatabaseInitializer implements CommandLineRunner
 			User u1 = new User(1, "user", "My name is Alexis", "amcordts@iastate.edu", "Alexis Cordts", "Ames", "IA", "pass1234", "5639408430", "url", "alexi");
 			User u2 = new User(2, "user", "I sweat", "sweaty@iastate.edu", "Sweaty Ghimire", "Ames", "IA", "pass1234", "911", "url", "sweaty");
 			User u3 = new User(3, "user", "Taki Taki -Selena Gomez", "Ronnie@iastate.edu", "Ronnie Torres", "Ames", "IA", "pass1234", "5159998888", "url", "Ronnie");
+			User u4 = new User(4, "restaurant", "McDonalds","mcdongs@mc.com", "McDonalds","Ames", "IA", "mcmc", "3838", "url", "McDonalds");
 			
 			Photo p1 = new Photo(1, "Jeff pizza is trash", "$", "Italian", "url", "Jeff's Pizza", u1);
 			Photo p2 = new Photo(2, "Indian Palace is the best place to eat in Ames", "$$", "Indian", "url", "Indian Palace", u1);
@@ -59,6 +60,7 @@ public class DatabaseInitializer implements CommandLineRunner
 			userRepo.save(u1);
 			userRepo.save(u2);
 			userRepo.save(u3);
+			userRepo.save(u4); 
 			
 			photoRepo.save(p1);
 			photoRepo.save(p2);

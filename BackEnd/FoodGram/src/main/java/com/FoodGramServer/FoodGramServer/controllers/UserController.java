@@ -65,10 +65,19 @@ public class UserController {
 	 * @param username
 	 * @return user array
 	 */
+	@RequestMapping(method = RequestMethod.GET, path = "/get/{restaurant}")
 	public List<User> getCaptionByRestaurant(@PathVariable String restaurant) {
 		List<User> user = userRepo.getByUsername(restaurant);
 		return user;
 	}
+	
+//	@RequestMapping(method = RequestMethod.GET, path = "/post/restaurant")
+//	public List<User> getOnlyRestaurant() {
+//		List<User> user = userRepo.getByRestaurant(res);
+//		return user;
+//	}
+//	
+	
 
 
 }

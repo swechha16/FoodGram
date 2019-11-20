@@ -55,7 +55,7 @@ public class ProfilePage extends AppCompatActivity {
      userBioTextView = findViewById(R.id.userBioTextView);
      mTextViewResult = findViewById(R.id.userPostsTextView);
 
-     Button refresh = findViewById(R.id.refreshRestaurantButton);
+     Button refresh = findViewById(R.id.refreshButton);
 
 
      refresh.setOnClickListener(new View.OnClickListener() {
@@ -77,7 +77,7 @@ public class ProfilePage extends AppCompatActivity {
      */
     public void getProfilePosts(){
 
-      String url = "http://coms-309-mg-1.cs.iastate.edu:8080/photo/all";
+      String url = "http://10.31.25.50:8080/user/alexi";
         JsonArrayRequest testRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -129,7 +129,7 @@ public class ProfilePage extends AppCompatActivity {
      * Gets the bio from a user and displays it on the page.
      */
     public void getBio(){
-        String url = "http://coms-309-mg-1.cs.iastate.edu:8080/photo/all";
+        String url = "http://10.31.25.50:8080/user/alexi";
 
         JsonArrayRequest bioRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
