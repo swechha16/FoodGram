@@ -55,7 +55,7 @@ public class ProfilePage extends AppCompatActivity {
      userBioTextView = findViewById(R.id.userBioTextView);
      mTextViewResult = findViewById(R.id.userPostsTextView);
 
-     Button refresh = findViewById(R.id.refreshButton);
+     Button refresh = findViewById(R.id.refreshRestaurantButton);
 
 
      refresh.setOnClickListener(new View.OnClickListener() {
