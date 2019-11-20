@@ -92,8 +92,4 @@ public class Login extends AppCompatActivity {
         passQueue.add(JSONRequest);
 
     }
-
-    public void betterLogin(){
-
-    }
 }
