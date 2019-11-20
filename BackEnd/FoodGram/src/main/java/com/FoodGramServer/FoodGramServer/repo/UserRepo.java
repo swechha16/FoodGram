@@ -42,4 +42,8 @@ public interface UserRepo extends JpaRepository<User, Long> {
     @Query(value = "Select * From user where account_type = ?1", nativeQuery = true)
 	public User[] getCaptionByRestaurant(String restaurant);
 
+    
+    @Query(value = "SELECT password FROM user WHERE email = ?1", nativeQuery=true)
+	public String getPasscode(String email);
+
 }

@@ -65,10 +65,21 @@ public class UserController {
 	 * @param username
 	 * @return user array
 	 */
+	@RequestMapping(method = RequestMethod.GET, path = "/user/rest/{restaurant}")
 	public List<User> getCaptionByRestaurant(@PathVariable String restaurant) {
 		List<User> user = userRepo.getByUsername(restaurant);
 		return user;
 	}
-
+	
+	/**
+	 * gets the password from a users account to verify correctness
+	 * @param email
+	 * @return password
+	 */
+	@RequestMapping(method = RequestMethod.GET, path = "/user/pass/{email}")
+	public String getUserPasscode(@PathVariable String email) {
+		String passcode = userRepo.getPasscode(email);
+		return passcode;
+	}
 
 }
