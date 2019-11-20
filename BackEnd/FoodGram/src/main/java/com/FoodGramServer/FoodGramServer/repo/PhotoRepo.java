@@ -51,5 +51,5 @@ public interface PhotoRepo extends JpaRepository<Photo, Long>{
 
 
     @Query(value = "SELECT * FROM photo WHERE username = ?1", nativeQuery = true)
-	public List<Photo> getByUser(int user);    
+	public List<Photo> getByUser(String user);    
 } 
