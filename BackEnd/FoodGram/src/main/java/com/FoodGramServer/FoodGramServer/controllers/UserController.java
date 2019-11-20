@@ -40,9 +40,20 @@ public class UserController {
 	}
 
 	/**
-	 * gets all the user with a certain username
+	 * gets all the user with a certain email
 	 * @param username
 	 * @return user array
+	 */
+	@RequestMapping(method = RequestMethod.GET, path = "/user/email/{email}")
+	public User getUserByEmail(@PathVariable String email) {
+		User user = userRepo.getByEmail(email);
+		return user;
+	}
+	
+	/**
+	 * 
+	 * @param username
+	 * @return
 	 */
 	@RequestMapping(method = RequestMethod.GET, path = "/user/{username}")
 	public List<User> getUserByUser(@PathVariable String username) {
@@ -71,15 +82,5 @@ public class UserController {
 		return user;
 	}
 	
-	/**
-	 * gets the password from a users account to verify correctness
-	 * @param email
-	 * @return password
-	 */
-	@RequestMapping(method = RequestMethod.GET, path = "/user/pass/{email}")
-	public String getUserPasscode(@PathVariable String email) {
-		String passcode = userRepo.getPasscode(email);
-		return passcode;
-	}
 
 }
