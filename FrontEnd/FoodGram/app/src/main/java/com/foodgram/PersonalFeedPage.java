@@ -5,6 +5,8 @@ import android.os.AsyncTask;
 import android.renderscript.ScriptGroup;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -27,6 +29,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Pulls the users feed (similar to the Instagram feed page) from recent posts from the users they follow. Will also sign a user out when the sign out button is clicked.
@@ -45,6 +49,9 @@ public class PersonalFeedPage extends AppCompatActivity {
      * When this button is pressed the user will be signed out.
      */
     private Button signOut;
+    private List<Photo> photoList;
+    RecyclerView feedView;
+    FeedPageAdapter feedPageAdapter;
 
 
 
@@ -69,6 +76,18 @@ public class PersonalFeedPage extends AppCompatActivity {
 
         mQueue = Volley.newRequestQueue(this);
 
+
+
+
+        photoList = new ArrayList<Photo>();
+
+        feedView = findViewById(R.id.feedPage_recyclerView);
+        feedPageAdapter = new FeedPageAdapter(this, photoList);
+
+        feedView.setAdapter(feedPageAdapter);
+        feedView.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        feedView.setLayoutManager(linearLayoutManager);
         btn_getFeed.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -94,7 +113,7 @@ public class PersonalFeedPage extends AppCompatActivity {
 
 
 
-       String url = "http://10.29.178.67:8080/comment/all";
+       String url = "http://coms-309-mg-1.cs.iastate.edu:8080/comment/all";
 
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
@@ -106,10 +125,21 @@ public class PersonalFeedPage extends AppCompatActivity {
                             JSONArray jsonArray = response.getJSONArray("comments");
                            mTextViewResult.setText("");
                            for (int i = 0; i < jsonArray.length(); i++) {
-                               JSONObject comment = jsonArray.getJSONObject(i);
+                               JSONObject photo = jsonArray.getJSONObject(i);
 
-                               long id = comment.getInt("id");
-                               String commentC = comment.getString("comment");
+                               //Get stuff from the photo
+
+                               System.out.println(photo);
+
+//                               String picUrl = photo.getString("pic");
+                               String picUrl = "http://coms-309-mg-1.cs.iastate.edu/images/pizza.jpg";
+                               String caption = photo.getString("caption");
+                               String restaurant = photo.getString("restaurant");
+
+//                               User tempUser = new User(photo.getLong(""));
+
+                               long id = photo.getInt("id");
+                               String commentC = photo.getString("comment");
 
                                mTextViewResult.append(id + "\t" + commentC + "\n\n");
 
@@ -125,8 +155,10 @@ public class PersonalFeedPage extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                mTextViewResult.setText("Error");
+                mTextViewResult.setText(error.getMessage());
                 error.printStackTrace();
+
+
             }
         });
 
