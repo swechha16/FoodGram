@@ -58,6 +58,8 @@ public class User  implements Serializable{
 	@Column(name = "full_name")
 	private String full_name;
 	
+	
+
 	/**
 	 * bio for the user
 	 */
@@ -109,11 +111,19 @@ public class User  implements Serializable{
 	@Column(name = "profile_pic")
 	private String profile_pic;
 	
+	/**
+	 * Url for user or for restaurant
+	 */
+	@Column(name = "url")
+	private String url;
+
+	
+	
 	public User() {
 		
 	}
 	
-	public User(long user_id, String account_type, String bio, String email, String full_name, String location_city, String location_state, String password, String pic,  String phone_no, String username) {
+	public User(long user_id, String account_type, String bio, String email, String full_name, String location_city, String location_state, String password, String pic,  String phone_no, String username, String url) {
 		this.user_id = user_id;
 		this.account_type = account_type;
 		this.bio = bio;
@@ -125,6 +135,7 @@ public class User  implements Serializable{
 		this.profile_pic = pic;
 		this.phone_no = phone_no;
 		this.username = username;
+		this.url = url; 
 	}
 		
 	/**
@@ -259,6 +270,15 @@ public class User  implements Serializable{
 	 */
 	public void setProfilePic(String profile_pic) { this.profile_pic = profile_pic; }
 
+	
+	
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
 	/**
 	 * 
 	 * @return
@@ -290,4 +310,6 @@ public class User  implements Serializable{
 	public void setMessageReciever(List<Message> messageReciever) {
 		this.messageReciever = messageReciever;
 	}
+
+	
 }

@@ -77,7 +77,7 @@ public class ProfilePage extends AppCompatActivity {
      */
     public void getProfilePosts(){
 
-      String url = "http://10.31.25.50:8080/user/alexi";
+      String url = "http://10.31.25.50:8080/photo/all";
         JsonArrayRequest testRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
