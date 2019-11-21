@@ -45,7 +45,7 @@ public class DatabaseInitializer implements CommandLineRunner
 			User u2 = new User(2, "user", "I sweat", "sweaty@iastate.edu", "Sweaty Ghimire", "Ames", "IA", "pass1234", "911", "url", "sweaty");
 			User u3 = new User(3, "user", "Taki Taki -Selena Gomez", "Ronnie@iastate.edu", "Ronnie Torres", "Ames", "IA", "pass1234", "5159998888", "url", "Ronnie");
 			
-			Photo p1 = new Photo(1, "Jeff pizza is trash", "$", "Italian", "url", "Jeff's Pizza", u1);
+			Photo p1 = new Photo(1, "Jeff pizza is trash", "$", "Italian", "/var/html/www/images/pizza.jpg", "Jeff's Pizza", u1);
 			Photo p2 = new Photo(2, "Indian Palace is the best place to eat in Ames", "$$", "Indian", "url", "Indian Palace", u1);
 			Photo p3 = new Photo(3, "Fast and goof Food", "$$", "Chinese", "url", "Wok n Roll", u2);
 			Photo p4 = new Photo(4, "The West hyvee chinese is trash", "$", "Chinese", "url", "Hyvee", u2);
