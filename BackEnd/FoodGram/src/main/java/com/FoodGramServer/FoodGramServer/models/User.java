@@ -113,6 +113,20 @@ public class User  implements Serializable{
 		
 	}
 	
+	/**
+	 * constructor
+	 * @param user_id
+	 * @param account_type
+	 * @param bio
+	 * @param email
+	 * @param full_name
+	 * @param location_city
+	 * @param location_state
+	 * @param password
+	 * @param pic
+	 * @param phone_no
+	 * @param username
+	 */
 	public User(long user_id, String account_type, String bio, String email, String full_name, String location_city, String location_state, String password, String pic,  String phone_no, String username) {
 		this.user_id = user_id;
 		this.account_type = account_type;
