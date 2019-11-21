@@ -33,7 +33,7 @@ public class Photo implements Serializable {
 	 * Instance variable for the user that posted the photo
 	 */
 	@ManyToOne
-	@JsonBackReference(value = "userPhoto")
+	//@JsonBackReference(value = "userPhoto")
 	//@JsonManagedReference
 	@JoinColumn(name="user_id") // specifies to use a column in Photo table to reference user, instead of the default behavior to create a join table
 	private User user; //link up with the user table
