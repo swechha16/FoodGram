@@ -92,7 +92,7 @@ public class PhotoController {
 		Path path = null;
 		try {
 			byte[] bytes = file.getBytes();
-	        path = Paths.get("/var/www/html/images/" + file.getOriginalFilename());
+	        path = Paths.get("coms-309-mg-1.cs.iastate.edu/images/" + file.getOriginalFilename());
 			//path = Paths.get("C:/Users/alexi/Desktop/COMS309/img/" + file.getOriginalFilename());
 			Files.write(path, bytes);
 
