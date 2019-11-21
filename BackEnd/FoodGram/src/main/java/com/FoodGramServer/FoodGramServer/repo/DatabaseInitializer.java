@@ -54,7 +54,9 @@ public class DatabaseInitializer implements CommandLineRunner
 			User u2 = new User(2, "user", "I sweat", "sweaty@iastate.edu", "Sweaty Ghimire", "Ames", "IA", "pass1234", "911", "url", "sweaty", "url");
 			User u3 = new User(3, "user", "Taki Taki -Selena Gomez", "Ronnie@iastate.edu", "Ronnie Torres", "Ames", "IA", "pass1234", "5159998888", "url", "Ronnie", "url");
 			
-			User  u4 = new User(4, "restaurant", "McDonalds is amazing", "mcdong@mcdong.com", "McDonalds", "Ames", "Iowa", "mcmc", "url",  "5157078976", "mcdong", "https://www.mcdonalds.com"); 
+			User  u4 = new User(4, "restaurant", "McDonalds is amazing", "mcdong@mcdong.com", "McDonalds", "Ames", "Iowa", "mcmc", "url",  "5157078976", "mcdong", "https://www.mcdonalds.com");
+
+			User  u5 = new User(4, "restaurant", "Burger KING WERE AWESOME", "bk@bk.com", "Burger King", "Ames", "Iowa", "burg", "url",  "5157078976", "bk", "https://mobile.bk.com/"); 
 			Photo p1 = new Photo(1, "Jeff pizza is trash", "$", "Italian", "url", "Jeff's Pizza", u1);
 			Photo p2 = new Photo(2, "Indian Palace is the best place to eat in Ames", "$$", "Indian", "url", "Indian Palace", u1);
 			Photo p3 = new Photo(3, "Fast and goof Food", "$$", "Chinese", "url", "Wok n Roll", u2);
@@ -71,7 +73,9 @@ public class DatabaseInitializer implements CommandLineRunner
 			userRepo.save(u1);
 			userRepo.save(u2);
 			userRepo.save(u3);
-			userRepo.save(u4); 
+			userRepo.save(u4);
+			userRepo.save(u5);
+			
 			
 			photoRepo.save(p1);
 			photoRepo.save(p2);
