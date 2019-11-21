@@ -47,7 +47,7 @@ public class RestaurantPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
              System.out.println("we out here");
-//                getRestaurantProfilePosts();
+                getRestaurantProfilePosts();
                getRestaurantBio();
             }
         });
@@ -80,7 +80,7 @@ public class RestaurantPage extends AppCompatActivity {
 
     public void getRestaurantProfilePosts(){
 
-        String url = "http://10.31.24.213:8080/photo/all";
+        String url = "http://10.31.27.207:8080/photo/all";
         JsonArrayRequest testRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -135,7 +135,7 @@ public class RestaurantPage extends AppCompatActivity {
 
     public void getRestaurantBio(){
 
-        String url = "http://10.31.24.213:8080/user/bk";
+        String url = "http://10.31.27.207:8080/user/bk";
         JsonArrayRequest bioRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -150,9 +150,9 @@ public class RestaurantPage extends AppCompatActivity {
                             String bio = userBio.getString("bio");
                             username = userBio.getString("username");
                             String email = userBio.getString("email");
-                          //  String phone = userBio.getString("phone_no");
 
                             restuarantUrl =  userBio.getString("url");
+
                             restaurantBioTextView.setText("\t\tRestaurant Bio \n\t\t-------------\nRestaurant Name : " + username + "\nBio: "  + bio +"\nEmail: " + email);
 
 
