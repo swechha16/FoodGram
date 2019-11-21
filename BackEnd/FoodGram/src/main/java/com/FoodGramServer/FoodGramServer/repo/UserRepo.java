@@ -47,4 +47,8 @@ public interface UserRepo extends JpaRepository<User, Long> {
     
     
 
+    
+    @Query(value = "SELECT * FROM user WHERE email = ?1", nativeQuery=true)
+	public User getByEmail(String email);
+
 }

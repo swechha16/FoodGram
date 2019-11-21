@@ -77,7 +77,7 @@ public class PhotoController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, path = "/photo/user/{user}")
-	public List<Photo> findByUser(@PathVariable int user) {
+	public List<Photo> findByUser(@PathVariable String user) {
 		return photoRepo.getByUser(user);
 	}
 	
@@ -92,8 +92,8 @@ public class PhotoController {
 		Path path = null;
 		try {
 			byte[] bytes = file.getBytes();
-	        //path = Paths.get("/var/www/html/images/" + file.getOriginalFilename());
-			path = Paths.get("C:/Users/alexi/Desktop/COMS309/img/" + file.getOriginalFilename());
+	        path = Paths.get("/var/www/html/images/" + file.getOriginalFilename());
+			//path = Paths.get("C:/Users/alexi/Desktop/COMS309/img/" + file.getOriginalFilename());
 			Files.write(path, bytes);
 
 		} catch (IOException e) {
