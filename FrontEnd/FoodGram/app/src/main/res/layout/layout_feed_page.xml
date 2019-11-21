@@ -41,7 +41,8 @@
         app:layout_constraintLeft_toRightOf="@+id/feed_profile_pics"
         app:layout_constraintBottom_toTopOf="@id/image_post"
         app:layout_constraintTop_toTopOf="parent"
-        android:textColor="#000"/>
+        android:textColor="#000"
+        android:id="@+id/feed_username"/>
 
 
 

@@ -11,11 +11,20 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.drafts.Draft_6455;
 import org.java_websocket.handshake.ServerHandshake;
+
+import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -107,8 +116,9 @@ String sender;
                                             toast.setGravity(Gravity.TOP|Gravity.RIGHT, 0,0);
                                             toast.show();
                                 }
-                                //messageListAdapter.notifyDataSetChanged();
-                                //t1.setText(s + " Server:" + message);
+
+                                storeMessage(message);
+
                             }
 
                             @Override
@@ -153,7 +163,50 @@ String sender;
 //            messageListAdapter = new RecyclerViewMessageAdapter(this, mChat);
 //        }
 
-    public void storeMessage(){
+    public void storeMessage(String message){
+
+        requestQueue = Volley.newRequestQueue(this);
+        String url = "http://10.26.41.227:8080/post/comment/users";
+        final String makePost = message;
+        //String url = "http://coms-309-mg-1.cs.iastate.edu:8080/post/comment/users";
+
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                Log.d("Response", response);
+
+                Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("Error.Response", error.toString());
+            }
+
+        }) {
+            @Override
+            public String getBodyContentType() {
+                return "application/json; charset=utf-8";
+            }
+
+            @Override
+            public byte[] getBody() throws AuthFailureError {
+                try {
+                    return makePost == null ? null : makePost.getBytes("utf-8");
+                } catch (UnsupportedEncodingException uee) {
+                    VolleyLog.wtf("Unsupported Encoding while trying to get the bytes of %s using %s", makePost, "utf-8");
+                    return null;
+                }
+
+            }
+        };
+
+        requestQueue.add(stringRequest);
+
+
 
     }
 
