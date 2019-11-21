@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.drafts.Draft_6455;
 import org.java_websocket.handshake.ServerHandshake;
@@ -30,6 +32,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
  * A chat for users to communicate directly with each other.
  */
 public class DirectMessage extends AppCompatActivity {
+
+    private RequestQueue requestQueue;
 
 
 
@@ -148,6 +152,10 @@ String sender;
 //        public void updateAdapter(List<Chat> c){
 //            messageListAdapter = new RecyclerViewMessageAdapter(this, mChat);
 //        }
+
+    public void storeMessage(){
+
+    }
 
     }
 
