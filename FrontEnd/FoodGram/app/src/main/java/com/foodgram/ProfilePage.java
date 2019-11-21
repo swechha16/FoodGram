@@ -37,37 +37,31 @@ public class ProfilePage extends AppCompatActivity {
     String userName;
 
 
-
-
-
-
     /**
      * Creates the Volley and Buttons for refreshing the profile page
+     *
      * @param savedInstanceState
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_page);
-     mQueue = Volley.newRequestQueue(this);
-     mQueue2 = Volley.newRequestQueue(this);
+        mQueue = Volley.newRequestQueue(this);
+        mQueue2 = Volley.newRequestQueue(this);
 
-     userBioTextView = findViewById(R.id.userBioTextView);
-     mTextViewResult = findViewById(R.id.userPostsTextView);
+        userBioTextView = findViewById(R.id.userBioTextView);
+        mTextViewResult = findViewById(R.id.userPostsTextView);
 
-     Button refresh = findViewById(R.id.refreshButton);
-
-
-     refresh.setOnClickListener(new View.OnClickListener() {
-         @Override
-         public void onClick(View view) {
-             getBio();
-             getProfilePosts();
-         }
-     });
+        Button refresh = findViewById(R.id.refreshButton);
 
 
-
+        refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getBio();
+                getProfilePosts();
+            }
+        });
 
 
     }
@@ -75,23 +69,22 @@ public class ProfilePage extends AppCompatActivity {
     /**
      * Gets all of a posts from a user and displays them.
      */
-    public void getProfilePosts(){
+    public void getProfilePosts() {
 
-      String url = "http://coms-309-mg-1.cs.iastate.edu:8080/photo/all";
+        String url = "http://coms-309-mg-1.cs.iastate.edu:8080/photo/user/alexi";
         JsonArrayRequest testRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
-                    mTextViewResult.setText("");
+                mTextViewResult.setText("");
                 try {
 
-                    if(response.length() != 0) {
+                    if (response.length() != 0) {
 
                         for (int i = 0; i < response.length(); i++) {
                             JSONObject post = response.getJSONObject(i);
 
 
-
-                            if(post.getJSONObject("userId").getString("username").equals(userName)) {
+                            if (post.getJSONObject("userId").getString("username").equals(userName)) {
 
 
                                 String caption = post.getString("caption");
@@ -103,7 +96,7 @@ public class ProfilePage extends AppCompatActivity {
                                 mTextViewResult.append(caption + "\n" + foodTag + "\n" + costTag + "\n" + restaurantName + "\n\n\n");
                             }
                         }
-                    }else{
+                    } else {
                         mTextViewResult.append("No posts");
                     }
 
@@ -128,8 +121,8 @@ public class ProfilePage extends AppCompatActivity {
     /**
      * Gets the bio from a user and displays it on the page.
      */
-    public void getBio(){
-        String url = "http://coms-309-mg-1.cs.iastate.edu:8080/photo/all";
+    public void getBio() {
+        String url = "http://coms-309-mg-1.cs.iastate.edu:8080/user/alexi";
 
         JsonArrayRequest bioRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
@@ -137,7 +130,7 @@ public class ProfilePage extends AppCompatActivity {
 
                 try {
 
-                    if(response.length() != 0) {
+                    if (response.length() != 0) {
 
                         for (int i = 0; i < response.length(); i++) {
                             JSONObject userBio = response.getJSONObject(i);
@@ -146,11 +139,10 @@ public class ProfilePage extends AppCompatActivity {
                             userName = userBio.getString("username");
 
 
-
-                            userBioTextView.setText("\t\tUser Bio \n\t\t-------------\nUser Name : " + userName + "\nBio: "  + bio );
+                            userBioTextView.setText("\t\tUser Bio \n\t\t-------------\nUser Name : " + userName + "\nBio: " + bio);
 
                         }
-                    }else{
+                    } else {
                         userBioTextView.append("No profile");
                     }
 
