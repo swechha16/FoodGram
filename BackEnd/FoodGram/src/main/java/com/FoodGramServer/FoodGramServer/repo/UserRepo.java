@@ -39,13 +39,13 @@ public interface UserRepo extends JpaRepository<User, Long> {
     @Query(value = "SELECT * FROM user Where username = ?1", nativeQuery = true)
 	public List<User> getByUsername(String findUsername);
     
-    @Query(value = "Select * From user where account_type = ?1", nativeQuery = true)
-	public User[] getCaptionByRestaurant(String restaurant);
+    @Query(value = "Select * From user where full_name = ?1", nativeQuery = true)
+	public List<User> getCaptionByRestaurant(String restaurant);
     
     @Query(value = "SELECT * FROM user Where accountType = ?1", nativeQuery = true)
    	public List<User> getByRestaurant(String res); 
     
-    
+ 
 
     
     @Query(value = "SELECT * FROM user WHERE email = ?1", nativeQuery=true)

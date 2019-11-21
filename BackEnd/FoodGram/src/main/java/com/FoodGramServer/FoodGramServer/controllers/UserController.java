@@ -78,16 +78,11 @@ public class UserController {
 	 */
 	@RequestMapping(method = RequestMethod.GET, path = "/get/{restaurant}")
 	public List<User> getCaptionByRestaurant(@PathVariable String restaurant) {
-		List<User> user = userRepo.getByUsername(restaurant);
+		List<User> user = userRepo.getCaptionByRestaurant(restaurant); 
 		return user;
 	}
 	
-//	@RequestMapping(method = RequestMethod.GET, path = "/post/restaurant")
-//	public List<User> getOnlyRestaurant() {
-//		List<User> user = userRepo.getByRestaurant(res);
-//		return user;
-//	}
-//	
+	
 	
 
 
