@@ -46,7 +46,7 @@ profilePicture = findViewById(R.id.restaurantImageView);
         getRestaurantProfilePosts();
         getRestaurantBio();
 
-    
+
 
 
 
