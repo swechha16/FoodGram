@@ -13,6 +13,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
 
 
 import org.json.JSONArray;
@@ -176,7 +177,12 @@ public class ProfilePage extends AppCompatActivity {
         mQueue.add(bioRequest);
     }
 
+    public void updatePicture(){
+        Glide.with(this)
+                .load("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2018/02/google-pacman-796x419.jpg")
+                .into(profilePic);
 
+    }
 
 }
 

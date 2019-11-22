@@ -20,9 +20,10 @@ public class MessageController {
     MessageRepo messageRepo;
 
 
-    @RequestMapping(method = RequestMethod.POST, path = "/websocket/post/{message}")
+    @RequestMapping(method = RequestMethod.POST, path = "/websocket/post")
     public void postWebSocketChat(@PathVariable Message message) {
-    	messageRepo.save(message); 
+    messageRepo.save(message);
+
 
 //message repo save (message) 
 
