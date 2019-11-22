@@ -76,7 +76,7 @@ profilePicture = findViewById(R.id.restaurantImageView);
 
     public void getRestaurantProfilePosts(){
 
-        String url = "http://10.31.27.207:8080/photo/rest/Burger King";
+        String url = "http://:8080/photo/rest/Burger King";
         JsonArrayRequest testRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {

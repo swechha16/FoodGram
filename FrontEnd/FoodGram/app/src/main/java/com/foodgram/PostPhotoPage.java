@@ -107,12 +107,8 @@ public class PostPhotoPage extends AppCompatActivity {
     private void sendContents() {
 
         requestQueue = Volley.newRequestQueue(this);
-        //String url = "http://10.65.23.83:8080/post/comment/users";
-        //String url = "http://10.31.4.129:8080/post/photo";
         String url = "http://10.9.213.42:8080/post/photo";
-        // String url = "http://coms-309-mg-1.cs.iastate.edu:8080/photo/post";
-        //String url = "http://10.31.31.154:8080/post/comment";
-        //"http://10.31.24.107:8080/comment/all";
+
 
         final JSONObject obj = new JSONObject();
         final JSONObject user = new JSONObject();
@@ -166,23 +162,7 @@ public class PostPhotoPage extends AppCompatActivity {
 
         }) ;
 
-//        {
-//            @Override
-//            public String getBodyContentType() {
-//                return "application/json; charset=utf-8";
-//            }
-//
-////            @Override
-////            public byte[] getBody() throws AuthFailureError {
-////                try {
-////                    return obj == null ? null : obj.getBytes("utf-8");
-////                } catch (UnsupportedEncodingException uee) {
-////                    VolleyLog.wtf("Unsupported Encoding while trying to get the bytes of %s using %s", obj, "utf-8");
-////                    return null;
-////                }
-////
-////            }
-//        };
+
 
         requestQueue.add(objectRequest);
 

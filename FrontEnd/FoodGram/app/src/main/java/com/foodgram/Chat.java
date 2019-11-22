@@ -3,30 +3,30 @@ package com.foodgram;
 import com.foodgram.User;
 
 public class Chat {
-   private int sender, receiver;
+   private User sender, receiver;
 
    private String message;
 
 
-    public Chat(int sender, int receiver, String message) {
+    public Chat(User sender, User receiver, String message) {
         this.sender = sender;
         this.receiver = receiver;
         this.message = message;
     }
 
-    public int getSender() {
+    public User getSender() {
         return sender;
     }
 
-    public void setSender(int sender) {
+    public void setSender(User sender) {
         this.sender = sender;
     }
 
-    public int getReceiver() {
+    public User getReceiver() {
         return receiver;
     }
 
-    public void setReceiver(int receiver) {
+    public void setReceiver(User receiver) {
         this.receiver = receiver;
     }
 

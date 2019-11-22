@@ -84,6 +84,9 @@ public class PersonalFeedPage extends AppCompatActivity {
         feedView = findViewById(R.id.feedPage_recyclerView);
         feedPageAdapter = new FeedPageAdapter(this, photoList);
 
+
+
+
         feedView.setAdapter(feedPageAdapter);
         feedView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -113,7 +116,7 @@ public class PersonalFeedPage extends AppCompatActivity {
 
 
 
-       String url = "http://coms-309-mg-1.cs.iastate.edu:8080/comment/all";
+       String url = "http://coms-309-mg-1.cs.iastate.edu:8080/photo/all";
 
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
@@ -130,6 +133,7 @@ public class PersonalFeedPage extends AppCompatActivity {
                                //Get stuff from the photo
 
                                System.out.println(photo);
+                               final User send = new User( 1, "Sweaty", "sweaty@iastate.edu", "user", "pass1234");
 
 //                               String picUrl = photo.getString("pic");
                                String picUrl = "http://coms-309-mg-1.cs.iastate.edu/images/pizza.jpg";
@@ -141,7 +145,7 @@ public class PersonalFeedPage extends AppCompatActivity {
 
                                long id = photo.getInt("id");
                                String commentC = photo.getString("comment");
-
+                                    photoList.add(new Photo(send, picUrl, "pizza is lovely","pizza", "$", "Papa Johns", "12:00", 2));
                                mTextViewResult.append(id + "\t" + commentC + "\n\n");
 
                            }

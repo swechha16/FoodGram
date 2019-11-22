@@ -9,6 +9,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,7 +22,7 @@ public class MessageController {
 
 
     @RequestMapping(method = RequestMethod.POST, path = "/websocket/post")
-    public void postWebSocketChat(@PathVariable Message message) {
+    public void postWebSocketChat(@RequestBody Message message) {
     messageRepo.save(message);
 
 

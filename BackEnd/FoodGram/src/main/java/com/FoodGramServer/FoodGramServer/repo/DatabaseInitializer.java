@@ -56,7 +56,7 @@ public class DatabaseInitializer implements CommandLineRunner
 			
 			User  u4 = new User(4, "restaurant", "McDonalds is amazing", "mcdong@mcdong.com", "McDonalds", "Ames", "Iowa", "mcmc", "url",  "5157078976", "mcdong", "https://www.mcdonalds.com");
 
-			User  u5 = new User(4, "restaurant", "Burger KING WERE AWESOME", "bk@bk.com", "Burger King", "Ames", "Iowa", "burg", "url",  "5157078976", "bk", "https://mobile.bk.com/"); 
+			User  u5 = new User(5, "restaurant", "Burger KING WERE AWESOME", "bk@bk.com", "Burger King", "Ames", "Iowa", "burg", "url",  "5157078976", "bk", "https://mobile.bk.com/"); 
 			Photo p1 = new Photo(1, "Jeff pizza is trash", "$", "Italian", "url", "Jeff's Pizza", u1);
 			Photo p2 = new Photo(2, "Indian Palace is the best place to eat in Ames", "$$", "Indian", "url", "Indian Palace", u1);
 			Photo p3 = new Photo(3, "Fast and goof Food", "$$", "Chinese", "url", "Wok n Roll", u2);
@@ -68,13 +68,15 @@ public class DatabaseInitializer implements CommandLineRunner
 			Following f3 = new Following(3,u1,u3);
 			Following f4 = new Following(4,u3,u2);
 			
-			Message m1 = new Message(1,"hey",rightNow,u1, u2); 
-					
 			userRepo.save(u1);
 			userRepo.save(u2);
 			userRepo.save(u3);
 			userRepo.save(u4);
 			userRepo.save(u5);
+			
+			Message m1 = new Message(1,"hey",rightNow,u1, u2); 
+					
+			
 			
 			
 			photoRepo.save(p1);

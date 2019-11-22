@@ -31,7 +31,7 @@ public class HomePageWithFeedPost extends AppCompatActivity {
        profile_page = findViewById(R.id.userProfileButton);
         home_page = findViewById(R.id.home);
         Direct_Message_Page = findViewById(R.id.MessagesButton);
-        restaurant_Page = findViewById(R.id.restaurantButton);
+                restaurant_Page = findViewById(R.id.restaurantBtn);
 
 
         restaurant_Page.setOnClickListener(new View.OnClickListener() {
@@ -142,8 +142,10 @@ other_profile_button.setOnClickListener(new View.OnClickListener() {
         startActivity(intent);
     }
 
-    public void restaurant_move(View v){
+    public void restaurant_move(View v) {
         Intent intent = new Intent(this, RestaurantPage.class);
+        startActivity(intent);
+    }
     public void other_profile_page(View view){
         Intent intent = new Intent (this, Other_Users_Profile.class);
         startActivity(intent);
