@@ -41,9 +41,9 @@ public class User  implements Serializable{
 	@JsonIgnore
 	private List<Message> messageSender;
 	
-	@OneToMany(mappedBy = "reciever")
+	@OneToMany(mappedBy = "receiver")
 	@JsonIgnore
-	private List<Message> messageReciever;
+	private List<Message> messageReceiver;
 
 	
 	/**
@@ -303,12 +303,12 @@ public class User  implements Serializable{
 		this.messageSender = messageSender;
 	}
 
-	public List<Message> getMessageReciever() {
-		return messageReciever;
+	public List<Message> getMessageReceiver() {
+		return messageReceiver;
 	}
 
 	public void setMessageReciever(List<Message> messageReciever) {
-		this.messageReciever = messageReciever;
+		this.messageReceiver = messageReciever;
 	}
 
 	
