@@ -14,14 +14,9 @@ public class MessageController {
     MessageRepo messageRepo;
 
 
-    @RequestMapping(method = RequestMethod.POST, path = "/websocket/post/{message}")
+    @RequestMapping(method = RequestMethod.POST, path = "/websocket/post")
     public void postWebSocketChat(@PathVariable Message message) {
-    Message m = new Message(); 
-    m.setId_message(message.getId_message());
-    m.setMessage(message.getMessage());
-    m.setTimestamp(message.getTimestamp());
-    m.setUser1(message.getUser1()); 
-    m.setUser2(message.getUser2());
+    messageRepo.save(message);
 
 
 

@@ -172,32 +172,36 @@ String sender;
 //        }
 
     public void storeMessage(String message){
-//        requestQueue = Volley.newRequestQueue(this);
+        requestQueue = Volley.newRequestQueue(this);
 //        //String url = "http://10.65.23.83:8080/post/comment/users";
 //        //String url = "http://10.31.4.129:8080/post/photo";
 //        String url = "http://10.9.213.42:8080/websocket/";
 //        // String url = "http://coms-309-mg-1.cs.iastate.edu:8080/photo/post";
-//        //String url = "http://10.31.31.154:8080/post/comment";
+        String url = "http://10.26.40.57:8080/websocket/post";
 //        //"http://10.31.24.107:8080/comment/all";
-//
-//        final JSONObject obj = new JSONObject();
+
+
+//message
+        final JSONObject obj = new JSONObject();
 //        final JSONObject user = new JSONObject();
 //        User account = new User(1, "sweaty",  "sghimire@iastate.edu", "user", "1234");
-//        try {
+        try {
 //            user.put("userId", account.getUser_id());
-//            obj.put("pic", "url");
-//            obj.put("caption", (txt_caption.getText()).toString());
-//            obj.put("restaurant", (txt_restaurant.getText()).toString());
-//            obj.put("user", user);
-//            obj.put("foodTag", (txt_foodTag.getText()).toString());
-//            obj.put("costTag", (txt_costTag.getText()).toString());
-//
-//            Log.d("Response", obj.toString());
-//
-//        }
-//        catch (JSONException e){
-//            e.printStackTrace();
-//        }
+
+            obj.put(, message);
+            obj.put("pic", "url");
+            obj.put("caption", (txt_caption.getText()).toString());
+            obj.put("restaurant", (txt_restaurant.getText()).toString());
+            obj.put("user", user);
+            obj.put("foodTag", (txt_foodTag.getText()).toString());
+            obj.put("costTag", (txt_costTag.getText()).toString());
+
+            Log.d("Response", obj.toString());
+
+        }
+        catch (JSONException e){
+            e.printStackTrace();
+        }
 //
 //        /**
 //         * Receives response from controller and displays response on Logcat
