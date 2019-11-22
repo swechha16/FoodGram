@@ -28,13 +28,14 @@ public class RestaurantPage extends AppCompatActivity {
     String username;
     Button web;
     String restuarantUrl = "";
+    ImageView profilePicture;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant_page);
 
-
+profilePicture = findViewById(R.id.restaurantImageView);
         restaurantBioTextView = findViewById(R.id.restaurantBioView);
         rTextViewResult = findViewById(R.id.restaurantPost);
         web =  findViewById(R.id.showWebsite);
@@ -80,7 +81,7 @@ public class RestaurantPage extends AppCompatActivity {
 
     public void getRestaurantProfilePosts(){
 
-        String url = "http://10.31.27.207:8080/photo/all";
+        String url = "http://10.31.27.207:8080/photo/rest/Burger King";
         JsonArrayRequest testRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -93,8 +94,8 @@ public class RestaurantPage extends AppCompatActivity {
                             JSONObject post = response.getJSONObject(i);
 
 
-
-                            if(post.getJSONObject("userId").getString("username").equals(username)) {
+                                if(true){
+//                            if(post.getJSONObject("userId").getString("username").equals(username)) {
 
 
                                 String caption = post.getString("caption");
@@ -150,10 +151,10 @@ public class RestaurantPage extends AppCompatActivity {
                             String bio = userBio.getString("bio");
                             username = userBio.getString("username");
                             String email = userBio.getString("email");
-
+                            String phone = userBio.getString("phoneNo");
                             restuarantUrl =  userBio.getString("url");
 
-                            restaurantBioTextView.setText("\t\tRestaurant Bio \n\t\t-------------\nRestaurant Name : " + username + "\nBio: "  + bio +"\nEmail: " + email);
+                            restaurantBioTextView.setText("\t\tRestaurant Bio \n\t\t-------------\nRestaurant Name : " + username + "\nBio: "  + bio +"\nEmail: " + email + "\nPhone Number: " + phone);
 
 
 

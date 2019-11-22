@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -12,6 +13,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -36,6 +38,8 @@ public class ProfilePage extends AppCompatActivity {
      */
     String userName;
 
+    ImageView profilePic;
+
 
 
 
@@ -49,22 +53,23 @@ public class ProfilePage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_page);
-     mQueue = Volley.newRequestQueue(this);
-     mQueue2 = Volley.newRequestQueue(this);
+        mQueue = Volley.newRequestQueue(this);
+        mQueue2 = Volley.newRequestQueue(this);
+        profilePic = findViewById(R.id.profilePic);
 
-     userBioTextView = findViewById(R.id.userBioTextView);
-     mTextViewResult = findViewById(R.id.userPostsTextView);
+        userBioTextView = findViewById(R.id.userBioTextView);
+        mTextViewResult = findViewById(R.id.userPostsTextView);
 
-     Button refresh = findViewById(R.id.refreshButton);
+        Button refresh = findViewById(R.id.refreshButton);
 
 
-     refresh.setOnClickListener(new View.OnClickListener() {
-         @Override
-         public void onClick(View view) {
-             getBio();
-             getProfilePosts();
-         }
-     });
+        refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getBio();
+                getProfilePosts();
+            }
+        });
 
 
 
@@ -77,11 +82,11 @@ public class ProfilePage extends AppCompatActivity {
      */
     public void getProfilePosts(){
 
-      String url = "http://10.31.27.207:8080/photo/all";
+        String url = "http://10.31.27.207:8080/photo/all";
         JsonArrayRequest testRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
-                    mTextViewResult.setText("");
+                mTextViewResult.setText("");
                 try {
 
                     if(response.length() != 0) {
@@ -90,8 +95,8 @@ public class ProfilePage extends AppCompatActivity {
                             JSONObject post = response.getJSONObject(i);
 
 
-
-                            if(post.getJSONObject("userId").getString("username").equals(userName)) {
+                                    if(true){
+//                            if(post.getJSONObject("userId").getString("username").equals(userName)) {
 
 
                                 String caption = post.getString("caption");
@@ -171,4 +176,7 @@ public class ProfilePage extends AppCompatActivity {
         mQueue.add(bioRequest);
     }
 
+
+
 }
+
