@@ -188,13 +188,13 @@ String sender;
         try {
 //            user.put("userId", account.getUser_id());
 
-            obj.put(, message);
+            obj.put("message", message);
             obj.put("pic", "url");
-            obj.put("caption", (txt_caption.getText()).toString());
-            obj.put("restaurant", (txt_restaurant.getText()).toString());
-            obj.put("user", user);
-            obj.put("foodTag", (txt_foodTag.getText()).toString());
-            obj.put("costTag", (txt_costTag.getText()).toString());
+//            obj.put("caption", (txt_caption.getText()).toString());
+//            obj.put("restaurant", (txt_restaurant.getText()).toString());
+//            obj.put("user", user);
+//            obj.put("foodTag", (txt_foodTag.getText()).toString());
+//            obj.put("costTag", (txt_costTag.getText()).toString());
 
             Log.d("Response", obj.toString());
 
