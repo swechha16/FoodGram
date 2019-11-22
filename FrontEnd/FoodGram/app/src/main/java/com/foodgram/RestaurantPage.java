@@ -41,17 +41,12 @@ profilePicture = findViewById(R.id.restaurantImageView);
         web =  findViewById(R.id.showWebsite);
 
 
-
         rQueue = Volley.newRequestQueue(this);
-        Button refreshButton = findViewById(R.id.refreshRestaurantButton);
-        refreshButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-             System.out.println("we out here");
-                getRestaurantProfilePosts();
-               getRestaurantBio();
-            }
-        });
+
+        getRestaurantProfilePosts();
+        getRestaurantBio();
+
+    
 
 
 
