@@ -11,6 +11,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -75,9 +76,11 @@ public class PhotoController {
 	 * post the photos to the database
 	 * @param userPhoto
 	 */
-	@RequestMapping(method = RequestMethod.POST, path = "/post/photo")
-	public void postPhoto(@RequestBody Photo userPhoto) {
+	@PostMapping(path = "/post/photo")
+	public String postPhoto(@RequestBody Photo userPhoto) {
+		System.out.println(userPhoto.getCaption());
 		photoRepo.save(userPhoto);
+		return "{\"OK\"}";
 
 	}
 
@@ -91,8 +94,8 @@ public class PhotoController {
 		Path path = null;
 		try {
 			byte[] bytes = file.getBytes();
-	        //path = Paths.get("/var/www/html/images/" + file.getOriginalFilename());
-			path = Paths.get("C:/Users/alexi/Desktop/COMS309/img/" + file.getOriginalFilename());
+	        path = Paths.get("/var/www/html/images/" + file.getOriginalFilename());
+//			path = Paths.get("C:/Users/alexi/Desktop/COMS309/img/" + file.getOriginalFilename());
 			Files.write(path, bytes);
 
 		} catch (IOException e) {

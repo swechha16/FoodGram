@@ -7,12 +7,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class NetworkClient {
     private static Retrofit retrofit;
 
-    private static String Static_Url = "http://coms-309-mg-1.cs.iastate.edu:8080/";
+    private static String Base_Url = "http://10.31.31.219:8080/";
 
     public static Retrofit getRetrofit(){
-        OkHttpClient httpClient = new OkHttpClient.Builder().build();
+        OkHttpClient httpClient = new OkHttpClient.Builder().build(); //Volley Network Calls
         if (retrofit == null) {
-            retrofit = new Retrofit.Builder().baseUrl(Static_Url).
+            retrofit = new Retrofit.Builder().baseUrl(Base_Url).
                     addConverterFactory(GsonConverterFactory.create()).client(httpClient).build();
         }
         return retrofit;
