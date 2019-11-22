@@ -44,6 +44,11 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.mockito:mockito-core:1.10.19'
     implementation files('libs/java_websocket.jar')
-    //circle image view
     implementation 'de.hdodenhof:circleimageview:3.0.1'
+
+    implementation ("com.github.bumptech.glide:glide:4.9.0") {
+        exclude group: "com.android.support"
+    }
+    implementation "com.android.support:support-fragment:28.0.0"
+
 }
