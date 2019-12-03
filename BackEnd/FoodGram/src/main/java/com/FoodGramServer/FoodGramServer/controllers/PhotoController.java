@@ -11,6 +11,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -42,7 +43,8 @@ public class PhotoController {
 	 */
 	@RequestMapping(method = RequestMethod.GET, path = "/photo/all")
 	public List<Photo> getPhotos() {
-		return photoRepo.getAll();
+		List<Photo> photos = photoRepo.getAll();
+		return photos;
 	}
 
 	/**
@@ -54,7 +56,8 @@ public class PhotoController {
 	 */
 	@RequestMapping(method = RequestMethod.GET, path = "/photo/{foodCategory}/{priceCategory}")
 	public List<Photo> getPostByFoodTagAndPrice(@PathVariable String foodCategory, @PathVariable String priceCategory) {
-		return photoRepo.getByFoodTagAndPriceTag(foodCategory, priceCategory); 
+		List<Photo> photos = photoRepo.getByFoodTagAndPriceTag(foodCategory, priceCategory);
+		return photos;
 	}	
 	
 	/**
@@ -62,25 +65,24 @@ public class PhotoController {
 	 * @param restaurant
 	 * @return photos from a restaurant
 	 */
-	@RequestMapping(method = RequestMethod.GET, path = "/photo/rest/{restaurant}")
+	@RequestMapping(method = RequestMethod.GET, path = "/photo/{restaurant}")
 	public List<Photo> findByRestaurant(@PathVariable String restaurant) {
-		return photoRepo.getByRestaurant(restaurant);
+		List<Photo> photos = photoRepo.getByRestaurant(restaurant);
+		return photos;
 	}
+	
 	
 	/**
 	 * post the photos to the database
 	 * @param userPhoto
 	 */
-	@RequestMapping(method = RequestMethod.POST, path = "/post/photo")
-	public void postPhoto(@RequestBody Photo userPhoto) {
+	@PostMapping(path = "/post/photo")
+	public String postPhoto(@RequestBody Photo userPhoto) {
+		System.out.println(userPhoto.getCaption());
 		photoRepo.save(userPhoto);
+		return "{\"OK\"}";
+
 	}
-	
-	@RequestMapping(method = RequestMethod.GET, path = "/photo/user/{user}")
-	public List<Photo> findByUser(@PathVariable String user) {
-		return photoRepo.getByUser(user);
-	}
-	
 
 	/**
 	 * Posting the image from the user into the image folder on the server
@@ -92,8 +94,8 @@ public class PhotoController {
 		Path path = null;
 		try {
 			byte[] bytes = file.getBytes();
-	        path = Paths.get("coms-309-mg-1.cs.iastate.edu/images/" + file.getOriginalFilename());
-			//path = Paths.get("C:/Users/alexi/Desktop/COMS309/img/" + file.getOriginalFilename());
+	        path = Paths.get("/var/www/html/images/" + file.getOriginalFilename());
+//			path = Paths.get("C:/Users/alexi/Desktop/COMS309/img/" + file.getOriginalFilename());
 			Files.write(path, bytes);
 
 		} catch (IOException e) {
