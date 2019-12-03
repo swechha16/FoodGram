@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -88,18 +89,21 @@ public class PhotoController {
 	 * @return file path
 	 */
 	@RequestMapping(method = RequestMethod.POST, path = "/post/image")
-	public Path fileUpload(@RequestParam("file") MultipartFile file) {
+	public String fileUpload(@RequestParam("file") MultipartFile file) {
 		Path path = null;
+		if (!file.getOriginalFilename().contains("."))
+			return "Filename missin extension";
+		String name = UUID.randomUUID().toString() + "." + file.getOriginalFilename().split("\\.")[1];
 		try {
 			byte[] bytes = file.getBytes();
-	        path = Paths.get("coms-309-mg-1.cs.iastate.edu/images/" + file.getOriginalFilename());
-			//path = Paths.get("C:/Users/alexi/Desktop/COMS309/img/" + file.getOriginalFilename());
+	        //path = Paths.get("var/html/www/images/" + name);
+			path = Paths.get("C:/Users/alexi/Desktop/COMS309/img/" + file.getOriginalFilename());
 			Files.write(path, bytes);
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
-		return path;
+		return "http://coms-309-mg-1.cs.iastate.edu/images/"+name;
 	}
 }

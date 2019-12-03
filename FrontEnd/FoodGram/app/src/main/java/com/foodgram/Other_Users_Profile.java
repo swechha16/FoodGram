@@ -3,6 +3,7 @@ package com.foodgram;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -54,6 +55,15 @@ public class Other_Users_Profile extends AppCompatActivity {
 
         updateFollowCount();
         updateFollowingCount();
+
+        follow.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                addFollower();
+            }
+        });
+
 
     }
 
@@ -111,8 +121,8 @@ public class Other_Users_Profile extends AppCompatActivity {
             u1.put("userId", loggedIn.getUser_id());
             u2.put("userId", otherProfile.getUser_id());
 
-            follow.put("follower", u1);
-            follow.put("user", u2);
+            follow.put("follower", u2);
+            follow.put("user", u1);
 
             Log.d("Response", follow.toString());
 
@@ -136,7 +146,18 @@ public class Other_Users_Profile extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 VolleyLog.d("Error.Response", error.toString());
-
+                if (error instanceof TimeoutError || error instanceof NoConnectionError){
+                    Log.d("response", "Timeout Error or No connection error");
+                }
+                else if(error instanceof AuthFailureError){
+                    Log.d("response","authentication failure error");
+                }else if(error instanceof ServerError){
+                    Log.d("response","server error");
+                }else if(error instanceof NetworkError){
+                    Log.d("response","network error");
+                }else if(error instanceof ParseError){
+                    Log.d("response","Parse Error");
+                }
             }
 
         }) ;
