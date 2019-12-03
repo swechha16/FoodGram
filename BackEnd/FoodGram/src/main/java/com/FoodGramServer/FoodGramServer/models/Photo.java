@@ -82,6 +82,20 @@ public class Photo implements Serializable {
 	@CreationTimestamp
 	private LocalDateTime timestamp;
 	
+	public Photo() {	
+	}
+	
+	public Photo(long pic_id, String caption, String cost_tag, String food_tag, String pic, String restaurant, User user_id) {
+		this.pic_id = pic_id;
+		this.caption = caption;
+		this.cost_tag = cost_tag;
+		this.food_tag = food_tag;
+		this.pic = pic;
+		this.restaurant = restaurant;
+		this.user = user_id;
+	}
+
+	
 	/**
 	 * @return pic_id
 	 */
