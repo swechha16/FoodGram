@@ -131,4 +131,16 @@
         android:layout_marginBottom="538dp"
         android:text="Restaurant" />
 
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/colorPrimary"
+        android:layout_alignParentBottom="true"
+
+
+        android:layout_marginBottom="731dp"
+        app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+
 </RelativeLayout>

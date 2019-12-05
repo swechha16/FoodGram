@@ -5,7 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
+import android.view.Menu;
+import android.view.MenuItem;
 /**
  * Shows the user some options to go to after logging in.
  * @author Vtorres
@@ -149,5 +150,33 @@ other_profile_button.setOnClickListener(new View.OnClickListener() {
     public void other_profile_page(View view){
         Intent intent = new Intent (this, Other_Users_Profile.class);
         startActivity(intent);
+    }
+
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_screen_navigation, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        //handle presses on the action bar items
+        switch (item.getItemId()) {
+
+            case R.id.action_add_post:
+                startActivity(new Intent(this, PostPhotoPage.class));
+                return true;
+
+            case R.id.action_about:
+                startActivity(new Intent(this, PersonalFeedPage.class));
+                return true;
+
+            case R.id.action_search:
+                startActivity(new Intent(this, SearchUser.class));
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
