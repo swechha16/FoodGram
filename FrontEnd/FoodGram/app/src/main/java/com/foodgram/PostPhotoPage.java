@@ -170,7 +170,8 @@ public class PostPhotoPage extends AppCompatActivity {
 
         //requestQueue = Volley.newRequestQueue(this);
 
-        Call call = uploadAPI.imgUpload(mbParts, "file");
+//        Call call = uploadAPI.imgUpload(mbParts, "file");
+        Call call = uploadAPI.imgUpload(mbParts);
         call.enqueue(new Callback() {
             @Override
             public void onResponse(Call call, retrofit2.Response response) {
@@ -197,7 +198,7 @@ public class PostPhotoPage extends AppCompatActivity {
         requestQueue = Volley.newRequestQueue(this);
         //String url = "http://10.65.23.83:8080/post/comment/users";
         //String url = "http://10.31.4.129:8080/post/photo";
-        String url = "http://10.31.31.219:8080/post/photo";
+        String url = "http://coms-309-mg-1.cs.iastate.edu/post/photo";
         // String url = "http://coms-309-mg-1.cs.iastate.edu:8080/photo/post";
         //String url = "http://10.31.31.154:8080/post/comment";
         //"http://10.31.24.107:8080/comment/all";
