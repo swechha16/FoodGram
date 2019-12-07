@@ -20,7 +20,6 @@ import java.util.List;
 
 import org.java_websocket.drafts.Draft;
 
-import de.hdodenhof.circleimageview.CircleImageView;
 
 
 /**
