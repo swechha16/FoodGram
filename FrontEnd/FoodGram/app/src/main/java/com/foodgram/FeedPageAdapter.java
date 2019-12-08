@@ -1,12 +1,14 @@
 package com.foodgram;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -56,7 +58,8 @@ public class FeedPageAdapter extends RecyclerView.Adapter {
 
         ImageButton otherUserImage;
         TextView otherUserName;
-        ImageButton postImage;
+        TextView photoCaption;
+        ImageView postImage;
 
         PhotoHolder(View itemView){
             super(itemView);
@@ -64,11 +67,23 @@ public class FeedPageAdapter extends RecyclerView.Adapter {
             otherUserImage = itemView.findViewById(R.id.feed_profile_pics);
             otherUserName = itemView.findViewById(R.id.feed_username);
             postImage = itemView.findViewById(R.id.image_post);
+            photoCaption = itemView.findViewById(R.id.feedphotoCaption);
 
         }
 
         void bind(Photo photo){
             otherUserName.setText(photo.getUser().getUsername());
+            photoCaption.setText((photo.getCaption()));
+
+            otherUserImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    Intent intent = new Intent(mContext, ProfilePage.class);
+                        view.getContext().startActivity(intent);
+
+                }
+            });
 
             Glide.with(mContext)
                     .load(photo.getPic())
