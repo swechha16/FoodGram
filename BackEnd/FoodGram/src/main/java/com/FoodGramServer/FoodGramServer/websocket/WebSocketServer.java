@@ -47,7 +47,7 @@ public class WebSocketServer {
         sessionUsernameMap.put(session, username);
         usernameSessionMap.put(username, session);
         
-        String message="User:" + username + " has Joined the Chat";
+        String message="User: " + username + " has Joined the Chat";
         	broadcast(message);
 
 

@@ -31,6 +31,11 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_search">Search For User</string>
+    <string name="title_find_food">Find Food</string>
+    <string name="title_feed">Feed</string>
+    <string name="title_logout">Log Out</string>
+
 
 
 </resources>

@@ -16,9 +16,21 @@ import java.util.Set;
 @Entity
 @Table(name = "message")
 public class Message implements Serializable {
-    private static final long serialVersionUID = 1L;
+    public Message(long id_message,  @NotNull String message, LocalDateTime timestamp, User sender, User receiver) {
+
+		this.id_message = id_message;
+		this.sender = sender;
+		this.receiver = receiver;
+		this.message = message;
+		this.timestamp = timestamp;
+	}
+
+	private static final long serialVersionUID = 1L;
     
 
+    public Message() { 
+    	
+    }
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,14 +39,14 @@ public class Message implements Serializable {
 
     //user id 1 = sender
     @ManyToOne
-	@JoinColumn(name = "sender_id", insertable=false, updatable=false)
+	@JoinColumn(name = "sender_id")
 	private User sender;
 	
     
     //user_id2
 	@ManyToOne
-	@JoinColumn(name = "reciever_id")
-	private User reciever;
+	@JoinColumn(name = "receiver_id")
+	private User receiver;
 
 	
 
@@ -69,12 +81,12 @@ public class Message implements Serializable {
 
 
 	public User getReciever() {
-		return reciever;
+		return receiver;
 	}
 
 
 	public void setReciever(User reciever) {
-		this.reciever = reciever;
+		this.receiver = reciever;
 	}
 
 

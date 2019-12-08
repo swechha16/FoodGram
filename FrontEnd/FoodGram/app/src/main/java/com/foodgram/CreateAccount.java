@@ -12,9 +12,6 @@ import android.view.View;
  */
 public class CreateAccount extends AppCompatActivity {
 
-
-    Button createAccount_submit;
-
     /**
      * This sets up the page and creates the button functionality.
      * @param savedInstanceState
@@ -23,13 +20,7 @@ public class CreateAccount extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
-        createAccount_submit = findViewById(R.id.createAccountSubmit);
 
-        createAccount_submit.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                onButtonClick(v);
-            }
-        });
     }
 
     /**
@@ -37,7 +28,7 @@ public class CreateAccount extends AppCompatActivity {
      * @param v
      */
     public void onButtonClick(View v){
-Intent myIntent = new Intent(this,  HomePageWithFeedPost.class);
+Intent myIntent = new Intent(this, PersonalFeedPage.class);
     startActivity(myIntent);
 
 }

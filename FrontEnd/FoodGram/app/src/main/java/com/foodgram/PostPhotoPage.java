@@ -158,17 +158,14 @@ public class PostPhotoPage extends AppCompatActivity {
     }
 
     private void uploadImage(){
-        //File file = new File (imgString);
         RequestBody requestBody = RequestBody.create(MediaType.parse("image/*"), imageFile);
         MultipartBody.Part mbParts = MultipartBody.Part.createFormData("file", imageFile.getName(), requestBody);
 
-        //RequestBody imageData = RequestBody.create(MediaType.parse("text/plain"), "file");
 
         Retrofit retrofit = NetworkClient.getRetrofit();
 
         UploadAPI uploadAPI = retrofit.create(UploadAPI.class);
 
-        //requestQueue = Volley.newRequestQueue(this);
 
         Call call = uploadAPI.imgUpload(mbParts);
         call.enqueue(new Callback() {
@@ -195,12 +192,8 @@ public class PostPhotoPage extends AppCompatActivity {
     private void sendContents() {
 
         requestQueue = Volley.newRequestQueue(this);
-        //String url = "http://10.65.23.83:8080/post/comment/users";
-        //String url = "http://10.31.4.129:8080/post/photo";
-        String url = "http://10.31.31.219:8080/post/photo";
-        // String url = "http://coms-309-mg-1.cs.iastate.edu:8080/photo/post";
-        //String url = "http://10.31.31.154:8080/post/comment";
-        //"http://10.31.24.107:8080/comment/all";
+
+        String url = "http://coms-309-mg-1.cs.iastate.edu:8080/post/photo";
 
         final JSONObject obj = new JSONObject();
         final JSONObject user = new JSONObject();
@@ -210,14 +203,8 @@ public class PostPhotoPage extends AppCompatActivity {
             obj.put("pic", imgResponseUrl);
             obj.put("caption", (txt_caption.getText()).toString());
             obj.put("restaurant", (txt_restaurant.getText()).toString());
-            //obj.put("user", user);
             obj.put("foodTag", (txt_foodTag.getText()).toString());
             obj.put("costTag", (txt_costTag.getText()).toString());
-//            obj.put("foodTag", ("Chinese"));
-//            obj.put("costTag", ("$$"));
-//            obj.put("caption", "Delicious");
-//            obj.put("restaurant", "888");
-
             Log.d("Response", obj.toString());
 
         } catch (JSONException e) {
@@ -260,22 +247,11 @@ public class PostPhotoPage extends AppCompatActivity {
 
         }) {
             @Override
-        public String getBodyContentType() {
-            return "application/json; charset=utf-8";
-        }
+            public String getBodyContentType() {
+                return "application/json; charset=utf-8";
+            }
 
-//        @Override
-//        public byte[] getBody() throws AuthFailureError {
-//            try {
-//                return obj == null ? null : obj.getBytes("utf-8");
-//            } catch (UnsupportedEncodingException uee) {
-//                VolleyLog.wtf("Unsupported Encoding while trying to get the bytes of %s using %s", makePost, "utf-8");
-//                return null;
-//            }
-//
-//        }
-    };
-
+        };
         requestQueue.add(objectRequest);
 
     }
@@ -319,26 +295,14 @@ public class PostPhotoPage extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode == Activity.RESULT_OK) {
-            //Bitmap bitmap = null;
 
             if (requestCode == 1) {
-                //Extra bits, keeping them commented just in case, will clean up later.
-//                File f = new File(Environment.getExternalStorageDirectory().toString());
-//                for(File photos : f.listFiles()){
-//                    if(photos.getName().equals("photo.jpg")){
-//                        f = photos;
-//                        break;
-//                    }
-//                }
-//                Bitmap photo = (Bitmap) data.getExtras().get("data");
-//                postImage.setImageBitmap(photo);
                 try{
                     Bitmap bit;
                     BitmapFactory.Options bitOptions = new BitmapFactory.Options();
                     bit = BitmapFactory.decodeFile(imageFile.getAbsolutePath(), bitOptions);
                     bit = getResizedBitmap(bit, 400);
                     postImage.setImageBitmap(bit);
-                    //BitMapToString(bit);
                     File fotoDirectory = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + File.separator);
                     OutputStream outFile;
                     File imgFile = new File(fotoDirectory,System.currentTimeMillis() + ".jpg");
@@ -379,15 +343,6 @@ public class PostPhotoPage extends AppCompatActivity {
                     thumbnail = getResizedBitmap(thumbnail, 400);
                     Log.w("path of image", picturePath + "");
                     postImage.setImageBitmap(thumbnail);
-
-//                    try{
-//                        BufferedWriter out = new BufferedWriter(new FileWriter(imageFile, picturePath));
-//                        out.close();
-//                    }catch (IOException e){
-//                        e.printStackTrace();
-//                        Log.d("NullPointer moveToFirst", e.toString());
-//                    }
-                    //BitMapToString(thumbnail);
                     imageFile = new File(picturePath);
 
                 } catch(NullPointerException e) {
@@ -416,7 +371,7 @@ public class PostPhotoPage extends AppCompatActivity {
         int width = image.getWidth();
         int height = image.getHeight();
 
-        float bitmapRatio = (float)width / (float) height;
+        float bitmapRatio = (float) width / (float) height;
         if (bitmapRatio > 1) {
             width = maxSize;
             height = (int) (width / bitmapRatio);
@@ -427,19 +382,5 @@ public class PostPhotoPage extends AppCompatActivity {
         return Bitmap.createScaledBitmap(image, width, height, true);
     }
 
-    /**
-     * Creates Base64 String value of the image bitmap
-     * @param img
-     * Selected image bitmap taken from the picture that goes in the thumbnail
-     * @return
-     * Sets Base64 String type to imgString Global Variable and returns that global String variable
-     */
-//    public String BitMapToString(Bitmap img) {
-//        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-//        img.compress(Bitmap.CompressFormat.JPEG, 60, bos);
-//        byte[] b = bos.toByteArray();
-//        imgString = Base64.encodeToString(b, Base64.DEFAULT);
-//        return imgString;
-//    }
 
 }

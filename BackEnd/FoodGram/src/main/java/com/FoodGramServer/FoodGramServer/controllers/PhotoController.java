@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -91,6 +92,7 @@ public class PhotoController {
 	 * @return file path
 	 */
 	@RequestMapping(method = RequestMethod.POST, path = "/post/image")
+	@ResponseBody
 	public String fileUpload(@RequestParam("file") MultipartFile file) {
 		Path path = null;
 		if (!file.getOriginalFilename().contains("."))
@@ -98,9 +100,9 @@ public class PhotoController {
 		String name = UUID.randomUUID().toString() + "." + file.getOriginalFilename().split("\\.")[1];
 		try {
 			byte[] bytes = file.getBytes();
-	        path = Paths.get("/var/html/www/images/"+name);
-			Files.write(path, bytes);
+	        path = Paths.get("/var/www/html/images/" + name);
 
+			Files.write(path, bytes);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

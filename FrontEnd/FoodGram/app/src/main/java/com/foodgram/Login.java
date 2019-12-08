@@ -52,7 +52,7 @@ public class Login extends AppCompatActivity {
     }
 
     public void Feed_Page() {
-        Intent intent = new Intent(this, HomePageWithFeedPost.class);
+        Intent intent = new Intent(this, PersonalFeedPage.class);
         startActivity(intent);
     }
 

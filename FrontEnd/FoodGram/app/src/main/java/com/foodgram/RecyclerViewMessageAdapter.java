@@ -12,14 +12,13 @@ import com.foodgram.Chat;
 import com.foodgram.R;
 
 import java.util.List;
-
-
 public class RecyclerViewMessageAdapter extends RecyclerView.Adapter {
     private static final int VIEW_TYPE_MESSAGE_SENT = 1;
     private static final int VIEW_TYPE_MESSAGE_RECEIVED = 2;
 
     private Context mContext;
     private List<Chat> mMessageList;
+
 
     public RecyclerViewMessageAdapter(Context context, List<Chat> messageList) {
         mContext = context;
@@ -39,7 +38,7 @@ public class RecyclerViewMessageAdapter extends RecyclerView.Adapter {
     public int getItemViewType(int position) {
         Chat message =  mMessageList.get(position);
 
-        if (message.getSender() == 2  ) {
+        if (message.getSender().getUser_id() == 1  ) {
             // If the current user is the sender of the message
             return VIEW_TYPE_MESSAGE_SENT;
         } else {
