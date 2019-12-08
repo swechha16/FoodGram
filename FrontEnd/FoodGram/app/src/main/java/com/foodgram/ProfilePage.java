@@ -122,7 +122,7 @@ public class ProfilePage extends AppCompatActivity {
 
 
 
-                            if(post.getJSONObject("userId").getString("username").equals(userName)) {
+//                            if(post.getJSONObject("userId").getString("username").equals(userName)) {
 
 
                                 String caption = post.getString("caption");
@@ -136,7 +136,7 @@ public class ProfilePage extends AppCompatActivity {
                                 feedPageAdapter.add(new Photo(user, "http://coms-309-mg-1.cs.iastate.edu/images/pizza.jpg", "Delicious Pizza", "pizza", "$", "papa johns", "12:30", 2));
 
 
-                            }
+//                            }
 
 
                         }

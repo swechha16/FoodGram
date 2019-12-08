@@ -33,18 +33,18 @@ public class Other_Users_Profile extends AppCompatActivity {
         Followers = findViewById(R.id.OtherUser_Followers);
         otherUserBio = findViewById(R.id.Other_userBioTextView);
         followBtn = findViewById(R.id.Follow_btn);
-        refreshBtn = findViewById(R.id.Other_User_refreshButton);
+//        refreshBtn = findViewById(R.id.Other_User_refreshButton);
         message_user_btn = findViewById(R.id.message_user_btn);
         otherUser_pic = findViewById(R.id.OtherUser_profilePic);
 
-        refreshBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getBio();
-                System.out.println("Did something");
-            }
-        });
-
+//        refreshBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                getBio();
+//                System.out.println("Did something");
+//            }
+//        });
+getBio();
 
     }
 
