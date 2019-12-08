@@ -15,7 +15,9 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.JsonRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
@@ -72,7 +74,7 @@ public class PersonalFeedPage extends AppCompatActivity {
 
 
         mTextViewResult = findViewById(R.id.tv_ViewComments);
-        Button btn_getFeed = findViewById(R.id.btn_getFeed);
+//        Button btn_getFeed = findViewById(R.id.btn_getFeed);
 
         mQueue = Volley.newRequestQueue(this);
 
@@ -91,12 +93,14 @@ public class PersonalFeedPage extends AppCompatActivity {
         feedView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         feedView.setLayoutManager(linearLayoutManager);
-        btn_getFeed.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                getFeed();
-            }
-        });
+//        btn_getFeed.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View view) {
+//                getFeed();
+//            }
+//        });
+
+        getFeed();
 
     }
 
@@ -117,22 +121,26 @@ public class PersonalFeedPage extends AppCompatActivity {
 
 
        String url = "http://coms-309-mg-1.cs.iastate.edu:8080/photo/all";
+//        String url = "http://10.65.23.83:8080/photo/all";
 
 
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null,
 
-                new Response.Listener<JSONObject>() {
+                new Response.Listener<JSONArray>() {
                     @Override
-                    public void onResponse(JSONObject response) {
+                    public void onResponse(JSONArray response) {
                        try {
-                            JSONArray jsonArray = response.getJSONArray("comments");
+
                            mTextViewResult.setText("");
-                           for (int i = 0; i < jsonArray.length(); i++) {
-                               JSONObject photo = jsonArray.getJSONObject(i);
+                           for (int i = 0; i < response.length(); i++) {
+                               JSONObject photo = response.getJSONObject(i);
+
 
                                //Get stuff from the photo
 
                                System.out.println(photo);
+                               User sweaty =  new User( 1, "Sweaty", "sweaty@iastate.edu", "user", "pass1234");
+                               sweaty.setProfile_pic("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2018/02/google-pacman-796x419.jpg");
                                final User send = new User( 1, "Sweaty", "sweaty@iastate.edu", "user", "pass1234");
 
 //                               String picUrl = photo.getString("pic");
@@ -143,11 +151,13 @@ public class PersonalFeedPage extends AppCompatActivity {
 
 //                               User tempUser = new User(photo.getLong(""));
 
-                               long id = photo.getInt("id");
-                               String commentC = photo.getString("comment");
-                                    photoList.add(new Photo(send, picUrl, "pizza is lovely","pizza", "$", "Papa Johns", "12:00", 2));
-                               mTextViewResult.append(id + "\t" + commentC + "\n\n");
+//                               long id = photo.getInt("userId");
+//                               String commentC = photo.getString("comment");
+                                    feedPageAdapter.add(new Photo(sweaty, "https://scontent.fdsm1-1.fna.fbcdn.net/v/t1.0-9/41793156_249057839002346_8937745557640708096_n.jpg?_nc_cat=108&_nc_ohc=BViWIqxmozEAQl1oSq1O5FyPQPGzmQ0ZuyfUrl_lqJ_cLDsDGI_Bz7F8g&_nc_ht=scontent.fdsm1-1.fna&oh=dd2d28d0c055ed87e07db9e564ab9faa&oe=5E6B3834", "sweaty pic", "none", "$", "none", "12", 1 )) ;
+//                               mTextViewResult.append(id + "\t" + commentC + "\n\n");
 
+
+                                feedPageAdapter.add(new Photo (sweaty, "https://i.ndtvimg.com/i/2016-06/chinese-625_625x350_81466064119.jpg", "It was ok", "chinese", "$", "Le's Restaurant", "12", 3));
                            }
 
 

@@ -16,4 +16,11 @@
         android:icon="@drawable/ic_notifications_black_24dp"
         android:title="@string/title_notifications" />
 
+    <item
+        android:id="@+id/ProfilePageClick"
+        android:icon="@drawable/ic_notifications_black_24dp"
+        android:title="ProfilePage" />
+
+
+
 </menu>

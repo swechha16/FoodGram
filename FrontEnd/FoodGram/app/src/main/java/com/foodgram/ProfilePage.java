@@ -72,6 +72,7 @@ public class ProfilePage extends AppCompatActivity {
             }
         });
 
+            updatePicture();
 
 
 
@@ -83,7 +84,7 @@ public class ProfilePage extends AppCompatActivity {
      */
     public void getProfilePosts(){
 
-        String url = "http://10.31.27.207:8080/photo/all";
+        String url = "http://10.26.51.159:8080/photo/all";
         JsonArrayRequest testRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -135,7 +136,7 @@ public class ProfilePage extends AppCompatActivity {
      * Gets the bio from a user and displays it on the page.
      */
     public void getBio(){
-        String url = "http://10.31.27.207:8080/user/alexi";
+        String url = "http://10.26.51.159:8080/user/alexi";
 
         JsonArrayRequest bioRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
@@ -150,7 +151,6 @@ public class ProfilePage extends AppCompatActivity {
 
                             String bio = userBio.getString("bio");
                             userName = userBio.getString("username");
-
 
 
                             userBioTextView.setText("\t\tUser Bio \n\t\t-------------\nUser Name : " + userName + "\nBio: "  + bio );

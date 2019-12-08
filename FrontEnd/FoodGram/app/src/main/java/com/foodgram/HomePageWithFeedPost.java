@@ -1,12 +1,17 @@
 package com.foodgram;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import androidx.navigation.Navigation;
+
 /**
  * Shows the user some options to go to after logging in.
  * @author Vtorres
@@ -19,6 +24,8 @@ public class HomePageWithFeedPost extends AppCompatActivity {
     Button  home_page;
     Button Direct_Message_Page;
     Button restaurant_Page;
+    BottomNavigationView bottomNavigationView;
+
 
 
     Button other_profile_button;
@@ -26,13 +33,56 @@ public class HomePageWithFeedPost extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page_with_feed_post);
-       feed_move = findViewById(R.id.clickToFeedButton);
-       make_post_move = findViewById(R.id.clickToPostButton);
-       find_food_move = findViewById(R.id.clickToFindFood);
-       profile_page = findViewById(R.id.userProfileButton);
+
+
+        feed_move = findViewById(R.id.clickToFeedButton);
+        make_post_move = findViewById(R.id.clickToPostButton);
+        find_food_move = findViewById(R.id.clickToFindFood);
+        profile_page = findViewById(R.id.userProfileButton);
         home_page = findViewById(R.id.home);
         Direct_Message_Page = findViewById(R.id.MessagesButton);
-                restaurant_Page = findViewById(R.id.restaurantBtn);
+        restaurant_Page = findViewById(R.id.restaurantBtn);
+
+
+        bottomNavigationView = findViewById(R.id.navigation_view);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                System.out.println("------------------------------------------------");
+
+//                System.out.println(R.id.action_about);
+                System.out.println(menuItem.getItemId());
+
+
+                switch(menuItem.getItemId()){
+
+//
+//                    case R.id.action_search:
+//                        find_food_move.setOnClickListener(new View.OnClickListener() {
+//                            @Override
+//                            public void onClick(View view) {
+//                                find_food_page(view);
+//                            }
+//                        });
+                    case 2131230762:
+
+
+
+                        break;
+                    default:
+                        throw new IllegalStateException("Unexpected value: " + menuItem.getItemId());
+                }
+
+
+                return false;
+            }
+        });
+
+
+
+
+
 
 
         restaurant_Page.setOnClickListener(new View.OnClickListener() {
