@@ -98,7 +98,7 @@ public class PhotoController {
 		String name = UUID.randomUUID().toString() + "." + file.getOriginalFilename().split("\\.")[1];
 		try {
 			byte[] bytes = file.getBytes();
-	        path = Paths.get("var/html/www/images/" + file.getOriginalFilename());
+	        path = Paths.get("/var/html/www/images/" + name);
 			Files.write(path, bytes);
 
 		} catch (IOException e) {
