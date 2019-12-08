@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -220,6 +221,26 @@ alexi.setProfile_pic("https://scontent-dfw5-2.xx.fbcdn.net/v/t1.0-9/29694394_776
 
     }
 
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_screen_navigation, menu);
+        return true;
+    }
+    public boolean onOptionsItemSelected(MenuItem item) {
 
+        //handle presses on the action bar items
+        switch (item.getItemId()) {
+
+            case R.id.action_message:
+                startActivity(new Intent(this, DirectMessage.class));
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 }
+
+
+
+
 
