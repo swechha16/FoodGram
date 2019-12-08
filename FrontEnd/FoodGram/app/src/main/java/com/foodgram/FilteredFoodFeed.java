@@ -67,6 +67,9 @@ public class FilteredFoodFeed extends AppCompatActivity {
         mTextViewResult = findViewById(R.id.textViewResults);
         mQueue = Volley.newRequestQueue(this);
 
+
+
+
         Button italian = findViewById(R.id.ItalianButton);
         italian.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -3,10 +3,13 @@ package com.foodgram;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.renderscript.ScriptGroup;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -87,7 +90,35 @@ public class PersonalFeedPage extends AppCompatActivity {
         feedPageAdapter = new FeedPageAdapter(this, photoList);
 
 
-
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.nav_view);
+        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.navigation_home:
+//                        Intent a = new Intent(this, PersonalFeedPage.class);
+//                        startActivity(a);
+                        break;
+                    case R.id.action_search:
+                        Intent b = new Intent(PersonalFeedPage.this, FilteredFoodFeed.class);
+                        startActivity(b);
+                        break;
+                    case R.id.action_add_post:
+                        Intent c = new Intent(PersonalFeedPage.this, PostPhotoPage.class);
+                        startActivity(c);
+                        break;
+                    case R.id.action_about:
+                        Intent d = new Intent(PersonalFeedPage.this, ProfilePage.class);
+                        startActivity(d);
+                        break;
+                    case R.id.id_logout:
+                        Intent e = new Intent(PersonalFeedPage.this, HomePage.class);
+                        startActivity(e);
+                        break;
+                }
+                return false;
+            }
+        });
 
         feedView.setAdapter(feedPageAdapter);
         feedView.setHasFixedSize(true);
