@@ -90,7 +90,7 @@ public class PhotoController {
 	 * @return file path
 	 */
 	@RequestMapping(method = RequestMethod.POST, path = "/post/image")
-	public Path fileUpload(@RequestParam("file") MultipartFile file) {
+	public String fileUpload(@RequestParam("file") MultipartFile file) {
 		Path path = null;
 		try {
 			byte[] bytes = file.getBytes();
@@ -102,6 +102,6 @@ public class PhotoController {
 			e.printStackTrace();
 		}
 
-		return path;
+		return path.toString();
 	}
 }
