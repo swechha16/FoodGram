@@ -63,6 +63,7 @@ public class FeedPageAdapter extends RecyclerView.Adapter {
 
             otherUserImage = itemView.findViewById(R.id.feed_profile_pics);
             otherUserName = itemView.findViewById(R.id.feed_username);
+            postImage = itemView.findViewById(R.id.image_post);
 
         }
 
@@ -70,13 +71,11 @@ public class FeedPageAdapter extends RecyclerView.Adapter {
             otherUserName.setText(photo.getUser().getUsername());
 
             Glide.with(mContext)
-                    .load(photo.getUser().getProfile_pic())
-                    .into(otherUserImage);
-
-            Glide.with(mContext)
                     .load(photo.getPic())
                     .into(postImage);
-
+            Glide.with(mContext)
+                    .load(photo.getUser().getProfile_pic())
+                    .into(otherUserImage);
 
         }
 
@@ -88,6 +87,11 @@ public class FeedPageAdapter extends RecyclerView.Adapter {
 
 
 
+    }
+
+    public void add(Photo p){
+        photos.add(p);
+        notifyDataSetChanged();
     }
 
 
