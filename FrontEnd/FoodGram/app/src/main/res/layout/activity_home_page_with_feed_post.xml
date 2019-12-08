@@ -6,156 +6,130 @@
     android:layout_height="match_parent"
     tools:context=".HomePageWithFeedPost">
 
-    <Button
-        android:id="@+id/clickToFeedButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="214dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginRight="26dp"
-        android:layout_marginBottom="264dp"
-        android:text="Feed"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+<!--    <Button-->
+<!--        android:id="@+id/clickToFeedButton"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentLeft="true"-->
+<!--        android:layout_alignParentRight="true"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_marginLeft="214dp"-->
+<!--        android:layout_marginTop="64dp"-->
+<!--        android:layout_marginRight="26dp"-->
+<!--        android:layout_marginBottom="264dp"-->
+<!--        android:text="Feed"-->
+<!--        android:textAppearance="@style/TextAppearance.AppCompat.Large" />-->
 
-    <Button
-        android:id="@+id/clickToPostButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="243dp"
-        android:layout_marginBottom="249dp"
-        android:text="Post"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+<!--    <Button-->
+<!--        android:id="@+id/clickToPostButton"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentLeft="true"-->
+<!--        android:layout_alignParentRight="true"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_marginLeft="10dp"-->
+<!--        android:layout_marginRight="243dp"-->
+<!--        android:layout_marginBottom="249dp"-->
+<!--        android:text="Post"-->
+<!--        android:textAppearance="@style/TextAppearance.AppCompat.Large" />-->
 
-    <Button
-        android:id="@+id/clickToFindFood"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="214dp"
-        android:layout_marginRight="29dp"
-        android:layout_marginBottom="146dp"
-        android:text="Find Food"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+<!--    <Button-->
+<!--        android:id="@+id/clickToFindFood"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentLeft="true"-->
+<!--        android:layout_alignParentRight="true"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_marginLeft="214dp"-->
+<!--        android:layout_marginRight="29dp"-->
+<!--        android:layout_marginBottom="146dp"-->
+<!--        android:text="Find Food"-->
+<!--        android:textAppearance="@style/TextAppearance.AppCompat.Large" />-->
 
-    <Button
-        android:id="@+id/userProfileButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="213dp"
-        android:layout_marginLeft="213dp"
-        android:layout_marginEnd="-2dp"
-        android:layout_marginRight="-2dp"
-        android:layout_marginBottom="363dp"
-        android:text="My profile"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+<!--    <Button-->
+<!--        android:id="@+id/userProfileButton"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentStart="true"-->
+<!--        android:layout_alignParentLeft="true"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_alignParentRight="true"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_marginStart="49dp"-->
+<!--        android:layout_marginLeft="49dp"-->
+<!--        android:layout_marginEnd="68dp"-->
+<!--        android:layout_marginRight="68dp"-->
+<!--        android:layout_marginBottom="407dp"-->
+<!--        android:text="My profile" />-->
 
-    <Button
-        android:id="@+id/home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="26dp"
-        android:layout_marginLeft="26dp"
-        android:layout_marginEnd="271dp"
-        android:layout_marginRight="271dp"
-        android:layout_marginBottom="147dp"
-        android:text="Home"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+<!--    <Button-->
+<!--        android:id="@+id/home"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentStart="true"-->
+<!--        android:layout_alignParentLeft="true"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_alignParentRight="true"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_marginStart="26dp"-->
+<!--        android:layout_marginLeft="26dp"-->
+<!--        android:layout_marginEnd="271dp"-->
+<!--        android:layout_marginRight="271dp"-->
+<!--        android:layout_marginBottom="147dp"-->
+<!--        android:text="Home"-->
+<!--        android:textAppearance="@style/TextAppearance.AppCompat.Large" />-->
 
-    <Button
-        android:id="@+id/MessagesButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="22dp"
-        android:layout_marginLeft="22dp"
-        android:layout_marginEnd="242dp"
-        android:layout_marginRight="242dp"
-        android:layout_marginBottom="360dp"
-        android:text="Messages"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
-    <Button
-        android:id="@+id/other_user_profile_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="119dp"
-        android:layout_marginLeft="119dp"
-        android:layout_marginEnd="127dp"
-        android:layout_marginRight="127dp"
-        android:layout_marginBottom="435dp"
-        android:text="Other User Profile"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
-    <Button
-        android:id="@+id/restaurantBtn"
-        android:layout_width="279dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="59dp"
-        android:layout_marginLeft="59dp"
-        android:layout_marginEnd="72dp"
-        android:layout_marginRight="72dp"
-        android:layout_marginBottom="538dp"
-        android:text="Restaurant" />
+<!--    <Button-->
+<!--        android:id="@+id/MessagesButton"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentStart="true"-->
+<!--        android:layout_alignParentLeft="true"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_alignParentRight="true"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_marginStart="22dp"-->
+<!--        android:layout_marginLeft="22dp"-->
+<!--        android:layout_marginEnd="242dp"-->
+<!--        android:layout_marginRight="242dp"-->
+<!--        android:layout_marginBottom="360dp"-->
+<!--        android:text="Messages"-->
+<!--        android:textAppearance="@style/TextAppearance.AppCompat.Large" />-->
 
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/colorPrimary"
-        android:layout_alignParentBottom="true"
+<!--    <Button-->
+<!--        android:id="@+id/other_user_profile_btn"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
 
+<!--        android:layout_alignParentStart="true"-->
+<!--        android:layout_alignParentLeft="true"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_alignParentRight="true"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_marginStart="119dp"-->
+<!--        android:layout_marginLeft="119dp"-->
+<!--        android:layout_marginEnd="127dp"-->
+<!--        android:layout_marginRight="127dp"-->
+<!--        android:layout_marginBottom="435dp"-->
+<!--        android:text="Other User Profile"-->
+<!--        android:textAppearance="@style/TextAppearance.AppCompat.Large" />-->
 
-        android:layout_marginBottom="731dp"
-        app:popupTheme="@style/AppTheme.PopupOverlay" />
-
-
-    <android.support.design.widget.BottomNavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginBottom="0dp"
-        android:background="?android:attr/windowBackground"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:menu="@menu/bottom_nav_menu" />
+<!--    <Button-->
+<!--        android:id="@+id/restaurantBtn"-->
+<!--        android:layout_width="279dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentStart="true"-->
+<!--        android:layout_alignParentLeft="true"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_alignParentRight="true"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_marginStart="63dp"-->
+<!--        android:layout_marginLeft="63dp"-->
+<!--        android:layout_marginEnd="68dp"-->
+<!--        android:layout_marginRight="68dp"-->
+<!--        android:layout_marginBottom="481dp"-->
+<!--        android:text="Restaurant" />-->
 
 
 </RelativeLayout>
