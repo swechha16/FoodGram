@@ -2,6 +2,8 @@ package com.foodgram;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -20,6 +22,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * The profile page for a user
  */
@@ -29,7 +34,7 @@ public class ProfilePage extends AppCompatActivity {
     /**
      * Shows the users posts
      */
-    TextView mTextViewResult;
+//    TextView mTextViewResult;
     /**
      * Shows the bio for the user
      */
@@ -40,6 +45,13 @@ public class ProfilePage extends AppCompatActivity {
     String userName;
 
     ImageView profilePic;
+
+    private List<Photo> photoList;
+    RecyclerView postsView;
+    FeedPageAdapter feedPageAdapter;
+    User user = new User( 1, "Sweaty", "sweaty@iastate.edu", "user", "pass1234");
+
+
 
 
 
@@ -59,20 +71,32 @@ public class ProfilePage extends AppCompatActivity {
         profilePic = findViewById(R.id.profilePic);
 
         userBioTextView = findViewById(R.id.userBioTextView);
-        mTextViewResult = findViewById(R.id.userPostsTextView);
-
-        Button refresh = findViewById(R.id.refreshButton);
+//        mTextViewResult = findViewById(R.id.userPostsTextView);
 
 
-        refresh.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getBio();
-                getProfilePosts();
-            }
-        });
 
-            updatePicture();
+
+
+
+
+
+
+            photoList = new ArrayList<Photo>();
+            postsView = findViewById(R.id.profilePagefeedView);
+
+            feedPageAdapter = new FeedPageAdapter(this, photoList);
+
+            postsView.setAdapter(feedPageAdapter);
+            postsView.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        postsView.setLayoutManager(linearLayoutManager);
+
+        getProfilePosts();
+        user.setProfile_pic("https://scontent.fdsm1-1.fna.fbcdn.net/v/t1.0-9/41793156_249057839002346_8937745557640708096_n.jpg?_nc_cat=108&_nc_ohc=BViWIqxmozEAQl1oSq1O5FyPQPGzmQ0ZuyfUrl_lqJ_cLDsDGI_Bz7F8g&_nc_ht=scontent.fdsm1-1.fna&oh=dd2d28d0c055ed87e07db9e564ab9faa&oe=5E6B3834");
+            getBio();
+
+        updatePicture(user.getProfile_pic());
+
 
 
 
@@ -84,11 +108,11 @@ public class ProfilePage extends AppCompatActivity {
      */
     public void getProfilePosts(){
 
-        String url = "http://10.26.51.159:8080/photo/all";
+        String url = "http://coms-309-mg-1.cs.iastate.edu:8080/photo/all";
         JsonArrayRequest testRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
-                mTextViewResult.setText("");
+//                mTextViewResult.setText("");
                 try {
 
                     if(response.length() != 0) {
@@ -97,26 +121,29 @@ public class ProfilePage extends AppCompatActivity {
                             JSONObject post = response.getJSONObject(i);
 
 
-                                    if(true){
-//                            if(post.getJSONObject("userId").getString("username").equals(userName)) {
+
+                            if(post.getJSONObject("userId").getString("username").equals(userName)) {
 
 
                                 String caption = post.getString("caption");
                                 String restaurantName = post.getString("restaurant");
                                 String foodTag = post.getString("foodTag");
                                 String costTag = post.getString("costTag");
+                                user = new User(1, "Sweaty", "sweaty@iastate.edu", "user", "pass1234");
+                                user.setProfile_pic("https://scontent.fdsm1-1.fna.fbcdn.net/v/t1.0-9/41793156_249057839002346_8937745557640708096_n.jpg?_nc_cat=108&_nc_ohc=BViWIqxmozEAQl1oSq1O5FyPQPGzmQ0ZuyfUrl_lqJ_cLDsDGI_Bz7F8g&_nc_ht=scontent.fdsm1-1.fna&oh=dd2d28d0c055ed87e07db9e564ab9faa&oe=5E6B3834");
+
+                                feedPageAdapter.add(new Photo(user, "http://coms-309-mg-1.cs.iastate.edu/images/pizza.jpg", "Delicious Pizza", "pizza", "$", "papa johns", "12:30", 2));
+                                feedPageAdapter.add(new Photo(user, "http://coms-309-mg-1.cs.iastate.edu/images/pizza.jpg", "Delicious Pizza", "pizza", "$", "papa johns", "12:30", 2));
 
 
-                                mTextViewResult.append(caption + "\n" + foodTag + "\n" + costTag + "\n" + restaurantName + "\n\n\n");
                             }
+
+
                         }
-                    }else{
-                        mTextViewResult.append("No posts");
                     }
 
 
                 } catch (JSONException e) {
-                    mTextViewResult.setText("JSON EXCEPTION");
                     e.printStackTrace();
                 }
             }
@@ -136,7 +163,7 @@ public class ProfilePage extends AppCompatActivity {
      * Gets the bio from a user and displays it on the page.
      */
     public void getBio(){
-        String url = "http://10.26.51.159:8080/user/alexi";
+        String url = "http://coms-309-mg-1.cs.iastate.edu:8080/user/alexi";
 
         JsonArrayRequest bioRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
@@ -177,9 +204,9 @@ public class ProfilePage extends AppCompatActivity {
         mQueue.add(bioRequest);
     }
 
-    public void updatePicture(){
+    public void updatePicture(String link){
         Glide.with(this)
-                .load("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2018/02/google-pacman-796x419.jpg")
+                .load(link)
                 .into(profilePic);
 
     }

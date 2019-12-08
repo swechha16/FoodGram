@@ -2,6 +2,7 @@ package com.foodgram;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -36,6 +37,14 @@ public class Other_Users_Profile extends AppCompatActivity {
         message_user_btn = findViewById(R.id.message_user_btn);
         otherUser_pic = findViewById(R.id.OtherUser_profilePic);
 
+        refreshBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getBio();
+                System.out.println("Did something");
+            }
+        });
+
 
     }
 
@@ -48,7 +57,7 @@ public class Other_Users_Profile extends AppCompatActivity {
 
 
         public void getBio(){
-            String url = "http://10.31.29.6:8080/user/rony";
+            String url = "http://coms-309-mg-1.cs.iastate.edu:8080/user/alexi";
 
             JsonArrayRequest bioRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
                 @Override
@@ -82,7 +91,7 @@ public class Other_Users_Profile extends AppCompatActivity {
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-
+                        System.out.println(error.getMessage());
                 }
             }
             );
