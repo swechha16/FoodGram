@@ -1,10 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="horizontal"
     tools:context="com.foodgram.CreateAccount">
 
 
-</RelativeLayout>
+    <TextView
+        android:id="@+id/name_label"
+        android:layout_height="wrap_content"
+        android:layout_weight=".25"
+        android:text="Name:"
+        android:textSize="20dp"/>
+
+    <EditText
+        android:id="@+id/input_name"
+        android:layout_height="wrap_content"
+        android:layout_weight=".75"
+        android:layout_gravity="top"
+        android:hint="Enter Name"/>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="9dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="TextView" />
+
+
+</LinearLayout>
