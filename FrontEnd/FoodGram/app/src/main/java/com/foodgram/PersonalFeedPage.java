@@ -151,8 +151,7 @@ public class PersonalFeedPage extends AppCompatActivity {
 
 
 
-//       String url = "http://coms-309-mg-1.cs.iastate.edu:8080/photo/all";
-        String url = "http://10.26.41.62:8080/photo/all";
+       String url = "http://coms-309-mg-1.cs.iastate.edu:8080/photo/all";
 
 
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null,

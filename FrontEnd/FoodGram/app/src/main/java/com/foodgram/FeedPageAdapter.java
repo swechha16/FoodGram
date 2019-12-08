@@ -79,7 +79,7 @@ public class FeedPageAdapter extends RecyclerView.Adapter {
                 @Override
                 public void onClick(View view) {
 
-                    Intent intent = new Intent(mContext, ProfilePage.class);
+                    Intent intent = new Intent(mContext, Other_Users_Profile.class);
                         view.getContext().startActivity(intent);
 
                 }
