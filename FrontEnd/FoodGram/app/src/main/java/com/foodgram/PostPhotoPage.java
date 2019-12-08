@@ -170,7 +170,7 @@ public class PostPhotoPage extends AppCompatActivity {
 
         //requestQueue = Volley.newRequestQueue(this);
 
-        Call call = uploadAPI.imgUpload(mbParts, "file");
+        Call call = uploadAPI.imgUpload(mbParts);
         call.enqueue(new Callback() {
             @Override
             public void onResponse(Call call, retrofit2.Response response) {
