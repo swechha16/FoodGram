@@ -44,45 +44,29 @@ public class HomePageWithFeedPost extends AppCompatActivity {
         restaurant_Page = findViewById(R.id.restaurantBtn);
 
 
-        bottomNavigationView = findViewById(R.id.navigation_view);
+        bottomNavigationView = findViewById(R.id.nav_view);
 
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.nav_view);
+        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                System.out.println("------------------------------------------------");
-
-//                System.out.println(R.id.action_about);
-                System.out.println(menuItem.getItemId());
-
-
-                switch(menuItem.getItemId()){
-
-//
-//                    case R.id.action_search:
-//                        find_food_move.setOnClickListener(new View.OnClickListener() {
-//                            @Override
-//                            public void onClick(View view) {
-//                                find_food_page(view);
-//                            }
-//                        });
-                    case 2131230762:
-
-
-
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.navigation_home:
+                        Intent a = new Intent(HomePageWithFeedPost.this, HomePage.class);
+                        startActivity(a);
                         break;
-                    default:
-                        throw new IllegalStateException("Unexpected value: " + menuItem.getItemId());
+                    case R.id.action_search:
+                        Intent b = new Intent(HomePageWithFeedPost.this, FilteredFoodFeed.class);
+                        startActivity(b);
+                        break;
+                    case R.id.action_add_post:
+                        Intent c = new Intent(HomePageWithFeedPost.this, MakePostPage.class);
+                        startActivity(c);
+                        break;
                 }
-
-
                 return false;
             }
         });
-
-
-
-
-
 
 
         restaurant_Page.setOnClickListener(new View.OnClickListener() {
@@ -142,6 +126,8 @@ other_profile_button.setOnClickListener(new View.OnClickListener() {
 
 
     }
+
+
 
     /**
      * Opens up the filtered food feed page
@@ -205,7 +191,7 @@ other_profile_button.setOnClickListener(new View.OnClickListener() {
 
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_screen_navigation, menu);
+        getMenuInflater().inflate(R.menu.bottom_nav_menu, menu);
         return true;
     }
 
@@ -214,8 +200,8 @@ other_profile_button.setOnClickListener(new View.OnClickListener() {
         //handle presses on the action bar items
         switch (item.getItemId()) {
 
-            case R.id.action_add_post:
-                startActivity(new Intent(this, PostPhotoPage.class));
+            case R.id.navigation_home:
+                startActivity(new Intent(this, HomePage.class));
                 return true;
 
             case R.id.action_about:
@@ -223,7 +209,14 @@ other_profile_button.setOnClickListener(new View.OnClickListener() {
                 return true;
 
             case R.id.action_search:
-                startActivity(new Intent(this, SearchUser.class));
+                startActivity(new Intent(this, FilteredFoodFeed.class));
+                return true;
+            case R.id.id_message:
+                startActivity(new Intent(this, DirectMessage.class));
+                return true;
+
+            case R.id.action_add_post:
+                startActivity(new Intent(this, MakePostPage.class));
                 return true;
         }
 

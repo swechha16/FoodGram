@@ -29,10 +29,6 @@
         android:title="Message" />
 
 
-    <item
-        android:id="@+id/ProfilePageClick"
-        android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="ProfilePage" />
 
 
 
