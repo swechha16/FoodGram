@@ -3,24 +3,12 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 tools:context="com.sartainstudios.contacts.ContactsView">
 
-<item
-    android:id="@+id/action_search"
-    android:title="Search For Food"
-    android:icon="@mipmap/ic_search"
-    app:showAsAction="always"
-    app:actionViewClass="android.support.v7.widget.SearchView" />
 
 <item
-    android:id="@+id/action_add_post"
-    android:icon="@mipmap/ic_plus"
-    android:title="Add Post"
+    android:id="@+id/action_message"
+    android:icon="@mipmap/ic_message"
+    android:title="Message"
     app:showAsAction="always" />
-
-<item
-    android:id="@+id/action_about"
-    android:icon="@mipmap/ic_people"
-    android:title="Feed"
-    app:showAsAction="never" />
 
 
 </menu>

@@ -52,7 +52,7 @@ public class HomePageWithFeedPost extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.navigation_home:
-                        Intent a = new Intent(HomePageWithFeedPost.this, HomePage.class);
+                       Intent a = new Intent(HomePageWithFeedPost.this, PersonalFeedPage.class);
                         startActivity(a);
                         break;
                     case R.id.action_search:
@@ -60,8 +60,16 @@ public class HomePageWithFeedPost extends AppCompatActivity {
                         startActivity(b);
                         break;
                     case R.id.action_add_post:
-                        Intent c = new Intent(HomePageWithFeedPost.this, MakePostPage.class);
+                        Intent c = new Intent(HomePageWithFeedPost.this, PostPhotoPage.class);
                         startActivity(c);
+                        break;
+                    case R.id.action_about:
+                        Intent d = new Intent(HomePageWithFeedPost.this, ProfilePage.class);
+                        startActivity(d);
+                        break;
+                    case R.id.id_logout:
+                        Intent e = new Intent(HomePageWithFeedPost.this, HomePage.class);
+                        startActivity(e);
                         break;
                 }
                 return false;
@@ -191,7 +199,7 @@ other_profile_button.setOnClickListener(new View.OnClickListener() {
 
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.bottom_nav_menu, menu);
+        getMenuInflater().inflate(R.menu.menu_screen_navigation, menu);
         return true;
     }
 
@@ -211,12 +219,14 @@ other_profile_button.setOnClickListener(new View.OnClickListener() {
             case R.id.action_search:
                 startActivity(new Intent(this, FilteredFoodFeed.class));
                 return true;
-            case R.id.id_message:
-                startActivity(new Intent(this, DirectMessage.class));
-                return true;
+
 
             case R.id.action_add_post:
                 startActivity(new Intent(this, MakePostPage.class));
+                return true;
+
+            case R.id.action_message:
+                startActivity(new Intent(this, DirectMessage.class));
                 return true;
         }
 
