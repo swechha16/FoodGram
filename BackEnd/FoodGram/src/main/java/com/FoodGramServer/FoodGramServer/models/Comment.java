@@ -31,6 +31,15 @@ public class Comment {
 	 */
 	@Column(name = "comment")
 	private String comment;
+	
+	@ManyToOne
+	@JoinColumn(name="user_id") // specifies to use a column in Photo table to reference user, instead of the default behavior to create a join table
+	private User user;
+	
+	@ManyToOne
+	@JoinColumn(name="pic_id")
+	private Photo photo;
+	
 
 	/**
 	 * Create generate timestamp for when comment was posted
@@ -77,6 +86,22 @@ public class Comment {
 	 */
 	public void setComment(String comment) {
 		this.comment = comment;
+	} 
+	
+	public Photo getPhoto() {
+		return photo;
+	}
+	
+	public void setPhoto(Photo photo) {
+		this.photo = photo;
+	}
+	
+	public User getUser() {
+		return user;
+	}
+	
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }

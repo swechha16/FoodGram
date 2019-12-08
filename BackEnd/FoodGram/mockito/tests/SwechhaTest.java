@@ -14,6 +14,7 @@ import static org.mockito.Mockito.when;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.aspectj.bridge.Message;
 import org.junit.Before;
 
 import org.mockito.InjectMocks;
@@ -22,6 +23,7 @@ import org.mockito.MockitoAnnotations;
 
 import com.FoodGramServer.FoodGramServer.models.Photo;
 import com.FoodGramServer.FoodGramServer.models.User;
+import com.FoodGramServer.FoodGramServer.repo.MessageRepo;
 import com.FoodGramServer.FoodGramServer.repo.PhotoRepo;
 import com.FoodGramServer.FoodGramServer.repo.UserRepo;
 
@@ -34,6 +36,14 @@ class SwechhaTest {
 	UserRepo userRepo; 
 	@InjectMocks
 	User userService;
+	
+	
+	@Mock 
+	MessageRepo messageRepo; 
+	
+	@InjectMocks 
+	Message message; 
+	
 
 	@Before
 	public void init() {
@@ -90,6 +100,33 @@ class SwechhaTest {
 		
 	
 	}
+	
+	
+	@Test
+	public void seeMessage() {
+		Message mess = new Message(1,"hey",rightNow,u1, u2); 
+		Message mess2 = new Message(2,"hello",rightNow,u1, u2); 
+
+		messageRepo.save(mess);
+		messageRepo.save(mess2); 
+		
+		
+	
+		assertNotEquals(mess, mess2);
+		
+	
+	}
+	
+	@Test
+    public void testMessageRepository(){
+       Message mess = new Message(); 
+        String var = mess.getMessage("hello!!"); 
+     assertNotEquals("hello",var);
+   
+
+      
+;
+    }
 
 
 }

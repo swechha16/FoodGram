@@ -52,215 +52,204 @@ public class DirectMessage extends AppCompatActivity {
 
     private RequestQueue requestQueue;
 
+    boolean received = false;
+
+    ImageButton connect; //user should click on user image to send username
+    ImageButton sendMessageButton;
+
+    EditText usernameInput, messageInput;
+
+    private WebSocketClient cc;
+
+    RecyclerView messageView;
+    RecyclerViewMessageAdapter messageListAdapter;
+    String sender;
+
+    List<Chat> mChat;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.activity_direct_message);
 
 
-        ImageButton connect; //user should click on user image to send username
-        ImageButton sendMessageButton;
+        connect = findViewById(R.id.username_input_btn);
+        sendMessageButton = findViewById(R.id.send_button);
+        usernameInput = findViewById(R.id.username);
+        messageInput = findViewById(R.id.textSend);
 
-        EditText usernameInput, messageInput;
+        mChat = new ArrayList<Chat>();
 
-        private WebSocketClient cc;
+        //Recycler view stuff
+        messageView = (RecyclerView) findViewById(R.id.message_view);
+        messageListAdapter = new RecyclerViewMessageAdapter(this, mChat);
+        messageView.setAdapter(messageListAdapter);
+        messageView.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        messageView.setLayoutManager(linearLayoutManager);
 
-        RecyclerView messageView;
-    RecyclerViewMessageAdapter messageListAdapter ;
-String sender;
+        connect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Draft[] drafts = {new Draft_6455()};
 
-        List<Chat> mChat;
+                /**
+                 * If running this on an android device, make sure it is on the same network as your
+                 * computer, and change the ip address to that of your computer.
+                 * If running on the emulator, you can use localhost.
+                 */
+               final User send = new User( 1, "Sweaty", "sweaty@iastate.edu", "user", "pass1234");
+                final User receive = new User( 2, "Ronnie", "ron@iastate.edu", "user", "pass1234");
+                sender = usernameInput.getText().toString();
+                String w = "ws://10.26.51.159:8080/websocket/" + sender;
 
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-
-            setContentView(R.layout.activity_direct_message);
-
-
-            connect = findViewById(R.id.username_input_btn);
-            sendMessageButton = findViewById(R.id.send_button);
-            usernameInput = findViewById(R.id.username);
-            messageInput = findViewById(R.id.textSend);
-
-            mChat = new ArrayList<Chat>();
-
-            //Recycler view stuff
-            messageView = (RecyclerView) findViewById(R.id.message_view);
-            messageListAdapter = new RecyclerViewMessageAdapter(this, mChat);
-            messageView.setAdapter(messageListAdapter);
-            messageView.setHasFixedSize(true);
-            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-            messageView.setLayoutManager(linearLayoutManager);
-
-            connect.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Draft[] drafts = {new Draft_6455()};
-
-                    /**
-                     * If running this on an android device, make sure it is on the same network as your
-                     * computer, and change the ip address to that of your computer.
-                     * If running on the emulator, you can use localhost.
-                     */
-
-                    sender = usernameInput.getText().toString();
-                    String w = "ws://10.26.50.201:8080/websocket/" + sender;
-
-                    try {
-                        Log.d("Socket:", "Trying socket");
-                        cc = new WebSocketClient(new URI(w), drafts[0]) {
-                            @Override
-                            public void onMessage(String message) {
-                                Log.d("", "run() returned: " + message);
+                try {
+                    Log.d("Socket:", "Trying socket");
+                    cc = new WebSocketClient(new URI(w), drafts[0]) {
+                        @Override
+                        public void onMessage(String message) {
+                            Log.d("", "run() returned: " + message);
 //                                String s = t1.getText().toString();
 //                                mChat.add(new Chat (2,1, message));
-                                Scanner scanner = new Scanner(message);
-                                String messageFrom = scanner.next();
+                            Scanner scanner = new Scanner(message);
+                            String messageFrom = scanner.next();
 
-                                if(!messageFrom.trim().equals("User:")) {
-                                    if (messageFrom.equals(sender + ":")) {
-                                        messageListAdapter.add(new Chat(1, 2, message));
-                                    } else
-                                        messageListAdapter.add(new Chat(2, 1, message));
-                                }else{
-                                    Toast toast = Toast.makeText(DirectMessage.this, messageFrom, Toast.LENGTH_LONG);
-                                            toast.setGravity(Gravity.TOP|Gravity.RIGHT, 0,0);
-                                            toast.show();
+                            if (!messageFrom.trim().equals("User:")) {
+                                if (messageFrom.equals(sender + ":")) {
+                                            received= true;
+                                    messageListAdapter.add(new Chat(send, receive, message));
+//                                    storeMessage(new Chat(send,receive,message));
+                                } else {
+                                            received = false;
+                                    messageListAdapter.add(new Chat(receive, send, message));
+//                                    storeMessage(new Chat(receive, send, message));
                                 }
 
-                                storeMessage(message);
+                            } else {
+                                Toast toast = Toast.makeText(DirectMessage.this, messageFrom, Toast.LENGTH_LONG);
+                                toast.setGravity(Gravity.TOP | Gravity.RIGHT, 0, 0);
+                                toast.show();
+
 
                             }
 
-                            @Override
-                            public void onOpen(ServerHandshake handshake) {
-                                Log.d("OPEN", "run() returned: " + "is connecting");
+                            if(received){
+                                storeMessage(new Chat(send, receive, message));
+                            }else{
+                                storeMessage(new Chat(receive,send,message));
                             }
 
-                            @Override
-                            public void onClose(int code, String reason, boolean remote) {
-                                Log.d("CLOSE", "onClose() returned: " + reason);
-                            }
+                        }
 
-                            @Override
-                            public void onError(Exception e) {
-                                Log.d("Exception:", e.toString());
-                            }
-                        };
-                    } catch (URISyntaxException e) {
-                        Log.d("Exception:", e.getMessage());
-                        e.printStackTrace();
-                    }
-                    cc.connect();
+                        @Override
+                        public void onOpen(ServerHandshake handshake) {
+                            Log.d("OPEN", "run() returned: " + "is connecting");
+                        }
 
+                        @Override
+                        public void onClose(int code, String reason, boolean remote) {
+                            Log.d("CLOSE", "onClose() returned: " + reason);
+                        }
+
+                        @Override
+                        public void onError(Exception e) {
+                            Log.d("Exception:", e.toString());
+                        }
+                    };
+                } catch (URISyntaxException e) {
+                    Log.d("Exception:", e.getMessage());
+                    e.printStackTrace();
                 }
-            });
+                cc.connect();
 
-            sendMessageButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    try {
-                        cc.send(messageInput.getText().toString());
+            }
+        });
+
+        sendMessageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    cc.send(messageInput.getText().toString());
 //                        mChat.add(new Chat(1,2,messageInput.getText().toString()));
 
-                    } catch (Exception e) {
-                        Log.d("ExceptionSendMessage:", e.getMessage());
-                    }
+                } catch (Exception e) {
+                    Log.d("ExceptionSendMessage:", e.getMessage());
                 }
-            });
-        }
+            }
+        });
+    }
 //
 //        public void updateAdapter(List<Chat> c){
 //            messageListAdapter = new RecyclerViewMessageAdapter(this, mChat);
 //        }
 
-    public void storeMessage(String message){
+    /**
+     * Grabs the posts from a user and then sends it to the backend to be posted to
+     * the database.
+     */
+    private void storeMessage(Chat chat) {
+
         requestQueue = Volley.newRequestQueue(this);
-//        //String url = "http://10.65.23.83:8080/post/comment/users";
-//        //String url = "http://10.31.4.129:8080/post/photo";
-//        String url = "http://10.9.213.42:8080/websocket/";
-//        // String url = "http://coms-309-mg-1.cs.iastate.edu:8080/photo/post";
-        String url = "http://10.26.40.57:8080/websocket/post";
-//        //"http://10.31.24.107:8080/comment/all";
+        String url = "http://10.26.51.159:8080/websocket/post";
 
-
-//message
         final JSONObject obj = new JSONObject();
-//        final JSONObject user = new JSONObject();
-//        User account = new User(1, "sweaty",  "sghimire@iastate.edu", "user", "1234");
+        JSONObject sender = new JSONObject();
+        JSONObject receiver = new JSONObject();
         try {
-//            user.put("userId", account.getUser_id());
 
-            obj.put("message", message);
-            obj.put("pic", "url");
-//            obj.put("caption", (txt_caption.getText()).toString());
-//            obj.put("restaurant", (txt_restaurant.getText()).toString());
-//            obj.put("user", user);
-//            obj.put("foodTag", (txt_foodTag.getText()).toString());
-//            obj.put("costTag", (txt_costTag.getText()).toString());
+//            sender.put("username", chat.getSender().getUsername());
+//            receiver.put("username", chat.getReceiver().getUsername());
+                sender.put("username", chat.getSender().getUsername());
+                receiver.put("username", chat.getReceiver().getUsername());
+
+
+
+            obj.put("sender", sender);
+            obj.put("receiver", receiver);
+            obj.put("message", chat.getMessage().toString());
+
+
+//            obj.put("sender", chat.getSender());
+//            obj.put("receiver", chat.getReceiver());
 
             Log.d("Response", obj.toString());
 
-        }
-        catch (JSONException e){
+
+        } catch (JSONException e) {
             e.printStackTrace();
+            System.out.println(e.getMessage());
         }
-//
-//        /**
-//         * Receives response from controller and displays response on Logcat
-//         */
-//        JsonObjectRequest objectRequest = new JsonObjectRequest(Request.Method.POST, url, obj, new Response.Listener<JSONObject>() {
-//
-//            @Override
-//            public void onResponse(JSONObject response) {
-//
-//                Log.d("Response", response.toString());
-//
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                VolleyLog.d("Error.Response", error.toString());
-//
-//                if (error instanceof TimeoutError || error instanceof NoConnectionError){
-//                    mTextViewResult.setText("Timeout Error or No connection error");
-//                }
-//                else if(error instanceof AuthFailureError){
-//                    mTextViewResult.setText("authentication failure error");
-//                }else if(error instanceof ServerError){
-//                    mTextViewResult.setText("server error");
-//                }else if(error instanceof NetworkError){
-//                    mTextViewResult.setText("network error");
-//                }else if(error instanceof ParseError){
-//                    mTextViewResult.setText("Parse Error");
-//                }
-//
-//            }
-//
-//        }) ;
 
-//        {
-//            @Override
-//            public String getBodyContentType() {
-//                return "application/json; charset=utf-8";
-//            }
-//
-////            @Override
-////            public byte[] getBody() throws AuthFailureError {
-////                try {
-////                    return obj == null ? null : obj.getBytes("utf-8");
-////                } catch (UnsupportedEncodingException uee) {
-////                    VolleyLog.wtf("Unsupported Encoding while trying to get the bytes of %s using %s", obj, "utf-8");
-////                    return null;
-////                }
-////
-////            }
-//        };
+        /**
+         * Receives response from controller and displays response on Logcat
+         */
+        JsonObjectRequest objectRequest = new JsonObjectRequest(Request.Method.POST, url, obj, new Response.Listener<JSONObject>() {
 
-//        requestQueue.add(objectRequest);
+            @Override
+            public void onResponse(JSONObject response) {
+
+                Log.d("Response", response.toString());
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                VolleyLog.d("Error.Response", error.toString());
+                System.out.println(error.getMessage());
+            }
+
+        });
 
 
+        requestQueue.add(objectRequest);
+        System.out.println("------------------------------------");
+        System.out.println("Message was posted");
 
     }
+}
 
 
 
-    }
+
 

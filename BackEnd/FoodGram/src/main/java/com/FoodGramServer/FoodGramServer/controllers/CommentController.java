@@ -1,33 +1,21 @@
 package com.FoodGramServer.FoodGramServer.controllers;
 
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.FoodGramServer.FoodGramServer.models.*;
 import com.FoodGramServer.FoodGramServer.repo.*;
-
-
-
-import java.io.IOException;
-import java.lang.reflect.Type;
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.DriverManager;
-import java.sql.Statement;
-import java.time.LocalDate;
 import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+
 
 
 @RestController
 /**
  * Maps endpoints for the comment class
- * @author Swechha
+ * @author Swechha and Alexis
  *
  */
 public class CommentController {
@@ -36,18 +24,34 @@ public class CommentController {
 	 */
 	@Autowired
 	CommentRepo commentRepo;
+
 	
 	/**
-	 * 
-	 * @return all the comments in db
+	 * @return all the comments in Database
 	 */
 	@RequestMapping(method = RequestMethod.GET, path = "/comment/all")
-	public Comment[] getComments() { 
-		Comment[] comments = commentRepo.getAll();
-
-		return comments; //returns JSON array of comments
+	public List<Comment> getComments() { 
+		return commentRepo.getAll();
 	}
 	
+	/**
+	 * Returns all the comments based on the picture id
+	 * @param picId
+	 * @return list of comments
+	 */
+	@RequestMapping(method = RequestMethod.GET, path = "/comment/{picId}")
+	public List<Comment> getPicComments(@PathVariable String picId){
+			return commentRepo.getPicComment(picId);
+	}
 
+
+	/**
+	 * Posts a comment on a certain photo
+	 * @param comment
+	 */
+	@RequestMapping(method = RequestMethod.POST, path = "/post/comment")
+	public void postCommentFromRestaurant(@RequestBody Comment comment) {
+		commentRepo.save(comment);
+	}
 
 }

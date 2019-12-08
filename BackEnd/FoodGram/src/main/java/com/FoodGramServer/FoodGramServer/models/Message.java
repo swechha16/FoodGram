@@ -2,93 +2,116 @@ package com.FoodGramServer.FoodGramServer.models;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+
+import org.hibernate.annotations.CreationTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "message")
 public class Message implements Serializable {
-    private static final long serialVersionUID = 1L;
+    public Message(long id_message,  @NotNull String message, LocalDateTime timestamp, User sender, User receiver) {
 
+		this.id_message = id_message;
+		this.sender = sender;
+		this.receiver = receiver;
+		this.message = message;
+		this.timestamp = timestamp;
+	}
+
+	private static final long serialVersionUID = 1L;
+    
+
+    public Message() { 
+    	
+    }
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id_message;
 
 
-
-
+    //user id 1 = sender
+    @ManyToOne
+	@JoinColumn(name = "sender_id")
+	private User sender;
+	
+    
+    //user_id2
 	@ManyToOne
-	//@JsonManagedReference 
-	@JoinColumn(name="user_id") 
-	private User[] user; 
+	@JoinColumn(name = "receiver_id")
+	private User receiver;
 
-	
-	
-	@Column(name="user1")
-	private String user1; 
-	
-
-	@Column(name="user2")
-	private String user2; 
 	
 
     @Column(name = "message")
     @NotNull
-    private Message message;
+    private String message;
+
 
     @Column(name = "timestamp")
-    @NotNull
+    @CreationTimestamp
     private LocalDateTime timestamp;
-    
 
-	public User[] getUser() {
-		return user;
-	}
 
-	public void setUser(User[] user) {
-		this.user = user;
-	}
-
-	public String getUser1() {
-		return user1;
-	}
-
-	public void setUser1(String user1) {
-		this.user1 = user1;
-	}
-
-	public String getUser2() {
-		return user2;
-	}
-
-	public void setUser2(String user2) {
-		this.user2 = user2;
-	}
 	public long getId_message() {
 		return id_message;
 	}
+
 
 	public void setId_message(long id_message) {
 		this.id_message = id_message;
 	}
 
 
+	public User getSender() {
+		return sender;
+	}
 
-	public Message getMessage() {
+
+	public void setSender(User sender) {
+		this.sender = sender;
+	}
+
+
+	public User getReciever() {
+		return receiver;
+	}
+
+
+	public void setReciever(User reciever) {
+		this.receiver = reciever;
+	}
+
+
+	public String getMessage() {
 		return message;
 	}
 
-	public void setMessage(Message message2) {
-		this.message = message2;
+
+	public void setMessage(String message) {
+		this.message = message;
 	}
+
 
 	public LocalDateTime getTimestamp() {
 		return timestamp;
 	}
 
+
 	public void setTimestamp(LocalDateTime timestamp) {
 		this.timestamp = timestamp;
 	}
+
+
+
+    
 
 
 

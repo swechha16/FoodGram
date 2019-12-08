@@ -8,14 +8,14 @@
     android:id="@+id/layout_feed_page"
     >
 
-    <ImageButton
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="250dp"
         android:src="@mipmap/ic_launcher"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf= "@id/feedphotoCaption"
         tools:layout_editor_absoluteY="48dp"
         android:id="@+id/image_post"
 
@@ -44,6 +44,13 @@
         android:textColor="#000"
         android:id="@+id/feed_username"/>
 
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/feedphotoCaption"
+        app:layout_constraintBottom_toBottomOf="parent"
+/>
 
 
 

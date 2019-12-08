@@ -42,8 +42,7 @@ public class PhotoController {
 	 */
 	@RequestMapping(method = RequestMethod.GET, path = "/photo/all")
 	public List<Photo> getPhotos() {
-		List<Photo> photos = photoRepo.getAll();
-		return photos;
+		return photoRepo.getAll();
 	}
 
 	/**
@@ -55,8 +54,7 @@ public class PhotoController {
 	 */
 	@RequestMapping(method = RequestMethod.GET, path = "/photo/{foodCategory}/{priceCategory}")
 	public List<Photo> getPostByFoodTagAndPrice(@PathVariable String foodCategory, @PathVariable String priceCategory) {
-		List<Photo> photos = photoRepo.getByFoodTagAndPriceTag(foodCategory, priceCategory);
-		return photos;
+		return photoRepo.getByFoodTagAndPriceTag(foodCategory, priceCategory); 
 	}	
 	
 	/**
@@ -64,12 +62,10 @@ public class PhotoController {
 	 * @param restaurant
 	 * @return photos from a restaurant
 	 */
-	@RequestMapping(method = RequestMethod.GET, path = "/photo/{restaurant}")
+	@RequestMapping(method = RequestMethod.GET, path = "/photo/rest/{restaurant}")
 	public List<Photo> findByRestaurant(@PathVariable String restaurant) {
-		List<Photo> photos = photoRepo.getByRestaurant(restaurant);
-		return photos;
+		return photoRepo.getByRestaurant(restaurant);
 	}
-	
 	
 	/**
 	 * post the photos to the database
@@ -78,8 +74,13 @@ public class PhotoController {
 	@RequestMapping(method = RequestMethod.POST, path = "/post/photo")
 	public void postPhoto(@RequestBody Photo userPhoto) {
 		photoRepo.save(userPhoto);
-
 	}
+	
+	@RequestMapping(method = RequestMethod.GET, path = "/photo/user/{user}")
+	public List<Photo> findByUser(@PathVariable String user) {
+		return photoRepo.getByUser(user);
+	}
+	
 
 	/**
 	 * Posting the image from the user into the image folder on the server
@@ -91,8 +92,8 @@ public class PhotoController {
 		Path path = null;
 		try {
 			byte[] bytes = file.getBytes();
-	        //path = Paths.get("/var/www/html/images/" + file.getOriginalFilename());
-			path = Paths.get("C:/Users/alexi/Desktop/COMS309/img/" + file.getOriginalFilename());
+	        path = Paths.get("/var/www/html/images/" + file.getOriginalFilename());
+			//path = Paths.get("C:/Users/alexi/Desktop/COMS309/img/" + file.getOriginalFilename());
 			Files.write(path, bytes);
 
 		} catch (IOException e) {

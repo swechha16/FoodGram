@@ -34,24 +34,34 @@ public class UserController {
 	 * @return all users
 	 */
 	@RequestMapping(method = RequestMethod.GET, path = "/user/all")
-	public User[] getComments() {
-
-		User[] user = userRepo.getAll();
+	public List<User> getComments() {
+		List<User> user = userRepo.getAll();
 		return user;
 	}
 
 	/**
-	 * gets all the user with a certain username
+	 * gets all the user with a certain email
 	 * @param username
 	 * @return user array
 	 */
-	@RequestMapping(method = RequestMethod.GET, path = "/user/{username}")
-	public User[] getUserByUser(@PathVariable String username) {
-
-		User[] user = userRepo.getByUsername(username);
+	@RequestMapping(method = RequestMethod.GET, path = "/user/email/{email}")
+	public User getUserByEmail(@PathVariable String email) {
+		User user = userRepo.getByEmail(email);
 		return user;
 	}
 	
+	/**
+	 * 
+	 * @param username
+	 * @return
+	 */
+	@RequestMapping(method = RequestMethod.GET, path = "/user/{username}")
+	public List<User> getUserByUser(@PathVariable String username) {
+
+		List<User> user = userRepo.getByUsername(username);
+		return user;
+	}
+
 	/**
 	 * Adds a user into database
 	 * @param newUser
@@ -61,5 +71,19 @@ public class UserController {
 		userRepo.save(newUser);
 
 	}	
+	/**
+	 * gets the restaurant user based off of restaurant 
+	 * @param username
+	 * @return user array
+	 */
+	@RequestMapping(method = RequestMethod.GET, path = "/get/{restaurant}")
+	public List<User> getCaptionByRestaurant(@PathVariable String restaurant) {
+		List<User> user = userRepo.getCaptionByRestaurant(restaurant); 
+		return user;
+	}
+	
+	
+	
+
 
 }

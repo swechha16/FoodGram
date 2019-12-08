@@ -1,10 +1,16 @@
 package com.foodgram;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.view.Menu;
+import android.view.MenuItem;
+
+import androidx.navigation.Navigation;
 
 /**
  * Shows the user some options to go to after logging in.
@@ -17,17 +23,66 @@ public class HomePageWithFeedPost extends AppCompatActivity {
     Button profile_page;
     Button  home_page;
     Button Direct_Message_Page;
+    Button restaurant_Page;
+    BottomNavigationView bottomNavigationView;
+
+
+
     Button other_profile_button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page_with_feed_post);
-       feed_move = findViewById(R.id.clickToFeedButton);
-       make_post_move = findViewById(R.id.clickToPostButton);
-       find_food_move = findViewById(R.id.clickToFindFood);
-       profile_page = findViewById(R.id.userProfileButton);
+
+
+        feed_move = findViewById(R.id.clickToFeedButton);
+        make_post_move = findViewById(R.id.clickToPostButton);
+        find_food_move = findViewById(R.id.clickToFindFood);
+        profile_page = findViewById(R.id.userProfileButton);
         home_page = findViewById(R.id.home);
         Direct_Message_Page = findViewById(R.id.MessagesButton);
+        restaurant_Page = findViewById(R.id.restaurantBtn);
+
+
+        bottomNavigationView = findViewById(R.id.nav_view);
+
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.nav_view);
+        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.navigation_home:
+                       Intent a = new Intent(HomePageWithFeedPost.this, PersonalFeedPage.class);
+                        startActivity(a);
+                        break;
+                    case R.id.action_search:
+                        Intent b = new Intent(HomePageWithFeedPost.this, FilteredFoodFeed.class);
+                        startActivity(b);
+                        break;
+                    case R.id.action_add_post:
+                        Intent c = new Intent(HomePageWithFeedPost.this, PostPhotoPage.class);
+                        startActivity(c);
+                        break;
+                    case R.id.action_about:
+                        Intent d = new Intent(HomePageWithFeedPost.this, ProfilePage.class);
+                        startActivity(d);
+                        break;
+                    case R.id.id_logout:
+                        Intent e = new Intent(HomePageWithFeedPost.this, HomePage.class);
+                        startActivity(e);
+                        break;
+                }
+                return false;
+            }
+        });
+
+
+        restaurant_Page.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                restaurant_move(view);
+            }
+        });
         other_profile_button = findViewById(R.id.other_user_profile_btn);
 
 other_profile_button.setOnClickListener(new View.OnClickListener() {
@@ -80,6 +135,8 @@ other_profile_button.setOnClickListener(new View.OnClickListener() {
 
     }
 
+
+
     /**
      * Opens up the filtered food feed page
      * @param v
@@ -130,8 +187,49 @@ other_profile_button.setOnClickListener(new View.OnClickListener() {
         startActivity(intent);
     }
 
+    public void restaurant_move(View v) {
+        Intent intent = new Intent(this, RestaurantPage.class);
+        startActivity(intent);
+    }
     public void other_profile_page(View view){
         Intent intent = new Intent (this, Other_Users_Profile.class);
         startActivity(intent);
+    }
+
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_screen_navigation, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        //handle presses on the action bar items
+        switch (item.getItemId()) {
+
+            case R.id.navigation_home:
+                startActivity(new Intent(this, HomePage.class));
+                return true;
+
+            case R.id.action_about:
+                startActivity(new Intent(this, PersonalFeedPage.class));
+                return true;
+
+            case R.id.action_search:
+                startActivity(new Intent(this, FilteredFoodFeed.class));
+                return true;
+
+
+            case R.id.action_add_post:
+                startActivity(new Intent(this, MakePostPage.class));
+                return true;
+
+            case R.id.action_message:
+                startActivity(new Intent(this, DirectMessage.class));
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
