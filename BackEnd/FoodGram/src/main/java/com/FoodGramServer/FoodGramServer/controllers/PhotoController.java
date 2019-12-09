@@ -92,10 +92,7 @@ public class PhotoController {
 	 * @return file path
 	 */
 	@RequestMapping(method = RequestMethod.POST, path = "/post/image")
-<<<<<<< HEAD
-=======
 	@ResponseBody
->>>>>>> master
 	public String fileUpload(@RequestParam("file") MultipartFile file) {
 		Path path = null;
 		if (!file.getOriginalFilename().contains("."))
@@ -109,10 +106,6 @@ public class PhotoController {
 			e.printStackTrace();
 		}
 
-<<<<<<< HEAD
-		return path.toString();
-=======
 		return "http://coms-309-mg-1.cs.iastate.edu/images/"+name;
->>>>>>> master
 	}
 }
