@@ -4,9 +4,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -89,6 +92,37 @@ public class PostPhotoPage extends AppCompatActivity {
 
 
         mTextViewResult = findViewById(R.id.errorView);
+
+
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.nav_view);
+        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.navigation_home:
+                        Intent a = new Intent(PostPhotoPage.this, PersonalFeedPage.class);
+                        startActivity(a);
+                        break;
+                    case R.id.action_search:
+                        Intent b = new Intent(PostPhotoPage.this, FilteredFoodFeed.class);
+                        startActivity(b);
+                        break;
+                    case R.id.action_add_post:
+//                        Intent c = new Intent(HomePageWithFeedPost.this, PostPhotoPage.class);
+//                        startActivity(c);
+                        break;
+                    case R.id.action_about:
+                        Intent d = new Intent(PostPhotoPage.this, ProfilePage.class);
+                        startActivity(d);
+                        break;
+                    case R.id.id_logout:
+                        Intent e = new Intent(PostPhotoPage.this, HomePage.class);
+                        startActivity(e);
+                        break;
+                }
+                return false;
+            }
+        });
 
     }
 
