@@ -16,31 +16,37 @@ import java.util.Set;
 @Entity
 @Table(name = "message")
 public class Message implements Serializable {
-    private static final long serialVersionUID = 1L;
+    public Message(long id_message,  @NotNull String message, LocalDateTime timestamp, User sender, User receiver) {
+
+		this.id_message = id_message;
+		this.sender = sender;
+		this.receiver = receiver;
+		this.message = message;
+		this.timestamp = timestamp;
+	}
+
+	private static final long serialVersionUID = 1L;
     
 
+    public Message() { 
+    	
+    }
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id_message;
 
 
+    //user id 1 = sender
+    @ManyToOne
+	@JoinColumn(name = "sender_id")
+	private User sender;
+	
     
-@ManyToOne 
-@JoinColumn(name="user_id")
-//@Column(name="reciever_id")
-@JsonManagedReference
-private User user; 
-
-
-//@ManyToOne 
-//@JoinColumn(name="reciever_id")
-////@Column(name="user_id")
-//@JsonManagedReference
-//private User user2; 
-
-
-
+    //user_id2
+	@ManyToOne
+	@JoinColumn(name = "receiver_id")
+	private User receiver;
 
 	
 
@@ -64,13 +70,23 @@ private User user;
 	}
 
 
-	public User getUser() {
-		return user;
+	public User getSender() {
+		return sender;
 	}
 
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setSender(User sender) {
+		this.sender = sender;
+	}
+
+
+	public User getReciever() {
+		return receiver;
+	}
+
+
+	public void setReciever(User reciever) {
+		this.receiver = reciever;
 	}
 
 
@@ -92,6 +108,9 @@ private User user;
 	public void setTimestamp(LocalDateTime timestamp) {
 		this.timestamp = timestamp;
 	}
+
+
+
     
 
 

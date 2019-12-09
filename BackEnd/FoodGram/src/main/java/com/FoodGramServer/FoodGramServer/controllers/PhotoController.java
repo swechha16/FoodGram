@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -90,18 +92,27 @@ public class PhotoController {
 	 * @return file path
 	 */
 	@RequestMapping(method = RequestMethod.POST, path = "/post/image")
+<<<<<<< HEAD
+=======
+	@ResponseBody
+>>>>>>> master
 	public String fileUpload(@RequestParam("file") MultipartFile file) {
 		Path path = null;
+		if (!file.getOriginalFilename().contains("."))
+			return "Filename missin extension";
+		String name = UUID.randomUUID().toString() + "." + file.getOriginalFilename().split("\\.")[1];
 		try {
 			byte[] bytes = file.getBytes();
-	        path = Paths.get("/var/www/html/images/" + file.getOriginalFilename());
-//			path = Paths.get("C:/Users/alexi/Desktop/COMS309/img/" + file.getOriginalFilename());
+	        path = Paths.get("/var/www/html/images/" + name);
 			Files.write(path, bytes);
-
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
+<<<<<<< HEAD
 		return path.toString();
+=======
+		return "http://coms-309-mg-1.cs.iastate.edu/images/"+name;
+>>>>>>> master
 	}
 }

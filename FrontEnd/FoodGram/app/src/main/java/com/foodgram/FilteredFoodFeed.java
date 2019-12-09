@@ -1,7 +1,11 @@
 package com.foodgram;
 
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -54,10 +58,17 @@ public class FilteredFoodFeed extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filtered_food_feed);
+        BottomNavigationView bottomNavigationView;
+        bottomNavigationView = findViewById(R.id.nav_view);
+
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.nav_view);
 
 
         mTextViewResult = findViewById(R.id.textViewResults);
         mQueue = Volley.newRequestQueue(this);
+
+
+
 
         Button italian = findViewById(R.id.ItalianButton);
         italian.setOnClickListener(new View.OnClickListener() {
@@ -117,7 +128,42 @@ public class FilteredFoodFeed extends AppCompatActivity {
             }
         });
 
+
+        BottomNavigationView navi = (BottomNavigationView) findViewById(R.id.nav_view);
+        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.navigation_home:
+                      Intent a = new Intent(FilteredFoodFeed.this, PersonalFeedPage.class);
+                        startActivity(a);
+                        break;
+                    case R.id.action_search:
+                        Intent b = new Intent(FilteredFoodFeed.this, FilteredFoodFeed.class);
+                        startActivity(b);
+                        break;
+                    case R.id.action_add_post:
+                        Intent c = new Intent(FilteredFoodFeed.this, PostPhotoPage.class);
+                        startActivity(c);
+                        break;
+                    case R.id.action_about:
+                        Intent d = new Intent(FilteredFoodFeed.this, ProfilePage.class);
+                        startActivity(d);
+                        break;
+                    case R.id.id_logout:
+                        Intent e = new Intent(FilteredFoodFeed.this, HomePage.class);
+                        startActivity(e);
+                        break;
+                }
+                return false;
+            }
+        });
+
+
+
     }
+
+
 
     /**
      * Updates the url with the food type a user wants
