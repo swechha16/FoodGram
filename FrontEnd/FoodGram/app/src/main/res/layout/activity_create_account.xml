@@ -175,7 +175,7 @@
             android:textSize="20dp" />
 
         <EditText
-            android:id="@+id/state_username"
+            android:id="@+id/input_state"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="top"
@@ -206,6 +206,11 @@
             android:hint="Enter Bio" />
     </LinearLayout>
 
+    <Button
+        android:id="@+id/createaccount_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Create an Account" />
 
 
 </LinearLayout>
