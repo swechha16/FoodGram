@@ -38,6 +38,8 @@ public class CreateAccount extends AppCompatActivity {
      */
     public void onButtonClick(View v){
 Intent myIntent = new Intent(this, PersonalFeedPage.class);
+
+
     startActivity(myIntent);
 
 }

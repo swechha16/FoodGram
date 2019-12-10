@@ -1,5 +1,6 @@
 package com.foodgram;
 
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -40,6 +41,7 @@ import com.foodgram.R;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.parceler.Parcels;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
@@ -47,7 +49,7 @@ import java.util.List;
 
 public class Other_Users_Profile extends AppCompatActivity {
         TextView Following, Followers, otherUserBio;
-        Button followBtn, refreshBtn, message_user_btn;
+        Button followBtn, message_user_btn;
         ImageView otherUser_pic;
         String userName;
     private List<Photo> photoList;
@@ -56,20 +58,14 @@ public class Other_Users_Profile extends AppCompatActivity {
 
     FeedPageAdapter feedPageAdapter;
         RecyclerView postsView;
-    User user = new User( 1, "Sweaty", "sweaty@iastate.edu", "user", "pass1234");
-
-
-    Button follow;
-    TextView followCount;
-    TextView followingCount;
 
     RequestQueue followQueue;
     RequestQueue followingQueue;
     RequestQueue followUserQueue;
 
-    User otherProfile = new User(2, "ronnie", "amcordts@iastate.edu", "user", "pass1234");
-    User loggedIn = new User(3, "sweaty", "sweaty@iastate.edu", "user", "pass1234");
 
+User otherProfile = new User();
+User loggedIn = new User();
 
 
     @Override
@@ -97,13 +93,15 @@ public class Other_Users_Profile extends AppCompatActivity {
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         postsView.setLayoutManager(linearLayoutManager);
+        Parcelable parcelableLogged = getIntent().getParcelableExtra("LoggedInUser");
 
+        Parcelable parcelableOther = getIntent().getParcelableExtra("OtherUserProfile");
+         otherProfile = Parcels.unwrap(parcelableOther);
 
-
-        user.setProfile_pic("https://scontent.fdsm1-1.fna.fbcdn.net/v/t1.0-9/41793156_249057839002346_8937745557640708096_n.jpg?_nc_cat=108&_nc_ohc=BViWIqxmozEAQl1oSq1O5FyPQPGzmQ0ZuyfUrl_lqJ_cLDsDGI_Bz7F8g&_nc_ht=scontent.fdsm1-1.fna&oh=dd2d28d0c055ed87e07db9e564ab9faa&oe=5E6B3834");
+        loggedIn = Parcels.unwrap(parcelableLogged);
         getBio();
 
-        updatePicture(user.getProfile_pic());
+        updatePicture(otherProfile.getProfile_pic());
         getProfilePosts();
 
 
@@ -117,7 +115,7 @@ public class Other_Users_Profile extends AppCompatActivity {
         updateFollowCount();
         updateFollowingCount();
 
-        follow.setOnClickListener(new View.OnClickListener(){
+        followBtn.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View view) {
@@ -129,16 +127,14 @@ public class Other_Users_Profile extends AppCompatActivity {
     }
 
     public void updateFollowCount() {
-        String url = "http://coms-309-mg-1.cs.iastate.edu:8080/following/count/"+otherProfile.getUser_id();
-        //String url = "http://10.31.31.154:8080/following/count/"+otherProfile.getUser_id();
-
+        String url = "http://coms-309-mg-1.cs.iastate.edu:8080/following/count/"+ otherProfile.getUser_id();
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         String count = response;
-                        followCount.setText(count);
+                        Followers.setText("Followers\n" + count.toString());
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -158,7 +154,7 @@ public class Other_Users_Profile extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         String count = response;
-                        followingCount.setText(count);
+                        Following.setText("Following\n" + count.toString());
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -237,7 +233,7 @@ public class Other_Users_Profile extends AppCompatActivity {
 
 
         public void getBio(){
-            String url = "http://coms-309-mg-1.cs.iastate.edu:8080/user/alexi";
+            String url = "http://coms-309-mg-1.cs.iastate.edu:8080/user/" + otherProfile.getUsername();
 
             JsonArrayRequest bioRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
                 @Override
@@ -296,22 +292,23 @@ public class Other_Users_Profile extends AppCompatActivity {
                             JSONObject post = response.getJSONObject(i);
 
 
+                            String tempEmail = post.getJSONObject("user").getString("email");
 
-//                            if(post.getJSONObject("userId").getString("username").equals(userName)) {
-
-
-                            String caption = post.getString("caption");
-                            String restaurantName = post.getString("restaurant");
-                            String foodTag = post.getString("foodTag");
-                            String costTag = post.getString("costTag");
-                            user = new User(1, "Sweaty", "sweaty@iastate.edu", "user", "pass1234");
-                            user.setProfile_pic("https://scontent.fdsm1-1.fna.fbcdn.net/v/t1.0-9/41793156_249057839002346_8937745557640708096_n.jpg?_nc_cat=108&_nc_ohc=BViWIqxmozEAQl1oSq1O5FyPQPGzmQ0ZuyfUrl_lqJ_cLDsDGI_Bz7F8g&_nc_ht=scontent.fdsm1-1.fna&oh=dd2d28d0c055ed87e07db9e564ab9faa&oe=5E6B3834");
-
-                            feedPageAdapter.add(new Photo(user, "http://coms-309-mg-1.cs.iastate.edu/images/pizza.jpg", "Delicious Pizza", "pizza", "$", "papa johns", "12:30", 2));
-                            feedPageAdapter.add(new Photo(user, "http://coms-309-mg-1.cs.iastate.edu/images/pizza.jpg", "Delicious Pizza", "pizza", "$", "papa johns", "12:30", 2));
+                            if (tempEmail.equals(otherProfile.getEmail())) {
+                                String caption = post.getString("caption");
+                                String restaurantName = post.getString("restaurant");
+                                String foodTag = post.getString("foodTag");
+                                String costTag = post.getString("costTag");
+                                String picUrl = post.getString("pic");
+                                String timeStamp = post.getString("timestamp");
+                                long picId = post.getLong("picId");
 
 
-//                            }
+                                feedPageAdapter.add(new Photo(otherProfile, picUrl, caption, foodTag, costTag, restaurantName, timeStamp, picId));
+
+                            }
+
+
 
 
                         }
