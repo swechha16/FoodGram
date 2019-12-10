@@ -243,7 +243,7 @@ mTextViewResult.setText("");
 
 
                             mTextViewResult.append(caption + "\n" + foodTag + "\n" + costTag + "\n" + restaurantName + "\n\n\n");
-
+                            feedPageAdapter.add(new Photo(null,null ,caption, foodTag ,costTag, restaurantName,null,0 ));
                         }
                     }else{
                         mTextViewResult.append("\nNo posts");
