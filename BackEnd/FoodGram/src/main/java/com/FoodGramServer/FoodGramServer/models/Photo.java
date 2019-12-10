@@ -6,11 +6,13 @@ import java.time.LocalDateTime;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
  * Class that models the entity in the database for a photo object
@@ -33,9 +35,9 @@ public class Photo implements Serializable {
 	 * Instance variable for the user that posted the photo
 	 */
 	@ManyToOne
-	@JsonBackReference(value = "userPhoto")
 	//@JsonManagedReference
 	@JoinColumn(name="user_id") // specifies to use a column in Photo table to reference user, instead of the default behavior to create a join table
+	@JsonIgnore
 	private User user; //link up with the user table
 	
 	/**
@@ -64,8 +66,8 @@ public class Photo implements Serializable {
 	 */
 	@Column(name = "cost_tag")
 	@NotNull
-	private String cost_tag; 
-
+	private String cost_tag;
+	
 	/**
 	 * Tag for what restaurant post is from
 	 */
@@ -80,8 +82,7 @@ public class Photo implements Serializable {
 	@CreationTimestamp
 	private LocalDateTime timestamp;
 	
-	public Photo() {
-		
+	public Photo() {	
 	}
 	
 	public Photo(long pic_id, String caption, String cost_tag, String food_tag, String pic, String restaurant, User user_id) {
@@ -94,6 +95,7 @@ public class Photo implements Serializable {
 		this.user = user_id;
 	}
 
+	
 	/**
 	 * @return pic_id
 	 */
