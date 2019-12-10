@@ -28,6 +28,7 @@ import org.json.JSONObject;
 
 /**
  * Creates a new user account
+ *
  * @author amcordts
  */
 public class CreateAccount extends AppCompatActivity {
@@ -46,6 +47,7 @@ public class CreateAccount extends AppCompatActivity {
 
     /**
      * This sets up the page and creates the button functionality.
+     *
      * @param savedInstanceState
      */
     @Override
@@ -54,7 +56,7 @@ public class CreateAccount extends AppCompatActivity {
         setContentView(R.layout.activity_create_account);
 
         name = (EditText) findViewById(R.id.input_name);
-        email = (EditText)findViewById(R.id.input_email);
+        email = (EditText) findViewById(R.id.input_email);
         username = (EditText) findViewById(R.id.input_username);
         password = (EditText) findViewById(R.id.input_password);
         account_type = (EditText) findViewById(R.id.input_account);
@@ -67,9 +69,9 @@ public class CreateAccount extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(sendContents()== true){
-                    //Feed_Page();
-                }else{
+                if (sendContents() == true) {
+                    Feed_Page();
+                } else {
                     Toast.makeText(getApplicationContext(), "Account Creation Failure", Toast.LENGTH_LONG).show();
 
                 }
@@ -78,7 +80,6 @@ public class CreateAccount extends AppCompatActivity {
         });
 
     }
-
 
 
     /**
@@ -92,22 +93,21 @@ public class CreateAccount extends AppCompatActivity {
 
         final JSONObject user = new JSONObject();
         try {
-            user.put("fullName", name.getText().toString());
-            user.put("email", email.getText().toString());
-            user.put("username", username.getText().toString());
-            user.put("password", password.getText().toString());
-            user.put("accountType", account_type.getText().toString());
-            user.put("locationCity", city.getText().toString());
-            user.put("locationState", state.getText().toString());
-            user.put("phoneNo", phone.getText().toString());
-            user.put("bio", bio.getText().toString());
+            user.put("fullName", name.getText());
+            user.put("email", isEmpty(email));
+            user.put("username", isEmpty(username));
+            user.put("password", isEmpty(password));
+            user.put("accountType", isEmpty(account_type));
+            user.put("locationCity", city.getText());
+            user.put("locationState", state.getText());
+            user.put("phoneNo", phone.getText());
+            user.put("bio", bio.getText());
 
             Log.d("response", user.toString());
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
 
 
         /**
@@ -126,8 +126,8 @@ public class CreateAccount extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 VolleyLog.d("Error.Response", error.toString());
-
                 System.out.println(error.getMessage());
+                newUser = null;
             }
 
         }) {
@@ -137,7 +137,8 @@ public class CreateAccount extends AppCompatActivity {
             }
 
         };
-        newUser.add(objectRequest);
+
+            newUser.add(objectRequest);
         return true;
     }
 
@@ -145,6 +146,13 @@ public class CreateAccount extends AppCompatActivity {
     public void Feed_Page() {
         Intent intent = new Intent(this, PersonalFeedPage.class);
         startActivity(intent);
+    }
+
+    public String isEmpty(EditText element) {
+        if (element.getText().length() <= 0) {
+            return null;
+        }
+        return element.getText().toString();
     }
 
 }
