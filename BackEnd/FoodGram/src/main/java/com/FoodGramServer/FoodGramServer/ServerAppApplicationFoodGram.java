@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 import com.FoodGramServer.FoodGramServer.repo.CommentRepo;
-import com.FoodGramServer.FoodGramServer.repo.DatabaseInitializer;
+//import com.FoodGramServer.FoodGramServer.repo.DatabaseInitializer;
 import com.FoodGramServer.FoodGramServer.repo.FollowingRepo;
 import com.FoodGramServer.FoodGramServer.repo.PhotoRepo;
 import com.FoodGramServer.FoodGramServer.repo.UserRepo;

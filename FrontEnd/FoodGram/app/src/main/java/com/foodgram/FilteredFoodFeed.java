@@ -144,8 +144,8 @@ public class FilteredFoodFeed extends AppCompatActivity {
                         break;
                     case R.id.action_search:
 //                        Intent b = new Intent(FilteredFoodFeed.this, FilteredFoodFeed.class);
-//                        b.putExtra("LoggedInUser", parcelable);
 //                        startActivity(b);
+                        break;
                     case R.id.action_add_post:
                         Intent c = new Intent(FilteredFoodFeed.this, PostPhotoPage.class);
 
@@ -190,6 +190,24 @@ public class FilteredFoodFeed extends AppCompatActivity {
                 url += "/all";
             }
 
+    /**
+     * Updates the url with the food type a user wants
+     * At the moment it can only do one food type at a time.
+     * @param foodType - The type of food a user wants to search for
+     */
+    public void updateUrl(int foodType){
+        url = "http://coms-309-mg-1.cs.iastate.edu:8080/photo";
+        if(foodType == 0){
+          url += "/all";
+        }else if(foodType == 1){
+            url += "/italian";
+        }else if(foodType ==2 ){
+            url += "/chinese";
+        }else if(foodType == 3){
+            url += "/indian";
+        }else{
+            url += "/all";
+        }
 
         }
 
