@@ -22,41 +22,41 @@ import org.mockito.MockitoAnnotations;
 
 public class SwechhaMockTest {
 
-
-
-    @Mock
- PostPhotoPage page;
-    @InjectMocks
-    BottomNavigationView bot;
-
-
-    @Mock
- FilteredFoodFeed fff ;
-
-    @InjectMocks
-    BottomNavigationView bot2;
-
-
-    @Before
-    public void init() {
-        MockitoAnnotations.initMocks(this);
-    }
-
-    @Test
-    public void testCaseRepository(){
-if(bot.getSelectedItemId() ==  R.id.navigation_home) {
-    assertEquals(bot.getSelectedItemId(), R.id.navigation_home);
-}
-
-    }
-    // handling null not returning null
-
-    @Test
-    public void get() {
-
-
-
-    }
+//
+//
+//    @Mock
+// PostPhotoPage page;
+//    @InjectMocks
+//    BottomNavigationView bot;
+//
+//
+//    @Mock
+// FilteredFoodFeed fff ;
+//
+//    @InjectMocks
+//    BottomNavigationView bot2;
+//
+//
+//    @Before
+//    public void init() {
+//        MockitoAnnotations.initMocks(this);
+//    }
+//
+//    @Test
+//    public void testCaseRepository(){
+//if(bot.getSelectedItemId() ==  R.id.navigation_home) {
+//    assertEquals(bot.getSelectedItemId(), R.id.navigation_home);
+//}
+//
+//    }
+//    // handling null not returning null
+//
+//    @Test
+//    public void get() {
+//
+//
+//
+//    }
 
 
 
