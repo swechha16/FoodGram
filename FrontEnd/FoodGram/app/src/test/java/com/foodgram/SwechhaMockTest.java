@@ -56,80 +56,80 @@ public class SwechhaMockTest {
 
 
 
-    @Mock
- PostPhotoPage page;
-    @InjectMocks
-    BottomNavigationView bot;
-
-
-    @Mock
- FilteredFoodFeed fff ;
-
-
-
-
-    private static final int[] MENU_CONTENT_ITEM_IDS = {
-            R.id.action_about, R.id.action_message, R.id.action_add_post,R.id.action_search,
-            R.id.navigation_home
-    };
-
-
-
-    @Before
-    public void init() {
-        MockitoAnnotations.initMocks(this);
-        bot = (BottomNavigationView) page.findViewById(R.id.nav_view);
-    }
-
-
-
-    @Test
-
-    public void testBasics() {
-
-        final Menu menu = bot.getMenu();
-        assertNotNull("Menu should not be null", menu);
-        assertEquals("Should have matching number of items", MENU_CONTENT_ITEM_IDS.length, menu.size());
-        for (int i = 0; i < MENU_CONTENT_ITEM_IDS.length; i++) {
-            final MenuItem currItem = menu.getItem(i);
-            assertEquals("ID for Item #" + i, MENU_CONTENT_ITEM_IDS[i], currItem.getItemId());
-        }
-    }
-
-
-
-    @Test
-
-    public void testSetSelectedItemId() {
-        BottomNavigationView.OnNavigationItemSelectedListener mockedListener =
-                mock(BottomNavigationView.OnNavigationItemSelectedListener.class);
-        bot.setOnNavigationItemSelectedListener(mockedListener);
-        when(mockedListener.onNavigationItemSelected(any(MenuItem.class))).thenReturn(true);
-       
-        bot.setSelectedItemId(R.id.action_message);
-
-        verify(mockedListener, times(1))
-                .onNavigationItemSelected(bot.getMenu().findItem(R.id.action_message));
-
-        assertTrue(bot.getMenu().findItem(R.id.action_message).isChecked());
-
-    }
-
-
-    @Test
-
-    public void testSettingMenuItemVisibility() throws Throwable {
-        final MenuItem homeMenuItem = bot.getMenu().findItem(R.id.navigation_home);
-        assertTrue(homeMenuItem.isVisible());
-        homeMenuItem.setVisible(false);
-        assertFalse(homeMenuItem.isVisible());
-
-        final MenuItem destinationMenuItem =
-                bot.getMenu().findItem(R.id.navigation_home);
-        assertFalse(destinationMenuItem.isVisible());
-        destinationMenuItem.setVisible(true);
-        assertTrue(destinationMenuItem.isVisible());
-    }
+//    @Mock
+// PostPhotoPage page;
+//    @InjectMocks
+//    BottomNavigationView bot;
+//
+//
+//    @Mock
+// FilteredFoodFeed fff ;
+//
+//
+//
+//
+//    private static final int[] MENU_CONTENT_ITEM_IDS = {
+//            R.id.action_about, R.id.action_message, R.id.action_add_post,R.id.action_search,
+//            R.id.navigation_home
+//    };
+//
+//
+//
+//    @Before
+//    public void init() {
+//        MockitoAnnotations.initMocks(this);
+//        bot = (BottomNavigationView) page.findViewById(R.id.nav_view);
+//    }
+//
+//
+//
+//    @Test
+//
+//    public void testBasics() {
+//
+//        final Menu menu = bot.getMenu();
+//        assertNotNull("Menu should not be null", menu);
+//        assertEquals("Should have matching number of items", MENU_CONTENT_ITEM_IDS.length, menu.size());
+//        for (int i = 0; i < MENU_CONTENT_ITEM_IDS.length; i++) {
+//            final MenuItem currItem = menu.getItem(i);
+//            assertEquals("ID for Item #" + i, MENU_CONTENT_ITEM_IDS[i], currItem.getItemId());
+//        }
+//    }
+//
+//
+//
+//    @Test
+//
+//    public void testSetSelectedItemId() {
+//        BottomNavigationView.OnNavigationItemSelectedListener mockedListener =
+//                mock(BottomNavigationView.OnNavigationItemSelectedListener.class);
+//        bot.setOnNavigationItemSelectedListener(mockedListener);
+//        when(mockedListener.onNavigationItemSelected(any(MenuItem.class))).thenReturn(true);
+//
+//        bot.setSelectedItemId(R.id.action_message);
+//
+//        verify(mockedListener, times(1))
+//                .onNavigationItemSelected(bot.getMenu().findItem(R.id.action_message));
+//
+//        assertTrue(bot.getMenu().findItem(R.id.action_message).isChecked());
+//
+//    }
+//
+//
+//    @Test
+//
+//    public void testSettingMenuItemVisibility() throws Throwable {
+//        final MenuItem homeMenuItem = bot.getMenu().findItem(R.id.navigation_home);
+//        assertTrue(homeMenuItem.isVisible());
+//        homeMenuItem.setVisible(false);
+//        assertFalse(homeMenuItem.isVisible());
+//
+//        final MenuItem destinationMenuItem =
+//                bot.getMenu().findItem(R.id.navigation_home);
+//        assertFalse(destinationMenuItem.isVisible());
+//        destinationMenuItem.setVisible(true);
+//        assertTrue(destinationMenuItem.isVisible());
+//    }
 
 
 }

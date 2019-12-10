@@ -72,9 +72,6 @@ public class PersonalFeedPage extends AppCompatActivity {
 
         mQueue = Volley.newRequestQueue(this);
 
-
-
-
         photoList = new ArrayList<Photo>();
 
         feedView = findViewById(R.id.feedPage_recyclerView);

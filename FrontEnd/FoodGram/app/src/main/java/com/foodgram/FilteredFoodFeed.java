@@ -238,7 +238,7 @@ public class FilteredFoodFeed extends AppCompatActivity {
         public void getFilteredFeed () {
 
             mTextViewResult.setText("");
-            //   url = "http://10.26.1.154:8080/photo/all";
+            //  url = "http://10.26.1.154:8080/photo/all";
             JsonArrayRequest testRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
                 @Override
                 public void onResponse(JSONArray response) {
@@ -257,21 +257,20 @@ public class FilteredFoodFeed extends AppCompatActivity {
                                 String password = comment.getJSONObject("user").getString("password");
                                 String tempEmail = comment.getJSONObject("user").getString("email");
                                 String profilePic = comment.getJSONObject("user").getString("profilePic");
-                                String picUrl = comment.getString("pic");
-                                String timeStamp = comment.getString("timestamp");
-                                long picId = comment.getLong("picId");
+
+
                                 String caption = comment.getString("caption");
                                 String restaurantName = comment.getString("restaurant");
                                 String foodTag = comment.getString("foodTag");
                                 String costTag = comment.getString("costTag");
+                                String picUrl = comment.getString("pic");
+                                String timeStamp = comment.getString("timestamp");
+                                long picId = comment.getLong("picId");
 
                                 User tempUser = new User(userId, username, tempEmail, accountType, password);
                                 tempUser.setProfile_pic(profilePic);
 
-
-                            feedPageAdapter.add(new Photo(tempUser, picUrl, caption, foodTag, costTag, restaurantName, timeStamp, picId ));
-
-                             //   mTextViewResult.append(caption + "\n" + foodTag + "\n" + costTag + "\n" + restaurantName + "\n\n\n");
+                                feedPageAdapter.add(new Photo(tempUser, picUrl, caption, foodTag, costTag, restaurantName, timeStamp, picId));
 
                             }
                         } else {
@@ -281,7 +280,7 @@ public class FilteredFoodFeed extends AppCompatActivity {
 
 
                     } catch (JSONException e) {
-                        mTextViewResult.setText("JSON EXCEPTION");
+                       // mTextViewResult.setText("JSON EXCEPTION");
                         e.printStackTrace();
                     }
                 }
