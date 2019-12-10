@@ -105,7 +105,7 @@ public class ProfilePage extends AppCompatActivity {
                         break;
                     case R.id.action_about:
 
-
+                        break;
                     case R.id.id_logout:
                         Intent e = new Intent(ProfilePage.this, HomePage.class);
 
