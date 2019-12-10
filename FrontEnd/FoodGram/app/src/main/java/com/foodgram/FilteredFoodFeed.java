@@ -5,11 +5,12 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
+import android.support.v7.widget.RecyclerView;
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkError;
 import com.android.volley.NoConnectionError;
@@ -36,7 +37,7 @@ import org.json.JSONObject;
 public class FilteredFoodFeed extends AppCompatActivity {
     private TextView mTextViewResult;
     private RequestQueue mQueue;
-
+    RecyclerView feedView;
     /**
      *If the int is 0 it will grab all,  1: italian 2 : chinese 3: indian
      */
@@ -63,7 +64,7 @@ public class FilteredFoodFeed extends AppCompatActivity {
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.nav_view);
 
-
+        feedView = findViewById(R.id.filteredRecycle);
         mTextViewResult = findViewById(R.id.textViewResults);
         mQueue = Volley.newRequestQueue(this);
 
@@ -171,7 +172,7 @@ public class FilteredFoodFeed extends AppCompatActivity {
      * @param foodType - The type of food a user wants to search for
      */
     public void updateUrl(int foodType){
-        url = "http://10.31.29.6:8080/photo";
+        url = "http://coms-309-mg-1.cs.iastate.edu:8080/photo";
         if(foodType == 0){
           url += "/all";
         }else if(foodType == 1){

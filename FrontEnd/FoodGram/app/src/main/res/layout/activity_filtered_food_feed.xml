@@ -6,17 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".FilteredFoodFeed">
 
+
     <Button
         android:id="@+id/ItalianButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
         android:text="@string/Italian"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.12"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.038" />
+        app:layout_constraintVertical_bias="0.047" />
 
     <Button
         android:id="@+id/ChineseButton"
@@ -28,7 +31,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.038" />
+        app:layout_constraintVertical_bias="0.046" />
 
     <Button
         android:id="@+id/IndianButton"
@@ -40,7 +43,7 @@
         app:layout_constraintHorizontal_bias="0.876"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.038" />
+        app:layout_constraintVertical_bias="0.046" />
 
     <Button
         android:id="@+id/cheapButton"
@@ -50,74 +53,83 @@
         android:layout_marginLeft="36dp"
         android:text="$"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.01"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ItalianButton"
-        app:layout_constraintVertical_bias="0.047" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.229" />
 
     <Button
         android:id="@+id/moderatePrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginLeft="36dp"
         android:text="$$"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/cheapButton"
-        app:layout_constraintTop_toBottomOf="@+id/ChineseButton"
-        app:layout_constraintVertical_bias="0.045" />
+        app:layout_constraintBottom_toTopOf="@+id/nav_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.252" />
 
     <Button
         android:id="@+id/expensiveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginLeft="26dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginRight="48dp"
         android:text="$$$"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/moderatePrice"
-        app:layout_constraintTop_toBottomOf="@+id/IndianButton"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.229" />
+
+
+    <!--        <LinearLayout-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:orientation="vertical" />-->
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/filteredRecycle"
+        android:layout_width="0dp"
+        android:layout_height="604dp"
+
+        app:layout_constraintBottom_toBottomOf="@+id/nav_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/nav_view"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/nav_view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
-    <ScrollView
-        android:id="@+id/scrollView2"
-        android:layout_width="330dp"
-        android:layout_height="380dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <TextView
+        android:id="@+id/textViewResults"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pick a food type and price type before searching!!"
+        app:layout_constraintBottom_toBottomOf="@+id/nav_view"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.679"
+        app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/moderatePrice"
-        app:layout_constraintVertical_bias="0.559">
-
-
-        <TextView
-            android:id="@+id/textViewResults"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Pick a food type and price type before searching!!"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.161"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.115" />
-
-        <!--        <LinearLayout-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:orientation="vertical" />-->
-    </ScrollView>
+        app:layout_constraintTop_toBottomOf="@+id/getFilteredFood"
+        app:layout_constraintVertical_bias="0.035" />
 
     <Button
         android:id="@+id/getFilteredFood"
         android:layout_width="157dp"
         android:layout_height="48dp"
         android:text="@android:string/search_go"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+        app:layout_constraintBottom_toBottomOf="@+id/filteredRecycle"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.468"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/moderatePrice" />
-
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.383" />
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/nav_view"
