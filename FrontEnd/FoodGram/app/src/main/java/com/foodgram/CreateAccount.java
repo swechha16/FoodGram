@@ -88,7 +88,7 @@ public class CreateAccount extends AppCompatActivity {
      */
     private boolean sendContents() {
         newUser = Volley.newRequestQueue(this);
-
+        boolean success = false;
         String url = "http://coms-309-mg-1.cs.iastate.edu:8080/post/user";
 
         final JSONObject user = new JSONObject();
@@ -102,6 +102,10 @@ public class CreateAccount extends AppCompatActivity {
             user.put("locationState", state.getText());
             user.put("phoneNo", phone.getText());
             user.put("bio", bio.getText());
+
+            if(user.get("email") !=null && user.get("username") !=null && user.get("password") !=null && user.get("accountType") !=null){
+                success = true;
+            }
 
             Log.d("response", user.toString());
 
@@ -127,8 +131,7 @@ public class CreateAccount extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 VolleyLog.d("Error.Response", error.toString());
                 System.out.println(error.getMessage());
-                newUser = null;
-            }
+                }
 
         }) {
             @Override
@@ -139,7 +142,7 @@ public class CreateAccount extends AppCompatActivity {
         };
 
             newUser.add(objectRequest);
-        return true;
+        return success;
     }
 
 
