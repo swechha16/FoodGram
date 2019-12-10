@@ -86,7 +86,7 @@ public class SwechhaMockTest {
     @Test
 
     public void testBasics() {
-        // Check the contents of the Menu object
+
         final Menu menu = bot.getMenu();
         assertNotNull("Menu should not be null", menu);
         assertEquals("Should have matching number of items", MENU_CONTENT_ITEM_IDS.length, menu.size());
@@ -105,12 +105,12 @@ public class SwechhaMockTest {
                 mock(BottomNavigationView.OnNavigationItemSelectedListener.class);
         bot.setOnNavigationItemSelectedListener(mockedListener);
         when(mockedListener.onNavigationItemSelected(any(MenuItem.class))).thenReturn(true);
-        // Programmatically select an item
+       
         bot.setSelectedItemId(R.id.action_message);
-        // Verify our listener has been notified of the click
+
         verify(mockedListener, times(1))
                 .onNavigationItemSelected(bot.getMenu().findItem(R.id.action_message));
-        // Verify the item is now selected
+
         assertTrue(bot.getMenu().findItem(R.id.action_message).isChecked());
 
     }
