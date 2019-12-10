@@ -42,7 +42,6 @@ import org.java_websocket.drafts.Draft;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import de.hdodenhof.circleimageview.CircleImageView;
 
 
 /**
@@ -102,7 +101,7 @@ public class DirectMessage extends AppCompatActivity {
                final User send = new User( 1, "Sweaty", "sweaty@iastate.edu", "user", "pass1234");
                 final User receive = new User( 2, "Ronnie", "ron@iastate.edu", "user", "pass1234");
                 sender = usernameInput.getText().toString();
-                String w = "ws://10.26.51.159:8080/websocket/" + sender;
+                String w = "ws://coms-309-mg-1.cs.iastate.edu:8080/websocket/" + sender;
 
                 try {
                     Log.d("Socket:", "Trying socket");
@@ -191,7 +190,7 @@ public class DirectMessage extends AppCompatActivity {
     private void storeMessage(Chat chat) {
 
         requestQueue = Volley.newRequestQueue(this);
-        String url = "http://10.26.51.159:8080/websocket/post";
+        String url = "http://coms-309-mg-1.cs.iastate.edu:8080/websocket/post";
 
         final JSONObject obj = new JSONObject();
         JSONObject sender = new JSONObject();
@@ -208,10 +207,6 @@ public class DirectMessage extends AppCompatActivity {
             obj.put("sender", sender);
             obj.put("receiver", receiver);
             obj.put("message", chat.getMessage().toString());
-
-
-//            obj.put("sender", chat.getSender());
-//            obj.put("receiver", chat.getReceiver());
 
             Log.d("Response", obj.toString());
 

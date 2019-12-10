@@ -10,7 +10,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        vectorDrawables.useSupportLibrary = true
+        useLibrary 'org.apache.http.legacy'
     }
     buildTypes {
         release {
@@ -25,11 +25,8 @@ android {
 
 dependencies {
     implementation 'com.android.support:design:28.0.0'
+    //    implementation 'com.android.support:design:26.1.0'
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support:support-vector-drawable:28.0.0'
-    implementation 'android.arch.navigation:navigation-fragment:1.0.0'
-    implementation 'android.arch.navigation:navigation-ui:1.0.0'
-    implementation 'android.arch.lifecycle:extensions:1.1.1'
     androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
@@ -44,11 +41,21 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.mockito:mockito-core:1.10.19'
     implementation files('libs/java_websocket.jar')
-    implementation 'de.hdodenhof:circleimageview:3.0.1'
+
 
     implementation ("com.github.bumptech.glide:glide:4.9.0") {
         exclude group: "com.android.support"
     }
     implementation "com.android.support:support-fragment:28.0.0"
 
+
+    //Retrofit Library
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    //Multipart Dependecies
+    compile group: 'org.apache.httpcomponents', name: 'httpclient-android', version: '4.3.5.1'
+    compile ('org.apache.httpcomponents:httpmime:4.3'){
+        exclude module: "httpclient"
+    }
+    compile 'com.squareup.okhttp3:okhttp:3.5.0'
 }
