@@ -2,6 +2,7 @@ package com.foodgram;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -21,6 +22,7 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.parceler.Parcels;
 
 /**
  * Verifies the account of a user trying to login with their username and password. Then takes the user to the Feed Page or tells them their login info does not match.
@@ -30,6 +32,7 @@ public class Login extends AppCompatActivity {
     private Button FeedHomePage;
     private EditText passwordText;
     private EditText usernameText;
+    User loggedInUser = new User(1, "vtorres", "vtorres@iastate.edu", "user", "123");
 
     RequestQueue passQueue;
 
@@ -53,6 +56,8 @@ public class Login extends AppCompatActivity {
 
     public void Feed_Page() {
         Intent intent = new Intent(this, PersonalFeedPage.class);
+        Parcelable parcelable = Parcels.wrap(loggedInUser);
+        intent.putExtra("LoggedInUser", parcelable);
         startActivity(intent);
     }
 
@@ -67,8 +72,16 @@ public class Login extends AppCompatActivity {
                     if(response != null) {
                         String dbEmail = response.getString("email");
                         String dbPassword = response.getString("password");
+                        long userId = response.getLong("userId");
+                        String username = response.getString("username");
+                        String accountType = response.getString("accountType");
+                        String profilePic = response.getString("profilePic");
+
 
                         if (pass.equals(dbPassword)) {
+                            loggedInUser = new User(userId,username,dbEmail,accountType,dbPassword);
+                            loggedInUser.setProfile_pic(profilePic);
+
                             Feed_Page();
                         } else {
                             Toast.makeText(getApplicationContext(), "Incorrect or Email Password", Toast.LENGTH_LONG).show();
