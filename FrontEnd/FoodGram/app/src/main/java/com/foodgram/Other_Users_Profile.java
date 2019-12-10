@@ -5,15 +5,16 @@ import android.os.Bundle;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-
+import android.content.Intent;
 import android.util.Log;
-
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkError;
 import com.android.volley.NoConnectionError;
@@ -125,7 +126,35 @@ public class Other_Users_Profile extends AppCompatActivity {
             }
         });
 
-
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.nav_view);
+        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.navigation_home:
+                       Intent a = new Intent(Other_Users_Profile.this, PersonalFeedPage.class);
+                        startActivity(a);
+                        break;
+                    case R.id.action_search:
+                        Intent b = new Intent(Other_Users_Profile.this, FilteredFoodFeed.class);
+                        startActivity(b);
+                        break;
+                    case R.id.action_add_post:
+                        Intent c = new Intent(Other_Users_Profile.this, PostPhotoPage.class);
+                        startActivity(c);
+                        break;
+                    case R.id.action_about:
+                        Intent d = new Intent(Other_Users_Profile.this, ProfilePage.class);
+                        startActivity(d);
+                        break;
+                    case R.id.id_logout:
+                        Intent e = new Intent(Other_Users_Profile.this, HomePage.class);
+                        startActivity(e);
+                        break;
+                }
+                return false;
+            }
+        });
     }
 
     public void updateFollowCount() {
