@@ -1,11 +1,14 @@
 package com.FoodGramServer.FoodGramServer.models;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
@@ -15,7 +18,9 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
  */
 @Entity
 @Table(name="User")
-public class User {
+public class User  implements Serializable{
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * primary key for each user
 	 */
@@ -23,23 +28,23 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long user_id;
 	
-	
-
-	
-	// Bidirectional relation with photos. Because it is bidirectional, parsing into json will enter
-	// an infinite loop (user->photos->users->...). To resolve this, use @JsonManagedReference and 
-	// @JsonBackedReference. Put @JsonManagedReference where you want the entity of the relation to be
-	// included in JSON, and @JsonBackedReference where you don't want the entity to be included.
 	/**
 	 * List of photos that a user has posted
 	 */
 	@OneToMany(mappedBy = "user") // mappedBy required for bidirectional to indicate the other side
-	@JsonBackReference
+	//@JsonManagedReference(value = "user")
+	@JsonIgnore
 	private List<Photo> photoPosts;
+
+		
+	@OneToMany(mappedBy = "sender")
+	@JsonIgnore
+	private List<Message> messageSender;
 	
-	@OneToMany(mappedBy = "user")
-	@JsonBackReference
-	private List<Message> messages;
+	@OneToMany(mappedBy = "receiver")
+	@JsonIgnore
+	private List<Message> messageReceiver;
+
 	
 	/**
 	 * Username to identify the users
@@ -53,6 +58,8 @@ public class User {
 	@Column(name = "full_name")
 	private String full_name;
 	
+	
+
 	/**
 	 * bio for the user
 	 */
@@ -103,6 +110,47 @@ public class User {
 	 */
 	@Column(name = "profile_pic")
 	private String profile_pic;
+	
+	/**
+	 * Url for user or for restaurant
+	 */
+	@Column(name = "url")
+	private String url;
+
+	
+	
+	public User() {
+		
+	}
+	
+	/**
+	 * constructor
+	 * @param user_id
+	 * @param account_type
+	 * @param bio
+	 * @param email
+	 * @param full_name
+	 * @param location_city
+	 * @param location_state
+	 * @param password
+	 * @param pic
+	 * @param phone_no
+	 * @param username
+	 */
+	public User(long user_id, String account_type, String bio, String email, String full_name, String location_city, String location_state, String password, String phone_no, String pic, String username, String url) {
+		this.user_id = user_id;
+		this.account_type = account_type;
+		this.bio = bio;
+		this.email = email;
+		this.full_name = full_name;
+		this.location_city = location_city;
+		this.location_state = location_state;
+		this.password = password;
+		this.profile_pic = pic;
+		this.phone_no = phone_no;
+		this.username = username;
+		this.url = url; 
+	}
 		
 	/**
 	 * 
@@ -236,6 +284,15 @@ public class User {
 	 */
 	public void setProfilePic(String profile_pic) { this.profile_pic = profile_pic; }
 
+	
+	
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
 	/**
 	 * 
 	 * @return
@@ -252,4 +309,21 @@ public class User {
 		this.photoPosts = photoPosts;
 	}
 
+	public List<Message> getMessageSender() {
+		return messageSender;
+	}
+
+	public void setMessageSender(List<Message> messageSender) {
+		this.messageSender = messageSender;
+	}
+
+	public List<Message> getMessageReceiver() {
+		return messageReceiver;
+	}
+
+	public void setMessageReciever(List<Message> messageReciever) {
+		this.messageReceiver = messageReciever;
+	}
+
+	
 }

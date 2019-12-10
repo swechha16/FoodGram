@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@mipmap/ic_home"
+        android:title="@string/title_home" />
+
+    <item
+        android:id="@+id/action_search"
+        android:title="@string/title_find_food"
+        android:icon="@mipmap/ic_hamburger"
+   />
+
+    <item
+        android:id="@+id/action_add_post"
+        android:icon="@mipmap/ic_plus"
+        android:title="@string/make_post"
+      />
+
+    <item
+        android:id="@+id/action_about"
+        android:icon="@mipmap/ic_people"
+        android:title="@string/title_feed" />
+
+    <item
+        android:id="@+id/id_logout"
+        android:icon="@mipmap/ic_logout"
+        android:title="@string/title_logout" />
+
+
+
+
+
+</menu>

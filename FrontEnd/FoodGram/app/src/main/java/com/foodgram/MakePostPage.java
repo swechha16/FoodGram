@@ -88,7 +88,7 @@ public class MakePostPage extends AppCompatActivity {
     }
 
     /**
-     * Post the comment by the user. Putting it correctly into the database for the user.
+     * Photo the comment by the user. Putting it correctly into the database for the user.
      */
     private void makePost() {
 

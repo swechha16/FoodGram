@@ -37,7 +37,7 @@ public class CreateAccount extends AppCompatActivity {
      * @param v
      */
     public void onButtonClick(View v){
-Intent myIntent = new Intent(this,  HomePageWithFeedPost.class);
+Intent myIntent = new Intent(this, PersonalFeedPage.class);
     startActivity(myIntent);
 
 }
