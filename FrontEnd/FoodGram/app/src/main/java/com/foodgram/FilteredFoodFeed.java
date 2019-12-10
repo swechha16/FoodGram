@@ -171,7 +171,7 @@ public class FilteredFoodFeed extends AppCompatActivity {
      * @param foodType - The type of food a user wants to search for
      */
     public void updateUrl(int foodType){
-        url = "http://10.31.29.6:8080/photo";
+        url = "http://coms-309-mg-1.cs.iastate.edu:8080/photo";
         if(foodType == 0){
           url += "/all";
         }else if(foodType == 1){
