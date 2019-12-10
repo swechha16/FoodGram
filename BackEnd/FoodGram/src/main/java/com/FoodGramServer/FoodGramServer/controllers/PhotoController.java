@@ -101,6 +101,7 @@ public class PhotoController {
 		try {
 			byte[] bytes = file.getBytes();
 	        path = Paths.get("/var/www/html/images/" + name);
+
 			Files.write(path, bytes);
 		} catch (IOException e) {
 			e.printStackTrace();
