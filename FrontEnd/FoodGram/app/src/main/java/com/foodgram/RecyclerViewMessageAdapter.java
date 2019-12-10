@@ -12,7 +12,6 @@ import com.foodgram.Chat;
 import com.foodgram.R;
 
 import java.util.List;
-
 public class RecyclerViewMessageAdapter extends RecyclerView.Adapter {
     private static final int VIEW_TYPE_MESSAGE_SENT = 1;
     private static final int VIEW_TYPE_MESSAGE_RECEIVED = 2;
