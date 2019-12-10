@@ -33,6 +33,7 @@ import org.parceler.Parcels;
 
 /**
  * Allows a user to search from multiple different types of food and price ranges in their area.
+ *
  * @author Vtorres
  */
 public class FilteredFoodFeed extends AppCompatActivity {
@@ -171,45 +172,26 @@ public class FilteredFoodFeed extends AppCompatActivity {
     }
 
 
-        /**
-         * Updates the url with the food type a user wants
-         * At the moment it can only do one food type at a time.
-         * @param foodType - The type of food a user wants to search for
-         */
-        public void updateUrl ( int foodType){
-            url = "http://coms-309-mg-1.cs.iastate.edu:8080/photo";
-            if (foodType == 0) {
-                url += "/all";
-            } else if (foodType == 1) {
-                url += "/italian";
-            } else if (foodType == 2) {
-                url += "/chinese";
-            } else if (foodType == 3) {
-                url += "/indian";
-            } else {
-                url += "/all";
-            }
-
     /**
      * Updates the url with the food type a user wants
      * At the moment it can only do one food type at a time.
+     *
      * @param foodType - The type of food a user wants to search for
      */
-    public void updateUrl(int foodType){
+    public void updateUrl(int foodType) {
         url = "http://coms-309-mg-1.cs.iastate.edu:8080/photo";
-        if(foodType == 0){
-          url += "/all";
-        }else if(foodType == 1){
+        if (foodType == 0) {
+            url += "/all";
+        } else if (foodType == 1) {
             url += "/italian";
-        }else if(foodType ==2 ){
+        } else if (foodType == 2) {
             url += "/chinese";
-        }else if(foodType == 3){
+        } else if (foodType == 3) {
             url += "/indian";
-        }else{
+        } else {
             url += "/all";
         }
-
-        }
+    }
 
         /**
          * Searches food by a certain price tag the user wants to stay within.
