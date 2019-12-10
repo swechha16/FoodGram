@@ -179,9 +179,10 @@ public class PostPhotoPage extends AppCompatActivity {
             public void onResponse(Call call, retrofit2.Response response) {
                     Log.d("Img Upload Response", response.toString());
                     Log.d("Upload", "Success");
-                    imgResponseUrl = response.body().toString();
-//                    Log.d("urlResponse", imgResponseUrl);
+                    imgResponseUrl = response.toString();
+                    Log.d("urlResponse", imgResponseUrl);
             }
+
 
             @Override
             public void onFailure(Call call, Throwable t) {
