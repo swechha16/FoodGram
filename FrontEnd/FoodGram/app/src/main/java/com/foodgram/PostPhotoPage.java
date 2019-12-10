@@ -165,8 +165,8 @@ public class PostPhotoPage extends AppCompatActivity {
                         startActivity(b);
                         break;
                     case R.id.action_add_post:
-//                        Intent c = new Intent(HomePageWithFeedPost.this, PostPhotoPage.class);
-//                        startActivity(c);
+                        Intent c = new Intent(PostPhotoPage.this, PostPhotoPage.class);
+                        startActivity(c);
                         break;
                     case R.id.action_about:
                         Intent d = new Intent(PostPhotoPage.this, ProfilePage.class);

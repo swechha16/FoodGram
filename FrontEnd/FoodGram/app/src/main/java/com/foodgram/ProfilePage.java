@@ -104,7 +104,11 @@ public class ProfilePage extends AppCompatActivity {
                         startActivity(c);
                         break;
                     case R.id.action_about:
+                        Intent d = new Intent(ProfilePage.this, ProfilePage.class);
 
+                        d.putExtra("LoggedInUser", parcelable);
+
+                        startActivity(d);
                         break;
                     case R.id.id_logout:
                         Intent e = new Intent(ProfilePage.this, HomePage.class);

@@ -144,8 +144,8 @@ public class FilteredFoodFeed extends AppCompatActivity {
                         startActivity(a);
                         break;
                     case R.id.action_search:
-//                        Intent b = new Intent(FilteredFoodFeed.this, FilteredFoodFeed.class);
-//                        startActivity(b);
+                        Intent b = new Intent(FilteredFoodFeed.this, FilteredFoodFeed.class);
+                        startActivity(b);
                         break;
                     case R.id.action_add_post:
                         Intent c = new Intent(FilteredFoodFeed.this, PostPhotoPage.class);
