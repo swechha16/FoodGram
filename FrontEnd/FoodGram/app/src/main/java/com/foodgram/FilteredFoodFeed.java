@@ -71,8 +71,7 @@ public class FilteredFoodFeed extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filtered_food_feed);
-        BottomNavigationView bottomNavigationView;
-        bottomNavigationView = findViewById(R.id.nav_view);
+
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.nav_view);
 
@@ -252,17 +251,27 @@ public class FilteredFoodFeed extends AppCompatActivity {
                             for (int i = 0; i < response.length(); i++) {
                                 JSONObject comment = response.getJSONObject(i);
 
-                                // long id = comment.getInt("id");
+                                String username = comment.getJSONObject("user").getString("username");
+                                Long userId = comment.getJSONObject("user").getLong("userId");
+                                String accountType = comment.getJSONObject("user").getString("accountType");
+                                String password = comment.getJSONObject("user").getString("password");
+                                String tempEmail = comment.getJSONObject("user").getString("email");
+                                String profilePic = comment.getJSONObject("user").getString("profilePic");
+                                String picUrl = comment.getString("pic");
+                                String timeStamp = comment.getString("timestamp");
+                                long picId = comment.getLong("picId");
                                 String caption = comment.getString("caption");
                                 String restaurantName = comment.getString("restaurant");
                                 String foodTag = comment.getString("foodTag");
                                 String costTag = comment.getString("costTag");
 
+                                User tempUser = new User(userId, username, tempEmail, accountType, password);
+                                tempUser.setProfile_pic(profilePic);
 
-                            mTextViewResult.append(caption + "\n" + foodTag + "\n" + costTag + "\n" + restaurantName + "\n\n\n");
-                            feedPageAdapter.add(new Photo(null,null ,caption, foodTag ,costTag, restaurantName,null,0 ));
 
-                                mTextViewResult.append(caption + "\n" + foodTag + "\n" + costTag + "\n" + restaurantName + "\n\n\n");
+                            feedPageAdapter.add(new Photo(tempUser, picUrl, caption, foodTag, costTag, restaurantName, timeStamp, picId ));
+
+                             //   mTextViewResult.append(caption + "\n" + foodTag + "\n" + costTag + "\n" + restaurantName + "\n\n\n");
 
                             }
                         } else {
