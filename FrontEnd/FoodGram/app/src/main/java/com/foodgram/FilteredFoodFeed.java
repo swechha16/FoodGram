@@ -161,15 +161,16 @@ public class FilteredFoodFeed extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.navigation_home:
                         Intent a = new Intent(FilteredFoodFeed.this, PersonalFeedPage.class);
+                        a.putExtra("LoggedInUser", parcelable);
                         startActivity(a);
                         break;
                     case R.id.action_search:
                         Intent b = new Intent(FilteredFoodFeed.this, FilteredFoodFeed.class);
+                        b.putExtra("LoggedInUser", parcelable);
                         startActivity(b);
                         break;
                     case R.id.action_add_post:
                         Intent c = new Intent(FilteredFoodFeed.this, PostPhotoPage.class);
-
                         c.putExtra("LoggedInUser", parcelable);
 
                         startActivity(c);

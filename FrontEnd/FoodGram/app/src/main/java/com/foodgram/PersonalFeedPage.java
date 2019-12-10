@@ -89,12 +89,14 @@ public class PersonalFeedPage extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.navigation_home:
                         Intent a = new Intent(PersonalFeedPage.this, PersonalFeedPage.class);
+                        a.putExtra("LoggedInUser", parcelable);
                         startActivity(a);
                         break;
                     case R.id.action_search:
                         Intent b = new Intent(PersonalFeedPage.this, FilteredFoodFeed.class);
                         b.putExtra("LoggedInUser", parcelable);
                         startActivity(b);
+                        break;
                     case R.id.action_add_post:
                         Intent c = new Intent(PersonalFeedPage.this, PostPhotoPage.class);
 

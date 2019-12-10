@@ -96,6 +96,7 @@ public class ProfilePage extends AppCompatActivity {
                         Intent b = new Intent(ProfilePage.this, FilteredFoodFeed.class);
                         b.putExtra("LoggedInUser", parcelable);
                         startActivity(b);
+                        break;
                     case R.id.action_add_post:
                         Intent c = new Intent(ProfilePage.this, PostPhotoPage.class);
 

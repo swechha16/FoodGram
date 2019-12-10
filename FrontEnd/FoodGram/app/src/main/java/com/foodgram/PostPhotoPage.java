@@ -27,6 +27,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.os.Parcelable;
+
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkError;
@@ -45,6 +47,7 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.parceler.Parcels;
 
 import java.io.BufferedWriter;
 import java.io.ByteArrayOutputStream;
@@ -80,6 +83,7 @@ public class PostPhotoPage extends AppCompatActivity {
     private EditText txt_caption, txt_foodTag, txt_costTag,txt_restaurant;
 
     private RequestQueue requestQueue;
+    User loggedInUser = new User();
 
     private File imageFile;
 
@@ -105,6 +109,9 @@ public class PostPhotoPage extends AppCompatActivity {
                 welcome_page();
             }
         });
+
+        final Parcelable parcelable = getIntent().getParcelableExtra("LoggedInUser");
+        loggedInUser = Parcels.unwrap(parcelable);
 
         txt_caption = (EditText) findViewById(R.id.post_caption);
         txt_foodTag = (EditText) findViewById(R.id.post_foodTag);
@@ -158,18 +165,22 @@ public class PostPhotoPage extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.navigation_home:
                         Intent a = new Intent(PostPhotoPage.this, PersonalFeedPage.class);
+                        a.putExtra("LoggedInUser", parcelable);
                         startActivity(a);
                         break;
                     case R.id.action_search:
                         Intent b = new Intent(PostPhotoPage.this, FilteredFoodFeed.class);
+                        b.putExtra("LoggedInUser", parcelable);
                         startActivity(b);
                         break;
                     case R.id.action_add_post:
                         Intent c = new Intent(PostPhotoPage.this, PostPhotoPage.class);
+                        c.putExtra("LoggedInUser", parcelable);
                         startActivity(c);
                         break;
                     case R.id.action_about:
                         Intent d = new Intent(PostPhotoPage.this, ProfilePage.class);
+                        d.putExtra("LoggedInUser", parcelable);
                         startActivity(d);
                         break;
                     case R.id.id_logout:
