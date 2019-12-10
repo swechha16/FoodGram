@@ -86,12 +86,10 @@ public class PersonalFeedPage extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-
-
                 switch (item.getItemId()) {
                     case R.id.navigation_home:
-//                        Intent a = new Intent(this, PersonalFeedPage.class);
-//                        startActivity(a);
+                        Intent a = new Intent(PersonalFeedPage.this, PersonalFeedPage.class);
+                        startActivity(a);
                         break;
                     case R.id.action_search:
                         Intent b = new Intent(PersonalFeedPage.this, FilteredFoodFeed.class);
