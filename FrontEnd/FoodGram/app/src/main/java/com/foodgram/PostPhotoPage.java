@@ -13,6 +13,8 @@ import android.os.Binder;
 import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
@@ -24,6 +26,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkError;
@@ -52,11 +55,15 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
+import pub.devrel.easypermissions.AfterPermissionGranted;
+import pub.devrel.easypermissions.AppSettingsDialog;
+import pub.devrel.easypermissions.EasyPermissions;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Retrofit;
@@ -67,9 +74,10 @@ import retrofit2.http.Multipart;
  * @Alexi
  * @SKarn
  */
-public class PostPhotoPage extends AppCompatActivity {
+public class PostPhotoPage extends AppCompatActivity implements EasyPermissions.PermissionCallbacks{
 
     ImageView postImage;
+
     private TextView mTextViewResult;
 
     private Button signOut, add_post, add_image;
@@ -81,12 +89,6 @@ public class PostPhotoPage extends AppCompatActivity {
     private File imageFile;
 
     private String imgResponseUrl;
-
-    //private String imgString = "";
-
-    //private MultipartEntityBuilder mBuiler = MultipartEntityBuilder.create();
-
-    //public static Retrofit retrofit;
 
 
     @Override
@@ -126,21 +128,11 @@ public class PostPhotoPage extends AppCompatActivity {
             }
         });
 
+
+
         postImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//                    if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
-//                        String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE};
-//                        requestPermissions(permissions, PERMISSION_CODE);
-//
-//                    } else {
-//                        selectImgUpload();
-//                    }
-//                    }
-//                    else{
-//                        selectImgUpload();
-//                    }
                 selectImgUpload();
                 }
         });
@@ -148,6 +140,15 @@ public class PostPhotoPage extends AppCompatActivity {
         mTextViewResult = findViewById(R.id.errorView);
 
     }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        // Forward results to EasyPermissions
+        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
+    }
+
 
     /**
      * Takes a user to the welcome page
@@ -157,12 +158,12 @@ public class PostPhotoPage extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * Upload's taken or selected image to the server using Retrofit library
+     */
     private void uploadImage(){
         RequestBody requestBody = RequestBody.create(MediaType.parse("image/*"), imageFile);
         MultipartBody.Part mbParts = MultipartBody.Part.createFormData("file", imageFile.getName(), requestBody);
-//        MultipartBody.Part mbParts = MultipartBody.Part.createFormData("file", imageFile.getName());
-
-
 
         Retrofit retrofit = NetworkClient.getRetrofit();
 
@@ -177,7 +178,6 @@ public class PostPhotoPage extends AppCompatActivity {
                     Log.d("Img Upload Response", response.toString());
                     Log.d("Upload", "Success");
                     imgResponseUrl = response.toString();
-                    Log.d("urlResponse", imgResponseUrl);
             }
 
 
@@ -265,7 +265,15 @@ public class PostPhotoPage extends AppCompatActivity {
      * Initiates image upload choice to the user after ImageView (Camera Icon) is clicked
      * The upload options are: Taking a photo or Choosing a photo form the photo gallery
      */
+    @AfterPermissionGranted(309)
     private void selectImgUpload(){
+        String[] perms = {Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE};
+        if(EasyPermissions.hasPermissions(this, perms)){
+            Toast.makeText(this, "Have Permissions to Take and Select Picture", Toast.LENGTH_SHORT).show();
+        }else{
+            EasyPermissions.requestPermissions(this, "Need Permissions to Take & Select Pictures of Delicious Food", 309, perms);
+        }
+
         final CharSequence[] options = {"Take Photo","Choose From Gallery","Cancel"};
         android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(PostPhotoPage.this);
         builder.setTitle("Choose an Option");
@@ -387,5 +395,17 @@ public class PostPhotoPage extends AppCompatActivity {
         return Bitmap.createScaledBitmap(image, width, height, true);
     }
 
+
+    @Override
+    public void onPermissionsGranted(int requestCode, @NonNull List<String> perms) {
+        selectImgUpload();
+    }
+
+    @Override
+    public void onPermissionsDenied(int requestCode, @NonNull List<String> perms) {
+        if(EasyPermissions.somePermissionPermanentlyDenied(this,perms)){
+            new AppSettingsDialog.Builder(this).build().show();
+        }
+    }
 
 }
