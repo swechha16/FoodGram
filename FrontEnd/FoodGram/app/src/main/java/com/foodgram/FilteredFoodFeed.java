@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,6 +31,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Allows a user to search from multiple different types of food and price ranges in their area.
  * @author Vtorres
@@ -38,6 +42,7 @@ public class FilteredFoodFeed extends AppCompatActivity {
     private TextView mTextViewResult;
     private RequestQueue mQueue;
     RecyclerView feedView;
+    FeedPageAdapter feedPageAdapter;
     /**
      *If the int is 0 it will grab all,  1: italian 2 : chinese 3: indian
      */
@@ -47,7 +52,7 @@ public class FilteredFoodFeed extends AppCompatActivity {
      */
     private int priceTag = 0;
 
-
+    private List<Photo> photoList;
 
     private String url = "http://coms-309-mg-1.cs.iastate.edu";
 
@@ -63,12 +68,16 @@ public class FilteredFoodFeed extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.nav_view);
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.nav_view);
-
+        photoList = new ArrayList<Photo>();
         feedView = findViewById(R.id.filteredRecycle);
         mTextViewResult = findViewById(R.id.textViewResults);
+
         mQueue = Volley.newRequestQueue(this);
-
-
+        feedPageAdapter = new FeedPageAdapter(this, photoList);
+        feedView.setAdapter(feedPageAdapter);
+        feedView.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        feedView.setLayoutManager(linearLayoutManager);
 
 
         Button italian = findViewById(R.id.ItalianButton);
