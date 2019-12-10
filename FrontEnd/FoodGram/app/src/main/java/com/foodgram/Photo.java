@@ -5,10 +5,10 @@ public class Photo {
   private  User user;
    private String pic;
    private String caption, food_tag, cost_tag, restaurant, time_stamp;
-    private int pic_id;
+    private long pic_id;
 
 
-    public Photo(User user, String pic, String caption, String food_tag, String cost_tag, String restaurant, String time_stamp, int pic_id) {
+    public Photo(User user, String pic, String caption, String food_tag, String cost_tag, String restaurant, String time_stamp, long pic_id) {
         this.user = user;
         this.pic = pic;
         this.caption = caption;
@@ -71,7 +71,7 @@ public class Photo {
         this.time_stamp = time_stamp;
     }
 
-    public int getPic_id() {
+    public long getPic_id() {
         return pic_id;
     }
 

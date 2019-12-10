@@ -1,6 +1,7 @@
 package com.foodgram;
 
 import android.content.Intent;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
@@ -28,9 +29,11 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.parceler.Parcels;
 
 /**
  * Allows a user to search from multiple different types of food and price ranges in their area.
+ *
  * @author Vtorres
  */
 public class FilteredFoodFeed extends AppCompatActivity {
@@ -38,7 +41,7 @@ public class FilteredFoodFeed extends AppCompatActivity {
     private RequestQueue mQueue;
 
     /**
-     *If the int is 0 it will grab all,  1: italian 2 : chinese 3: indian
+     * If the int is 0 it will grab all,  1: italian 2 : chinese 3: indian
      */
     private int foodType = 0;
     /**
@@ -46,12 +49,14 @@ public class FilteredFoodFeed extends AppCompatActivity {
      */
     private int priceTag = 0;
 
+    User loggedInUser = new User();
 
 
     private String url = "http://coms-309-mg-1.cs.iastate.edu";
 
     /**
      * Creates the buttons for the activity page and
+     *
      * @param savedInstanceState
      */
     @Override
@@ -62,12 +67,11 @@ public class FilteredFoodFeed extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.nav_view);
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.nav_view);
-
+        final Parcelable parcelable = getIntent().getParcelableExtra("LoggedInUser");
+        loggedInUser = Parcels.unwrap(parcelable);
 
         mTextViewResult = findViewById(R.id.textViewResults);
         mQueue = Volley.newRequestQueue(this);
-
-
 
 
         Button italian = findViewById(R.id.ItalianButton);
@@ -88,7 +92,7 @@ public class FilteredFoodFeed extends AppCompatActivity {
         indian.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                foodType =3;
+                foodType = 3;
             }
         });
 
@@ -111,7 +115,7 @@ public class FilteredFoodFeed extends AppCompatActivity {
         expensive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                priceTag =3;
+                priceTag = 3;
             }
         });
 
@@ -120,7 +124,7 @@ public class FilteredFoodFeed extends AppCompatActivity {
         getFiltered.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(priceTag!= 0 && foodType != 0){
+                if (priceTag != 0 && foodType != 0) {
                     addPriceTag(priceTag);
                     getFilteredFeed();
 
@@ -129,167 +133,169 @@ public class FilteredFoodFeed extends AppCompatActivity {
         });
 
 
-        BottomNavigationView navi = (BottomNavigationView) findViewById(R.id.nav_view);
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+
                 switch (item.getItemId()) {
                     case R.id.navigation_home:
-                      Intent a = new Intent(FilteredFoodFeed.this, PersonalFeedPage.class);
+                        Intent a = new Intent(FilteredFoodFeed.this, PersonalFeedPage.class);
                         startActivity(a);
                         break;
                     case R.id.action_search:
-                        Intent b = new Intent(FilteredFoodFeed.this, FilteredFoodFeed.class);
-                        startActivity(b);
+//                        Intent b = new Intent(FilteredFoodFeed.this, FilteredFoodFeed.class);
+//                        startActivity(b);
                         break;
                     case R.id.action_add_post:
                         Intent c = new Intent(FilteredFoodFeed.this, PostPhotoPage.class);
+
+                        c.putExtra("LoggedInUser", parcelable);
+
                         startActivity(c);
                         break;
                     case R.id.action_about:
                         Intent d = new Intent(FilteredFoodFeed.this, ProfilePage.class);
+                        d.putExtra("LoggedInUser", parcelable);
+
                         startActivity(d);
                         break;
                     case R.id.id_logout:
                         Intent e = new Intent(FilteredFoodFeed.this, HomePage.class);
+
                         startActivity(e);
                         break;
                 }
                 return false;
             }
         });
-
-
-
     }
-
 
 
     /**
      * Updates the url with the food type a user wants
      * At the moment it can only do one food type at a time.
+     *
      * @param foodType - The type of food a user wants to search for
      */
-    public void updateUrl(int foodType){
-        url = "http://10.31.29.6:8080/photo";
-        if(foodType == 0){
-          url += "/all";
-        }else if(foodType == 1){
+    public void updateUrl(int foodType) {
+        url = "http://coms-309-mg-1.cs.iastate.edu:8080/photo";
+        if (foodType == 0) {
+            url += "/all";
+        } else if (foodType == 1) {
             url += "/italian";
-        }else if(foodType ==2 ){
+        } else if (foodType == 2) {
             url += "/chinese";
-        }else if(foodType == 3){
+        } else if (foodType == 3) {
             url += "/indian";
-        }else{
+        } else {
             url += "/all";
         }
-
-
     }
 
-    /**
-     * Searches food by a certain price tag the user wants to stay within.
-     * @param priceTag - The price of food a user wants to search "$" , "$$" , or "$$$"
-     */
-    public void addPriceTag(int priceTag){
+        /**
+         * Searches food by a certain price tag the user wants to stay within.
+         * @param priceTag - The price of food a user wants to search "$" , "$$" , or "$$$"
+         */
+        public void addPriceTag ( int priceTag){
 
-        updateUrl(foodType);
-        if(priceTag == 1) {
-            url += "/$";
-        }else if(priceTag == 2){
-            url += "/$$";
-        }else if(priceTag == 3){
-            url += "/$$$";
-        }else {
-            url += "/$";
+            updateUrl(foodType);
+            if (priceTag == 1) {
+                url += "/$";
+            } else if (priceTag == 2) {
+                url += "/$$";
+            } else if (priceTag == 3) {
+                url += "/$$$";
+            } else {
+                url += "/$";
+            }
+
         }
 
-    }
+        /**
+         * This grabs all the data from the JSON using the correct food type and price a user wants to search for.
+         */
+        public void getFilteredFeed () {
 
-    /**
-     * This grabs all the data from the JSON using the correct food type and price a user wants to search for.
-     */
-    public void getFilteredFeed(){
-
-mTextViewResult.setText("");
-    //   url = "http://10.26.1.154:8080/photo/all";
-        JsonArrayRequest testRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
-                        mTextViewResult.setText("");
-                try {
+            mTextViewResult.setText("");
+            //   url = "http://10.26.1.154:8080/photo/all";
+            JsonArrayRequest testRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+                @Override
+                public void onResponse(JSONArray response) {
+                    mTextViewResult.setText("");
+                    try {
 
 
-                    if(response.length() != 0) {
+                        if (response.length() != 0) {
 
-                        for (int i = 0; i < response.length(); i++) {
-                            JSONObject comment = response.getJSONObject(i);
+                            for (int i = 0; i < response.length(); i++) {
+                                JSONObject comment = response.getJSONObject(i);
 
-                            // long id = comment.getInt("id");
-                            String caption = comment.getString("caption");
-                            String restaurantName = comment.getString("restaurant");
-                            String foodTag = comment.getString("foodTag");
-                            String costTag = comment.getString("costTag");
+                                // long id = comment.getInt("id");
+                                String caption = comment.getString("caption");
+                                String restaurantName = comment.getString("restaurant");
+                                String foodTag = comment.getString("foodTag");
+                                String costTag = comment.getString("costTag");
 
 
-                            mTextViewResult.append(caption + "\n" + foodTag + "\n" + costTag + "\n" + restaurantName + "\n\n\n");
+                                mTextViewResult.append(caption + "\n" + foodTag + "\n" + costTag + "\n" + restaurantName + "\n\n\n");
 
+                            }
+                        } else {
+                            mTextViewResult.append("\nNo posts");
                         }
-                    }else{
-                        mTextViewResult.append("\nNo posts");
+
+
+                    } catch (JSONException e) {
+                        mTextViewResult.setText("JSON EXCEPTION");
+                        e.printStackTrace();
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                    if (error instanceof TimeoutError || error instanceof NoConnectionError) {
+                        mTextViewResult.setText("Timeout Error or No connection error");
+                    } else if (error instanceof AuthFailureError) {
+                        mTextViewResult.setText("authentication failure error");
+                    } else if (error instanceof ServerError) {
+                        mTextViewResult.setText("server error");
+                    } else if (error instanceof NetworkError) {
+                        mTextViewResult.setText("network error");
+                    } else if (error instanceof ParseError) {
+                        mTextViewResult.setText("Parse Error");
                     }
 
-
-                } catch (JSONException e) {
-                    mTextViewResult.setText("JSON EXCEPTION");
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-                if (error instanceof TimeoutError || error instanceof NoConnectionError){
-                    mTextViewResult.setText("Timeout Error or No connection error");
-                }
-                else if(error instanceof AuthFailureError){
-                    mTextViewResult.setText("authentication failure error");
-                }else if(error instanceof ServerError){
-                    mTextViewResult.setText("server error");
-                }else if(error instanceof NetworkError){
-                    mTextViewResult.setText("network error");
-                }else if(error instanceof ParseError) {
-                    mTextViewResult.setText("Parse Error");
-                }
-
-                mTextViewResult.append("\n\n " + url);
+                    mTextViewResult.append("\n\n " + url);
 
                 }
             }
-        );
+            );
 
-        mQueue.add(testRequest);
+            mQueue.add(testRequest);
 
-    }
-
-    /**
-     * For Mockito Test of receiving a price request from a user.
-     * @param url - The url to test
-     * @param price - the price the user wants to search for
-     * @param linkHandler -
-     * @return - true if the url works, false if not.
-     * @throws JSONException
-     */
-    public boolean tryRecieving(String url, String price, LinkHandler linkHandler) throws JSONException {
-
-        //Does not work because .getResponse has not been implemented
-        if (linkHandler.getLink(url, price).getBoolean("loginSuccess")) {
-            return true;
         }
 
-        return false;
+        /**
+         * For Mockito Test of receiving a price request from a user.
+         * @param url - The url to test
+         * @param price - the price the user wants to search for
+         * @param linkHandler -
+         * @return - true if the url works, false if not.
+         * @throws JSONException
+         */
+        public boolean tryRecieving (String url, String price, LinkHandler linkHandler) throws
+        JSONException {
+
+            //Does not work because .getResponse has not been implemented
+            if (linkHandler.getLink(url, price).getBoolean("loginSuccess")) {
+                return true;
+            }
+
+            return false;
+        }
+
+
     }
 
-
-
-}

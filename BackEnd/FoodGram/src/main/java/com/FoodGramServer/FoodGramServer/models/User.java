@@ -137,7 +137,7 @@ public class User  implements Serializable{
 	 * @param phone_no
 	 * @param username
 	 */
-	public User(long user_id, String account_type, String bio, String email, String full_name, String location_city, String location_state, String password, String phone_no, String pic, String username, String url) {
+	public User(long user_id, String account_type, String bio, String email, String full_name, String location_city, String location_state, String password, String phone_no, String picUrl, String username, String url) {
 		this.user_id = user_id;
 		this.account_type = account_type;
 		this.bio = bio;
@@ -146,7 +146,7 @@ public class User  implements Serializable{
 		this.location_city = location_city;
 		this.location_state = location_state;
 		this.password = password;
-		this.profile_pic = pic;
+		this.profile_pic = picUrl;
 		this.phone_no = phone_no;
 		this.username = username;
 		this.url = url; 

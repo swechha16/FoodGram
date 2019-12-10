@@ -2,6 +2,7 @@ package com.foodgram;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+
+import org.parceler.Parcels;
 
 import java.util.List;
 
@@ -71,15 +74,19 @@ public class FeedPageAdapter extends RecyclerView.Adapter {
 
         }
 
-        void bind(Photo photo){
-            otherUserName.setText(photo.getUser().getUsername());
+        void bind(final Photo photo){
+
+            final String otherUsername = photo.getUser().getUsername();
+            otherUserName.setText(otherUsername);
             photoCaption.setText((photo.getCaption()));
 
             otherUserImage.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 
+                    Parcelable parcelable = Parcels.wrap(photo.getUser());
                     Intent intent = new Intent(mContext, Other_Users_Profile.class);
+                    intent.putExtra("OtherUserProfile", parcelable);
                         view.getContext().startActivity(intent);
 
                 }

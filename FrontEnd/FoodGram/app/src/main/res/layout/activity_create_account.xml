@@ -1,82 +1,216 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.foodgram.CreateAccount">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/name_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight=".75"
+            android:text="Name:"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/input_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:layout_weight=".25"
+            android:hint="Enter Name" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/email_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight=".75"
+            android:text="Email:"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/input_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:layout_weight=".25"
+            android:hint="Enter Email" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/username_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight=".75"
+            android:text="Username:"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/input_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:layout_weight=".25"
+            android:hint="Enter Username" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/password_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight=".75"
+            android:text="Password:"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/input_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:layout_weight=".25"
+            android:hint="Enter Password" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/account_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight=".75"
+            android:text="Account:"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/input_account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:layout_weight=".25"
+            android:hint="User or Restaurant" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/phone_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight=".75"
+            android:text="Phone No.:"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/input_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:layout_weight=".25"
+            android:hint="Enter Phone No." />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/city_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight=".75"
+            android:text="City:"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/input_city"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:layout_weight=".25"
+            android:hint="Enter City" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/state_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight=".75"
+            android:text="State:"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/input_state"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:layout_weight=".25"
+            android:hint="Enter State" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/bio_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight=".75"
+            android:text="Bio:"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/input_bio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:layout_weight=".25"
+            android:hint="Enter Bio" />
+    </LinearLayout>
 
     <Button
-        android:id="@+id/createAccountSubmit"
+        android:id="@+id/createaccount_button"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_alignParentBottom="true"
-        android:text="@string/create_an_account" />
+        android:layout_height="wrap_content"
+        android:text="Create an Account" />
 
-    <TextView
-        android:id="@+id/nameText"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_alignParentTop="true"
-        android:layout_margin="15dp"
-        android:text="@string/username"
-        android:textAlignment="center"
-        />
 
-    <EditText
-        android:id="@+id/nameInput"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@+id/nameText"
-        android:layout_margin="15dp"
-        android:importantForAutofill="no"
-        android:text="@string/username"
-        android:textAlignment="center"
-        android:inputType="text"
-        tools:ignore="LabelFor"/>
-
-    <TextView
-        android:id="@+id/emailText"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@+id/nameInput"
-        android:layout_margin="25dp"
-        android:text="@string/email"
-        android:textAlignment="center" />
-
-    <EditText
-        android:id="@+id/emailInput"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@+id/emailText"
-        android:layout_margin="15dp"
-        android:importantForAutofill="no"
-        android:inputType="textEmailAddress"
-        android:text="@string/email"
-        android:textAlignment="center"
-        tools:ignore="LabelFor" />
-
-    <EditText
-        android:id="@+id/passwordInput"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@+id/passwordText"
-        android:layout_margin="15dp"
-        android:ems="10"
-        android:importantForAutofill="no"
-        android:inputType="textPassword"
-        android:text="@string/password"
-        android:textAlignment="center"
-        tools:ignore="LabelFor" />
-
-    <TextView
-        android:id="@+id/passwordText"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@+id/emailInput"
-        android:layout_margin="15dp"
-        android:text="@string/password"
-        android:textAlignment="center" />
-
-</RelativeLayout>
+</LinearLayout>

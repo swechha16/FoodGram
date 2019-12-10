@@ -1,55 +1,63 @@
 package com.foodgram;
 
+import org.parceler.Parcel;
+
 /**
  * A user for FoodGram
  * @author SKarn
  * @author Vtorres - Javadoc
  */
+
+@Parcel
 public class User {
     /**
      * User identification
      */
-    private long user_id;
+    public long user_id;
     /**
      * User name
      */
-    private String username;
+    public String username;
     /**
      * The full name of a user
      */
-    private String full_name; //can be null
+    public String full_name; //can be null
     /**
      * The bio of a user
      */
-    private String bio; //can be null
+    public String bio; //can be null
     /**
      * the email for a user
      */
-    private String email;
+    public String email;
     /**
      * the password for a user
      */
-    private String password;
+    public String password;
     /**
      * Whether a user is a restaurant or a person
      */
-    private String account_type;
+    public String account_type;
     /**
      * The location in city of the user
      */
-    private String location_city;
+    public String location_city;
     /**
      * The location in state of a user
      */
-    private String location_state;
+    public String location_state;
     /**
      * The phone number of a user
      */
-    private String phone_no;
+    public String phone_no;
     /**
      * the profile picture of a user
      */
-    private String profile_pic;
+    public String profile_pic;
+
+    public User(){
+
+    }
 
 
     /**
